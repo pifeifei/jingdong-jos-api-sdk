@@ -1,6 +1,7 @@
 <?php
 
-namespace Common\Exception;
+namespace ACES\Common\Exception;
+
 
 use Exception;
 

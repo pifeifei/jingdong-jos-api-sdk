@@ -1,0 +1,103 @@
+<?php
+
+namespace ACES\Request;
+
+
+class PopOrderGetmobilelistRequest
+{
+    private $apiParas = array();
+    private $version;
+    private $appName;
+    private $region;
+    private $orderId;
+    private $expiration;
+    private $orderType;
+
+    public function getApiMethodName()
+    {
+        return "jingdong.pop.order.getmobilelist";
+    }
+
+    public function getApiParas()
+    {
+        if (empty($this->apiParas)) {
+            return "{}";
+        }
+        return json_encode($this->apiParas);
+    }
+
+    public function check()
+    {
+    }
+
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->$key = $value;
+    }
+
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    public function setVersion($version)
+    {
+        $this->version = $version;
+    }
+
+    public function getAppName()
+    {
+        return $this->appName;
+    }
+
+    public function setAppName($appName)
+    {
+        $this->appName = $appName;
+        $this->apiParas["appName"] = $appName;
+    }
+
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    public function setRegion($region)
+    {
+        $this->region = $region;
+        $this->apiParas["region"] = $region;
+    }
+
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->orderId = $orderId;
+        $this->apiParas["orderId"] = $orderId;
+    }
+
+    public function getExpiration()
+    {
+        return $this->expiration;
+    }
+
+    public function setExpiration($expiration)
+    {
+        $this->expiration = $expiration;
+        $this->apiParas["expiration"] = $expiration;
+    }
+
+    public function getOrderType()
+    {
+        return $this->orderType;
+    }
+
+    public function setOrderType($orderType)
+    {
+        $this->orderType = $orderType;
+        $this->apiParas["orderType"] = $orderType;
+    }
+}

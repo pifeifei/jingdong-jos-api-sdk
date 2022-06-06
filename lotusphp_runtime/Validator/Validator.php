@@ -1,6 +1,8 @@
 <?php
 
-class LtValidator
+namespace ARS\Lotus\Validator;
+
+class Validator
 {
     public $configHandle;
     protected $errorMessages;

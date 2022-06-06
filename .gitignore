@@ -4,3 +4,5 @@
 
 .phpunit.result.cache
 composer.lock
+
+AutoNamespace.php

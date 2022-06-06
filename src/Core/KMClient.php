@@ -2,27 +2,27 @@
 
 namespace ACES\Core;
 
+use ACES\Common\CacheKeyStore;
 use ACES\Common\Constants;
 use ACES\Common\Domain\JosBaseResponse;
 use ACES\Common\Domain\JosMasterKeyGetResponse;
-use ACES\Common\HttpsClient;
-use ACES\TDEClient;
-use Exception;
-use RuntimeException;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-use Monolog\Formatter\LineFormatter;
-use ACES\Common\TDEStatus;
-use ACES\Common\Exception\ServiceErrorException;
-use ACES\Common\MKey;
-use JsonMapper;
-use ACES\Common\KStoreType;
-use ACES\Common\KeyRequest;
-use ACES\Common\Token;
+use ACES\Common\Exception\CorruptKeyException;
 use ACES\Common\Exception\NoValidKeyException;
-use ACES\Common\CacheKeyStore;
+use ACES\Common\Exception\ServiceErrorException;
+use ACES\Common\HttpsClient;
+use ACES\Common\KeyRequest;
+use ACES\Common\KStoreType;
+use ACES\Common\MKey;
+use ACES\Common\TDEStatus;
+use ACES\Common\Token;
+use ACES\TDEClient;
 use ACES\Utils\UtilTools;
-use Common\Exception\CorruptKeyException;
+use Exception;
+use JsonMapper;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use RuntimeException;
 
 /**
  * KMClient Implementation
@@ -31,9 +31,9 @@ use Common\Exception\CorruptKeyException;
  * @version 1.0.0
  */
 
-define("KMSLOGFILE", getenv("HOME") . "/aces-log/kmclient.log");
+define("KMSLOGFILE", getenv("HOME")."/aces-log/kmclient.log");
 if (!defined("LOGCONSOLE")) {
-    define("LOGCONSOLE", __DIR__ . "/../../../tde.log");
+    define("LOGCONSOLE", __DIR__."/../../../tde.log");
 }
 if (!defined("LOGLEVEL")) {
     define("LOGLEVEL", Logger::DEBUG);
@@ -85,8 +85,13 @@ final class KMClient
      *
      * @return KMClient
      */
-    public function __construct(TDEClient $tde, HttpReportClient $reporter, CacheKeyStore $keyStore, Token $token, $version)
-    {
+    public function __construct(
+        TDEClient $tde,
+        HttpReportClient $reporter,
+        CacheKeyStore $keyStore,
+        Token $token,
+        $version
+    ) {
         $this->tde = $tde;
         $this->reporter = $reporter;
         $this->cacheKeyStore = $keyStore;
@@ -143,7 +148,10 @@ final class KMClient
     public function fetchMKeys($delay)
     {
         try {
-            $this->log->info("Fetch keys from " . $this->tde->getJosBaseInfo()->getServerUrl() . Constants::KMS_ENDPOINT_REQUEST_MK . ". With delay = " . $delay . " ms.");
+            $this->log->info(
+                "Fetch keys from ".$this->tde->getJosBaseInfo()->getServerUrl(
+                ).Constants::KMS_ENDPOINT_REQUEST_MK.". With delay = ".$delay." ms."
+            );
             if ($delay > 0) {
                 // sleep for millis
                 sleep($delay / 1000);
@@ -153,7 +161,7 @@ final class KMClient
             $josResponse = $this->josKeyRequest();
             if (!$josResponse || $josResponse->getCode() !== 0) {
 //                $this->log->error("jos response error code: " . $josResponse->getCode() . ". error message: " . $josResponse->getEnDesc());
-                throw new Exception('code=' . $josResponse->getCode() . ', message=' . $josResponse->getEnDesc());
+                throw new Exception('code='.$josResponse->getCode().', message='.$josResponse->getEnDesc());
             }
             $keyResponse = $josResponse->getResponse();
 
@@ -163,7 +171,10 @@ final class KMClient
             if ($keyResponse->getStatus_code() === 0) {
                 $this->importMKeys($keyResponse);
             } else {
-                $this->log->info("KMS reponse error code: " . $keyResponse->getStatus_code() . ". error message: " . $keyResponse->getErrorMsg());
+                $this->log->info(
+                    "KMS reponse error code: ".$keyResponse->getStatus_code(
+                    ).". error message: ".$keyResponse->getErrorMsg()
+                );
                 if (
                     $keyResponse->getStatus_code() == TDEStatus::$TMS_REQUEST_VERIFY_FAILED["code"]
                     || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_EXPIRE["code"]
@@ -172,18 +183,18 @@ final class KMClient
                     || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_IS_REVOKE["code"]
                     || $keyResponse->getStatus_code() == TDEStatus::$TMS_DB_DATA_NOTFOUND_ERROR["code"]
                 ) {
-                        // Errors from TMS
-                        $this->reporter->insertErrReport(
-                            $keyResponse->getStatus_code(),
-                            $keyResponse->getErrorMsg(),
-                            EMPTYSTR,
-                            MSG_LEVEL::SEVER
-                        );
+                    // Errors from TMS
+                    $this->reporter->insertErrReport(
+                        $keyResponse->getStatus_code(),
+                        $keyResponse->getErrorMsg(),
+                        EMPTYSTR,
+                        MSG_LEVEL::SEVER
+                    );
 
-                        // Handle cases: frozen, expired, verify failed, revoke
-                        $this->cacheKeyStore->removeAllMKeys();     // For security reason, better to remove all keys
+                    // Handle cases: frozen, expired, verify failed, revoke
+                    $this->cacheKeyStore->removeAllMKeys();     // For security reason, better to remove all keys
 //                         $this->deleteKeyCache();                    // Delete key cache of this token only because token has issues
-                        $this->keyChainIsReady = false;             // Set flag to false
+                    $this->keyChainIsReady = false;             // Set flag to false
                 } else {
                     // other errors
                     $this->reporter->insertErrReport(
@@ -200,14 +211,13 @@ final class KMClient
 
             $this->reporter->insertErrReport(
                 TDEStatus::$SDK_CANNOT_REACH_KMS["code"],
-                TDEStatus::$SDK_CANNOT_REACH_KMS["message"] . $e->getMessage(),
+                TDEStatus::$SDK_CANNOT_REACH_KMS["message"].$e->getMessage(),
                 UtilTools::extractStackTrace($e),
                 MSG_LEVEL::SEVER
             );
 
             throw new \RuntimeException(TDEStatus::$SDK_CANNOT_REACH_KMS["message"]);
-        }
-        // todo: interruptedException
+        } // todo: interruptedException
         catch (Exception $e) {
             $this->log->critical($e);
             throw $e;
@@ -227,7 +237,7 @@ final class KMClient
         $requestUrl = $this->tde->getJosBaseInfo()->getServerUrl();
         $keyRequest = new KeyRequest($this->userToken, $this->majorSdkVer);
         $payload = $keyRequest->toFormParams($this->tde->getJosBaseInfo());
-        $this->log->info('master key request url -> ' . $requestUrl . ', payload -> ' . json_encode($payload));
+        $this->log->info('master key request url -> '.$requestUrl.', payload -> '.json_encode($payload));
         $josResponse = HttpsClient::postForm($requestUrl, $payload);
         $response = JosBaseResponse::parse($josResponse, new JosMasterKeyGetResponse());
         return $response;
@@ -309,7 +319,7 @@ final class KMClient
         // todo: generate key update report with assigned key list information
         $this->reporter->insertKeyUpdateEventReport(
             TDEStatus::$SDK_REPORT_CUR_KEYVER['code'],
-            TDEStatus::$SDK_REPORT_CUR_KEYVER['message'] . $this->majorSdkVer,
+            TDEStatus::$SDK_REPORT_CUR_KEYVER['message'].$this->majorSdkVer,
             $this->majorSdkVer,
             $this->availableKeyList
         );
@@ -338,11 +348,16 @@ final class KMClient
             // prepare string
             $keyids = "keyids:";
             foreach ($this->corruptKeyList as $corruptkey) {
-                $keyids .= $corruptkey . ",";
+                $keyids .= $corruptkey.",";
             }
             $keyids = substr($keyids, 0, strlen($keyids) - 1);
 
-            $this->reporter->insertErrReport(TDEStatus::$SDK_HAS_CORRUPTED_KEYS["code"], TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"], $keyids, MSG_LEVEL::ERROR);
+            $this->reporter->insertErrReport(
+                TDEStatus::$SDK_HAS_CORRUPTED_KEYS["code"],
+                TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"],
+                $keyids,
+                MSG_LEVEL::ERROR
+            );
 
             throw new CorruptKeyException(TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"]);
         }
@@ -352,7 +367,9 @@ final class KMClient
     {
         $this->keyChainIsReady = false;
 
-        $total_keys = $this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE) + $this->cacheKeyStore->numOfKeys(KStoreType::ENC_STORE);
+        $total_keys = $this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE) + $this->cacheKeyStore->numOfKeys(
+                KStoreType::ENC_STORE
+            );
 
         // fail-fast
         if ($total_keys === 0) {
@@ -369,8 +386,12 @@ final class KMClient
             throw new NoValidKeyException(TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS["message"]);
         }
 
-        $this->log->info("# of enc keys: " . $this->cacheKeyStore->numOfKeys(KStoreType::ENC_STORE) . " and # of dec keys:" . $this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE));
-        $this->log->info("Max key version for major service: " . $this->majorKeyVer);
+        $this->log->info(
+            "# of enc keys: ".$this->cacheKeyStore->numOfKeys(
+                KStoreType::ENC_STORE
+            )." and # of dec keys:".$this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE)
+        );
+        $this->log->info("Max key version for major service: ".$this->majorKeyVer);
 
         // at least the memory has functional keychain already
         $this->keyChainIsReady = true;

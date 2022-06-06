@@ -1,5 +1,10 @@
 <?php
 
+namespace ARS\Lotus;
+
+use ARS\Lotus\Autoloader\LtAutoloader;
+use ARS\Lotus\ObjectUtil\LtObjectUtil;
+
 class Lotus
 {
     /**
@@ -43,9 +48,9 @@ class Lotus
         /**
          * Load core component
          */
-        require_once $this->lotusRuntimeDir . "Store.php";
-        require_once $this->lotusRuntimeDir . "StoreMemory.php";
-        require_once $this->lotusRuntimeDir . "StoreFile.php";
+//        require_once $this->lotusRuntimeDir . "Store.php";
+//        require_once $this->lotusRuntimeDir . "StoreMemory.php";
+//        require_once $this->lotusRuntimeDir . "StoreFile.php";
 
         if ($this->defaultStoreDir) {
             if ($defaultStoreDir = realpath($this->defaultStoreDir)) {
@@ -88,7 +93,7 @@ class Lotus
      */
     protected function prepareAutoloader()
     {
-        require_once $this->lotusRuntimeDir . "Autoloader/Autoloader.php";
+        require_once $this->lotusRuntimeDir . "Autoloader/LtAutoloader.php";
         $autoloader = new LtAutoloader();
         $autoloader->autoloadPath[] = $this->lotusRuntimeDir;
         if (isset($this->option["autoload_dir"])) {

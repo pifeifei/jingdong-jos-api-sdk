@@ -1,6 +1,8 @@
 <?php
 
-class LtValidatorDtd
+namespace ARS\Lotus\Validator;
+
+class ValidatorDtd
 {
     public $label;
     public $rules;

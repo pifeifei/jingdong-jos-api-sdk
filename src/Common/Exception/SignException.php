@@ -1,7 +1,10 @@
 <?php
 
-namespace Common\Exception;
+namespace ACES\Common\Exception;
 
-class SignException extends \Exception
+
+use Exception;
+
+class SignException extends Exception
 {
 }
