@@ -1,0 +1,25 @@
+{
+    "name" : "jos/aces-php-sdk",
+    "description": "aces php sdk",
+    "type" : "library",
+    "version": "1.0.0",
+    "config" : {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload" : {
+        "psr-4" : {
+            "ACES\\" : "security"
+        }
+    },
+    "require" : {
+        "php": ">=5.6",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "ext-simplexml": "*",
+        "monolog/monolog": "1.24.0",
+        "netresearch/jsonmapper": "1.6.0",
+        "symfony/var-dumper": "^5.4"
+    }
+}
