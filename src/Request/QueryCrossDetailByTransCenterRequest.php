@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class QueryCrossDetailByTransCenterRequest
+class QueryCrossDetailByTransCenterRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $uniqueIdentiNo;
-    private $source;
-    private $targetTransCenterName;
-    private $originTransCenterName;
-
     public function getApiMethodName()
     {
-        return "jingdong.queryCrossDetailByTransCenter";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.queryCrossDetailByTransCenter';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getUniqueIdentiNo()
     {
-        return $this->uniqueIdentiNo;
+        return $this->apiParas['uniqueIdentiNo'];
     }
 
     public function setUniqueIdentiNo($uniqueIdentiNo)
     {
-        $this->uniqueIdentiNo = $uniqueIdentiNo;
-        $this->apiParas["uniqueIdentiNo"] = $uniqueIdentiNo;
+        $this->apiParas['uniqueIdentiNo'] = $uniqueIdentiNo;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getTargetTransCenterName()
     {
-        return $this->targetTransCenterName;
+        return $this->apiParas['targetTransCenterName'];
     }
 
     public function setTargetTransCenterName($targetTransCenterName)
     {
-        $this->targetTransCenterName = $targetTransCenterName;
-        $this->apiParas["targetTransCenterName"] = $targetTransCenterName;
+        $this->apiParas['targetTransCenterName'] = $targetTransCenterName;
+
+        return $this;
     }
 
     public function getOriginTransCenterName()
     {
-        return $this->originTransCenterName;
+        return $this->apiParas['originTransCenterName'];
     }
 
     public function setOriginTransCenterName($originTransCenterName)
     {
-        $this->originTransCenterName = $originTransCenterName;
-        $this->apiParas["originTransCenterName"] = $originTransCenterName;
+        $this->apiParas['originTransCenterName'] = $originTransCenterName;
+
+        return $this;
     }
 }

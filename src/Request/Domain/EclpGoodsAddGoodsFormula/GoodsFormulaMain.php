@@ -2,20 +2,17 @@
 
 namespace ACES\Request\Domain\EclpGoodsAddGoodsFormula;
 
-
-
-
 class GoodsFormulaMain
 {
-    private $params = array();
+    private $params = [];
     private $isvSku;
     private $deptNo;
     private $formulaName;
     private $formulaDetailList;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.isv.domain.goods.formula.GoodsFormulaMain";
+        $this->params['@type'] = 'com.jd.eclp.isv.domain.goods.formula.GoodsFormulaMain';
     }
 
     public function getIsvSku()
@@ -51,14 +48,13 @@ class GoodsFormulaMain
     public function setFormulaDetailList($formulaDetailList)
     {
         $size = count($formulaDetailList);
-        for ($i = 0; $i < $size; $i++) {
-            $formulaDetailList [$i] = $formulaDetailList [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $formulaDetailList[$i] = $formulaDetailList[$i]->getInstance();
         }
         $this->params['formulaDetailList'] = $formulaDetailList;
     }
 
-
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

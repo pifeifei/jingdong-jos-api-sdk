@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class ServiceOrderSubmitCommandRequest
+class ServiceOrderSubmitCommandRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $optType;
-    private $optDesc;
-    private $serviceCode;
-    private $deptCode;
-
     public function getApiMethodName()
     {
-        return "jingdong.service.order.submitCommand";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.service.order.submitCommand';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOptType()
     {
-        return $this->optType;
+        return $this->apiParas['optType'];
     }
 
     public function setOptType($optType)
     {
-        $this->optType = $optType;
-        $this->apiParas["optType"] = $optType;
+        $this->apiParas['optType'] = $optType;
+
+        return $this;
     }
 
     public function getOptDesc()
     {
-        return $this->optDesc;
+        return $this->apiParas['optDesc'];
     }
 
     public function setOptDesc($optDesc)
     {
-        $this->optDesc = $optDesc;
-        $this->apiParas["optDesc"] = $optDesc;
+        $this->apiParas['optDesc'] = $optDesc;
+
+        return $this;
     }
 
     public function getServiceCode()
     {
-        return $this->serviceCode;
+        return $this->apiParas['serviceCode'];
     }
 
     public function setServiceCode($serviceCode)
     {
-        $this->serviceCode = $serviceCode;
-        $this->apiParas["serviceCode"] = $serviceCode;
+        $this->apiParas['serviceCode'] = $serviceCode;
+
+        return $this;
     }
 
     public function getDeptCode()
     {
-        return $this->deptCode;
+        return $this->apiParas['deptCode'];
     }
 
     public function setDeptCode($deptCode)
     {
-        $this->deptCode = $deptCode;
-        $this->apiParas["deptCode"] = $deptCode;
+        $this->apiParas['deptCode'] = $deptCode;
+
+        return $this;
     }
 }

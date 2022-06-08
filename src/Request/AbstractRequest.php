@@ -2,40 +2,59 @@
 
 namespace ACES\Request;
 
-
-
 use ACES\Contracts\RequestInterFace;
 
 abstract class AbstractRequest implements RequestInterFace
 {
-    private $apiParas = [];
+    protected $apiParas = [];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     abstract public function getApiMethodName();
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     */
+    public function all()
+    {
+        return $this->apiParas;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toJson()
+    {
+        return json_encode((array) ($this->apiParas));
+    }
+
+    /**
+     * {@inheritDoc}
      */
     public function getApiParas()
     {
         if (empty($this->apiParas)) {
-            return "{}";
+            return '{}';
         }
+
         return json_encode($this->apiParas);
     }
 
     /**
-     * @inheritDoc
+     * @deprecated toJson()
+     *
+     * @return array
      */
-    public function toJson()
+    public function getInstance()
     {
-        return json_encode((array)($this->apiParas));
+        return $this->apiParas;
     }
 
     /**
-     * @return string|null
+     * @param null|mixed $default
+     *
+     * @return null|string
      */
     public function getVersion($default = null)
     {
@@ -49,5 +68,14 @@ abstract class AbstractRequest implements RequestInterFace
     public function setVersion($version)
     {
         $this->apiParas['version'] = $version;
+    }
+
+    /**
+     * @param string $key
+     * @param scalar $value
+     */
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
     }
 }

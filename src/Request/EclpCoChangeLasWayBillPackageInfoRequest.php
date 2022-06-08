@@ -2,234 +2,206 @@
 
 namespace ACES\Request;
 
-
-class EclpCoChangeLasWayBillPackageInfoRequest
+class EclpCoChangeLasWayBillPackageInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $orderNo;
-    private $weight;
-    private $length;
-    private $width;
-    private $height;
-    private $installFlag;
-    private $thirdCategoryNo;
-    private $brandNo;
-    private $productSku;
-    private $packageName;
-    private $reverseLwb;
-    private $getOldService;
-    private $openBoxService;
-    private $deliveryInstallService;
-    private $packageIdentityCode;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.changeLasWayBillPackageInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.changeLasWayBillPackageInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getOrderNo()
     {
-        return $this->orderNo;
+        return $this->apiParas['orderNo'];
     }
 
     public function setOrderNo($orderNo)
     {
-        $this->orderNo = $orderNo;
-        $this->apiParas["orderNo"] = $orderNo;
+        $this->apiParas['orderNo'] = $orderNo;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getLength()
     {
-        return $this->length;
+        return $this->apiParas['length'];
     }
 
     public function setLength($length)
     {
-        $this->length = $length;
-        $this->apiParas["length"] = $length;
+        $this->apiParas['length'] = $length;
+
+        return $this;
     }
 
     public function getWidth()
     {
-        return $this->width;
+        return $this->apiParas['width'];
     }
 
     public function setWidth($width)
     {
-        $this->width = $width;
-        $this->apiParas["width"] = $width;
+        $this->apiParas['width'] = $width;
+
+        return $this;
     }
 
     public function getHeight()
     {
-        return $this->height;
+        return $this->apiParas['height'];
     }
 
     public function setHeight($height)
     {
-        $this->height = $height;
-        $this->apiParas["height"] = $height;
+        $this->apiParas['height'] = $height;
+
+        return $this;
     }
 
     public function getInstallFlag()
     {
-        return $this->installFlag;
+        return $this->apiParas['installFlag'];
     }
 
     public function setInstallFlag($installFlag)
     {
-        $this->installFlag = $installFlag;
-        $this->apiParas["installFlag"] = $installFlag;
+        $this->apiParas['installFlag'] = $installFlag;
+
+        return $this;
     }
 
     public function getThirdCategoryNo()
     {
-        return $this->thirdCategoryNo;
+        return $this->apiParas['thirdCategoryNo'];
     }
 
     public function setThirdCategoryNo($thirdCategoryNo)
     {
-        $this->thirdCategoryNo = $thirdCategoryNo;
-        $this->apiParas["thirdCategoryNo"] = $thirdCategoryNo;
+        $this->apiParas['thirdCategoryNo'] = $thirdCategoryNo;
+
+        return $this;
     }
 
     public function getBrandNo()
     {
-        return $this->brandNo;
+        return $this->apiParas['brandNo'];
     }
 
     public function setBrandNo($brandNo)
     {
-        $this->brandNo = $brandNo;
-        $this->apiParas["brandNo"] = $brandNo;
+        $this->apiParas['brandNo'] = $brandNo;
+
+        return $this;
     }
 
     public function getProductSku()
     {
-        return $this->productSku;
+        return $this->apiParas['productSku'];
     }
 
     public function setProductSku($productSku)
     {
-        $this->productSku = $productSku;
-        $this->apiParas["productSku"] = $productSku;
+        $this->apiParas['productSku'] = $productSku;
+
+        return $this;
     }
 
     public function getPackageName()
     {
-        return $this->packageName;
+        return $this->apiParas['packageName'];
     }
 
     public function setPackageName($packageName)
     {
-        $this->packageName = $packageName;
-        $this->apiParas["packageName"] = $packageName;
+        $this->apiParas['packageName'] = $packageName;
+
+        return $this;
     }
 
     public function getReverseLwb()
     {
-        return $this->reverseLwb;
+        return $this->apiParas['reverseLwb'];
     }
 
     public function setReverseLwb($reverseLwb)
     {
-        $this->reverseLwb = $reverseLwb;
-        $this->apiParas["reverseLwb"] = $reverseLwb;
+        $this->apiParas['reverseLwb'] = $reverseLwb;
+
+        return $this;
     }
 
     public function getGetOldService()
     {
-        return $this->getOldService;
+        return $this->apiParas['getOldService'];
     }
 
     public function setGetOldService($getOldService)
     {
-        $this->getOldService = $getOldService;
-        $this->apiParas["getOldService"] = $getOldService;
+        $this->apiParas['getOldService'] = $getOldService;
+
+        return $this;
     }
 
     public function getOpenBoxService()
     {
-        return $this->openBoxService;
+        return $this->apiParas['openBoxService'];
     }
 
     public function setOpenBoxService($openBoxService)
     {
-        $this->openBoxService = $openBoxService;
-        $this->apiParas["openBoxService"] = $openBoxService;
+        $this->apiParas['openBoxService'] = $openBoxService;
+
+        return $this;
     }
 
     public function getDeliveryInstallService()
     {
-        return $this->deliveryInstallService;
+        return $this->apiParas['deliveryInstallService'];
     }
 
     public function setDeliveryInstallService($deliveryInstallService)
     {
-        $this->deliveryInstallService = $deliveryInstallService;
-        $this->apiParas["deliveryInstallService"] = $deliveryInstallService;
+        $this->apiParas['deliveryInstallService'] = $deliveryInstallService;
+
+        return $this;
     }
 
     public function getPackageIdentityCode()
     {
-        return $this->packageIdentityCode;
+        return $this->apiParas['packageIdentityCode'];
     }
 
     public function setPackageIdentityCode($packageIdentityCode)
     {
-        $this->packageIdentityCode = $packageIdentityCode;
-        $this->apiParas["packageIdentityCode"] = $packageIdentityCode;
+        $this->apiParas['packageIdentityCode'] = $packageIdentityCode;
+
+        return $this;
     }
 }

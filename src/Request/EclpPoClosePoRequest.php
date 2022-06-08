@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class EclpPoClosePoRequest
+class EclpPoClosePoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $poOrderNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.po.closePo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.po.closePo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPoOrderNo()
     {
-        return $this->poOrderNo;
+        return $this->apiParas['poOrderNo'];
     }
 
     public function setPoOrderNo($poOrderNo)
     {
-        $this->poOrderNo = $poOrderNo;
-        $this->apiParas["poOrderNo"] = $poOrderNo;
+        $this->apiParas['poOrderNo'] = $poOrderNo;
+
+        return $this;
     }
 }

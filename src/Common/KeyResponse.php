@@ -15,8 +15,7 @@ class KeyResponse
     private $key_backup_disabled;
 
     /**
-     *
-     * @param integer|null $statusCode
+     * @param null|int $statusCode
      */
     public function setStatusCode($statusCode)
     {
@@ -24,19 +23,20 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param string|null $message
+     * @param null|string $message
+     * @param mixed       $errorMsg
      */
 //    public function setStatusMessage($message) {
 //        $this->status_message = $message;
 //    }
     /**
-     * @param string|null $errMsg
+     * @param null|string $errMsg
      */
     public function setErrorMsg($errorMsg)
     {
         $this->errorMsg = $errorMsg;
     }
+
     /**
      * @return string
      */
@@ -44,9 +44,9 @@ class KeyResponse
     {
         return $this->errorMsg;
     }
+
     /**
-     *
-     * @param string|null $tid
+     * @param null|string $tid
      */
     public function setTid($tid)
     {
@@ -54,8 +54,7 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param integer|null $ts
+     * @param null|int $ts
      */
     public function setTs($ts)
     {
@@ -63,8 +62,7 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param string|null $encService
+     * @param null|string $encService
      */
     public function setEncService($encService)
     {
@@ -72,8 +70,7 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param ServiceKeyInfo[]|null $serviceKeyList
+     * @param null|ServiceKeyInfo[] $serviceKeyList
      */
     public function setServiceKeyList($serviceKeyList)
     {
@@ -81,8 +78,7 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param integer|null $keyCacheDisabled
+     * @param null|int $keyCacheDisabled
      */
     public function setKeyCacheDisabled($keyCacheDisabled)
     {
@@ -90,8 +86,7 @@ class KeyResponse
     }
 
     /**
-     *
-     * @param integer|null $keyBackupDisabled
+     * @param null|int $keyBackupDisabled
      */
     public function setKeyBackupDisabled($keyBackupDisabled)
     {
@@ -99,7 +94,7 @@ class KeyResponse
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getStatus_code()
     {
@@ -123,7 +118,7 @@ class KeyResponse
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getTs()
     {
@@ -147,7 +142,7 @@ class KeyResponse
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getKey_cache_disabled()
     {
@@ -155,7 +150,7 @@ class KeyResponse
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getKey_backup_disabled()
     {

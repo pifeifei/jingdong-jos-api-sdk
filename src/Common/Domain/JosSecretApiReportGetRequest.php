@@ -13,6 +13,7 @@ class JosSecretApiReportGetRequest
     {
         return json_encode(get_object_vars($this));
     }
+
     public function getJosMethod()
     {
         return 'jingdong.jos.secret.api.report.get';

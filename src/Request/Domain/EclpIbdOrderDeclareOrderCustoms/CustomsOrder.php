@@ -2,9 +2,6 @@
 
 namespace ACES\Request\Domain\EclpIbdOrderDeclareOrderCustoms;
 
-
-
-
 class CustomsOrder
 {
     private $params = [];
@@ -100,9 +97,9 @@ class CustomsOrder
     private $recpCode;
     private $recpName;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.isv.Ddomain.so.OrderCustomsParam";
+        $this->params['@type'] = 'com.jd.eclp.isv.Ddomain.so.OrderCustomsParam';
     }
 
     public function getIsvUUID()
@@ -1015,7 +1012,7 @@ class CustomsOrder
         $this->params['recpName'] = $recpName;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

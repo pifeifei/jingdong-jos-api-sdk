@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class EclpCoQueryPackageTagByWaybillNosRequest
+class EclpCoQueryPackageTagByWaybillNosRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $lwbNos;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.queryPackageTagByWaybillNos";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.queryPackageTagByWaybillNos';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getLwbNos()
     {
-        return $this->lwbNos;
+        return $this->apiParas['lwbNos'];
     }
 
     public function setLwbNos($lwbNos)
     {
-        $this->lwbNos = $lwbNos;
-        $this->apiParas["lwbNos"] = $lwbNos;
+        $this->apiParas['lwbNos'] = $lwbNos;
+
+        return $this;
     }
 }

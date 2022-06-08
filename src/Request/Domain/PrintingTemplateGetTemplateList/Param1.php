@@ -2,16 +2,13 @@
 
 namespace ACES\Request\Domain\PrintingTemplateGetTemplateList;
 
-
-
-
 class Param1
 {
     private $params = [];
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.jcloud.wms.printing.dto.GetTemplateListReqDTO";
+        $this->params['@type'] = 'com.jd.jcloud.wms.printing.dto.GetTemplateListReqDTO';
     }
 
     public function setTemplateId($templateId)
@@ -34,7 +31,6 @@ class Param1
         return $this->params['templateType'];
     }
 
-
     public function setWayTempleteType($wayTempleteType)
     {
         $this->params['wayTempleteType'] = $wayTempleteType;
@@ -44,7 +40,6 @@ class Param1
     {
         return $this->params['wayTempleteType'];
     }
-
 
     public function setPin($pin)
     {
@@ -56,7 +51,6 @@ class Param1
         return $this->params['pin'];
     }
 
-
     public function setCpCode($cpCode)
     {
         $this->params['cpCode'] = $cpCode;
@@ -66,7 +60,6 @@ class Param1
     {
         return $this->params['cpCode'];
     }
-
 
     public function setIsvResourceType($isvResourceType)
     {
@@ -78,7 +71,6 @@ class Param1
         return $this->params['isvResourceType'];
     }
 
-
     public function setAppKey($appKey)
     {
         $this->params['appKey'] = $appKey;
@@ -89,7 +81,7 @@ class Param1
         return $this->params['appKey'];
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

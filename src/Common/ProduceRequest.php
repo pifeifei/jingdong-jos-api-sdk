@@ -3,15 +3,16 @@
 namespace ACES\Common;
 
 use ACES\Common\Domain\JosBaseInfo;
-use ACES\TDEClient;
 use ACES\Core\MSG_LEVEL;
 use ACES\Core\MSG_TYPE;
+use ACES\TDEClient;
 
 class ProduceRequest
 {
     private $accessToken;
     private $customerUserId;
     private $serverUrl;
+
     /**
      * @var BasicMessage
      */
@@ -19,6 +20,7 @@ class ProduceRequest
 
     /**
      * ProduceRequest constructor.
+     *
      * @param $accessToken string
      * @param $serverUrl string
      * @param $messages BasicMessage
@@ -27,7 +29,7 @@ class ProduceRequest
     {
         // 区分accessToken和customerUserId
         if (isset($accessToken)) {
-            if (stripos($accessToken, '_') === 0) {
+            if (0 === stripos($accessToken, '_')) {
                 $split = explode('_', $accessToken);
                 $this->customerUserId = $split[1];
             } else {
@@ -82,6 +84,7 @@ class ProduceRequest
 
     /**
      * @param JosBaseInfo $josBaseInfo
+     *
      * @return array
      */
     public function toFormParams($josBaseInfo)
@@ -91,7 +94,7 @@ class ProduceRequest
 
     public function to360buyParamJson()
     {
-        $paramJson = array();
+        $paramJson = [];
         if (isset($this->customerUserId)) {
             $paramJson['customer_user_id'] = $this->customerUserId;
         } else {
@@ -104,6 +107,7 @@ class ProduceRequest
 
         return json_encode($paramJson);
     }
+
     public function getJosMethod()
     {
         return 'jingdong.jos.secret.api.report.get';
@@ -125,12 +129,13 @@ class BasicMessage
 
     public static function getRandomString()
     {
-        $abc = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz=+-*/_|<>^~@?%&";
-        $res = "";
-        for ($i = 0; $i < 40; $i++) {
+        $abc = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz=+-*/_|<>^~@?%&';
+        $res = '';
+        for ($i = 0; $i < 40; ++$i) {
             $r = rand(0, 39);
-            $res = $res . $abc[$r];
+            $res = $res.$abc[$r];
         }
+
         return $res;
     }
 
@@ -155,120 +160,121 @@ class BasicMessage
      */
     public function getAttributes()
     {
-        $json = json_encode($this->attributes);
-        return $json;
+        return json_encode($this->attributes);
     }
 }
 
 class Environment
 {
-    private static $hostInfo = null;
-    private static $systemInfo = null;
+    private static $hostInfo;
+    private static $systemInfo;
 
     public static function getHost()
     {
-        if (self::$hostInfo == null) {
+        if (null == self::$hostInfo) {
             try {
-                $preg = "/((([0-9]?[0-9])|(1[0-9]{2})|(2[0-4][0-9])|(25[0-5]))\.){3}(([0-9]?[0-9])|(1[0-9]{2})|(2[0-4][0-9])|(25[0-5]))/";
+                $preg = '/((([0-9]?[0-9])|(1[0-9]{2})|(2[0-4][0-9])|(25[0-5]))\\.){3}(([0-9]?[0-9])|(1[0-9]{2})|(2[0-4][0-9])|(25[0-5]))/';
 
                 $out = null;
                 $stats = null;
-                if (PHP_OS == "Windows" || PHP_OS == "WINNT") {
+                if (PHP_OS == 'Windows' || PHP_OS == 'WINNT') {
                     // windows get host info
-                    exec("ipconfig", $out, $stats);
+                    exec('ipconfig', $out, $stats);
                     if (!empty($out)) {
                         foreach ($out as $row) {
-                            if (strstr($row, "IP") && strstr($row, ":") && !strstr($row, "IPv6")) {
-                                $tmpIp = explode(":", $row);
+                            if (strstr($row, 'IP') && strstr($row, ':') && !strstr($row, 'IPv6')) {
+                                $tmpIp = explode(':', $row);
                                 if (filter_var(trim($tmpIp[1]), FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)) {
                                     self::$hostInfo = trim($tmpIp[1]);
+
                                     break;
-                                } else {
-                                    self::$hostInfo = trim($tmpIp[1]);
                                 }
+                                self::$hostInfo = trim($tmpIp[1]);
                             }
                         }
                     }
-                } elseif (PHP_OS == "Darwin" || PHP_OS == "Linux") {
-                    exec("ifconfig", $out, $stats);
+                } elseif (PHP_OS == 'Darwin' || PHP_OS == 'Linux') {
+                    exec('ifconfig', $out, $stats);
                     if (!empty($out)) {
                         foreach ($out as $oneline) {
                             if (preg_match($preg, $oneline)) {
-                                $tmp = preg_grep($preg, explode(" ", $oneline));
+                                $tmp = preg_grep($preg, explode(' ', $oneline));
                                 $ip = current($tmp);
-                                if (strstr($ip, "addr:")) {
-                                    $ip_ = explode(":", $ip);
+                                if (strstr($ip, 'addr:')) {
+                                    $ip_ = explode(':', $ip);
                                     $ip = $ip_[1];
                                 }
-                                if (isset($ip) && $ip != "127.0.0.1") {
+                                if (isset($ip) && '127.0.0.1' != $ip) {
                                     if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)) {
                                         self::$hostInfo = $ip;
+
                                         break;
-                                    } else {
-                                        self::$hostInfo = $ip;
                                     }
+                                    self::$hostInfo = $ip;
                                 }
                             }
                         }
                     }
                 }
 
-                if (self::$hostInfo == null) {
-                    self::$hostInfo = "Unknown host";
+                if (null == self::$hostInfo) {
+                    self::$hostInfo = 'Unknown host';
                 }
             } catch (\Exception $e) {
-                self::$hostInfo = "Unknown host";
+                self::$hostInfo = 'Unknown host';
             }
         }
+
         return self::$hostInfo;
     }
 
     public static function getSystemInfo()
     {
-        if (self::$systemInfo == null) {
+        if (null == self::$systemInfo) {
             try {
                 $cpuout = null;
                 $stats = null;
                 $phpv = null;
-                $version = "php version unknown";
-                if (PHP_OS == "Linux") {
-                    exec("php -v", $phpv, $stats);
-                    if ($phpv != null && sizeof($phpv) != 0) {
+                $version = 'php version unknown';
+                if (PHP_OS == 'Linux') {
+                    exec('php -v', $phpv, $stats);
+                    if (null != $phpv && 0 != sizeof($phpv)) {
                         $version = $phpv[0];
                     } else {
-                        $version = " PHP " . PHP_VERSION;
+                        $version = ' PHP '.PHP_VERSION;
                     }
 
                     exec("cat /proc/cpuinfo | grep 'model name'|uniq", $cpuout, $stats);
-                    $cpuInfo = explode(":", $cpuout[0]);
+                    $cpuInfo = explode(':', $cpuout[0]);
                     $cpuInfo = $cpuInfo[1];
-                    self::$systemInfo = PHP_OS . "|" . $version . "|" . $cpuInfo;
+                    self::$systemInfo = PHP_OS.'|'.$version.'|'.$cpuInfo;
                 // mac
-                } elseif (PHP_OS == "Darwin") {
-                    exec("php -v", $phpv, $stats);
-                    if ($phpv != null && sizeof($phpv) != 0) {
+                } elseif (PHP_OS == 'Darwin') {
+                    exec('php -v', $phpv, $stats);
+                    if (null != $phpv && 0 != sizeof($phpv)) {
                         $version = $phpv[0];
                     }
-                    exec("sysctl -n machdep.cpu.brand_string", $cpuout, $stats);
+                    exec('sysctl -n machdep.cpu.brand_string', $cpuout, $stats);
                     $cpuInfo = $cpuout[0];
-                    self::$systemInfo = PHP_OS . "|" . $version . "|" . $cpuInfo;
-                } elseif (PHP_OS == "Windows" || PHP_OS == "WINNT") {
-                    exec("php -v", $phpv, $stats);
-                    if ($phpv != null && sizeof($phpv) != 0) {
+                    self::$systemInfo = PHP_OS.'|'.$version.'|'.$cpuInfo;
+                } elseif (PHP_OS == 'Windows' || PHP_OS == 'WINNT') {
+                    exec('php -v', $phpv, $stats);
+                    if (null != $phpv && 0 != sizeof($phpv)) {
                         $version = $phpv[0];
                     }
-                    exec("wmic cpu get name", $cpuout, $stats);
+                    exec('wmic cpu get name', $cpuout, $stats);
                     $cpuInfo = $cpuout[1];
-                    self::$systemInfo = PHP_OS . "|" . $version . "|" . $cpuInfo;
+                    self::$systemInfo = PHP_OS.'|'.$version.'|'.$cpuInfo;
                 }
 
-                if (self::$systemInfo == null) {
-                    self::$systemInfo = PHP_OS . "|" . " PHP " . PHP_VERSION;
+                if (null == self::$systemInfo) {
+                    self::$systemInfo = PHP_OS.'|'.' PHP '.PHP_VERSION;
                 }
             } catch (\Exception $e) {
-                self::$systemInfo = PHP_OS . "|" . " PHP " . PHP_VERSION;
+                self::$systemInfo = PHP_OS.'|'.' PHP '.PHP_VERSION;
             }
         }
+
         return self::$systemInfo;
     }
 }
@@ -365,14 +371,14 @@ class StatisticAttribute extends BasicAttribute
     public function __construct($type, $level, $service, $tid, $stat)
     {
         parent::__construct($type, $level, $service, $tid);
-        $this->enccnt = $stat === null ? "0" : $stat[0];
-        $this->deccnt = $stat === null ? "0" : $stat[1];
-        $this->encerrcnt = $stat === null ? "0" : $stat[2];
-        $this->decerrcnt = $stat === null ? "0" : $stat[3];
-        $this->signcnt = $stat === null ? "0" : $stat[4];
-        $this->verifycnt = $stat === null ? "0" : $stat[5];
-        $this->signerrcnt = $stat === null ? "0" : $stat[6];
-        $this->verifyerrcnt = $stat === null ? "0" : $stat[7];
+        $this->enccnt = null === $stat ? '0' : $stat[0];
+        $this->deccnt = null === $stat ? '0' : $stat[1];
+        $this->encerrcnt = null === $stat ? '0' : $stat[2];
+        $this->decerrcnt = null === $stat ? '0' : $stat[3];
+        $this->signcnt = null === $stat ? '0' : $stat[4];
+        $this->verifycnt = null === $stat ? '0' : $stat[5];
+        $this->signerrcnt = null === $stat ? '0' : $stat[6];
+        $this->verifyerrcnt = null === $stat ? '0' : $stat[7];
     }
 }
 
@@ -381,7 +387,7 @@ class InitMessage extends BasicMessage
     public function __construct($service, $tid)
     {
         $this->businessId = BasicMessage::getRandomString();
-        $this->text = "INIT";
+        $this->text = 'INIT';
         $this->attributes = new BasicAttribute(MSG_TYPE::INIT, MSG_LEVEL::INFO, $service, $tid);
     }
 }
@@ -391,7 +397,7 @@ class EventMessage extends BasicMessage
     public function __construct($service, $tid, $event_code, $event)
     {
         $this->businessId = BasicMessage::getRandomString();
-        $this->text = "EVENT";
+        $this->text = 'EVENT';
         $this->attributes = new EventAttribute(MSG_TYPE::EVENT, MSG_LEVEL::INFO, $service, $tid, $event_code, $event);
     }
 }
@@ -401,7 +407,7 @@ class KPEventMessage extends BasicMessage
     public function __construct($service, $tid, $event_code, $event, $major_kver, $keylist)
     {
         $this->businessId = BasicMessage::getRandomString();
-        $this->text = "EVENT";
+        $this->text = 'EVENT';
         $this->attributes = new KPEventAttribute(MSG_TYPE::EVENT, MSG_LEVEL::INFO, $service, $tid, $event_code, $event, $major_kver, $keylist);
     }
 }
@@ -411,7 +417,7 @@ class ErrorMessage extends BasicMessage
     public function __construct($service, $tid, $level, $err_code, $err_msg, $stacktrace)
     {
         $this->businessId = BasicMessage::getRandomString();
-        $this->text = "EXCEPTION";
+        $this->text = 'EXCEPTION';
         $this->attributes = new ErrorAttribute(MSG_TYPE::EXCEPTION, $level, $service, $tid, $err_code, $err_msg, $stacktrace);
     }
 }
@@ -421,7 +427,7 @@ class StatisticMessage extends BasicMessage
     public function __construct($service, $tid, $stat)
     {
         $this->businessId = BasicMessage::getRandomString();
-        $this->text = "STATISTIC";
+        $this->text = 'STATISTIC';
         $this->attributes = new StatisticAttribute(MSG_TYPE::STATISTIC, MSG_LEVEL::INFO, $service, $tid, $stat);
     }
 }

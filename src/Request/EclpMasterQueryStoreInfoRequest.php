@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterQueryStoreInfoRequest
+class EclpMasterQueryStoreInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $page;
-    private $pageSize;
-    private $sellerNo;
-    private $storeNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.queryStoreInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.queryStoreInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPage()
     {
-        return $this->page;
+        return $this->apiParas['page'];
     }
 
     public function setPage($page)
     {
-        $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getSellerNo()
     {
-        return $this->sellerNo;
+        return $this->apiParas['sellerNo'];
     }
 
     public function setSellerNo($sellerNo)
     {
-        $this->sellerNo = $sellerNo;
-        $this->apiParas["sellerNo"] = $sellerNo;
+        $this->apiParas['sellerNo'] = $sellerNo;
+
+        return $this;
     }
 
     public function getStoreNo()
     {
-        return $this->storeNo;
+        return $this->apiParas['storeNo'];
     }
 
     public function setStoreNo($storeNo)
     {
-        $this->storeNo = $storeNo;
-        $this->apiParas["storeNo"] = $storeNo;
+        $this->apiParas['storeNo'] = $storeNo;
+
+        return $this;
     }
 }

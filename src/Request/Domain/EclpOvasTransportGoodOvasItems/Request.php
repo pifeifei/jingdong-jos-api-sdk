@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
-
-
-
 class Request
 {
-    private $params = array();
+    private $params = [];
     private $deptName;
     private $goodsNoVasRequestList;
     private $sellerName;
@@ -15,9 +12,9 @@ class Request
     private $sellerNo;
     private $deptNo;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.ovas.request.JosGoodsOvasRequest";
+        $this->params['@type'] = 'com.jd.eclp.ovas.request.JosGoodsOvasRequest';
     }
 
     public function getDeptName()
@@ -33,8 +30,8 @@ class Request
     public function setGoodsNoVasRequestList($goodsNoVasRequestList)
     {
         $size = count($goodsNoVasRequestList);
-        for ($i = 0; $i < $size; $i++) {
-            $goodsNoVasRequestList [$i] = $goodsNoVasRequestList [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $goodsNoVasRequestList[$i] = $goodsNoVasRequestList[$i]->getInstance();
         }
         $this->params['goodsNoVasRequestList'] = $goodsNoVasRequestList;
     }
@@ -79,7 +76,7 @@ class Request
         $this->params['deptNo'] = $deptNo;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderGetTrackMessagePlusByOrderRequest
+class EclpOrderGetTrackMessagePlusByOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $customerCode;
-    private $bizCode;
-    private $type;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.getTrackMessagePlusByOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.getTrackMessagePlusByOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getBizCode()
     {
-        return $this->bizCode;
+        return $this->apiParas['bizCode'];
     }
 
     public function setBizCode($bizCode)
     {
-        $this->bizCode = $bizCode;
-        $this->apiParas["bizCode"] = $bizCode;
+        $this->apiParas['bizCode'] = $bizCode;
+
+        return $this;
     }
 
     public function getType()
     {
-        return $this->type;
+        return $this->apiParas['type'];
     }
 
     public function setType($type)
     {
-        $this->type = $type;
-        $this->apiParas["type"] = $type;
+        $this->apiParas['type'] = $type;
+
+        return $this;
     }
 }

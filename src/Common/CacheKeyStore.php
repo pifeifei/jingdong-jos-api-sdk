@@ -4,8 +4,8 @@ namespace ACES\Common;
 
 abstract class KStoreType
 {
-    const ENC_STORE = 0;
-    const DEC_STORE = 1;
+    public const ENC_STORE = 0;
+    public const DEC_STORE = 1;
 }
 
 final class CacheKeyStore
@@ -16,23 +16,25 @@ final class CacheKeyStore
 
     public function __construct()
     {
-        $this->encKeyStore = array();
-        $this->decKeyStore = array();
-        $this->futureKeyIds = array();
+        $this->encKeyStore = [];
+        $this->decKeyStore = [];
+        $this->futureKeyIds = [];
     }
 
     /**
-     * Search master key by index
+     * Search master key by index.
+     *
      * @param $mkIndex
-     * @return Mkey|null
+     *
+     * @return null|Mkey
      */
     public function searchDeckey($mkIndex)
     {
         if (array_key_exists(base64_encode($mkIndex), $this->decKeyStore)) {
             return $this->decKeyStore[base64_encode($mkIndex)];
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /* Return number of specified key store type
@@ -42,11 +44,11 @@ final class CacheKeyStore
      */
     public function numOfKeys($kstoreType)
     {
-        if ($kstoreType == KStoreType::ENC_STORE) {
+        if (KStoreType::ENC_STORE == $kstoreType) {
             return sizeof($this->encKeyStore);
-        } else {
-            return sizeof($this->decKeyStore);
         }
+
+        return sizeof($this->decKeyStore);
     }
 
     /* Get encrypt keys by version
@@ -61,6 +63,7 @@ final class CacheKeyStore
                 return $value;
             }
         }
+
         return null;
     }
 
@@ -73,7 +76,7 @@ final class CacheKeyStore
      */
     public function updateKey($b64Index, $mkey, $kstoreType)
     {
-        if ($kstoreType == KStoreType::ENC_STORE) {
+        if (KStoreType::ENC_STORE == $kstoreType) {
             // update it when key is new to cache or status has been changed
             if (!array_key_exists($b64Index, $this->encKeyStore)) {
                 $this->encKeyStore[$b64Index] = $mkey;
@@ -99,8 +102,8 @@ final class CacheKeyStore
      */
     public function removeAllMKeys()
     {
-        $this->encKeyStore = array();
-        $this->decKeyStore = array();
+        $this->encKeyStore = [];
+        $this->decKeyStore = [];
     }
 
     /* Remove keys via list
@@ -112,7 +115,7 @@ final class CacheKeyStore
     public function removeKeysViaList($target, $kstoreType)
     {
         foreach ($target as $t) {
-            if ($kstoreType == KStoreType::ENC_STORE) {
+            if (KStoreType::ENC_STORE == $kstoreType) {
                 unset($this->encKeyStore[$t]);
             } else {
                 unset($this->decKeyStore[$t]);
@@ -127,11 +130,11 @@ final class CacheKeyStore
      */
     public function getKeyIDList($kstoreType)
     {
-        if ($kstoreType == KStoreType::ENC_STORE) {
+        if (KStoreType::ENC_STORE == $kstoreType) {
             return array_keys($this->encKeyStore);
-        } else {
-            return array_keys($this->decKeyStore);
         }
+
+        return array_keys($this->decKeyStore);
     }
 
     /* Clear futurekeyids
@@ -140,7 +143,7 @@ final class CacheKeyStore
      */
     public function resetFutureKeyIDs()
     {
-        $this->futureKeyIds = array();
+        $this->futureKeyIds = [];
     }
 
     /* Update local futurekeyids cache
@@ -151,7 +154,6 @@ final class CacheKeyStore
      */
     public function updateFutureKeyIDs($service, $maxVer)
     {
-        ;
     }
 
     /* If local futurekeyids cache contains specified keyid

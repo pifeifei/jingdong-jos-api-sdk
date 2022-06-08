@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class LdopReceiveOrderInterceptRequest
+class LdopReceiveOrderInterceptRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $vendorCode;
-    private $deliveryId;
-    private $interceptReason;
-    private $cancelOperatorCodeType;
-    private $cancelTime;
-    private $cancelOperator;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.receive.order.intercept";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.receive.order.intercept';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getVendorCode()
     {
-        return $this->vendorCode;
+        return $this->apiParas['vendorCode'];
     }
 
     public function setVendorCode($vendorCode)
     {
-        $this->vendorCode = $vendorCode;
-        $this->apiParas["vendorCode"] = $vendorCode;
+        $this->apiParas['vendorCode'] = $vendorCode;
+
+        return $this;
     }
 
     public function getDeliveryId()
     {
-        return $this->deliveryId;
+        return $this->apiParas['deliveryId'];
     }
 
     public function setDeliveryId($deliveryId)
     {
-        $this->deliveryId = $deliveryId;
-        $this->apiParas["deliveryId"] = $deliveryId;
+        $this->apiParas['deliveryId'] = $deliveryId;
+
+        return $this;
     }
 
     public function getInterceptReason()
     {
-        return $this->interceptReason;
+        return $this->apiParas['interceptReason'];
     }
 
     public function setInterceptReason($interceptReason)
     {
-        $this->interceptReason = $interceptReason;
-        $this->apiParas["interceptReason"] = $interceptReason;
+        $this->apiParas['interceptReason'] = $interceptReason;
+
+        return $this;
     }
 
     public function getCancelOperatorCodeType()
     {
-        return $this->cancelOperatorCodeType;
+        return $this->apiParas['cancelOperatorCodeType'];
     }
 
     public function setCancelOperatorCodeType($cancelOperatorCodeType)
     {
-        $this->cancelOperatorCodeType = $cancelOperatorCodeType;
-        $this->apiParas["cancelOperatorCodeType"] = $cancelOperatorCodeType;
+        $this->apiParas['cancelOperatorCodeType'] = $cancelOperatorCodeType;
+
+        return $this;
     }
 
     public function getCancelTime()
     {
-        return $this->cancelTime;
+        return $this->apiParas['cancelTime'];
     }
 
     public function setCancelTime($cancelTime)
     {
-        $this->cancelTime = $cancelTime;
-        $this->apiParas["cancelTime"] = $cancelTime;
+        $this->apiParas['cancelTime'] = $cancelTime;
+
+        return $this;
     }
 
     public function getCancelOperator()
     {
-        return $this->cancelOperator;
+        return $this->apiParas['cancelOperator'];
     }
 
     public function setCancelOperator($cancelOperator)
     {
-        $this->cancelOperator = $cancelOperator;
-        $this->apiParas["cancelOperator"] = $cancelOperator;
+        $this->apiParas['cancelOperator'] = $cancelOperator;
+
+        return $this;
     }
 }

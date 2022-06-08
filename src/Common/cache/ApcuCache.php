@@ -7,9 +7,10 @@ use ACES\TDEClient;
 class ApcuCache extends iCache
 {
     private $isEnable = false;
-    function __construct()
+
+    public function __construct()
     {
-        if (extension_loaded("apcu") && ini_get('apc.enabled') == 1) {
+        if (extension_loaded('apcu') && 1 == ini_get('apc.enabled')) {
             $this->isEnable = true;
         }
     }
@@ -18,7 +19,8 @@ class ApcuCache extends iCache
     {
         if ($this->isEnable) {
             $key = md5($key);
-            return apcu_fetch(self::$CACHE_PREFIX . $key);
+
+            return apcu_fetch(self::$CACHE_PREFIX.$key);
         }
     }
 
@@ -31,7 +33,7 @@ class ApcuCache extends iCache
         if ($this->isEnable) {
             if ($var && !$var->checkNullParam()) {
                 $key = md5($key);
-                apcu_store(self::$CACHE_PREFIX . $key, $var, self::$CACHE_TTL);
+                apcu_store(self::$CACHE_PREFIX.$key, $var, self::$CACHE_TTL);
             }
         }
     }
@@ -40,7 +42,7 @@ class ApcuCache extends iCache
     {
         if ($this->isEnable) {
             $key = md5($key);
-            apcu_delete(self::$CACHE_PREFIX . $key);
+            apcu_delete(self::$CACHE_PREFIX.$key);
         }
     }
 

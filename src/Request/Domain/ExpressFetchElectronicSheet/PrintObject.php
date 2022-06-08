@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 
-
-
-
 class PrintObject
 {
-    private $params = array();
+    private $params = [];
     private $waybillCodes;
     private $electronicSheetType;
     private $packageCodes;
@@ -16,9 +13,9 @@ class PrintObject
     private $customProperties;
     private $codeType;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.ldop.oms.dto.PrintObject";
+        $this->params['@type'] = 'com.jd.ldop.oms.dto.PrintObject';
     }
 
     public function setWaybillCodes($waybillCodes)
@@ -66,7 +63,7 @@ class PrintObject
         $this->params['codeType'] = $codeType;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

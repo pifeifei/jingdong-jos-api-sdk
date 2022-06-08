@@ -2,21 +2,18 @@
 
 namespace ACES\Request\Domain\EclpSnowQualificationCreate;
 
-
-
-
 class Attr
 {
-    private $params = array();
+    private $params = [];
     private $licenseNo;
     private $startTime;
     private $endTime;
     private $type;
     private $businessScope;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.coldchian.snow.dto.portal.LicenseRequest";
+        $this->params['@type'] = 'com.jd.coldchian.snow.dto.portal.LicenseRequest';
     }
 
     public function getLicenseNo()
@@ -69,7 +66,7 @@ class Attr
         $this->params['businessScope'] = $businessScope;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

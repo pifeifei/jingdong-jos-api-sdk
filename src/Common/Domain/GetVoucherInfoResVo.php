@@ -15,7 +15,7 @@ class GetVoucherInfoResVo
     }
 
     /**
-     * @param string|null $voucher
+     * @param null|string $voucher
      */
     public function setVoucher($voucher)
     {

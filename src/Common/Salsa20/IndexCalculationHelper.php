@@ -4,10 +4,10 @@ namespace ACES\Common\Salsa20;
 
 class IndexCalculationHelper
 {
-    const NON_ASCII_PLACEHOLDER = "#";
-    const ASCII_PLACEHOLDER = "*";
+    public const NON_ASCII_PLACEHOLDER = '#';
+    public const ASCII_PLACEHOLDER = '*';
 
-    private static $LONG_PLACEHOLDER = "******";
+    private static $LONG_PLACEHOLDER = '******';
 
     public static function formatPlaintext($spt)
     {
@@ -16,20 +16,22 @@ class IndexCalculationHelper
 
     public static function unicodeEncode($spt)
     {
-        if (mb_check_encoding($spt, "ascii")) {
+        if (mb_check_encoding($spt, 'ascii')) {
             return $spt;
         }
-        $ret = "";
-        $len = mb_strlen($spt, "utf8");
+        $ret = '';
+        $len = mb_strlen($spt, 'utf8');
 
-        for ($i = 0; $i < $len; $i++) {
-            if (mb_check_encoding(mb_substr($spt, $i, 1), "ascii")) {
+        for ($i = 0; $i < $len; ++$i) {
+            if (mb_check_encoding(mb_substr($spt, $i, 1), 'ascii')) {
                 $ret .= mb_substr($spt, $i, 1);
+
                 continue;
             }
-            $hexB = FieldElement::fromString(mb_convert_encoding(mb_substr($spt, $i, 1), "unicode"))->toHexLowcase();
-            $ret .= "\u" . $hexB;
+            $hexB = FieldElement::fromString(mb_convert_encoding(mb_substr($spt, $i, 1), 'unicode'))->toHexLowcase();
+            $ret .= '\\u'.$hexB;
         }
+
         return $ret;
     }
 
@@ -37,15 +39,16 @@ class IndexCalculationHelper
     {
         $queryW = self::unicodeEncode($queryW);
         $len = mb_strlen($queryW);
-        $ret = "";
+        $ret = '';
 
-        for ($i = 0; $i < $len; $i++) {
+        for ($i = 0; $i < $len; ++$i) {
             if (mb_substr($queryW, $i, 1) == $placeholderForNonAscii) {
                 $ret .= self::$LONG_PLACEHOLDER;
-            } elseif (mb_substr($queryW, $i, 1) == self::ASCII_PLACEHOLDER) {
+            } elseif (self::ASCII_PLACEHOLDER == mb_substr($queryW, $i, 1)) {
                 $ret .= self::ASCII_PLACEHOLDER;
             } else {
                 $ret .= mb_substr($queryW, $i);
+
                 break;
             }
         }
@@ -57,12 +60,12 @@ class IndexCalculationHelper
     {
         $length = $asciiCharPrefixNumber + $nonAsciiCharPrefixNumber * 6;
 
-        if ($length == 0) {
+        if (0 == $length) {
             return $queryW;
         }
 
         $ret = str_repeat(self::ASCII_PLACEHOLDER, $length);
 
-        return $ret . $queryW;
+        return $ret.$queryW;
     }
 }

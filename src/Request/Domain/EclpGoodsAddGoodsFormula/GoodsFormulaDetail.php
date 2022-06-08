@@ -2,19 +2,16 @@
 
 namespace ACES\Request\Domain\EclpGoodsAddGoodsFormula;
 
-
-
-
 class GoodsFormulaDetail
 {
-    private $params = array();
+    private $params = [];
     private $detailIsvSku;
     private $goodsProcessedUnit;
     private $processedRatio;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.isv.domain.goods.formula.GoodsFormulaDetail";
+        $this->params['@type'] = 'com.jd.eclp.isv.domain.goods.formula.GoodsFormulaDetail';
     }
 
     public function getDetailIsvSku()
@@ -47,7 +44,7 @@ class GoodsFormulaDetail
         $this->params['processedRatio'] = $processedRatio;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

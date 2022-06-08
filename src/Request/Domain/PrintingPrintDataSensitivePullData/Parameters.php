@@ -2,18 +2,15 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataSensitivePullData;
 
-
-
-
 class Parameters
 {
-    private $params = array();
+    private $params = [];
     private $key1;
     private $value1;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "java.util.Map";
+        $this->params['@type'] = 'java.util.Map';
     }
 
     public function getKey1()
@@ -36,7 +33,7 @@ class Parameters
         $this->params['value1'] = $value1;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

@@ -2,354 +2,326 @@
 
 namespace ACES\Request;
 
-
-class LbsProductInquiryApiUnifiedStandardProductPriceServiceRequest
+class LbsProductInquiryApiUnifiedStandardProductPriceServiceRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $startProvinceCode;
-    private $weight;
-    private $productCode;
-    private $insuredValue;
-    private $expDate;
-    private $qty;
-    private $isCodService;
-    private $tVolume;
-    private $startCityCode;
-    private $destCityCode;
-    private $isReceiptCollectService;
-    private $pin;
-    private $warmLayerType;
-    private $customerCode;
-    private $startCountyCode;
-    private $volume;
-    private $isInsured;
-    private $tWeight;
-    private $campusDeliver;
-    private $receiptCollectType;
-    private $codMoney;
-    private $destProvinceCode;
-    private $destCountyCode;
-    private $startDetailAddress;
-    private $destDetailAddress;
-    private $isNeedConvertJDAddress;
-
     public function getApiMethodName()
     {
-        return "jingdong.lbs.product.inquiry.api.UnifiedStandardProductPriceService";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.lbs.product.inquiry.api.UnifiedStandardProductPriceService';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getStartProvinceCode()
     {
-        return $this->startProvinceCode;
+        return $this->apiParas['startProvinceCode'];
     }
 
     public function setStartProvinceCode($startProvinceCode)
     {
-        $this->startProvinceCode = $startProvinceCode;
-        $this->apiParas["startProvinceCode"] = $startProvinceCode;
+        $this->apiParas['startProvinceCode'] = $startProvinceCode;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getProductCode()
     {
-        return $this->productCode;
+        return $this->apiParas['productCode'];
     }
 
     public function setProductCode($productCode)
     {
-        $this->productCode = $productCode;
-        $this->apiParas["productCode"] = $productCode;
+        $this->apiParas['productCode'] = $productCode;
+
+        return $this;
     }
 
     public function getInsuredValue()
     {
-        return $this->insuredValue;
+        return $this->apiParas['insuredValue'];
     }
 
     public function setInsuredValue($insuredValue)
     {
-        $this->insuredValue = $insuredValue;
-        $this->apiParas["insuredValue"] = $insuredValue;
+        $this->apiParas['insuredValue'] = $insuredValue;
+
+        return $this;
     }
 
     public function getExpDate()
     {
-        return $this->expDate;
+        return $this->apiParas['expDate'];
     }
 
     public function setExpDate($expDate)
     {
-        $this->expDate = $expDate;
-        $this->apiParas["expDate"] = $expDate;
+        $this->apiParas['expDate'] = $expDate;
+
+        return $this;
     }
 
     public function getQty()
     {
-        return $this->qty;
+        return $this->apiParas['qty'];
     }
 
     public function setQty($qty)
     {
-        $this->qty = $qty;
-        $this->apiParas["qty"] = $qty;
+        $this->apiParas['qty'] = $qty;
+
+        return $this;
     }
 
     public function getIsCodService()
     {
-        return $this->isCodService;
+        return $this->apiParas['isCodService'];
     }
 
     public function setIsCodService($isCodService)
     {
-        $this->isCodService = $isCodService;
-        $this->apiParas["isCodService"] = $isCodService;
+        $this->apiParas['isCodService'] = $isCodService;
+
+        return $this;
     }
 
     public function getTVolume()
     {
-        return $this->tVolume;
+        return $this->apiParas['tVolume'];
     }
 
     public function setTVolume($tVolume)
     {
-        $this->tVolume = $tVolume;
-        $this->apiParas["tVolume"] = $tVolume;
+        $this->apiParas['tVolume'] = $tVolume;
+
+        return $this;
     }
 
     public function getStartCityCode()
     {
-        return $this->startCityCode;
+        return $this->apiParas['startCityCode'];
     }
 
     public function setStartCityCode($startCityCode)
     {
-        $this->startCityCode = $startCityCode;
-        $this->apiParas["startCityCode"] = $startCityCode;
+        $this->apiParas['startCityCode'] = $startCityCode;
+
+        return $this;
     }
 
     public function getDestCityCode()
     {
-        return $this->destCityCode;
+        return $this->apiParas['destCityCode'];
     }
 
     public function setDestCityCode($destCityCode)
     {
-        $this->destCityCode = $destCityCode;
-        $this->apiParas["destCityCode"] = $destCityCode;
+        $this->apiParas['destCityCode'] = $destCityCode;
+
+        return $this;
     }
 
     public function getIsReceiptCollectService()
     {
-        return $this->isReceiptCollectService;
+        return $this->apiParas['isReceiptCollectService'];
     }
 
     public function setIsReceiptCollectService($isReceiptCollectService)
     {
-        $this->isReceiptCollectService = $isReceiptCollectService;
-        $this->apiParas["isReceiptCollectService"] = $isReceiptCollectService;
+        $this->apiParas['isReceiptCollectService'] = $isReceiptCollectService;
+
+        return $this;
     }
 
     public function getPin()
     {
-        return $this->pin;
+        return $this->apiParas['pin'];
     }
 
     public function setPin($pin)
     {
-        $this->pin = $pin;
-        $this->apiParas["pin"] = $pin;
+        $this->apiParas['pin'] = $pin;
+
+        return $this;
     }
 
     public function getWarmLayerType()
     {
-        return $this->warmLayerType;
+        return $this->apiParas['warmLayerType'];
     }
 
     public function setWarmLayerType($warmLayerType)
     {
-        $this->warmLayerType = $warmLayerType;
-        $this->apiParas["warmLayerType"] = $warmLayerType;
+        $this->apiParas['warmLayerType'] = $warmLayerType;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getStartCountyCode()
     {
-        return $this->startCountyCode;
+        return $this->apiParas['startCountyCode'];
     }
 
     public function setStartCountyCode($startCountyCode)
     {
-        $this->startCountyCode = $startCountyCode;
-        $this->apiParas["startCountyCode"] = $startCountyCode;
+        $this->apiParas['startCountyCode'] = $startCountyCode;
+
+        return $this;
     }
 
     public function getVolume()
     {
-        return $this->volume;
+        return $this->apiParas['volume'];
     }
 
     public function setVolume($volume)
     {
-        $this->volume = $volume;
-        $this->apiParas["volume"] = $volume;
+        $this->apiParas['volume'] = $volume;
+
+        return $this;
     }
 
     public function getIsInsured()
     {
-        return $this->isInsured;
+        return $this->apiParas['isInsured'];
     }
 
     public function setIsInsured($isInsured)
     {
-        $this->isInsured = $isInsured;
-        $this->apiParas["isInsured"] = $isInsured;
+        $this->apiParas['isInsured'] = $isInsured;
+
+        return $this;
     }
 
     public function getTWeight()
     {
-        return $this->tWeight;
+        return $this->apiParas['tWeight'];
     }
 
     public function setTWeight($tWeight)
     {
-        $this->tWeight = $tWeight;
-        $this->apiParas["tWeight"] = $tWeight;
+        $this->apiParas['tWeight'] = $tWeight;
+
+        return $this;
     }
 
     public function getCampusDeliver()
     {
-        return $this->campusDeliver;
+        return $this->apiParas['campusDeliver'];
     }
 
     public function setCampusDeliver($campusDeliver)
     {
-        $this->campusDeliver = $campusDeliver;
-        $this->apiParas["campusDeliver"] = $campusDeliver;
+        $this->apiParas['campusDeliver'] = $campusDeliver;
+
+        return $this;
     }
 
     public function getReceiptCollectType()
     {
-        return $this->receiptCollectType;
+        return $this->apiParas['receiptCollectType'];
     }
 
     public function setReceiptCollectType($receiptCollectType)
     {
-        $this->receiptCollectType = $receiptCollectType;
-        $this->apiParas["receiptCollectType"] = $receiptCollectType;
+        $this->apiParas['receiptCollectType'] = $receiptCollectType;
+
+        return $this;
     }
 
     public function getCodMoney()
     {
-        return $this->codMoney;
+        return $this->apiParas['codMoney'];
     }
 
     public function setCodMoney($codMoney)
     {
-        $this->codMoney = $codMoney;
-        $this->apiParas["codMoney"] = $codMoney;
+        $this->apiParas['codMoney'] = $codMoney;
+
+        return $this;
     }
 
     public function getDestProvinceCode()
     {
-        return $this->destProvinceCode;
+        return $this->apiParas['destProvinceCode'];
     }
 
     public function setDestProvinceCode($destProvinceCode)
     {
-        $this->destProvinceCode = $destProvinceCode;
-        $this->apiParas["destProvinceCode"] = $destProvinceCode;
+        $this->apiParas['destProvinceCode'] = $destProvinceCode;
+
+        return $this;
     }
 
     public function getDestCountyCode()
     {
-        return $this->destCountyCode;
+        return $this->apiParas['destCountyCode'];
     }
 
     public function setDestCountyCode($destCountyCode)
     {
-        $this->destCountyCode = $destCountyCode;
-        $this->apiParas["destCountyCode"] = $destCountyCode;
+        $this->apiParas['destCountyCode'] = $destCountyCode;
+
+        return $this;
     }
 
     public function getStartDetailAddress()
     {
-        return $this->startDetailAddress;
+        return $this->apiParas['startDetailAddress'];
     }
 
     public function setStartDetailAddress($startDetailAddress)
     {
-        $this->startDetailAddress = $startDetailAddress;
-        $this->apiParas["startDetailAddress"] = $startDetailAddress;
+        $this->apiParas['startDetailAddress'] = $startDetailAddress;
+
+        return $this;
     }
 
     public function getDestDetailAddress()
     {
-        return $this->destDetailAddress;
+        return $this->apiParas['destDetailAddress'];
     }
 
     public function setDestDetailAddress($destDetailAddress)
     {
-        $this->destDetailAddress = $destDetailAddress;
-        $this->apiParas["destDetailAddress"] = $destDetailAddress;
+        $this->apiParas['destDetailAddress'] = $destDetailAddress;
+
+        return $this;
     }
 
     public function getIsNeedConvertJDAddress()
     {
-        return $this->isNeedConvertJDAddress;
+        return $this->apiParas['isNeedConvertJDAddress'];
     }
 
     public function setIsNeedConvertJDAddress($isNeedConvertJDAddress)
     {
-        $this->isNeedConvertJDAddress = $isNeedConvertJDAddress;
-        $this->apiParas["isNeedConvertJDAddress"] = $isNeedConvertJDAddress;
+        $this->apiParas['isNeedConvertJDAddress'] = $isNeedConvertJDAddress;
+
+        return $this;
     }
 }

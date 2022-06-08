@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
-
-
-
 class Request
 {
-    private $params = array();
+    private $params = [];
     private $deptNo;
     private $mixMode;
     private $sellerProcessedNo;
@@ -20,9 +17,9 @@ class Request
     private $warehouseNo;
     private $allowLack;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.open.sp.process.domain.request.ProcessOrderJosRequest";
+        $this->params['@type'] = 'com.jd.open.sp.process.domain.request.ProcessOrderJosRequest';
     }
 
     public function getDeptNo()
@@ -108,8 +105,8 @@ class Request
     public function setProductRequestList($productRequestList)
     {
         $size = count($productRequestList);
-        for ($i = 0; $i < $size; $i++) {
-            $productRequestList [$i] = $productRequestList [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $productRequestList[$i] = $productRequestList[$i]->getInstance();
         }
         $this->params['productRequestList'] = $productRequestList;
     }
@@ -134,7 +131,7 @@ class Request
         $this->params['allowLack'] = $allowLack;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

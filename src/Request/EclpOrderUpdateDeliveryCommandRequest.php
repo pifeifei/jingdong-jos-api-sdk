@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderUpdateDeliveryCommandRequest
+class EclpOrderUpdateDeliveryCommandRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $soNo;
-    private $deptNo;
-    private $isvSoNo;
-    private $deliveryBeforeCommand;
-    private $balancePayTimeStr;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.updateDeliveryCommand";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.updateDeliveryCommand';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSoNo()
     {
-        return $this->soNo;
+        return $this->apiParas['soNo'];
     }
 
     public function setSoNo($soNo)
     {
-        $this->soNo = $soNo;
-        $this->apiParas["soNo"] = $soNo;
+        $this->apiParas['soNo'] = $soNo;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getIsvSoNo()
     {
-        return $this->isvSoNo;
+        return $this->apiParas['isvSoNo'];
     }
 
     public function setIsvSoNo($isvSoNo)
     {
-        $this->isvSoNo = $isvSoNo;
-        $this->apiParas["isvSoNo"] = $isvSoNo;
+        $this->apiParas['isvSoNo'] = $isvSoNo;
+
+        return $this;
     }
 
     public function getDeliveryBeforeCommand()
     {
-        return $this->deliveryBeforeCommand;
+        return $this->apiParas['deliveryBeforeCommand'];
     }
 
     public function setDeliveryBeforeCommand($deliveryBeforeCommand)
     {
-        $this->deliveryBeforeCommand = $deliveryBeforeCommand;
-        $this->apiParas["deliveryBeforeCommand"] = $deliveryBeforeCommand;
+        $this->apiParas['deliveryBeforeCommand'] = $deliveryBeforeCommand;
+
+        return $this;
     }
 
     public function getBalancePayTimeStr()
     {
-        return $this->balancePayTimeStr;
+        return $this->apiParas['balancePayTimeStr'];
     }
 
     public function setBalancePayTimeStr($balancePayTimeStr)
     {
-        $this->balancePayTimeStr = $balancePayTimeStr;
-        $this->apiParas["balancePayTimeStr"] = $balancePayTimeStr;
+        $this->apiParas['balancePayTimeStr'] = $balancePayTimeStr;
+
+        return $this;
     }
 }

@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpSnowQualificationCreate;
 
-
-
-
 class Request
 {
-    private $params = array();
+    private $params = [];
     private $deptNo;
     private $supplierNo;
     private $classification;
@@ -16,9 +13,9 @@ class Request
     private $goodsNo;
     private $type;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.coldchian.snow.dto.portal.QualificateRequest";
+        $this->params['@type'] = 'com.jd.coldchian.snow.dto.portal.QualificateRequest';
     }
 
     public function getDeptNo()
@@ -64,8 +61,8 @@ class Request
     public function setLicenses($licenses)
     {
         $size = count($licenses);
-        for ($i = 0; $i < $size; $i++) {
-            $licenses [$i] = $licenses [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $licenses[$i] = $licenses[$i]->getInstance();
         }
         $this->params['licenses'] = $licenses;
     }
@@ -90,7 +87,7 @@ class Request
         $this->params['type'] = $type;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

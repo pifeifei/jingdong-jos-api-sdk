@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterInsertCategoryRequest
+class EclpMasterInsertCategoryRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $categoryNo;
-    private $categoryName;
-    private $superior;
-    private $sortNo;
-    private $memo;
-    private $operateUser;
-    private $operateTime;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.insertCategory";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.insertCategory';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCategoryNo()
     {
-        return $this->categoryNo;
+        return $this->apiParas['categoryNo'];
     }
 
     public function setCategoryNo($categoryNo)
     {
-        $this->categoryNo = $categoryNo;
-        $this->apiParas["categoryNo"] = $categoryNo;
+        $this->apiParas['categoryNo'] = $categoryNo;
+
+        return $this;
     }
 
     public function getCategoryName()
     {
-        return $this->categoryName;
+        return $this->apiParas['categoryName'];
     }
 
     public function setCategoryName($categoryName)
     {
-        $this->categoryName = $categoryName;
-        $this->apiParas["categoryName"] = $categoryName;
+        $this->apiParas['categoryName'] = $categoryName;
+
+        return $this;
     }
 
     public function getSuperior()
     {
-        return $this->superior;
+        return $this->apiParas['superior'];
     }
 
     public function setSuperior($superior)
     {
-        $this->superior = $superior;
-        $this->apiParas["superior"] = $superior;
+        $this->apiParas['superior'] = $superior;
+
+        return $this;
     }
 
     public function getSortNo()
     {
-        return $this->sortNo;
+        return $this->apiParas['sortNo'];
     }
 
     public function setSortNo($sortNo)
     {
-        $this->sortNo = $sortNo;
-        $this->apiParas["sortNo"] = $sortNo;
+        $this->apiParas['sortNo'] = $sortNo;
+
+        return $this;
     }
 
     public function getMemo()
     {
-        return $this->memo;
+        return $this->apiParas['memo'];
     }
 
     public function setMemo($memo)
     {
-        $this->memo = $memo;
-        $this->apiParas["memo"] = $memo;
+        $this->apiParas['memo'] = $memo;
+
+        return $this;
     }
 
     public function getOperateUser()
     {
-        return $this->operateUser;
+        return $this->apiParas['operateUser'];
     }
 
     public function setOperateUser($operateUser)
     {
-        $this->operateUser = $operateUser;
-        $this->apiParas["operateUser"] = $operateUser;
+        $this->apiParas['operateUser'] = $operateUser;
+
+        return $this;
     }
 
     public function getOperateTime()
     {
-        return $this->operateTime;
+        return $this->apiParas['operateTime'];
     }
 
     public function setOperateTime($operateTime)
     {
-        $this->operateTime = $operateTime;
-        $this->apiParas["operateTime"] = $operateTime;
+        $this->apiParas['operateTime'] = $operateTime;
+
+        return $this;
     }
 }

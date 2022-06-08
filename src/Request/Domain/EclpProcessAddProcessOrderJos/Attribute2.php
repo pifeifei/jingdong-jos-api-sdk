@@ -2,20 +2,17 @@
 
 namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
-
-
-
 class Attribute2
 {
-    private $params = array();
+    private $params = [];
     private $materialGoodsNo;
     private $materialGoodsLevel;
     private $materialIsvGoodsNo;
     private $materialPlanQty;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.open.sp.process.domain.request.MaterialJosRequest";
+        $this->params['@type'] = 'com.jd.open.sp.process.domain.request.MaterialJosRequest';
     }
 
     public function getMaterialGoodsNo()
@@ -58,7 +55,7 @@ class Attribute2
         $this->params['materialPlanQty'] = $materialPlanQty;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

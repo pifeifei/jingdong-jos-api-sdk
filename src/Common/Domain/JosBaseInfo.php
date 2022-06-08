@@ -8,11 +8,12 @@ class JosBaseInfo
     private $appSecret;
     private $accessToken;
     private $timestamp;
-    private $v = "2.0";
+    private $v = '2.0';
     private $serverUrl;
 
     /**
      * JosBaseInfo constructor.
+     *
      * @param $appKey
      * @param $appSecret
      * @param $access_token
@@ -25,7 +26,6 @@ class JosBaseInfo
         $this->accessToken = $access_token;
         $this->serverUrl = $serverUrl;
     }
-
 
     /**
      * @return string
@@ -69,25 +69,28 @@ class JosBaseInfo
 
     /**
      * @param bool $init
+     *
      * @return string
      */
     public function getTimestamp($init = true)
     {
         if ($init || !isset($this->timestamp)) {
-            //TODO delete date_default_timezone_set
-            date_default_timezone_set("prc");
+            // TODO delete date_default_timezone_set
+            date_default_timezone_set('prc');
             $this->timestamp = date('Y-m-d H:i:s');
         }
+
         return $this->timestamp;
     }
 
     /**
      * @param \ACES\Common\ProduceRequest $josReuqest
+     *
      * @return array
      */
     public function getFormParams($josReuqest)
     {
-        $request = array();
+        $request = [];
         $request['360buy_param_json'] = $josReuqest->to360buyParamJson();
         $request['app_key'] = $this->getAppKey();
         $request['access_token'] = $this->getAccessToken();
@@ -95,6 +98,7 @@ class JosBaseInfo
         $request['v'] = $this->getV();
         $request['method'] = $josReuqest->getJosMethod();
         $request['sign'] = $this->generateSign($request);
+
         return $request;
     }
 
@@ -103,9 +107,10 @@ class JosBaseInfo
         ksort($params);
         $stringToBeSigned = $this->appSecret;
         foreach ($params as $k => $v) {
-            $stringToBeSigned .= $k . $v;
+            $stringToBeSigned .= $k.$v;
         }
         $stringToBeSigned .= $this->appSecret;
+
         return strtoupper(md5($stringToBeSigned));
     }
 }

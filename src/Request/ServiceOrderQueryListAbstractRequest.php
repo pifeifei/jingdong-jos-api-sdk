@@ -2,18 +2,14 @@
 
 namespace ACES\Request;
 
-
-
 class ServiceOrderQueryListAbstractRequest extends AbstractRequest
 {
-    private $apiParas = [];
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getApiMethodName()
     {
-        return "jingdong.service.order.query.list";
+        return 'jingdong.service.order.query.list';
     }
 
     public function check()

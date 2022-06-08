@@ -2,19 +2,16 @@
 
 namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
-
-
-
 class VasRequest
 {
-    private $params = array();
+    private $params = [];
     private $serviceCode;
     private $goodsDemand;
     private $status;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.ovas.request.goods.admin.VasRequest";
+        $this->params['@type'] = 'com.jd.eclp.ovas.request.goods.admin.VasRequest';
     }
 
     public function getServiceCode()
@@ -47,7 +44,7 @@ class VasRequest
         $this->params['status'] = $status;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

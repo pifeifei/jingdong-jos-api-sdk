@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class EclpCoGetEclpNoByOutNoRequest
+class EclpCoGetEclpNoByOutNoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $outNo;
-    private $recepitType;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.getEclpNoByOutNo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.getEclpNoByOutNo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getOutNo()
     {
-        return $this->outNo;
+        return $this->apiParas['outNo'];
     }
 
     public function setOutNo($outNo)
     {
-        $this->outNo = $outNo;
-        $this->apiParas["outNo"] = $outNo;
+        $this->apiParas['outNo'] = $outNo;
+
+        return $this;
     }
 
     public function getRecepitType()
     {
-        return $this->recepitType;
+        return $this->apiParas['recepitType'];
     }
 
     public function setRecepitType($recepitType)
     {
-        $this->recepitType = $recepitType;
-        $this->apiParas["recepitType"] = $recepitType;
+        $this->apiParas['recepitType'] = $recepitType;
+
+        return $this;
     }
 }

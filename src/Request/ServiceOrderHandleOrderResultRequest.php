@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class ServiceOrderHandleOrderResultRequest
+class ServiceOrderHandleOrderResultRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $recheckResultDesc;
-    private $serviceCode;
-    private $deptCode;
-    private $recheckResult;
-
     public function getApiMethodName()
     {
-        return "jingdong.service.order.handleOrderResult";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.service.order.handleOrderResult';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getRecheckResultDesc()
     {
-        return $this->recheckResultDesc;
+        return $this->apiParas['recheckResultDesc'];
     }
 
     public function setRecheckResultDesc($recheckResultDesc)
     {
-        $this->recheckResultDesc = $recheckResultDesc;
-        $this->apiParas["recheckResultDesc"] = $recheckResultDesc;
+        $this->apiParas['recheckResultDesc'] = $recheckResultDesc;
+
+        return $this;
     }
 
     public function getServiceCode()
     {
-        return $this->serviceCode;
+        return $this->apiParas['serviceCode'];
     }
 
     public function setServiceCode($serviceCode)
     {
-        $this->serviceCode = $serviceCode;
-        $this->apiParas["serviceCode"] = $serviceCode;
+        $this->apiParas['serviceCode'] = $serviceCode;
+
+        return $this;
     }
 
     public function getDeptCode()
     {
-        return $this->deptCode;
+        return $this->apiParas['deptCode'];
     }
 
     public function setDeptCode($deptCode)
     {
-        $this->deptCode = $deptCode;
-        $this->apiParas["deptCode"] = $deptCode;
+        $this->apiParas['deptCode'] = $deptCode;
+
+        return $this;
     }
 
     public function getRecheckResult()
     {
-        return $this->recheckResult;
+        return $this->apiParas['recheckResult'];
     }
 
     public function setRecheckResult($recheckResult)
     {
-        $this->recheckResult = $recheckResult;
-        $this->apiParas["recheckResult"] = $recheckResult;
+        $this->apiParas['recheckResult'] = $recheckResult;
+
+        return $this;
     }
 }

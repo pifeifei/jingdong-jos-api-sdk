@@ -2,20 +2,17 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
-
-
-
 class Attribute1
 {
-    private $params = array();
+    private $params = [];
     private $orderNo;
     private $popFlag;
     private $wayBillCode;
     private $jdWayBillCode;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.jcloud.wms.printing.dto.WayBillInfo";
+        $this->params['@type'] = 'com.jd.jcloud.wms.printing.dto.WayBillInfo';
     }
 
     public function getOrderNo()
@@ -58,7 +55,7 @@ class Attribute1
         $this->params['jdWayBillCode'] = $jdWayBillCode;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class LdopPickupCancelRequest
+class LdopPickupCancelRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $endReasonName;
-    private $endReason;
-    private $pickupCode;
-    private $source;
-    private $customerCode;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.pickup.cancel";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.pickup.cancel';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getEndReasonName()
     {
-        return $this->endReasonName;
+        return $this->apiParas['endReasonName'];
     }
 
     public function setEndReasonName($endReasonName)
     {
-        $this->endReasonName = $endReasonName;
-        $this->apiParas["endReasonName"] = $endReasonName;
+        $this->apiParas['endReasonName'] = $endReasonName;
+
+        return $this;
     }
 
     public function getEndReason()
     {
-        return $this->endReason;
+        return $this->apiParas['endReason'];
     }
 
     public function setEndReason($endReason)
     {
-        $this->endReason = $endReason;
-        $this->apiParas["endReason"] = $endReason;
+        $this->apiParas['endReason'] = $endReason;
+
+        return $this;
     }
 
     public function getPickupCode()
     {
-        return $this->pickupCode;
+        return $this->apiParas['pickupCode'];
     }
 
     public function setPickupCode($pickupCode)
     {
-        $this->pickupCode = $pickupCode;
-        $this->apiParas["pickupCode"] = $pickupCode;
+        $this->apiParas['pickupCode'] = $pickupCode;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 }

@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class EclpProcessQueryProcessOrderJosRequest
+class EclpProcessQueryProcessOrderJosRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $processedNo;
-    private $sellerProcessedNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.process.queryProcessOrderJos";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.process.queryProcessOrderJos';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getProcessedNo()
     {
-        return $this->processedNo;
+        return $this->apiParas['processedNo'];
     }
 
     public function setProcessedNo($processedNo)
     {
-        $this->processedNo = $processedNo;
-        $this->apiParas["processedNo"] = $processedNo;
+        $this->apiParas['processedNo'] = $processedNo;
+
+        return $this;
     }
 
     public function getSellerProcessedNo()
     {
-        return $this->sellerProcessedNo;
+        return $this->apiParas['sellerProcessedNo'];
     }
 
     public function setSellerProcessedNo($sellerProcessedNo)
     {
-        $this->sellerProcessedNo = $sellerProcessedNo;
-        $this->apiParas["sellerProcessedNo"] = $sellerProcessedNo;
+        $this->apiParas['sellerProcessedNo'] = $sellerProcessedNo;
+
+        return $this;
     }
 }

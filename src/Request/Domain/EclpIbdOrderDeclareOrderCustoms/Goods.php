@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpIbdOrderDeclareOrderCustoms;
 
-
-
-
 class Goods
 {
-    private $params = array();
+    private $params = [];
     private $gnum;
     private $isvGoodsNo;
     private $spGoodsNo;
@@ -16,9 +13,9 @@ class Goods
     private $goodsRemark;
     private $itemLink;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.isv.domain.so.OrderCustomsItemParam";
+        $this->params['@type'] = 'com.jd.eclp.isv.domain.so.OrderCustomsItemParam';
     }
 
     public function getGnum()
@@ -91,7 +88,7 @@ class Goods
         $this->params['itemLink'] = $itemLink;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

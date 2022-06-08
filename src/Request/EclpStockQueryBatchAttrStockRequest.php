@@ -2,174 +2,146 @@
 
 namespace ACES\Request;
 
-
-class EclpStockQueryBatchAttrStockRequest
+class EclpStockQueryBatchAttrStockRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $cursor;
-    private $stockType;
-    private $goodsLevel;
-    private $pageSize;
-    private $startTime;
-    private $page;
-    private $endTime;
-    private $sku;
-    private $deptNo;
-    private $warehouseNo;
-    private $isvGoodsNos;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.stock.queryBatchAttrStock";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.stock.queryBatchAttrStock';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCursor()
     {
-        return $this->cursor;
+        return $this->apiParas['cursor'];
     }
 
     public function setCursor($cursor)
     {
-        $this->cursor = $cursor;
-        $this->apiParas["cursor"] = $cursor;
+        $this->apiParas['cursor'] = $cursor;
+
+        return $this;
     }
 
     public function getStockType()
     {
-        return $this->stockType;
+        return $this->apiParas['stockType'];
     }
 
     public function setStockType($stockType)
     {
-        $this->stockType = $stockType;
-        $this->apiParas["stockType"] = $stockType;
+        $this->apiParas['stockType'] = $stockType;
+
+        return $this;
     }
 
     public function getGoodsLevel()
     {
-        return $this->goodsLevel;
+        return $this->apiParas['goodsLevel'];
     }
 
     public function setGoodsLevel($goodsLevel)
     {
-        $this->goodsLevel = $goodsLevel;
-        $this->apiParas["goodsLevel"] = $goodsLevel;
+        $this->apiParas['goodsLevel'] = $goodsLevel;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->apiParas['startTime'];
     }
 
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
-        $this->apiParas["startTime"] = $startTime;
+        $this->apiParas['startTime'] = $startTime;
+
+        return $this;
     }
 
     public function getPage()
     {
-        return $this->page;
+        return $this->apiParas['page'];
     }
 
     public function setPage($page)
     {
-        $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
+
+        return $this;
     }
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->apiParas['endTime'];
     }
 
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
-        $this->apiParas["endTime"] = $endTime;
+        $this->apiParas['endTime'] = $endTime;
+
+        return $this;
     }
 
     public function getSku()
     {
-        return $this->sku;
+        return $this->apiParas['sku'];
     }
 
     public function setSku($sku)
     {
-        $this->sku = $sku;
-        $this->apiParas["sku"] = $sku;
+        $this->apiParas['sku'] = $sku;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getIsvGoodsNos()
     {
-        return $this->isvGoodsNos;
+        return $this->apiParas['isvGoodsNos'];
     }
 
     public function setIsvGoodsNos($isvGoodsNos)
     {
-        $this->isvGoodsNos = $isvGoodsNos;
-        $this->apiParas["isvGoodsNos"] = $isvGoodsNos;
+        $this->apiParas['isvGoodsNos'] = $isvGoodsNos;
+
+        return $this;
     }
 }

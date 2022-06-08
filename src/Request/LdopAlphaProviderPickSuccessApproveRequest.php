@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderPickSuccessApproveRequest
+class LdopAlphaProviderPickSuccessApproveRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $pickupCode;
-    private $providerCode;
-    private $deliveryId;
-    private $weight;
-    private $volume;
-    private $money;
-    private $operateTime;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.pick.success.approve";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.pick.success.approve';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPickupCode()
     {
-        return $this->pickupCode;
+        return $this->apiParas['pickupCode'];
     }
 
     public function setPickupCode($pickupCode)
     {
-        $this->pickupCode = $pickupCode;
-        $this->apiParas["pickupCode"] = $pickupCode;
+        $this->apiParas['pickupCode'] = $pickupCode;
+
+        return $this;
     }
 
     public function getProviderCode()
     {
-        return $this->providerCode;
+        return $this->apiParas['providerCode'];
     }
 
     public function setProviderCode($providerCode)
     {
-        $this->providerCode = $providerCode;
-        $this->apiParas["providerCode"] = $providerCode;
+        $this->apiParas['providerCode'] = $providerCode;
+
+        return $this;
     }
 
     public function getDeliveryId()
     {
-        return $this->deliveryId;
+        return $this->apiParas['deliveryId'];
     }
 
     public function setDeliveryId($deliveryId)
     {
-        $this->deliveryId = $deliveryId;
-        $this->apiParas["deliveryId"] = $deliveryId;
+        $this->apiParas['deliveryId'] = $deliveryId;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getVolume()
     {
-        return $this->volume;
+        return $this->apiParas['volume'];
     }
 
     public function setVolume($volume)
     {
-        $this->volume = $volume;
-        $this->apiParas["volume"] = $volume;
+        $this->apiParas['volume'] = $volume;
+
+        return $this;
     }
 
     public function getMoney()
     {
-        return $this->money;
+        return $this->apiParas['money'];
     }
 
     public function setMoney($money)
     {
-        $this->money = $money;
-        $this->apiParas["money"] = $money;
+        $this->apiParas['money'] = $money;
+
+        return $this;
     }
 
     public function getOperateTime()
     {
-        return $this->operateTime;
+        return $this->apiParas['operateTime'];
     }
 
     public function setOperateTime($operateTime)
     {
-        $this->operateTime = $operateTime;
-        $this->apiParas["operateTime"] = $operateTime;
+        $this->apiParas['operateTime'] = $operateTime;
+
+        return $this;
     }
 }

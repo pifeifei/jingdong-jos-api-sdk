@@ -2,8 +2,6 @@
 
 namespace ACES\Common\Domain;
 
-use ACES\Common\KeyResponse;
-
 class JosMasterKeyGetResponse extends JosBaseResponse
 {
     private $response;
@@ -17,7 +15,7 @@ class JosMasterKeyGetResponse extends JosBaseResponse
     }
 
     /**
-     * @param \ACES\Common\KeyResponse|null $response
+     * @param null|\ACES\Common\KeyResponse $response
      */
     public function setResponse($response)
     {

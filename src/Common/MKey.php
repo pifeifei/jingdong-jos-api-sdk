@@ -8,11 +8,11 @@ use Common\Exception\SignException;
 
 class MKey
 {
-    const IV_SIZE = 16;
-    const RANDOM_SIZE = 4;
-    const KEY_ID_LEN = 16;
-    //1024 * 1024
-    const MEGABYTE = 1048576;
+    public const IV_SIZE = 16;
+    public const RANDOM_SIZE = 4;
+    public const KEY_ID_LEN = 16;
+    // 1024 * 1024
+    public const MEGABYTE = 1048576;
 
     private $id;
     private $key;
@@ -43,7 +43,7 @@ class MKey
         $kstatus
     ) {
         if (empty($kid) || empty($service)) {
-            throw new MalformedException("ID and App fields cannot be null.");
+            throw new MalformedException('ID and App fields cannot be null.');
         }
 
         $this->service = $service;
@@ -51,7 +51,7 @@ class MKey
         $this->key = $key;
 
         if ($kver < -1) {
-            throw new MalformedException("Invalid key version.");
+            throw new MalformedException('Invalid key version.');
         }
         $this->ver = $kver;
 
@@ -72,14 +72,13 @@ class MKey
         $this->key_digest = $kdigest;
         $digest = base64_encode(hash(Constants::DEFAULT_CERTDIGEST_ALGO, $this->key, true));
 
-        if (strcmp($this->key_digest, $digest) == 0) {
+        if (0 == strcmp($this->key_digest, $digest)) {
             $this->isValid = true;
         }
     }
 
-    function __destruct()
+    public function __destruct()
     {
-
         // TODO - Insert your code here
     }
 
@@ -87,9 +86,7 @@ class MKey
     {
         $ct = KeyEncryption::encrypt($this, $pt);
 
-        $ct = pack("C", Constants::CIPHER_TYPE_WEAK) . pack("C", Constants::ALGO_TYPE_AES_CBC_128) . $this->id . $ct;
-
-        return $ct;
+        return pack('C', Constants::CIPHER_TYPE_WEAK).pack('C', Constants::ALGO_TYPE_AES_CBC_128).$this->id.$ct;
     }
 
     public function strong_encrypt($pt)
@@ -99,70 +96,67 @@ class MKey
         $data_cipher = $de->encrypt($pt);
         $key_cipher = KeyEncryption::wrap($this, $de->exportKey());
 
-        $ct = pack("C", Constants::CIPHER_TYPE_REGULAR) . pack("n", strlen($this->id)) .
-                $this->id . pack("C", Constants::ALGO_TYPE_AES_CBC_128) . pack("n", strlen($key_cipher)) .
-                $key_cipher . pack("C", Constants::ALGO_TYPE_AES_CBC_128) . pack("N", strlen($data_cipher)) . $data_cipher;
-
-        return $ct;
+        return pack('C', Constants::CIPHER_TYPE_REGULAR).pack('n', strlen($this->id)).
+                $this->id.pack('C', Constants::ALGO_TYPE_AES_CBC_128).pack('n', strlen($key_cipher)).
+                $key_cipher.pack('C', Constants::ALGO_TYPE_AES_CBC_128).pack('N', strlen($data_cipher)).$data_cipher;
     }
 
     public function strong_decrypt($ct)
     {
         $offset = 0;
-        $ctype_ = unpack("C", $ct[$offset]);
+        $ctype_ = unpack('C', $ct[$offset]);
         $ctype = $ctype_[1];
-        $offset += 1;
-        if ($ctype != Constants::CIPHER_TYPE_REGULAR) {
-            throw new MalformedException("Unmatched CipherText Type.");
+        ++$offset;
+        if (Constants::CIPHER_TYPE_REGULAR != $ctype) {
+            throw new MalformedException('Unmatched CipherText Type.');
         }
-        $eidLen_ = unpack("n", substr($ct, $offset, 2));
+        $eidLen_ = unpack('n', substr($ct, $offset, 2));
         $eidLen = $eidLen_[1];
         $offset += 2;
-        if ($eidLen !== Constants::DEFAULT_KEYID_LEN) {
-            throw new MalformedException("Corrupted ciphertext header with illegal key id length.");
+        if (Constants::DEFAULT_KEYID_LEN !== $eidLen) {
+            throw new MalformedException('Corrupted ciphertext header with illegal key id length.');
         }
 
         $eid = substr($ct, $offset, $eidLen);
         $offset += $eidLen;
         if ($this->id != $eid) {
-            throw new MalformedException("Unmatched MKey ID.");
+            throw new MalformedException('Unmatched MKey ID.');
         }
-        $atype_ = unpack("C", substr($ct, $offset, 1));
+        $atype_ = unpack('C', substr($ct, $offset, 1));
         $atype = $atype_[1];
-        $offset += 1;
-        if ($atype != Constants::ALGO_TYPE_AES_CBC_128) {
-            throw new MalformedException("Unmatched Key Encryption Algorithm Type:$atype");
+        ++$offset;
+        if (Constants::ALGO_TYPE_AES_CBC_128 != $atype) {
+            throw new MalformedException("Unmatched Key Encryption Algorithm Type:{$atype}");
         }
-        $kcipherLen_ = unpack("n", substr($ct, $offset, 2));
+        $kcipherLen_ = unpack('n', substr($ct, $offset, 2));
         $kcipherLen = $kcipherLen_[1];
         $offset += 2;
         if ($kcipherLen < Constants::DEFAULT_CIPHERBLK_LEN || $kcipherLen > strlen(substr($ct, $offset))) {
-            throw new MalformedException("Corrupted ciphertext header with illegal key cipher length.");
+            throw new MalformedException('Corrupted ciphertext header with illegal key cipher length.');
         }
 
         $kcipher = substr($ct, $offset, $kcipherLen);
         $offset += $kcipherLen;
         $dkey = KeyEncryption::unwrap($this, $kcipher);
-        $dtype_ = unpack("C", substr($ct, $offset, 1));
+        $dtype_ = unpack('C', substr($ct, $offset, 1));
         $dtype = $dtype_[1];
-        $offset += 1;
-        if ($dtype != Constants::ALGO_TYPE_AES_CBC_128) {
-            throw new MalformedException("Unmatched Data Encryption Algorithm Type:$dtype");
+        ++$offset;
+        if (Constants::ALGO_TYPE_AES_CBC_128 != $dtype) {
+            throw new MalformedException("Unmatched Data Encryption Algorithm Type:{$dtype}");
         }
-        $dcipherLen_ = unpack("N", substr($ct, $offset, 4));
+        $dcipherLen_ = unpack('N', substr($ct, $offset, 4));
         $dcipherLen = $dcipherLen_[1];
         $offset += 4;
 
         if ($dcipherLen != strlen(substr($ct, $offset))) {
-            throw new MalformedException("Corrupted ciphertext header with illegal data cipher length.");
+            throw new MalformedException('Corrupted ciphertext header with illegal data cipher length.');
         }
 
         $dcipher = substr($ct, $offset);
 
         $de = new DataEncryption($dkey);
-        $pt = $de->decrypt($dcipher);
 
-        return $pt;
+        return $de->decrypt($dcipher);
     }
 
     public function decrypt($ct)
@@ -170,65 +164,63 @@ class MKey
         $offset = 0;
 
         // Get and validate cipher type
-        $ctype_ = unpack("C", substr($ct, $offset, Constants::CIPHER_TYPE_LEN));
+        $ctype_ = unpack('C', substr($ct, $offset, Constants::CIPHER_TYPE_LEN));
         $ctype = $ctype_[1];
         $offset += Constants::CIPHER_TYPE_LEN;
-        if ($ctype != Constants::CIPHER_TYPE_WEAK) {
-            throw new Ex\MalformedException("Unmatch Encryption Algorithm Type: $ctype");
+        if (Constants::CIPHER_TYPE_WEAK != $ctype) {
+            throw new Ex\MalformedException("Unmatch Encryption Algorithm Type: {$ctype}");
         }
 
         // Get and validate algo type
-        $atype_ = unpack("C", substr($ct, $offset, Constants::ALGO_TYPE_LEN));
+        $atype_ = unpack('C', substr($ct, $offset, Constants::ALGO_TYPE_LEN));
         $atype = $atype_[1];
         $offset += Constants::ALGO_TYPE_LEN;
-        if ($atype != Constants::ALGO_TYPE_AES_CBC_128) {
-            throw new Ex\MalformedException("Unmatch Encryption Algorithm Type: $atype");
+        if (Constants::ALGO_TYPE_AES_CBC_128 != $atype) {
+            throw new Ex\MalformedException("Unmatch Encryption Algorithm Type: {$atype}");
         }
 
         $eid = substr($ct, $offset, Constants::DEFAULT_KEYID_LEN);
         $offset += Constants::DEFAULT_KEYID_LEN;
         if ($eid != $this->id) {
-            throw new MalformedException("Unmatch MKey ID.");
+            throw new MalformedException('Unmatch MKey ID.');
         }
 
         $ct_data = substr($ct, $offset);
 
-        $pt = KeyEncryption::decrypt($this, $ct_data);
-
-        return $pt;
+        return KeyEncryption::decrypt($this, $ct_data);
     }
 
     public function sign($input)
     {
-        if ($input === null) {
-            throw new MalformedException("Illegal input.");
+        if (null === $input) {
+            throw new MalformedException('Illegal input.');
         }
 
-        if ($this->id == null || strlen($this->id) != Constants::DEFAULT_KEYID_LEN) {
-            throw new MalformedException("Illegal Signing Key.");
+        if (null == $this->id || Constants::DEFAULT_KEYID_LEN != strlen($this->id)) {
+            throw new MalformedException('Illegal Signing Key.');
         }
 
         $rsec = Crypto::secureRandom(Constants::DEFAULT_SEED_LEN);
-        $data = $input . $rsec;
+        $data = $input.$rsec;
         $signedData = hash_hmac(Constants::DEFAULT_TOKEN_SIGN_ALGO, $data, $this->svkey, true);
 
-        if ($signedData === false) {
-            throw new SignException("Sign fail, algo:" . Constants::DEFAULT_TOKEN_SIGN_ALGO);
+        if (false === $signedData) {
+            throw new SignException('Sign fail, algo:'.Constants::DEFAULT_TOKEN_SIGN_ALGO);
         }
 
-        $ret = $this->id . $rsec . $signedData;
+        $ret = $this->id.$rsec.$signedData;
 
         return base64_encode($ret);
     }
 
     public function verify($input, $sig)
     {
-        if ($input === null) {
-            throw new MalformedException("Illegal input.");
+        if (null === $input) {
+            throw new MalformedException('Illegal input.');
         }
 
-        if ($sig === null || strlen($sig) < Constants::DEFAULT_KEYID_LEN + Constants::DEFAULT_SEED_LEN) {
-            throw new MalformedException("Illegal Signature.");
+        if (null === $sig || strlen($sig) < Constants::DEFAULT_KEYID_LEN + Constants::DEFAULT_SEED_LEN) {
+            throw new MalformedException('Illegal Signature.');
         }
         // skip key id
         $offset = Constants::DEFAULT_KEYID_LEN;
@@ -240,7 +232,7 @@ class MKey
 
         $carriedSig = substr($sig, $offset);
 
-        $data = $input . $rsec;
+        $data = $input.$rsec;
 
         $signedData = hash_hmac(Constants::DEFAULT_TOKEN_SIGN_ALGO, $data, $this->svkey, true);
 

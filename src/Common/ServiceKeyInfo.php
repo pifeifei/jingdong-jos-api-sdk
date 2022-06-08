@@ -18,7 +18,7 @@ class ServiceKeyInfo
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getCurrent_key_version()
     {
@@ -42,7 +42,6 @@ class ServiceKeyInfo
     }
 
     /**
-     *
      * @param string $service
      */
     public function setService($service)
@@ -51,8 +50,7 @@ class ServiceKeyInfo
     }
 
     /**
-     *
-     * @param integer $keyVersion
+     * @param int $keyVersion
      */
     public function setCurrentKeyVersion($keyVersion)
     {
@@ -60,7 +58,6 @@ class ServiceKeyInfo
     }
 
     /**
-     *
      * @param string $grantUsage
      */
     public function setGrantUsage($grantUsage)
@@ -69,7 +66,6 @@ class ServiceKeyInfo
     }
 
     /**
-     *
      * @param MKData[] $keys
      */
     public function setKeys($keys)

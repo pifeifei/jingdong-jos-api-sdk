@@ -2,222 +2,194 @@
 
 namespace ACES\Request;
 
-
-class EclpSnowPickupAndDeliveryAbilityCheckRequest
+class EclpSnowPickupAndDeliveryAbilityCheckRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $senderAddress;
-    private $senderProvinceName;
-    private $senderCityName;
-    private $deliveryType;
-    private $deptNo;
-    private $receiverAddress;
-    private $grossWeight;
-    private $senderCountyName;
-    private $receiverCityName;
-    private $grossVolume;
-    private $senderTownName;
-    private $receiverTownName;
-    private $receiverProvinceName;
-    private $receiverCountyName;
-    private $packageNum;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.snow.pickupAndDeliveryAbilityCheck";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.snow.pickupAndDeliveryAbilityCheck';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSenderAddress()
     {
-        return $this->senderAddress;
+        return $this->apiParas['senderAddress'];
     }
 
     public function setSenderAddress($senderAddress)
     {
-        $this->senderAddress = $senderAddress;
-        $this->apiParas["senderAddress"] = $senderAddress;
+        $this->apiParas['senderAddress'] = $senderAddress;
+
+        return $this;
     }
 
     public function getSenderProvinceName()
     {
-        return $this->senderProvinceName;
+        return $this->apiParas['senderProvinceName'];
     }
 
     public function setSenderProvinceName($senderProvinceName)
     {
-        $this->senderProvinceName = $senderProvinceName;
-        $this->apiParas["senderProvinceName"] = $senderProvinceName;
+        $this->apiParas['senderProvinceName'] = $senderProvinceName;
+
+        return $this;
     }
 
     public function getSenderCityName()
     {
-        return $this->senderCityName;
+        return $this->apiParas['senderCityName'];
     }
 
     public function setSenderCityName($senderCityName)
     {
-        $this->senderCityName = $senderCityName;
-        $this->apiParas["senderCityName"] = $senderCityName;
+        $this->apiParas['senderCityName'] = $senderCityName;
+
+        return $this;
     }
 
     public function getDeliveryType()
     {
-        return $this->deliveryType;
+        return $this->apiParas['deliveryType'];
     }
 
     public function setDeliveryType($deliveryType)
     {
-        $this->deliveryType = $deliveryType;
-        $this->apiParas["deliveryType"] = $deliveryType;
+        $this->apiParas['deliveryType'] = $deliveryType;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getReceiverAddress()
     {
-        return $this->receiverAddress;
+        return $this->apiParas['receiverAddress'];
     }
 
     public function setReceiverAddress($receiverAddress)
     {
-        $this->receiverAddress = $receiverAddress;
-        $this->apiParas["receiverAddress"] = $receiverAddress;
+        $this->apiParas['receiverAddress'] = $receiverAddress;
+
+        return $this;
     }
 
     public function getGrossWeight()
     {
-        return $this->grossWeight;
+        return $this->apiParas['grossWeight'];
     }
 
     public function setGrossWeight($grossWeight)
     {
-        $this->grossWeight = $grossWeight;
-        $this->apiParas["grossWeight"] = $grossWeight;
+        $this->apiParas['grossWeight'] = $grossWeight;
+
+        return $this;
     }
 
     public function getSenderCountyName()
     {
-        return $this->senderCountyName;
+        return $this->apiParas['senderCountyName'];
     }
 
     public function setSenderCountyName($senderCountyName)
     {
-        $this->senderCountyName = $senderCountyName;
-        $this->apiParas["senderCountyName"] = $senderCountyName;
+        $this->apiParas['senderCountyName'] = $senderCountyName;
+
+        return $this;
     }
 
     public function getReceiverCityName()
     {
-        return $this->receiverCityName;
+        return $this->apiParas['receiverCityName'];
     }
 
     public function setReceiverCityName($receiverCityName)
     {
-        $this->receiverCityName = $receiverCityName;
-        $this->apiParas["receiverCityName"] = $receiverCityName;
+        $this->apiParas['receiverCityName'] = $receiverCityName;
+
+        return $this;
     }
 
     public function getGrossVolume()
     {
-        return $this->grossVolume;
+        return $this->apiParas['grossVolume'];
     }
 
     public function setGrossVolume($grossVolume)
     {
-        $this->grossVolume = $grossVolume;
-        $this->apiParas["grossVolume"] = $grossVolume;
+        $this->apiParas['grossVolume'] = $grossVolume;
+
+        return $this;
     }
 
     public function getSenderTownName()
     {
-        return $this->senderTownName;
+        return $this->apiParas['senderTownName'];
     }
 
     public function setSenderTownName($senderTownName)
     {
-        $this->senderTownName = $senderTownName;
-        $this->apiParas["senderTownName"] = $senderTownName;
+        $this->apiParas['senderTownName'] = $senderTownName;
+
+        return $this;
     }
 
     public function getReceiverTownName()
     {
-        return $this->receiverTownName;
+        return $this->apiParas['receiverTownName'];
     }
 
     public function setReceiverTownName($receiverTownName)
     {
-        $this->receiverTownName = $receiverTownName;
-        $this->apiParas["receiverTownName"] = $receiverTownName;
+        $this->apiParas['receiverTownName'] = $receiverTownName;
+
+        return $this;
     }
 
     public function getReceiverProvinceName()
     {
-        return $this->receiverProvinceName;
+        return $this->apiParas['receiverProvinceName'];
     }
 
     public function setReceiverProvinceName($receiverProvinceName)
     {
-        $this->receiverProvinceName = $receiverProvinceName;
-        $this->apiParas["receiverProvinceName"] = $receiverProvinceName;
+        $this->apiParas['receiverProvinceName'] = $receiverProvinceName;
+
+        return $this;
     }
 
     public function getReceiverCountyName()
     {
-        return $this->receiverCountyName;
+        return $this->apiParas['receiverCountyName'];
     }
 
     public function setReceiverCountyName($receiverCountyName)
     {
-        $this->receiverCountyName = $receiverCountyName;
-        $this->apiParas["receiverCountyName"] = $receiverCountyName;
+        $this->apiParas['receiverCountyName'] = $receiverCountyName;
+
+        return $this;
     }
 
     public function getPackageNum()
     {
-        return $this->packageNum;
+        return $this->apiParas['packageNum'];
     }
 
     public function setPackageNum($packageNum)
     {
-        $this->packageNum = $packageNum;
-        $this->apiParas["packageNum"] = $packageNum;
+        $this->apiParas['packageNum'] = $packageNum;
+
+        return $this;
     }
 }

@@ -9,9 +9,9 @@ class YacCache extends iCache
     private $isEnable = false;
     private $yac;
 
-    function __construct()
+    public function __construct()
     {
-        if (extension_loaded("yac") && ini_get('yac.enable') == 1) {
+        if (extension_loaded('yac') && 1 == ini_get('yac.enable')) {
             $this->isEnable = true;
             $this->yac = new \Yac(self::$CACHE_PREFIX);
         }
@@ -21,6 +21,7 @@ class YacCache extends iCache
     {
         if ($this->isEnable) {
             $key = md5($key);
+
             return $this->yac->get($key);
         }
     }
@@ -48,6 +49,7 @@ class YacCache extends iCache
     {
         if ($this->isEnable) {
             $key = md5($key);
+
             return $this->yac->delete($key);
         }
     }

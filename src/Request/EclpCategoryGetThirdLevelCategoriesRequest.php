@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class EclpCategoryGetThirdLevelCategoriesRequest
+class EclpCategoryGetThirdLevelCategoriesRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $secondCategoryNo;
-    private $thirdCategoryNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.category.getThirdLevelCategories";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.category.getThirdLevelCategories';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSecondCategoryNo()
     {
-        return $this->secondCategoryNo;
+        return $this->apiParas['secondCategoryNo'];
     }
 
     public function setSecondCategoryNo($secondCategoryNo)
     {
-        $this->secondCategoryNo = $secondCategoryNo;
-        $this->apiParas["secondCategoryNo"] = $secondCategoryNo;
+        $this->apiParas['secondCategoryNo'] = $secondCategoryNo;
+
+        return $this;
     }
 
     public function getThirdCategoryNo()
     {
-        return $this->thirdCategoryNo;
+        return $this->apiParas['thirdCategoryNo'];
     }
 
     public function setThirdCategoryNo($thirdCategoryNo)
     {
-        $this->thirdCategoryNo = $thirdCategoryNo;
-        $this->apiParas["thirdCategoryNo"] = $thirdCategoryNo;
+        $this->apiParas['thirdCategoryNo'] = $thirdCategoryNo;
+
+        return $this;
     }
 }

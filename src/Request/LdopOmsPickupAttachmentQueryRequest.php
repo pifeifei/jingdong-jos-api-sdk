@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class LdopOmsPickupAttachmentQueryRequest
+class LdopOmsPickupAttachmentQueryRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $opeCode;
-    private $attachmentType;
-    private $busiId;
-    private $customerCode;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.oms.pickup.attachment.query";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.oms.pickup.attachment.query';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOpeCode()
     {
-        return $this->opeCode;
+        return $this->apiParas['opeCode'];
     }
 
     public function setOpeCode($opeCode)
     {
-        $this->opeCode = $opeCode;
-        $this->apiParas["opeCode"] = $opeCode;
+        $this->apiParas['opeCode'] = $opeCode;
+
+        return $this;
     }
 
     public function getAttachmentType()
     {
-        return $this->attachmentType;
+        return $this->apiParas['attachmentType'];
     }
 
     public function setAttachmentType($attachmentType)
     {
-        $this->attachmentType = $attachmentType;
-        $this->apiParas["attachmentType"] = $attachmentType;
+        $this->apiParas['attachmentType'] = $attachmentType;
+
+        return $this;
     }
 
     public function getBusiId()
     {
-        return $this->busiId;
+        return $this->apiParas['busiId'];
     }
 
     public function setBusiId($busiId)
     {
-        $this->busiId = $busiId;
-        $this->apiParas["busiId"] = $busiId;
+        $this->apiParas['busiId'] = $busiId;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 }

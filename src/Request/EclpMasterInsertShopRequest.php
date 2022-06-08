@@ -2,342 +2,314 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterInsertShopRequest
+class EclpMasterInsertShopRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $isvShopNo;
-    private $spSourceNo;
-    private $deptNo;
-    private $spShopNo;
-    private $shopName;
-    private $contacts;
-    private $phone;
-    private $address;
-    private $email;
-    private $fax;
-    private $afterSaleContacts;
-    private $afterSaleAddress;
-    private $afterSalePhone;
-    private $bdOwnerNo;
-    private $reserve1;
-    private $reserve2;
-    private $reserve3;
-    private $reserve4;
-    private $reserve5;
-    private $reserve6;
-    private $reserve7;
-    private $reserve8;
-    private $reserve9;
-    private $reserve10;
-    private $outstoreRules;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.insertShop";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.insertShop';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getIsvShopNo()
     {
-        return $this->isvShopNo;
+        return $this->apiParas['isvShopNo'];
     }
 
     public function setIsvShopNo($isvShopNo)
     {
-        $this->isvShopNo = $isvShopNo;
-        $this->apiParas["isvShopNo"] = $isvShopNo;
+        $this->apiParas['isvShopNo'] = $isvShopNo;
+
+        return $this;
     }
 
     public function getSpSourceNo()
     {
-        return $this->spSourceNo;
+        return $this->apiParas['spSourceNo'];
     }
 
     public function setSpSourceNo($spSourceNo)
     {
-        $this->spSourceNo = $spSourceNo;
-        $this->apiParas["spSourceNo"] = $spSourceNo;
+        $this->apiParas['spSourceNo'] = $spSourceNo;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getSpShopNo()
     {
-        return $this->spShopNo;
+        return $this->apiParas['spShopNo'];
     }
 
     public function setSpShopNo($spShopNo)
     {
-        $this->spShopNo = $spShopNo;
-        $this->apiParas["spShopNo"] = $spShopNo;
+        $this->apiParas['spShopNo'] = $spShopNo;
+
+        return $this;
     }
 
     public function getShopName()
     {
-        return $this->shopName;
+        return $this->apiParas['shopName'];
     }
 
     public function setShopName($shopName)
     {
-        $this->shopName = $shopName;
-        $this->apiParas["shopName"] = $shopName;
+        $this->apiParas['shopName'] = $shopName;
+
+        return $this;
     }
 
     public function getContacts()
     {
-        return $this->contacts;
+        return $this->apiParas['contacts'];
     }
 
     public function setContacts($contacts)
     {
-        $this->contacts = $contacts;
-        $this->apiParas["contacts"] = $contacts;
+        $this->apiParas['contacts'] = $contacts;
+
+        return $this;
     }
 
     public function getPhone()
     {
-        return $this->phone;
+        return $this->apiParas['phone'];
     }
 
     public function setPhone($phone)
     {
-        $this->phone = $phone;
-        $this->apiParas["phone"] = $phone;
+        $this->apiParas['phone'] = $phone;
+
+        return $this;
     }
 
     public function getAddress()
     {
-        return $this->address;
+        return $this->apiParas['address'];
     }
 
     public function setAddress($address)
     {
-        $this->address = $address;
-        $this->apiParas["address"] = $address;
+        $this->apiParas['address'] = $address;
+
+        return $this;
     }
 
     public function getEmail()
     {
-        return $this->email;
+        return $this->apiParas['email'];
     }
 
     public function setEmail($email)
     {
-        $this->email = $email;
-        $this->apiParas["email"] = $email;
+        $this->apiParas['email'] = $email;
+
+        return $this;
     }
 
     public function getFax()
     {
-        return $this->fax;
+        return $this->apiParas['fax'];
     }
 
     public function setFax($fax)
     {
-        $this->fax = $fax;
-        $this->apiParas["fax"] = $fax;
+        $this->apiParas['fax'] = $fax;
+
+        return $this;
     }
 
     public function getAfterSaleContacts()
     {
-        return $this->afterSaleContacts;
+        return $this->apiParas['afterSaleContacts'];
     }
 
     public function setAfterSaleContacts($afterSaleContacts)
     {
-        $this->afterSaleContacts = $afterSaleContacts;
-        $this->apiParas["afterSaleContacts"] = $afterSaleContacts;
+        $this->apiParas['afterSaleContacts'] = $afterSaleContacts;
+
+        return $this;
     }
 
     public function getAfterSaleAddress()
     {
-        return $this->afterSaleAddress;
+        return $this->apiParas['afterSaleAddress'];
     }
 
     public function setAfterSaleAddress($afterSaleAddress)
     {
-        $this->afterSaleAddress = $afterSaleAddress;
-        $this->apiParas["afterSaleAddress"] = $afterSaleAddress;
+        $this->apiParas['afterSaleAddress'] = $afterSaleAddress;
+
+        return $this;
     }
 
     public function getAfterSalePhone()
     {
-        return $this->afterSalePhone;
+        return $this->apiParas['afterSalePhone'];
     }
 
     public function setAfterSalePhone($afterSalePhone)
     {
-        $this->afterSalePhone = $afterSalePhone;
-        $this->apiParas["afterSalePhone"] = $afterSalePhone;
+        $this->apiParas['afterSalePhone'] = $afterSalePhone;
+
+        return $this;
     }
 
     public function getBdOwnerNo()
     {
-        return $this->bdOwnerNo;
+        return $this->apiParas['bdOwnerNo'];
     }
 
     public function setBdOwnerNo($bdOwnerNo)
     {
-        $this->bdOwnerNo = $bdOwnerNo;
-        $this->apiParas["bdOwnerNo"] = $bdOwnerNo;
+        $this->apiParas['bdOwnerNo'] = $bdOwnerNo;
+
+        return $this;
     }
 
     public function getReserve1()
     {
-        return $this->reserve1;
+        return $this->apiParas['reserve1'];
     }
 
     public function setReserve1($reserve1)
     {
-        $this->reserve1 = $reserve1;
-        $this->apiParas["reserve1"] = $reserve1;
+        $this->apiParas['reserve1'] = $reserve1;
+
+        return $this;
     }
 
     public function getReserve2()
     {
-        return $this->reserve2;
+        return $this->apiParas['reserve2'];
     }
 
     public function setReserve2($reserve2)
     {
-        $this->reserve2 = $reserve2;
-        $this->apiParas["reserve2"] = $reserve2;
+        $this->apiParas['reserve2'] = $reserve2;
+
+        return $this;
     }
 
     public function getReserve3()
     {
-        return $this->reserve3;
+        return $this->apiParas['reserve3'];
     }
 
     public function setReserve3($reserve3)
     {
-        $this->reserve3 = $reserve3;
-        $this->apiParas["reserve3"] = $reserve3;
+        $this->apiParas['reserve3'] = $reserve3;
+
+        return $this;
     }
 
     public function getReserve4()
     {
-        return $this->reserve4;
+        return $this->apiParas['reserve4'];
     }
 
     public function setReserve4($reserve4)
     {
-        $this->reserve4 = $reserve4;
-        $this->apiParas["reserve4"] = $reserve4;
+        $this->apiParas['reserve4'] = $reserve4;
+
+        return $this;
     }
 
     public function getReserve5()
     {
-        return $this->reserve5;
+        return $this->apiParas['reserve5'];
     }
 
     public function setReserve5($reserve5)
     {
-        $this->reserve5 = $reserve5;
-        $this->apiParas["reserve5"] = $reserve5;
+        $this->apiParas['reserve5'] = $reserve5;
+
+        return $this;
     }
 
     public function getReserve6()
     {
-        return $this->reserve6;
+        return $this->apiParas['reserve6'];
     }
 
     public function setReserve6($reserve6)
     {
-        $this->reserve6 = $reserve6;
-        $this->apiParas["reserve6"] = $reserve6;
+        $this->apiParas['reserve6'] = $reserve6;
+
+        return $this;
     }
 
     public function getReserve7()
     {
-        return $this->reserve7;
+        return $this->apiParas['reserve7'];
     }
 
     public function setReserve7($reserve7)
     {
-        $this->reserve7 = $reserve7;
-        $this->apiParas["reserve7"] = $reserve7;
+        $this->apiParas['reserve7'] = $reserve7;
+
+        return $this;
     }
 
     public function getReserve8()
     {
-        return $this->reserve8;
+        return $this->apiParas['reserve8'];
     }
 
     public function setReserve8($reserve8)
     {
-        $this->reserve8 = $reserve8;
-        $this->apiParas["reserve8"] = $reserve8;
+        $this->apiParas['reserve8'] = $reserve8;
+
+        return $this;
     }
 
     public function getReserve9()
     {
-        return $this->reserve9;
+        return $this->apiParas['reserve9'];
     }
 
     public function setReserve9($reserve9)
     {
-        $this->reserve9 = $reserve9;
-        $this->apiParas["reserve9"] = $reserve9;
+        $this->apiParas['reserve9'] = $reserve9;
+
+        return $this;
     }
 
     public function getReserve10()
     {
-        return $this->reserve10;
+        return $this->apiParas['reserve10'];
     }
 
     public function setReserve10($reserve10)
     {
-        $this->reserve10 = $reserve10;
-        $this->apiParas["reserve10"] = $reserve10;
+        $this->apiParas['reserve10'] = $reserve10;
+
+        return $this;
     }
 
     public function getOutstoreRules()
     {
-        return $this->outstoreRules;
+        return $this->apiParas['outstoreRules'];
     }
 
     public function setOutstoreRules($outstoreRules)
     {
-        $this->outstoreRules = $outstoreRules;
-        $this->apiParas["outstoreRules"] = $outstoreRules;
+        $this->apiParas['outstoreRules'] = $outstoreRules;
+
+        return $this;
     }
 }

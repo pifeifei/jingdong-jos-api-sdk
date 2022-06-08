@@ -16,11 +16,11 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-if (!defined("LOGCONSOLE")) {
-    define("LOGCONSOLE", __DIR__ . "/../../../tde.log");
+if (!defined('LOGCONSOLE')) {
+    define('LOGCONSOLE', __DIR__.'/../../../tde.log');
 }
-if (!defined("LOGLEVEL")) {
-    define("LOGLEVEL", Logger::DEBUG);
+if (!defined('LOGLEVEL')) {
+    define('LOGLEVEL', Logger::DEBUG);
 }
 
 class VoucherClient
@@ -36,6 +36,7 @@ class VoucherClient
 
     /**
      * VoucherClient constructor.
+     *
      * @param JosBaseInfo $josBaseInfo
      */
     public function __construct($josBaseInfo)
@@ -50,46 +51,50 @@ class VoucherClient
         $this->josBaseInfo = $josBaseInfo;
     }
 
-
     /**
-     * @return Token
      * @throws \ACES\Common\Exception\InvalidTokenException
      * @throws \ACES\Common\Exception\MalformedException
+     *
+     * @return Token
      */
     public function requestVoucher()
     {
         $voucherBase64Json = $this->requestVoucherString();
         $voucherJson = base64_decode($voucherBase64Json);
         $this->voucher = Token::parseFromString($voucherJson, true);
+
         return $this->voucher;
     }
+
     public function requestVoucherString()
     {
-        $requestUrl = $this->josBaseInfo->getServerUrl() . '/routerjson';
+        $requestUrl = $this->josBaseInfo->getServerUrl().'/routerjson';
         $josVoucherInfoGetRequest = new JosVoucherInfoGetRequest($this->josBaseInfo->getAccessToken());
         $payload = $josVoucherInfoGetRequest->toFormParams($this->josBaseInfo);
-        $this->log->info('voucher request url -> ' . $requestUrl . ', payload -> ' . json_encode($payload));
+        $this->log->info('voucher request url -> '.$requestUrl.', payload -> '.json_encode($payload));
         $jsonResponse = HttpsClient::postForm($requestUrl, $payload);
         $response = JosBaseResponse::parse($jsonResponse, new JosVoucherInfoGetResponse());
 
         if (!$response) {
             throw new Exception('request jos error, while request voucher');
         }
-        if ($response->getCode() !== 0) {
-            throw new JosGwException('request jos error, while request voucher, code=' . $response->getCode() . ', message=' . $response->getEnDesc());
+        if (0 !== $response->getCode()) {
+            throw new JosGwException('request jos error, while request voucher, code='.$response->getCode().', message='.$response->getEnDesc());
         }
         $voucherResponse = $response->getResponse();
         if (!$voucherResponse) {
             throw new VoucherInfoGetException('request voucher failed');
         }
-        if ($voucherResponse->getErrorCode() !== '0') {
-            throw new VoucherInfoGetException('request voucher failed, code=' . $voucherResponse->getErrorCode() . ', message=' . $voucherResponse->getErrorMsg());
+        if ('0' !== $voucherResponse->getErrorCode()) {
+            throw new VoucherInfoGetException('request voucher failed, code='.$voucherResponse->getErrorCode().', message='.$voucherResponse->getErrorMsg());
         }
         $voucherBase64Json = $voucherResponse->getData()->getVoucher();
-        $this->log->info("request voucher success, voucher=" . $voucherBase64Json);
+        $this->log->info('request voucher success, voucher='.$voucherBase64Json);
         $this->voucherStr = $voucherBase64Json;
-        return$voucherBase64Json;
+
+        return $voucherBase64Json;
     }
+
     /**
      * @return Token
      */
@@ -119,7 +124,7 @@ class VoucherClient
      */
     public function getTid()
     {
-        return $this->getVoucher() == null ? "Unknown TID" : $this->getVoucher()->get_id();
+        return null == $this->getVoucher() ? 'Unknown TID' : $this->getVoucher()->get_id();
     }
 
     /**
@@ -127,7 +132,7 @@ class VoucherClient
      */
     public function getServiceName()
     {
-        return $this->getVoucher() == null ? "Unknown Service" : $this->getVoucher()->get_service_name();
+        return null == $this->getVoucher() ? 'Unknown Service' : $this->getVoucher()->get_service_name();
     }
 
     /**
@@ -135,7 +140,7 @@ class VoucherClient
      */
     public function getOriginType()
     {
-        return $this->getVoucher() == null ? "Unknown OriginType" : $this->getVoucher()->get_service_name();
+        return null == $this->getVoucher() ? 'Unknown OriginType' : $this->getVoucher()->get_service_name();
     }
 
     /**

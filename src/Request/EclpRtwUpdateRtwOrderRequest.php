@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class EclpRtwUpdateRtwOrderRequest
+class EclpRtwUpdateRtwOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $eclpRtwNo;
-    private $isvRtwNum;
-    private $ownerNo;
-    private $packageNo;
-    private $shipperName;
-    private $senderName;
-    private $senderTelPhone;
-    private $senderMobilePhone;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.rtw.updateRtwOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.rtw.updateRtwOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getEclpRtwNo()
     {
-        return $this->eclpRtwNo;
+        return $this->apiParas['eclpRtwNo'];
     }
 
     public function setEclpRtwNo($eclpRtwNo)
     {
-        $this->eclpRtwNo = $eclpRtwNo;
-        $this->apiParas["eclpRtwNo"] = $eclpRtwNo;
+        $this->apiParas['eclpRtwNo'] = $eclpRtwNo;
+
+        return $this;
     }
 
     public function getIsvRtwNum()
     {
-        return $this->isvRtwNum;
+        return $this->apiParas['isvRtwNum'];
     }
 
     public function setIsvRtwNum($isvRtwNum)
     {
-        $this->isvRtwNum = $isvRtwNum;
-        $this->apiParas["isvRtwNum"] = $isvRtwNum;
+        $this->apiParas['isvRtwNum'] = $isvRtwNum;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getPackageNo()
     {
-        return $this->packageNo;
+        return $this->apiParas['packageNo'];
     }
 
     public function setPackageNo($packageNo)
     {
-        $this->packageNo = $packageNo;
-        $this->apiParas["packageNo"] = $packageNo;
+        $this->apiParas['packageNo'] = $packageNo;
+
+        return $this;
     }
 
     public function getShipperName()
     {
-        return $this->shipperName;
+        return $this->apiParas['shipperName'];
     }
 
     public function setShipperName($shipperName)
     {
-        $this->shipperName = $shipperName;
-        $this->apiParas["shipperName"] = $shipperName;
+        $this->apiParas['shipperName'] = $shipperName;
+
+        return $this;
     }
 
     public function getSenderName()
     {
-        return $this->senderName;
+        return $this->apiParas['senderName'];
     }
 
     public function setSenderName($senderName)
     {
-        $this->senderName = $senderName;
-        $this->apiParas["senderName"] = $senderName;
+        $this->apiParas['senderName'] = $senderName;
+
+        return $this;
     }
 
     public function getSenderTelPhone()
     {
-        return $this->senderTelPhone;
+        return $this->apiParas['senderTelPhone'];
     }
 
     public function setSenderTelPhone($senderTelPhone)
     {
-        $this->senderTelPhone = $senderTelPhone;
-        $this->apiParas["senderTelPhone"] = $senderTelPhone;
+        $this->apiParas['senderTelPhone'] = $senderTelPhone;
+
+        return $this;
     }
 
     public function getSenderMobilePhone()
     {
-        return $this->senderMobilePhone;
+        return $this->apiParas['senderMobilePhone'];
     }
 
     public function setSenderMobilePhone($senderMobilePhone)
     {
-        $this->senderMobilePhone = $senderMobilePhone;
-        $this->apiParas["senderMobilePhone"] = $senderMobilePhone;
+        $this->apiParas['senderMobilePhone'] = $senderMobilePhone;
+
+        return $this;
     }
 }

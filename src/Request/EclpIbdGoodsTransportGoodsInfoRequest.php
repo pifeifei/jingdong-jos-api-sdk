@@ -2,546 +2,518 @@
 
 namespace ACES\Request;
 
-
-class EclpIbdGoodsTransportGoodsInfoRequest
+class EclpIbdGoodsTransportGoodsInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $isvGoodsNo;
-    private $spGodosNo;
-    private $barcodes;
-    private $thirdCategoryNo;
-    private $goodsName;
-    private $brandNo;
-    private $brandName;
-    private $grossWeight;
-    private $netWeight;
-    private $length;
-    private $width;
-    private $height;
-    private $safeDays;
-    private $batch;
-    private $overseaPurchase;
-    private $qiRecord;
-    private $customRecord;
-    private $pattern;
-    private $ccProvider;
-    private $bondedArea;
-    private $sellerRecord;
-    private $batAttrIds;
-    private $needJDRecord;
-    private $modelNumber;
-    private $spe;
-    private $vatRate;
-    private $taxRate;
-    private $taxNumberPost;
-    private $postRate;
-    private $hsCode;
-    private $country;
-    private $qiCountry;
-    private $flag;
-    private $legalUnit1;
-    private $legalAmount1;
-    private $legalUnit2;
-    private $legalAmount2;
-    private $measurement;
-    private $qiMeasurement;
-    private $delivery;
-    private $hgsbys;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.ibd.goods.transportGoodsInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.ibd.goods.transportGoodsInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getIsvGoodsNo()
     {
-        return $this->isvGoodsNo;
+        return $this->apiParas['isvGoodsNo'];
     }
 
     public function setIsvGoodsNo($isvGoodsNo)
     {
-        $this->isvGoodsNo = $isvGoodsNo;
-        $this->apiParas["isvGoodsNo"] = $isvGoodsNo;
+        $this->apiParas['isvGoodsNo'] = $isvGoodsNo;
+
+        return $this;
     }
 
     public function getSpGodosNo()
     {
-        return $this->spGodosNo;
+        return $this->apiParas['spGodosNo'];
     }
 
     public function setSpGodosNo($spGodosNo)
     {
-        $this->spGodosNo = $spGodosNo;
-        $this->apiParas["spGodosNo"] = $spGodosNo;
+        $this->apiParas['spGodosNo'] = $spGodosNo;
+
+        return $this;
     }
 
     public function getBarcodes()
     {
-        return $this->barcodes;
+        return $this->apiParas['barcodes'];
     }
 
     public function setBarcodes($barcodes)
     {
-        $this->barcodes = $barcodes;
-        $this->apiParas["barcodes"] = $barcodes;
+        $this->apiParas['barcodes'] = $barcodes;
+
+        return $this;
     }
 
     public function getThirdCategoryNo()
     {
-        return $this->thirdCategoryNo;
+        return $this->apiParas['thirdCategoryNo'];
     }
 
     public function setThirdCategoryNo($thirdCategoryNo)
     {
-        $this->thirdCategoryNo = $thirdCategoryNo;
-        $this->apiParas["thirdCategoryNo"] = $thirdCategoryNo;
+        $this->apiParas['thirdCategoryNo'] = $thirdCategoryNo;
+
+        return $this;
     }
 
     public function getGoodsName()
     {
-        return $this->goodsName;
+        return $this->apiParas['goodsName'];
     }
 
     public function setGoodsName($goodsName)
     {
-        $this->goodsName = $goodsName;
-        $this->apiParas["goodsName"] = $goodsName;
+        $this->apiParas['goodsName'] = $goodsName;
+
+        return $this;
     }
 
     public function getBrandNo()
     {
-        return $this->brandNo;
+        return $this->apiParas['brandNo'];
     }
 
     public function setBrandNo($brandNo)
     {
-        $this->brandNo = $brandNo;
-        $this->apiParas["brandNo"] = $brandNo;
+        $this->apiParas['brandNo'] = $brandNo;
+
+        return $this;
     }
 
     public function getBrandName()
     {
-        return $this->brandName;
+        return $this->apiParas['brandName'];
     }
 
     public function setBrandName($brandName)
     {
-        $this->brandName = $brandName;
-        $this->apiParas["brandName"] = $brandName;
+        $this->apiParas['brandName'] = $brandName;
+
+        return $this;
     }
 
     public function getGrossWeight()
     {
-        return $this->grossWeight;
+        return $this->apiParas['grossWeight'];
     }
 
     public function setGrossWeight($grossWeight)
     {
-        $this->grossWeight = $grossWeight;
-        $this->apiParas["grossWeight"] = $grossWeight;
+        $this->apiParas['grossWeight'] = $grossWeight;
+
+        return $this;
     }
 
     public function getNetWeight()
     {
-        return $this->netWeight;
+        return $this->apiParas['netWeight'];
     }
 
     public function setNetWeight($netWeight)
     {
-        $this->netWeight = $netWeight;
-        $this->apiParas["netWeight"] = $netWeight;
+        $this->apiParas['netWeight'] = $netWeight;
+
+        return $this;
     }
 
     public function getLength()
     {
-        return $this->length;
+        return $this->apiParas['length'];
     }
 
     public function setLength($length)
     {
-        $this->length = $length;
-        $this->apiParas["length"] = $length;
+        $this->apiParas['length'] = $length;
+
+        return $this;
     }
 
     public function getWidth()
     {
-        return $this->width;
+        return $this->apiParas['width'];
     }
 
     public function setWidth($width)
     {
-        $this->width = $width;
-        $this->apiParas["width"] = $width;
+        $this->apiParas['width'] = $width;
+
+        return $this;
     }
 
     public function getHeight()
     {
-        return $this->height;
+        return $this->apiParas['height'];
     }
 
     public function setHeight($height)
     {
-        $this->height = $height;
-        $this->apiParas["height"] = $height;
+        $this->apiParas['height'] = $height;
+
+        return $this;
     }
 
     public function getSafeDays()
     {
-        return $this->safeDays;
+        return $this->apiParas['safeDays'];
     }
 
     public function setSafeDays($safeDays)
     {
-        $this->safeDays = $safeDays;
-        $this->apiParas["safeDays"] = $safeDays;
+        $this->apiParas['safeDays'] = $safeDays;
+
+        return $this;
     }
 
     public function getBatch()
     {
-        return $this->batch;
+        return $this->apiParas['batch'];
     }
 
     public function setBatch($batch)
     {
-        $this->batch = $batch;
-        $this->apiParas["batch"] = $batch;
+        $this->apiParas['batch'] = $batch;
+
+        return $this;
     }
 
     public function getOverseaPurchase()
     {
-        return $this->overseaPurchase;
+        return $this->apiParas['overseaPurchase'];
     }
 
     public function setOverseaPurchase($overseaPurchase)
     {
-        $this->overseaPurchase = $overseaPurchase;
-        $this->apiParas["overseaPurchase"] = $overseaPurchase;
+        $this->apiParas['overseaPurchase'] = $overseaPurchase;
+
+        return $this;
     }
 
     public function getQiRecord()
     {
-        return $this->qiRecord;
+        return $this->apiParas['qiRecord'];
     }
 
     public function setQiRecord($qiRecord)
     {
-        $this->qiRecord = $qiRecord;
-        $this->apiParas["qiRecord"] = $qiRecord;
+        $this->apiParas['qiRecord'] = $qiRecord;
+
+        return $this;
     }
 
     public function getCustomRecord()
     {
-        return $this->customRecord;
+        return $this->apiParas['customRecord'];
     }
 
     public function setCustomRecord($customRecord)
     {
-        $this->customRecord = $customRecord;
-        $this->apiParas["customRecord"] = $customRecord;
+        $this->apiParas['customRecord'] = $customRecord;
+
+        return $this;
     }
 
     public function getPattern()
     {
-        return $this->pattern;
+        return $this->apiParas['pattern'];
     }
 
     public function setPattern($pattern)
     {
-        $this->pattern = $pattern;
-        $this->apiParas["pattern"] = $pattern;
+        $this->apiParas['pattern'] = $pattern;
+
+        return $this;
     }
 
     public function getCcProvider()
     {
-        return $this->ccProvider;
+        return $this->apiParas['ccProvider'];
     }
 
     public function setCcProvider($ccProvider)
     {
-        $this->ccProvider = $ccProvider;
-        $this->apiParas["ccProvider"] = $ccProvider;
+        $this->apiParas['ccProvider'] = $ccProvider;
+
+        return $this;
     }
 
     public function getBondedArea()
     {
-        return $this->bondedArea;
+        return $this->apiParas['bondedArea'];
     }
 
     public function setBondedArea($bondedArea)
     {
-        $this->bondedArea = $bondedArea;
-        $this->apiParas["bondedArea"] = $bondedArea;
+        $this->apiParas['bondedArea'] = $bondedArea;
+
+        return $this;
     }
 
     public function getSellerRecord()
     {
-        return $this->sellerRecord;
+        return $this->apiParas['sellerRecord'];
     }
 
     public function setSellerRecord($sellerRecord)
     {
-        $this->sellerRecord = $sellerRecord;
-        $this->apiParas["sellerRecord"] = $sellerRecord;
+        $this->apiParas['sellerRecord'] = $sellerRecord;
+
+        return $this;
     }
 
     public function getBatAttrIds()
     {
-        return $this->batAttrIds;
+        return $this->apiParas['batAttrIds'];
     }
 
     public function setBatAttrIds($batAttrIds)
     {
-        $this->batAttrIds = $batAttrIds;
-        $this->apiParas["batAttrIds"] = $batAttrIds;
+        $this->apiParas['batAttrIds'] = $batAttrIds;
+
+        return $this;
     }
 
     public function getNeedJDRecord()
     {
-        return $this->needJDRecord;
+        return $this->apiParas['needJDRecord'];
     }
 
     public function setNeedJDRecord($needJDRecord)
     {
-        $this->needJDRecord = $needJDRecord;
-        $this->apiParas["needJDRecord"] = $needJDRecord;
+        $this->apiParas['needJDRecord'] = $needJDRecord;
+
+        return $this;
     }
 
     public function getModelNumber()
     {
-        return $this->modelNumber;
+        return $this->apiParas['modelNumber'];
     }
 
     public function setModelNumber($modelNumber)
     {
-        $this->modelNumber = $modelNumber;
-        $this->apiParas["modelNumber"] = $modelNumber;
+        $this->apiParas['modelNumber'] = $modelNumber;
+
+        return $this;
     }
 
     public function getSpe()
     {
-        return $this->spe;
+        return $this->apiParas['spe'];
     }
 
     public function setSpe($spe)
     {
-        $this->spe = $spe;
-        $this->apiParas["spe"] = $spe;
+        $this->apiParas['spe'] = $spe;
+
+        return $this;
     }
 
     public function getVatRate()
     {
-        return $this->vatRate;
+        return $this->apiParas['vatRate'];
     }
 
     public function setVatRate($vatRate)
     {
-        $this->vatRate = $vatRate;
-        $this->apiParas["vatRate"] = $vatRate;
+        $this->apiParas['vatRate'] = $vatRate;
+
+        return $this;
     }
 
     public function getTaxRate()
     {
-        return $this->taxRate;
+        return $this->apiParas['taxRate'];
     }
 
     public function setTaxRate($taxRate)
     {
-        $this->taxRate = $taxRate;
-        $this->apiParas["taxRate"] = $taxRate;
+        $this->apiParas['taxRate'] = $taxRate;
+
+        return $this;
     }
 
     public function getTaxNumberPost()
     {
-        return $this->taxNumberPost;
+        return $this->apiParas['taxNumberPost'];
     }
 
     public function setTaxNumberPost($taxNumberPost)
     {
-        $this->taxNumberPost = $taxNumberPost;
-        $this->apiParas["taxNumberPost"] = $taxNumberPost;
+        $this->apiParas['taxNumberPost'] = $taxNumberPost;
+
+        return $this;
     }
 
     public function getPostRate()
     {
-        return $this->postRate;
+        return $this->apiParas['postRate'];
     }
 
     public function setPostRate($postRate)
     {
-        $this->postRate = $postRate;
-        $this->apiParas["postRate"] = $postRate;
+        $this->apiParas['postRate'] = $postRate;
+
+        return $this;
     }
 
     public function getHsCode()
     {
-        return $this->hsCode;
+        return $this->apiParas['hsCode'];
     }
 
     public function setHsCode($hsCode)
     {
-        $this->hsCode = $hsCode;
-        $this->apiParas["hsCode"] = $hsCode;
+        $this->apiParas['hsCode'] = $hsCode;
+
+        return $this;
     }
 
     public function getCountry()
     {
-        return $this->country;
+        return $this->apiParas['country'];
     }
 
     public function setCountry($country)
     {
-        $this->country = $country;
-        $this->apiParas["country"] = $country;
+        $this->apiParas['country'] = $country;
+
+        return $this;
     }
 
     public function getQiCountry()
     {
-        return $this->qiCountry;
+        return $this->apiParas['qiCountry'];
     }
 
     public function setQiCountry($qiCountry)
     {
-        $this->qiCountry = $qiCountry;
-        $this->apiParas["qiCountry"] = $qiCountry;
+        $this->apiParas['qiCountry'] = $qiCountry;
+
+        return $this;
     }
 
     public function getFlag()
     {
-        return $this->flag;
+        return $this->apiParas['flag'];
     }
 
     public function setFlag($flag)
     {
-        $this->flag = $flag;
-        $this->apiParas["flag"] = $flag;
+        $this->apiParas['flag'] = $flag;
+
+        return $this;
     }
 
     public function getLegalUnit1()
     {
-        return $this->legalUnit1;
+        return $this->apiParas['legalUnit1'];
     }
 
     public function setLegalUnit1($legalUnit1)
     {
-        $this->legalUnit1 = $legalUnit1;
-        $this->apiParas["legalUnit1"] = $legalUnit1;
+        $this->apiParas['legalUnit1'] = $legalUnit1;
+
+        return $this;
     }
 
     public function getLegalAmount1()
     {
-        return $this->legalAmount1;
+        return $this->apiParas['legalAmount1'];
     }
 
     public function setLegalAmount1($legalAmount1)
     {
-        $this->legalAmount1 = $legalAmount1;
-        $this->apiParas["legalAmount1"] = $legalAmount1;
+        $this->apiParas['legalAmount1'] = $legalAmount1;
+
+        return $this;
     }
 
     public function getLegalUnit2()
     {
-        return $this->legalUnit2;
+        return $this->apiParas['legalUnit2'];
     }
 
     public function setLegalUnit2($legalUnit2)
     {
-        $this->legalUnit2 = $legalUnit2;
-        $this->apiParas["legalUnit2"] = $legalUnit2;
+        $this->apiParas['legalUnit2'] = $legalUnit2;
+
+        return $this;
     }
 
     public function getLegalAmount2()
     {
-        return $this->legalAmount2;
+        return $this->apiParas['legalAmount2'];
     }
 
     public function setLegalAmount2($legalAmount2)
     {
-        $this->legalAmount2 = $legalAmount2;
-        $this->apiParas["legalAmount2"] = $legalAmount2;
+        $this->apiParas['legalAmount2'] = $legalAmount2;
+
+        return $this;
     }
 
     public function getMeasurement()
     {
-        return $this->measurement;
+        return $this->apiParas['measurement'];
     }
 
     public function setMeasurement($measurement)
     {
-        $this->measurement = $measurement;
-        $this->apiParas["measurement"] = $measurement;
+        $this->apiParas['measurement'] = $measurement;
+
+        return $this;
     }
 
     public function getQiMeasurement()
     {
-        return $this->qiMeasurement;
+        return $this->apiParas['qiMeasurement'];
     }
 
     public function setQiMeasurement($qiMeasurement)
     {
-        $this->qiMeasurement = $qiMeasurement;
-        $this->apiParas["qiMeasurement"] = $qiMeasurement;
+        $this->apiParas['qiMeasurement'] = $qiMeasurement;
+
+        return $this;
     }
 
     public function getDelivery()
     {
-        return $this->delivery;
+        return $this->apiParas['delivery'];
     }
 
     public function setDelivery($delivery)
     {
-        $this->delivery = $delivery;
-        $this->apiParas["delivery"] = $delivery;
+        $this->apiParas['delivery'] = $delivery;
+
+        return $this;
     }
 
     public function getHgsbys()
     {
-        return $this->hgsbys;
+        return $this->apiParas['hgsbys'];
     }
 
     public function setHgsbys($hgsbys)
     {
-        $this->hgsbys = $hgsbys;
-        $this->apiParas["hgsbys"] = $hgsbys;
+        $this->apiParas['hgsbys'] = $hgsbys;
+
+        return $this;
     }
 }

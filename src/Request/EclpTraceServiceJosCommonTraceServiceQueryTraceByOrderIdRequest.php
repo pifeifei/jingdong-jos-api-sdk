@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpTraceServiceJosCommonTraceServiceQueryTraceByOrderIdRequest
+class EclpTraceServiceJosCommonTraceServiceQueryTraceByOrderIdRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $orderId;
-    private $source;
-    private $sign;
-    private $t;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.trace.service.jos.CommonTraceService.queryTraceByOrderId";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.trace.service.jos.CommonTraceService.queryTraceByOrderId';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOrderId()
     {
-        return $this->orderId;
+        return $this->apiParas['orderId'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-        $this->apiParas["orderId"] = $orderId;
+        $this->apiParas['orderId'] = $orderId;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getSign()
     {
-        return $this->sign;
+        return $this->apiParas['sign'];
     }
 
     public function setSign($sign)
     {
-        $this->sign = $sign;
-        $this->apiParas["sign"] = $sign;
+        $this->apiParas['sign'] = $sign;
+
+        return $this;
     }
 
     public function getT()
     {
-        return $this->t;
+        return $this->apiParas['t'];
     }
 
     public function setT($t)
     {
-        $this->t = $t;
-        $this->apiParas["t"] = $t;
+        $this->apiParas['t'] = $t;
+
+        return $this;
     }
 }

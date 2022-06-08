@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterQueryWarehouseRequest
+class EclpMasterQueryWarehouseRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $warehouseNos;
-    private $status;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.queryWarehouse";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.queryWarehouse';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getWarehouseNos()
     {
-        return $this->warehouseNos;
+        return $this->apiParas['warehouseNos'];
     }
 
     public function setWarehouseNos($warehouseNos)
     {
-        $this->warehouseNos = $warehouseNos;
-        $this->apiParas["warehouseNos"] = $warehouseNos;
+        $this->apiParas['warehouseNos'] = $warehouseNos;
+
+        return $this;
     }
 
     public function getStatus()
     {
-        return $this->status;
+        return $this->apiParas['status'];
     }
 
     public function setStatus($status)
     {
-        $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
+
+        return $this;
     }
 }

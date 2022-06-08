@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class EclpFeeQueryFeeAccountDetailWithPageRequest
+class EclpFeeQueryFeeAccountDetailWithPageRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $accountNo;
-    private $billDayStart;
-    private $billDayEnd;
-    private $currentPage;
-    private $pageSize;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.fee.queryFeeAccountDetailWithPage";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.fee.queryFeeAccountDetailWithPage';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getAccountNo()
     {
-        return $this->accountNo;
+        return $this->apiParas['accountNo'];
     }
 
     public function setAccountNo($accountNo)
     {
-        $this->accountNo = $accountNo;
-        $this->apiParas["accountNo"] = $accountNo;
+        $this->apiParas['accountNo'] = $accountNo;
+
+        return $this;
     }
 
     public function getBillDayStart()
     {
-        return $this->billDayStart;
+        return $this->apiParas['billDayStart'];
     }
 
     public function setBillDayStart($billDayStart)
     {
-        $this->billDayStart = $billDayStart;
-        $this->apiParas["billDayStart"] = $billDayStart;
+        $this->apiParas['billDayStart'] = $billDayStart;
+
+        return $this;
     }
 
     public function getBillDayEnd()
     {
-        return $this->billDayEnd;
+        return $this->apiParas['billDayEnd'];
     }
 
     public function setBillDayEnd($billDayEnd)
     {
-        $this->billDayEnd = $billDayEnd;
-        $this->apiParas["billDayEnd"] = $billDayEnd;
+        $this->apiParas['billDayEnd'] = $billDayEnd;
+
+        return $this;
     }
 
     public function getCurrentPage()
     {
-        return $this->currentPage;
+        return $this->apiParas['currentPage'];
     }
 
     public function setCurrentPage($currentPage)
     {
-        $this->currentPage = $currentPage;
-        $this->apiParas["currentPage"] = $currentPage;
+        $this->apiParas['currentPage'] = $currentPage;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 }

@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class EclpGoodsQueryGoodsByPageAndTimeRequest
+class EclpGoodsQueryGoodsByPageAndTimeRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $isvGoodsNos;
-    private $goodsNos;
-    private $pageNo;
-    private $pageSize;
-    private $updateTimeStart;
-    private $updateTimeEnd;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.goods.queryGoodsByPageAndTime";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.goods.queryGoodsByPageAndTime';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getIsvGoodsNos()
     {
-        return $this->isvGoodsNos;
+        return $this->apiParas['isvGoodsNos'];
     }
 
     public function setIsvGoodsNos($isvGoodsNos)
     {
-        $this->isvGoodsNos = $isvGoodsNos;
-        $this->apiParas["isvGoodsNos"] = $isvGoodsNos;
+        $this->apiParas['isvGoodsNos'] = $isvGoodsNos;
+
+        return $this;
     }
 
     public function getGoodsNos()
     {
-        return $this->goodsNos;
+        return $this->apiParas['goodsNos'];
     }
 
     public function setGoodsNos($goodsNos)
     {
-        $this->goodsNos = $goodsNos;
-        $this->apiParas["goodsNos"] = $goodsNos;
+        $this->apiParas['goodsNos'] = $goodsNos;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getUpdateTimeStart()
     {
-        return $this->updateTimeStart;
+        return $this->apiParas['updateTimeStart'];
     }
 
     public function setUpdateTimeStart($updateTimeStart)
     {
-        $this->updateTimeStart = $updateTimeStart;
-        $this->apiParas["updateTimeStart"] = $updateTimeStart;
+        $this->apiParas['updateTimeStart'] = $updateTimeStart;
+
+        return $this;
     }
 
     public function getUpdateTimeEnd()
     {
-        return $this->updateTimeEnd;
+        return $this->apiParas['updateTimeEnd'];
     }
 
     public function setUpdateTimeEnd($updateTimeEnd)
     {
-        $this->updateTimeEnd = $updateTimeEnd;
-        $this->apiParas["updateTimeEnd"] = $updateTimeEnd;
+        $this->apiParas['updateTimeEnd'] = $updateTimeEnd;
+
+        return $this;
     }
 }

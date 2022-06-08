@@ -2,44 +2,15 @@
 
 namespace ACES\Request;
 
-
-class EclpGoodsAddGoodsFormulaRequest
+class EclpGoodsAddGoodsFormulaRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $goodsFormulaMain;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.goods.addGoodsFormula";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.goods.addGoodsFormula';
     }
 
     public function check()
     {
-    }
-
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
     }
 
     public function getGoodsFormulaMain()
@@ -50,5 +21,7 @@ class EclpGoodsAddGoodsFormulaRequest
     public function setGoodsFormulaMain($goodsFormulaMain)
     {
         $this->apiParas['goodsFormulaMain'] = $goodsFormulaMain;
+
+        return $this;
     }
 }

@@ -2,17 +2,14 @@
 
 namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 
-
-
-
 class Value
 {
-    private $params = array();
+    private $params = [];
     private $customProperty;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.ldop.oms.dto.CustomerPropertyRequest";
+        $this->params['@type'] = 'com.jd.ldop.oms.dto.CustomerPropertyRequest';
     }
 
     public function getCustomProperty()
@@ -25,7 +22,7 @@ class Value
         $this->params['customProperty'] = $customProperty;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class EclpAfsQueryServiceItemInfoByServiceNoRequest
+class EclpAfsQueryServiceItemInfoByServiceNoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $servicesNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.afs.queryServiceItemInfoByServiceNo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.afs.queryServiceItemInfoByServiceNo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getServicesNo()
     {
-        return $this->servicesNo;
+        return $this->apiParas['servicesNo'];
     }
 
     public function setServicesNo($servicesNo)
     {
-        $this->servicesNo = $servicesNo;
-        $this->apiParas["servicesNo"] = $servicesNo;
+        $this->apiParas['servicesNo'] = $servicesNo;
+
+        return $this;
     }
 }

@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class LdopAbnormalApprovalRequest
+class LdopAbnormalApprovalRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $customerCode;
-    private $deliveryId;
-    private $responseComment;
-    private $type;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.abnormal.approval";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.abnormal.approval';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getDeliveryId()
     {
-        return $this->deliveryId;
+        return $this->apiParas['deliveryId'];
     }
 
     public function setDeliveryId($deliveryId)
     {
-        $this->deliveryId = $deliveryId;
-        $this->apiParas["deliveryId"] = $deliveryId;
+        $this->apiParas['deliveryId'] = $deliveryId;
+
+        return $this;
     }
 
     public function getResponseComment()
     {
-        return $this->responseComment;
+        return $this->apiParas['responseComment'];
     }
 
     public function setResponseComment($responseComment)
     {
-        $this->responseComment = $responseComment;
-        $this->apiParas["responseComment"] = $responseComment;
+        $this->apiParas['responseComment'] = $responseComment;
+
+        return $this;
     }
 
     public function getType()
     {
-        return $this->type;
+        return $this->apiParas['type'];
     }
 
     public function setType($type)
     {
-        $this->type = $type;
-        $this->apiParas["type"] = $type;
+        $this->apiParas['type'] = $type;
+
+        return $this;
     }
 }

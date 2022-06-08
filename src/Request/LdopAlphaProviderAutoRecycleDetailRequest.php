@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderAutoRecycleDetailRequest
+class LdopAlphaProviderAutoRecycleDetailRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $providerCode;
-    private $startTime;
-    private $endTime;
-    private $page;
-    private $pageSize;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.autoRecycleDetail";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.autoRecycleDetail';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getProviderCode()
     {
-        return $this->providerCode;
+        return $this->apiParas['providerCode'];
     }
 
     public function setProviderCode($providerCode)
     {
-        $this->providerCode = $providerCode;
-        $this->apiParas["providerCode"] = $providerCode;
+        $this->apiParas['providerCode'] = $providerCode;
+
+        return $this;
     }
 
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->apiParas['startTime'];
     }
 
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
-        $this->apiParas["startTime"] = $startTime;
+        $this->apiParas['startTime'] = $startTime;
+
+        return $this;
     }
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->apiParas['endTime'];
     }
 
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
-        $this->apiParas["endTime"] = $endTime;
+        $this->apiParas['endTime'] = $endTime;
+
+        return $this;
     }
 
     public function getPage()
     {
-        return $this->page;
+        return $this->apiParas['page'];
     }
 
     public function setPage($page)
     {
-        $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 }

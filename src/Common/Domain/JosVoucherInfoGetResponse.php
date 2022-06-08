@@ -15,7 +15,7 @@ class JosVoucherInfoGetResponse extends JosBaseResponse
     }
 
     /**
-     * @param GetVoucherInfoRes|null $response
+     * @param null|GetVoucherInfoRes $response
      */
     public function setResponse($response)
     {

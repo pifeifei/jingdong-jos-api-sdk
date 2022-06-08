@@ -2,21 +2,18 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataSensitivePullData;
 
-
-
-
 class Param1
 {
-    private $params = array();
+    private $params = [];
     private $pin;
     private $objectId;
     private $parameters;
     private $cpCode;
     private $ewPrintDataInfos;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.jcloud.wms.printing.dto.SensitivePullDataReqDTO";
+        $this->params['@type'] = 'com.jd.jcloud.wms.printing.dto.SensitivePullDataReqDTO';
     }
 
     public function getPin()
@@ -57,14 +54,13 @@ class Param1
     public function setEwPrintDataInfos($ewPrintDataInfos)
     {
         $size = count($ewPrintDataInfos);
-        for ($i = 0; $i < $size; $i++) {
-            $ewPrintDataInfos [$i] = $ewPrintDataInfos [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $ewPrintDataInfos[$i] = $ewPrintDataInfos[$i]->getInstance();
         }
         $this->params['ewPrintDataInfos'] = $ewPrintDataInfos;
     }
 
-
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

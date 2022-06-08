@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpSerialQueryInStockSIDBySkuRequest
+class EclpSerialQueryInStockSIDBySkuRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $goodsNo;
-    private $pageNo;
-    private $pageSize;
-    private $queryType;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.serial.queryInStockSIDBySku";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.serial.queryInStockSIDBySku';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->apiParas['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
     {
-        $this->goodsNo = $goodsNo;
-        $this->apiParas["goodsNo"] = $goodsNo;
+        $this->apiParas['goodsNo'] = $goodsNo;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getQueryType()
     {
-        return $this->queryType;
+        return $this->apiParas['queryType'];
     }
 
     public function setQueryType($queryType)
     {
-        $this->queryType = $queryType;
-        $this->apiParas["queryType"] = $queryType;
+        $this->apiParas['queryType'] = $queryType;
+
+        return $this;
     }
 }

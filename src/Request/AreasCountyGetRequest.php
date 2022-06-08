@@ -2,24 +2,11 @@
 
 namespace ACES\Request;
 
-
-class AreasCountyGetRequest
+class AreasCountyGetRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $parentId;
-
     public function getApiMethodName()
     {
-        return "jingdong.areas.county.get";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.areas.county.get';
     }
 
     public function check()
@@ -29,27 +16,16 @@ class AreasCountyGetRequest
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
+        $this->{$key} = $value;
     }
 
     public function getParentId()
     {
-        return $this->parentId;
+        return $this->apiParas['parent_id'];
     }
 
     public function setParentId($parentId)
     {
-        $this->parentId = $parentId;
-        $this->apiParas["parent_id"] = $parentId;
+        $this->apiParas['parent_id'] = $parentId;
     }
 }

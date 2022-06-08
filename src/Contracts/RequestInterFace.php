@@ -12,6 +12,20 @@ interface RequestInterFace
     public function getApiMethodName();
 
     /**
+     * 获取全部数据
+     *
+     * @return array
+     */
+    public function all();
+
+    /**
+     * 参数的 json 字符串
+     *
+     * @return string
+     */
+    public function toJson();
+
+    /**
      * 参数的 json 字符串
      *
      * @deprecated toJson()
@@ -20,12 +34,6 @@ interface RequestInterFace
      */
     public function getApiParas();
 
-    /**
-     * 参数的 json 字符串
-     *
-     * @return string
-     */
-    public function toJson();
 
     /**
      * 默认版本

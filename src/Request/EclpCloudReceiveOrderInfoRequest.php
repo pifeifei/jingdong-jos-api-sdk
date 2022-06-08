@@ -2,186 +2,158 @@
 
 namespace ACES\Request;
 
-
-class EclpCloudReceiveOrderInfoRequest
+class EclpCloudReceiveOrderInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $machiningNo;
-    private $machiningType;
-    private $ownerNo;
-    private $skuNo;
-    private $productLevel;
-    private $qty;
-    private $destOwnerNo;
-    private $destSkuNo;
-    private $destQty;
-    private $destProductLevel;
-    private $warehouseNo;
-    private $tenantId;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.cloud.receiveOrderInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.cloud.receiveOrderInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getMachiningNo()
     {
-        return $this->machiningNo;
+        return $this->apiParas['machiningNo'];
     }
 
     public function setMachiningNo($machiningNo)
     {
-        $this->machiningNo = $machiningNo;
-        $this->apiParas["machiningNo"] = $machiningNo;
+        $this->apiParas['machiningNo'] = $machiningNo;
+
+        return $this;
     }
 
     public function getMachiningType()
     {
-        return $this->machiningType;
+        return $this->apiParas['machiningType'];
     }
 
     public function setMachiningType($machiningType)
     {
-        $this->machiningType = $machiningType;
-        $this->apiParas["machiningType"] = $machiningType;
+        $this->apiParas['machiningType'] = $machiningType;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getSkuNo()
     {
-        return $this->skuNo;
+        return $this->apiParas['skuNo'];
     }
 
     public function setSkuNo($skuNo)
     {
-        $this->skuNo = $skuNo;
-        $this->apiParas["skuNo"] = $skuNo;
+        $this->apiParas['skuNo'] = $skuNo;
+
+        return $this;
     }
 
     public function getProductLevel()
     {
-        return $this->productLevel;
+        return $this->apiParas['productLevel'];
     }
 
     public function setProductLevel($productLevel)
     {
-        $this->productLevel = $productLevel;
-        $this->apiParas["productLevel"] = $productLevel;
+        $this->apiParas['productLevel'] = $productLevel;
+
+        return $this;
     }
 
     public function getQty()
     {
-        return $this->qty;
+        return $this->apiParas['qty'];
     }
 
     public function setQty($qty)
     {
-        $this->qty = $qty;
-        $this->apiParas["qty"] = $qty;
+        $this->apiParas['qty'] = $qty;
+
+        return $this;
     }
 
     public function getDestOwnerNo()
     {
-        return $this->destOwnerNo;
+        return $this->apiParas['destOwnerNo'];
     }
 
     public function setDestOwnerNo($destOwnerNo)
     {
-        $this->destOwnerNo = $destOwnerNo;
-        $this->apiParas["destOwnerNo"] = $destOwnerNo;
+        $this->apiParas['destOwnerNo'] = $destOwnerNo;
+
+        return $this;
     }
 
     public function getDestSkuNo()
     {
-        return $this->destSkuNo;
+        return $this->apiParas['destSkuNo'];
     }
 
     public function setDestSkuNo($destSkuNo)
     {
-        $this->destSkuNo = $destSkuNo;
-        $this->apiParas["destSkuNo"] = $destSkuNo;
+        $this->apiParas['destSkuNo'] = $destSkuNo;
+
+        return $this;
     }
 
     public function getDestQty()
     {
-        return $this->destQty;
+        return $this->apiParas['destQty'];
     }
 
     public function setDestQty($destQty)
     {
-        $this->destQty = $destQty;
-        $this->apiParas["destQty"] = $destQty;
+        $this->apiParas['destQty'] = $destQty;
+
+        return $this;
     }
 
     public function getDestProductLevel()
     {
-        return $this->destProductLevel;
+        return $this->apiParas['destProductLevel'];
     }
 
     public function setDestProductLevel($destProductLevel)
     {
-        $this->destProductLevel = $destProductLevel;
-        $this->apiParas["destProductLevel"] = $destProductLevel;
+        $this->apiParas['destProductLevel'] = $destProductLevel;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getTenantId()
     {
-        return $this->tenantId;
+        return $this->apiParas['tenantId'];
     }
 
     public function setTenantId($tenantId)
     {
-        $this->tenantId = $tenantId;
-        $this->apiParas["tenantId"] = $tenantId;
+        $this->apiParas['tenantId'] = $tenantId;
+
+        return $this;
     }
 }

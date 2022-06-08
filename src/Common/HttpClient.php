@@ -2,26 +2,23 @@
 
 namespace ACES\Common;
 
-use RuntimeException;
 use ACES\Common\Exception as Ex;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use RuntimeException;
 
-if (!defined("LOGCONSOLE")) {
-    define("LOGCONSOLE", __DIR__ . "/../../../tde.log");
+if (!defined('LOGCONSOLE')) {
+    define('LOGCONSOLE', __DIR__.'/../../../tde.log');
 }
-if (!defined("LOGLEVEL")) {
-    define("LOGLEVEL", Logger::DEBUG);
+if (!defined('LOGLEVEL')) {
+    define('LOGLEVEL', Logger::DEBUG);
 }
-
-
 
 final class HttpClient
 {
     public static function sendData($requestUrl, $method, $payload, $additional)
     {
-
         // confige log
         $log = new Logger('httpClient');
         $formatter = new LineFormatter("[%datetime%] %channel%.%level_name%: %message%\r\n");
@@ -33,7 +30,7 @@ final class HttpClient
         $rootCause = '';
         $hasConn = false;
 
-        for ($retry = 0; $retry < Constants::HTTP_RETRY_MAX && !$hasConn; $retry++) {
+        for ($retry = 0; $retry < Constants::HTTP_RETRY_MAX && !$hasConn; ++$retry) {
             try {
                 $ch = curl_init($requestUrl);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
@@ -48,26 +45,29 @@ final class HttpClient
                 // Get the error number for the last cURL operation, if no error occurs then return 0.
                 if (curl_errno($ch)) {
                     $rootCause = curl_error($ch);
+
                     throw new Ex\HttpConnectionException(curl_error($ch));
                 }
 
                 $response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                if ($response_code != 200) {
-                    $rootCause = "Wrong http reponse code:" . $response_code;
-                    throw new Ex\HttpConnectionException("Wrong http reponse code:" . $response_code);
+                if (200 != $response_code) {
+                    $rootCause = 'Wrong http reponse code:'.$response_code;
+
+                    throw new Ex\HttpConnectionException('Wrong http reponse code:'.$response_code);
                 }
 
                 // todo: can this way keep connection alive?
                 curl_close($ch);
                 $hasConn = true;
             } catch (Ex\HttpConnectionException $e) {
-                $log->critical("Http sendData error: " . $e->getMessage());
+                $log->critical('Http sendData error: '.$e->getMessage());
             }
         }
 
         if (!$hasConn) {
-            $log->critical("HTTP Client cannot establish connection:" . $rootCause);
-            throw new RuntimeException("HTTP Client cannot establish connection:" . $rootCause);
+            $log->critical('HTTP Client cannot establish connection:'.$rootCause);
+
+            throw new RuntimeException('HTTP Client cannot establish connection:'.$rootCause);
         }
 
         return $response;

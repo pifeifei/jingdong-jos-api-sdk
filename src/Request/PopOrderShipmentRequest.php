@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class PopOrderShipmentRequest
+class PopOrderShipmentRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $orderId;
-    private $logiCoprId;
-    private $logiNo;
-    private $installId;
-
     public function getApiMethodName()
     {
-        return "jingdong.pop.order.shipment";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.pop.order.shipment';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOrderId()
     {
-        return $this->orderId;
+        return $this->apiParas['orderId'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-        $this->apiParas["orderId"] = $orderId;
+        $this->apiParas['orderId'] = $orderId;
+
+        return $this;
     }
 
     public function getLogiCoprId()
     {
-        return $this->logiCoprId;
+        return $this->apiParas['logiCoprId'];
     }
 
     public function setLogiCoprId($logiCoprId)
     {
-        $this->logiCoprId = $logiCoprId;
-        $this->apiParas["logiCoprId"] = $logiCoprId;
+        $this->apiParas['logiCoprId'] = $logiCoprId;
+
+        return $this;
     }
 
     public function getLogiNo()
     {
-        return $this->logiNo;
+        return $this->apiParas['logiNo'];
     }
 
     public function setLogiNo($logiNo)
     {
-        $this->logiNo = $logiNo;
-        $this->apiParas["logiNo"] = $logiNo;
+        $this->apiParas['logiNo'] = $logiNo;
+
+        return $this;
     }
 
     public function getInstallId()
     {
-        return $this->installId;
+        return $this->apiParas['installId'];
     }
 
     public function setInstallId($installId)
     {
-        $this->installId = $installId;
-        $this->apiParas["installId"] = $installId;
+        $this->apiParas['installId'] = $installId;
+
+        return $this;
     }
 }

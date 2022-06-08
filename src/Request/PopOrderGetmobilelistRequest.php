@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class PopOrderGetmobilelistRequest
+class PopOrderGetmobilelistRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $appName;
-    private $region;
-    private $orderId;
-    private $expiration;
-    private $orderType;
-
     public function getApiMethodName()
     {
-        return "jingdong.pop.order.getmobilelist";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.pop.order.getmobilelist';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getAppName()
     {
-        return $this->appName;
+        return $this->apiParas['appName'];
     }
 
     public function setAppName($appName)
     {
-        $this->appName = $appName;
-        $this->apiParas["appName"] = $appName;
+        $this->apiParas['appName'] = $appName;
+
+        return $this;
     }
 
     public function getRegion()
     {
-        return $this->region;
+        return $this->apiParas['region'];
     }
 
     public function setRegion($region)
     {
-        $this->region = $region;
-        $this->apiParas["region"] = $region;
+        $this->apiParas['region'] = $region;
+
+        return $this;
     }
 
     public function getOrderId()
     {
-        return $this->orderId;
+        return $this->apiParas['orderId'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-        $this->apiParas["orderId"] = $orderId;
+        $this->apiParas['orderId'] = $orderId;
+
+        return $this;
     }
 
     public function getExpiration()
     {
-        return $this->expiration;
+        return $this->apiParas['expiration'];
     }
 
     public function setExpiration($expiration)
     {
-        $this->expiration = $expiration;
-        $this->apiParas["expiration"] = $expiration;
+        $this->apiParas['expiration'] = $expiration;
+
+        return $this;
     }
 
     public function getOrderType()
     {
-        return $this->orderType;
+        return $this->apiParas['orderType'];
     }
 
     public function setOrderType($orderType)
     {
-        $this->orderType = $orderType;
-        $this->apiParas["orderType"] = $orderType;
+        $this->apiParas['orderType'] = $orderType;
+
+        return $this;
     }
 }

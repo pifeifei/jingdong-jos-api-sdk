@@ -2,186 +2,158 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderStockIncreaseRequest
+class LdopAlphaProviderStockIncreaseRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $operatorCode;
-    private $vendorCode;
-    private $vendorName;
-    private $providerId;
-    private $providerCode;
-    private $providerName;
-    private $branchCode;
-    private $branchName;
-    private $amount;
-    private $operatorTime;
-    private $operatorName;
-    private $state;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.stock.increase";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.stock.increase';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOperatorCode()
     {
-        return $this->operatorCode;
+        return $this->apiParas['operatorCode'];
     }
 
     public function setOperatorCode($operatorCode)
     {
-        $this->operatorCode = $operatorCode;
-        $this->apiParas["operatorCode"] = $operatorCode;
+        $this->apiParas['operatorCode'] = $operatorCode;
+
+        return $this;
     }
 
     public function getVendorCode()
     {
-        return $this->vendorCode;
+        return $this->apiParas['vendorCode'];
     }
 
     public function setVendorCode($vendorCode)
     {
-        $this->vendorCode = $vendorCode;
-        $this->apiParas["vendorCode"] = $vendorCode;
+        $this->apiParas['vendorCode'] = $vendorCode;
+
+        return $this;
     }
 
     public function getVendorName()
     {
-        return $this->vendorName;
+        return $this->apiParas['vendorName'];
     }
 
     public function setVendorName($vendorName)
     {
-        $this->vendorName = $vendorName;
-        $this->apiParas["vendorName"] = $vendorName;
+        $this->apiParas['vendorName'] = $vendorName;
+
+        return $this;
     }
 
     public function getProviderId()
     {
-        return $this->providerId;
+        return $this->apiParas['providerId'];
     }
 
     public function setProviderId($providerId)
     {
-        $this->providerId = $providerId;
-        $this->apiParas["providerId"] = $providerId;
+        $this->apiParas['providerId'] = $providerId;
+
+        return $this;
     }
 
     public function getProviderCode()
     {
-        return $this->providerCode;
+        return $this->apiParas['providerCode'];
     }
 
     public function setProviderCode($providerCode)
     {
-        $this->providerCode = $providerCode;
-        $this->apiParas["providerCode"] = $providerCode;
+        $this->apiParas['providerCode'] = $providerCode;
+
+        return $this;
     }
 
     public function getProviderName()
     {
-        return $this->providerName;
+        return $this->apiParas['providerName'];
     }
 
     public function setProviderName($providerName)
     {
-        $this->providerName = $providerName;
-        $this->apiParas["providerName"] = $providerName;
+        $this->apiParas['providerName'] = $providerName;
+
+        return $this;
     }
 
     public function getBranchCode()
     {
-        return $this->branchCode;
+        return $this->apiParas['branchCode'];
     }
 
     public function setBranchCode($branchCode)
     {
-        $this->branchCode = $branchCode;
-        $this->apiParas["branchCode"] = $branchCode;
+        $this->apiParas['branchCode'] = $branchCode;
+
+        return $this;
     }
 
     public function getBranchName()
     {
-        return $this->branchName;
+        return $this->apiParas['branchName'];
     }
 
     public function setBranchName($branchName)
     {
-        $this->branchName = $branchName;
-        $this->apiParas["branchName"] = $branchName;
+        $this->apiParas['branchName'] = $branchName;
+
+        return $this;
     }
 
     public function getAmount()
     {
-        return $this->amount;
+        return $this->apiParas['amount'];
     }
 
     public function setAmount($amount)
     {
-        $this->amount = $amount;
-        $this->apiParas["amount"] = $amount;
+        $this->apiParas['amount'] = $amount;
+
+        return $this;
     }
 
     public function getOperatorTime()
     {
-        return $this->operatorTime;
+        return $this->apiParas['operatorTime'];
     }
 
     public function setOperatorTime($operatorTime)
     {
-        $this->operatorTime = $operatorTime;
-        $this->apiParas["operatorTime"] = $operatorTime;
+        $this->apiParas['operatorTime'] = $operatorTime;
+
+        return $this;
     }
 
     public function getOperatorName()
     {
-        return $this->operatorName;
+        return $this->apiParas['operatorName'];
     }
 
     public function setOperatorName($operatorName)
     {
-        $this->operatorName = $operatorName;
-        $this->apiParas["operatorName"] = $operatorName;
+        $this->apiParas['operatorName'] = $operatorName;
+
+        return $this;
     }
 
     public function getState()
     {
-        return $this->state;
+        return $this->apiParas['state'];
     }
 
     public function setState($state)
     {
-        $this->state = $state;
-        $this->apiParas["state"] = $state;
+        $this->apiParas['state'] = $state;
+
+        return $this;
     }
 }

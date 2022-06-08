@@ -2,234 +2,206 @@
 
 namespace ACES\Request;
 
-
-class MfaInnerUserUnifiedAuthenticationRequest
+class MfaInnerUserUnifiedAuthenticationRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deviceOSType;
-    private $appId;
-    private $businessType;
-    private $eid;
-    private $openUDID;
-    private $source;
-    private $deviceName;
-    private $email;
-    private $deviceOSVersion;
-    private $pin;
-    private $appVersion;
-    private $loginChannel;
-    private $authType;
-    private $clientIp;
-    private $uuid;
-    private $mobile;
-
     public function getApiMethodName()
     {
-        return "jingdong.mfa.inner.userUnifiedAuthentication";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.mfa.inner.userUnifiedAuthentication';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeviceOSType()
     {
-        return $this->deviceOSType;
+        return $this->apiParas['deviceOSType'];
     }
 
     public function setDeviceOSType($deviceOSType)
     {
-        $this->deviceOSType = $deviceOSType;
-        $this->apiParas["deviceOSType"] = $deviceOSType;
+        $this->apiParas['deviceOSType'] = $deviceOSType;
+
+        return $this;
     }
 
     public function getAppId()
     {
-        return $this->appId;
+        return $this->apiParas['appId'];
     }
 
     public function setAppId($appId)
     {
-        $this->appId = $appId;
-        $this->apiParas["appId"] = $appId;
+        $this->apiParas['appId'] = $appId;
+
+        return $this;
     }
 
     public function getBusinessType()
     {
-        return $this->businessType;
+        return $this->apiParas['businessType'];
     }
 
     public function setBusinessType($businessType)
     {
-        $this->businessType = $businessType;
-        $this->apiParas["businessType"] = $businessType;
+        $this->apiParas['businessType'] = $businessType;
+
+        return $this;
     }
 
     public function getEid()
     {
-        return $this->eid;
+        return $this->apiParas['eid'];
     }
 
     public function setEid($eid)
     {
-        $this->eid = $eid;
-        $this->apiParas["eid"] = $eid;
+        $this->apiParas['eid'] = $eid;
+
+        return $this;
     }
 
     public function getOpenUDID()
     {
-        return $this->openUDID;
+        return $this->apiParas['openUDID'];
     }
 
     public function setOpenUDID($openUDID)
     {
-        $this->openUDID = $openUDID;
-        $this->apiParas["openUDID"] = $openUDID;
+        $this->apiParas['openUDID'] = $openUDID;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getDeviceName()
     {
-        return $this->deviceName;
+        return $this->apiParas['deviceName'];
     }
 
     public function setDeviceName($deviceName)
     {
-        $this->deviceName = $deviceName;
-        $this->apiParas["deviceName"] = $deviceName;
+        $this->apiParas['deviceName'] = $deviceName;
+
+        return $this;
     }
 
     public function getEmail()
     {
-        return $this->email;
+        return $this->apiParas['email'];
     }
 
     public function setEmail($email)
     {
-        $this->email = $email;
-        $this->apiParas["email"] = $email;
+        $this->apiParas['email'] = $email;
+
+        return $this;
     }
 
     public function getDeviceOSVersion()
     {
-        return $this->deviceOSVersion;
+        return $this->apiParas['deviceOSVersion'];
     }
 
     public function setDeviceOSVersion($deviceOSVersion)
     {
-        $this->deviceOSVersion = $deviceOSVersion;
-        $this->apiParas["deviceOSVersion"] = $deviceOSVersion;
+        $this->apiParas['deviceOSVersion'] = $deviceOSVersion;
+
+        return $this;
     }
 
     public function getPin()
     {
-        return $this->pin;
+        return $this->apiParas['pin'];
     }
 
     public function setPin($pin)
     {
-        $this->pin = $pin;
-        $this->apiParas["pin"] = $pin;
+        $this->apiParas['pin'] = $pin;
+
+        return $this;
     }
 
     public function getAppVersion()
     {
-        return $this->appVersion;
+        return $this->apiParas['appVersion'];
     }
 
     public function setAppVersion($appVersion)
     {
-        $this->appVersion = $appVersion;
-        $this->apiParas["appVersion"] = $appVersion;
+        $this->apiParas['appVersion'] = $appVersion;
+
+        return $this;
     }
 
     public function getLoginChannel()
     {
-        return $this->loginChannel;
+        return $this->apiParas['loginChannel'];
     }
 
     public function setLoginChannel($loginChannel)
     {
-        $this->loginChannel = $loginChannel;
-        $this->apiParas["loginChannel"] = $loginChannel;
+        $this->apiParas['loginChannel'] = $loginChannel;
+
+        return $this;
     }
 
     public function getAuthType()
     {
-        return $this->authType;
+        return $this->apiParas['authType'];
     }
 
     public function setAuthType($authType)
     {
-        $this->authType = $authType;
-        $this->apiParas["authType"] = $authType;
+        $this->apiParas['authType'] = $authType;
+
+        return $this;
     }
 
     public function getClientIp()
     {
-        return $this->clientIp;
+        return $this->apiParas['clientIp'];
     }
 
     public function setClientIp($clientIp)
     {
-        $this->clientIp = $clientIp;
-        $this->apiParas["clientIp"] = $clientIp;
+        $this->apiParas['clientIp'] = $clientIp;
+
+        return $this;
     }
 
     public function getUuid()
     {
-        return $this->uuid;
+        return $this->apiParas['uuid'];
     }
 
     public function setUuid($uuid)
     {
-        $this->uuid = $uuid;
-        $this->apiParas["uuid"] = $uuid;
+        $this->apiParas['uuid'] = $uuid;
+
+        return $this;
     }
 
     public function getMobile()
     {
-        return $this->mobile;
+        return $this->apiParas['mobile'];
     }
 
     public function setMobile($mobile)
     {
-        $this->mobile = $mobile;
-        $this->apiParas["mobile"] = $mobile;
+        $this->apiParas['mobile'] = $mobile;
+
+        return $this;
     }
 }

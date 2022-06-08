@@ -2,894 +2,866 @@
 
 namespace ACES\Request;
 
-
-class LdopWaybillReceiveRequest
+class LdopWaybillReceiveRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $salePlat;
-    private $customerCode;
-    private $orderId;
-    private $thrOrderId;
-    private $senderName;
-    private $senderAddress;
-    private $senderTel;
-    private $senderMobile;
-    private $senderPostcode;
-    private $receiveName;
-    private $receiveAddress;
-    private $province;
-    private $city;
-    private $county;
-    private $town;
-    private $provinceId;
-    private $cityId;
-    private $countyId;
-    private $townId;
-    private $siteType;
-    private $siteId;
-    private $siteName;
-    private $receiveTel;
-    private $receiveMobile;
-    private $postcode;
-    private $packageCount;
-    private $weight;
-    private $vloumLong;
-    private $vloumWidth;
-    private $vloumHeight;
-    private $vloumn;
-    private $description;
-    private $collectionValue;
-    private $collectionMoney;
-    private $guaranteeValue;
-    private $guaranteeValueAmount;
-    private $signReturn;
-    private $aging;
-    private $transType;
-    private $remark;
-    private $goodsType;
-    private $orderType;
-    private $shopCode;
-    private $orderSendTime;
-    private $warehouseCode;
-    private $areaProvId;
-    private $areaCityId;
-    private $shipmentStartTime;
-    private $shipmentEndTime;
-    private $idNumber;
-    private $addedService;
-    private $extendField1;
-    private $extendField2;
-    private $extendField3;
-    private $extendField4;
-    private $extendField5;
-    private $senderCompany;
-    private $receiveCompany;
-    private $goods;
-    private $goodsCount;
-    private $promiseTimeType;
-    private $freight;
-    private $pickUpStartTime;
-    private $pickUpEndTime;
-    private $unpackingInspection;
-    private $boxCode;
-    private $fileUrl;
-    private $pickMethod;
-    private $customerBoxCode;
-    private $customerBoxNumber;
-    private $salesChannel;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.waybill.receive";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.waybill.receive';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSalePlat()
     {
-        return $this->salePlat;
+        return $this->apiParas['salePlat'];
     }
 
     public function setSalePlat($salePlat)
     {
-        $this->salePlat = $salePlat;
-        $this->apiParas["salePlat"] = $salePlat;
+        $this->apiParas['salePlat'] = $salePlat;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getOrderId()
     {
-        return $this->orderId;
+        return $this->apiParas['orderId'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-        $this->apiParas["orderId"] = $orderId;
+        $this->apiParas['orderId'] = $orderId;
+
+        return $this;
     }
 
     public function getThrOrderId()
     {
-        return $this->thrOrderId;
+        return $this->apiParas['thrOrderId'];
     }
 
     public function setThrOrderId($thrOrderId)
     {
-        $this->thrOrderId = $thrOrderId;
-        $this->apiParas["thrOrderId"] = $thrOrderId;
+        $this->apiParas['thrOrderId'] = $thrOrderId;
+
+        return $this;
     }
 
     public function getSenderName()
     {
-        return $this->senderName;
+        return $this->apiParas['senderName'];
     }
 
     public function setSenderName($senderName)
     {
-        $this->senderName = $senderName;
-        $this->apiParas["senderName"] = $senderName;
+        $this->apiParas['senderName'] = $senderName;
+
+        return $this;
     }
 
     public function getSenderAddress()
     {
-        return $this->senderAddress;
+        return $this->apiParas['senderAddress'];
     }
 
     public function setSenderAddress($senderAddress)
     {
-        $this->senderAddress = $senderAddress;
-        $this->apiParas["senderAddress"] = $senderAddress;
+        $this->apiParas['senderAddress'] = $senderAddress;
+
+        return $this;
     }
 
     public function getSenderTel()
     {
-        return $this->senderTel;
+        return $this->apiParas['senderTel'];
     }
 
     public function setSenderTel($senderTel)
     {
-        $this->senderTel = $senderTel;
-        $this->apiParas["senderTel"] = $senderTel;
+        $this->apiParas['senderTel'] = $senderTel;
+
+        return $this;
     }
 
     public function getSenderMobile()
     {
-        return $this->senderMobile;
+        return $this->apiParas['senderMobile'];
     }
 
     public function setSenderMobile($senderMobile)
     {
-        $this->senderMobile = $senderMobile;
-        $this->apiParas["senderMobile"] = $senderMobile;
+        $this->apiParas['senderMobile'] = $senderMobile;
+
+        return $this;
     }
 
     public function getSenderPostcode()
     {
-        return $this->senderPostcode;
+        return $this->apiParas['senderPostcode'];
     }
 
     public function setSenderPostcode($senderPostcode)
     {
-        $this->senderPostcode = $senderPostcode;
-        $this->apiParas["senderPostcode"] = $senderPostcode;
+        $this->apiParas['senderPostcode'] = $senderPostcode;
+
+        return $this;
     }
 
     public function getReceiveName()
     {
-        return $this->receiveName;
+        return $this->apiParas['receiveName'];
     }
 
     public function setReceiveName($receiveName)
     {
-        $this->receiveName = $receiveName;
-        $this->apiParas["receiveName"] = $receiveName;
+        $this->apiParas['receiveName'] = $receiveName;
+
+        return $this;
     }
 
     public function getReceiveAddress()
     {
-        return $this->receiveAddress;
+        return $this->apiParas['receiveAddress'];
     }
 
     public function setReceiveAddress($receiveAddress)
     {
-        $this->receiveAddress = $receiveAddress;
-        $this->apiParas["receiveAddress"] = $receiveAddress;
+        $this->apiParas['receiveAddress'] = $receiveAddress;
+
+        return $this;
     }
 
     public function getProvince()
     {
-        return $this->province;
+        return $this->apiParas['province'];
     }
 
     public function setProvince($province)
     {
-        $this->province = $province;
-        $this->apiParas["province"] = $province;
+        $this->apiParas['province'] = $province;
+
+        return $this;
     }
 
     public function getCity()
     {
-        return $this->city;
+        return $this->apiParas['city'];
     }
 
     public function setCity($city)
     {
-        $this->city = $city;
-        $this->apiParas["city"] = $city;
+        $this->apiParas['city'] = $city;
+
+        return $this;
     }
 
     public function getCounty()
     {
-        return $this->county;
+        return $this->apiParas['county'];
     }
 
     public function setCounty($county)
     {
-        $this->county = $county;
-        $this->apiParas["county"] = $county;
+        $this->apiParas['county'] = $county;
+
+        return $this;
     }
 
     public function getTown()
     {
-        return $this->town;
+        return $this->apiParas['town'];
     }
 
     public function setTown($town)
     {
-        $this->town = $town;
-        $this->apiParas["town"] = $town;
+        $this->apiParas['town'] = $town;
+
+        return $this;
     }
 
     public function getProvinceId()
     {
-        return $this->provinceId;
+        return $this->apiParas['provinceId'];
     }
 
     public function setProvinceId($provinceId)
     {
-        $this->provinceId = $provinceId;
-        $this->apiParas["provinceId"] = $provinceId;
+        $this->apiParas['provinceId'] = $provinceId;
+
+        return $this;
     }
 
     public function getCityId()
     {
-        return $this->cityId;
+        return $this->apiParas['cityId'];
     }
 
     public function setCityId($cityId)
     {
-        $this->cityId = $cityId;
-        $this->apiParas["cityId"] = $cityId;
+        $this->apiParas['cityId'] = $cityId;
+
+        return $this;
     }
 
     public function getCountyId()
     {
-        return $this->countyId;
+        return $this->apiParas['countyId'];
     }
 
     public function setCountyId($countyId)
     {
-        $this->countyId = $countyId;
-        $this->apiParas["countyId"] = $countyId;
+        $this->apiParas['countyId'] = $countyId;
+
+        return $this;
     }
 
     public function getTownId()
     {
-        return $this->townId;
+        return $this->apiParas['townId'];
     }
 
     public function setTownId($townId)
     {
-        $this->townId = $townId;
-        $this->apiParas["townId"] = $townId;
+        $this->apiParas['townId'] = $townId;
+
+        return $this;
     }
 
     public function getSiteType()
     {
-        return $this->siteType;
+        return $this->apiParas['siteType'];
     }
 
     public function setSiteType($siteType)
     {
-        $this->siteType = $siteType;
-        $this->apiParas["siteType"] = $siteType;
+        $this->apiParas['siteType'] = $siteType;
+
+        return $this;
     }
 
     public function getSiteId()
     {
-        return $this->siteId;
+        return $this->apiParas['siteId'];
     }
 
     public function setSiteId($siteId)
     {
-        $this->siteId = $siteId;
-        $this->apiParas["siteId"] = $siteId;
+        $this->apiParas['siteId'] = $siteId;
+
+        return $this;
     }
 
     public function getSiteName()
     {
-        return $this->siteName;
+        return $this->apiParas['siteName'];
     }
 
     public function setSiteName($siteName)
     {
-        $this->siteName = $siteName;
-        $this->apiParas["siteName"] = $siteName;
+        $this->apiParas['siteName'] = $siteName;
+
+        return $this;
     }
 
     public function getReceiveTel()
     {
-        return $this->receiveTel;
+        return $this->apiParas['receiveTel'];
     }
 
     public function setReceiveTel($receiveTel)
     {
-        $this->receiveTel = $receiveTel;
-        $this->apiParas["receiveTel"] = $receiveTel;
+        $this->apiParas['receiveTel'] = $receiveTel;
+
+        return $this;
     }
 
     public function getReceiveMobile()
     {
-        return $this->receiveMobile;
+        return $this->apiParas['receiveMobile'];
     }
 
     public function setReceiveMobile($receiveMobile)
     {
-        $this->receiveMobile = $receiveMobile;
-        $this->apiParas["receiveMobile"] = $receiveMobile;
+        $this->apiParas['receiveMobile'] = $receiveMobile;
+
+        return $this;
     }
 
     public function getPostcode()
     {
-        return $this->postcode;
+        return $this->apiParas['postcode'];
     }
 
     public function setPostcode($postcode)
     {
-        $this->postcode = $postcode;
-        $this->apiParas["postcode"] = $postcode;
+        $this->apiParas['postcode'] = $postcode;
+
+        return $this;
     }
 
     public function getPackageCount()
     {
-        return $this->packageCount;
+        return $this->apiParas['packageCount'];
     }
 
     public function setPackageCount($packageCount)
     {
-        $this->packageCount = $packageCount;
-        $this->apiParas["packageCount"] = $packageCount;
+        $this->apiParas['packageCount'] = $packageCount;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getVloumLong()
     {
-        return $this->vloumLong;
+        return $this->apiParas['vloumLong'];
     }
 
     public function setVloumLong($vloumLong)
     {
-        $this->vloumLong = $vloumLong;
-        $this->apiParas["vloumLong"] = $vloumLong;
+        $this->apiParas['vloumLong'] = $vloumLong;
+
+        return $this;
     }
 
     public function getVloumWidth()
     {
-        return $this->vloumWidth;
+        return $this->apiParas['vloumWidth'];
     }
 
     public function setVloumWidth($vloumWidth)
     {
-        $this->vloumWidth = $vloumWidth;
-        $this->apiParas["vloumWidth"] = $vloumWidth;
+        $this->apiParas['vloumWidth'] = $vloumWidth;
+
+        return $this;
     }
 
     public function getVloumHeight()
     {
-        return $this->vloumHeight;
+        return $this->apiParas['vloumHeight'];
     }
 
     public function setVloumHeight($vloumHeight)
     {
-        $this->vloumHeight = $vloumHeight;
-        $this->apiParas["vloumHeight"] = $vloumHeight;
+        $this->apiParas['vloumHeight'] = $vloumHeight;
+
+        return $this;
     }
 
     public function getVloumn()
     {
-        return $this->vloumn;
+        return $this->apiParas['vloumn'];
     }
 
     public function setVloumn($vloumn)
     {
-        $this->vloumn = $vloumn;
-        $this->apiParas["vloumn"] = $vloumn;
+        $this->apiParas['vloumn'] = $vloumn;
+
+        return $this;
     }
 
     public function getDescription()
     {
-        return $this->description;
+        return $this->apiParas['description'];
     }
 
     public function setDescription($description)
     {
-        $this->description = $description;
-        $this->apiParas["description"] = $description;
+        $this->apiParas['description'] = $description;
+
+        return $this;
     }
 
     public function getCollectionValue()
     {
-        return $this->collectionValue;
+        return $this->apiParas['collectionValue'];
     }
 
     public function setCollectionValue($collectionValue)
     {
-        $this->collectionValue = $collectionValue;
-        $this->apiParas["collectionValue"] = $collectionValue;
+        $this->apiParas['collectionValue'] = $collectionValue;
+
+        return $this;
     }
 
     public function getCollectionMoney()
     {
-        return $this->collectionMoney;
+        return $this->apiParas['collectionMoney'];
     }
 
     public function setCollectionMoney($collectionMoney)
     {
-        $this->collectionMoney = $collectionMoney;
-        $this->apiParas["collectionMoney"] = $collectionMoney;
+        $this->apiParas['collectionMoney'] = $collectionMoney;
+
+        return $this;
     }
 
     public function getGuaranteeValue()
     {
-        return $this->guaranteeValue;
+        return $this->apiParas['guaranteeValue'];
     }
 
     public function setGuaranteeValue($guaranteeValue)
     {
-        $this->guaranteeValue = $guaranteeValue;
-        $this->apiParas["guaranteeValue"] = $guaranteeValue;
+        $this->apiParas['guaranteeValue'] = $guaranteeValue;
+
+        return $this;
     }
 
     public function getGuaranteeValueAmount()
     {
-        return $this->guaranteeValueAmount;
+        return $this->apiParas['guaranteeValueAmount'];
     }
 
     public function setGuaranteeValueAmount($guaranteeValueAmount)
     {
-        $this->guaranteeValueAmount = $guaranteeValueAmount;
-        $this->apiParas["guaranteeValueAmount"] = $guaranteeValueAmount;
+        $this->apiParas['guaranteeValueAmount'] = $guaranteeValueAmount;
+
+        return $this;
     }
 
     public function getSignReturn()
     {
-        return $this->signReturn;
+        return $this->apiParas['signReturn'];
     }
 
     public function setSignReturn($signReturn)
     {
-        $this->signReturn = $signReturn;
-        $this->apiParas["signReturn"] = $signReturn;
+        $this->apiParas['signReturn'] = $signReturn;
+
+        return $this;
     }
 
     public function getAging()
     {
-        return $this->aging;
+        return $this->apiParas['aging'];
     }
 
     public function setAging($aging)
     {
-        $this->aging = $aging;
-        $this->apiParas["aging"] = $aging;
+        $this->apiParas['aging'] = $aging;
+
+        return $this;
     }
 
     public function getTransType()
     {
-        return $this->transType;
+        return $this->apiParas['transType'];
     }
 
     public function setTransType($transType)
     {
-        $this->transType = $transType;
-        $this->apiParas["transType"] = $transType;
+        $this->apiParas['transType'] = $transType;
+
+        return $this;
     }
 
     public function getRemark()
     {
-        return $this->remark;
+        return $this->apiParas['remark'];
     }
 
     public function setRemark($remark)
     {
-        $this->remark = $remark;
-        $this->apiParas["remark"] = $remark;
+        $this->apiParas['remark'] = $remark;
+
+        return $this;
     }
 
     public function getGoodsType()
     {
-        return $this->goodsType;
+        return $this->apiParas['goodsType'];
     }
 
     public function setGoodsType($goodsType)
     {
-        $this->goodsType = $goodsType;
-        $this->apiParas["goodsType"] = $goodsType;
+        $this->apiParas['goodsType'] = $goodsType;
+
+        return $this;
     }
 
     public function getOrderType()
     {
-        return $this->orderType;
+        return $this->apiParas['orderType'];
     }
 
     public function setOrderType($orderType)
     {
-        $this->orderType = $orderType;
-        $this->apiParas["orderType"] = $orderType;
+        $this->apiParas['orderType'] = $orderType;
+
+        return $this;
     }
 
     public function getShopCode()
     {
-        return $this->shopCode;
+        return $this->apiParas['shopCode'];
     }
 
     public function setShopCode($shopCode)
     {
-        $this->shopCode = $shopCode;
-        $this->apiParas["shopCode"] = $shopCode;
+        $this->apiParas['shopCode'] = $shopCode;
+
+        return $this;
     }
 
     public function getOrderSendTime()
     {
-        return $this->orderSendTime;
+        return $this->apiParas['orderSendTime'];
     }
 
     public function setOrderSendTime($orderSendTime)
     {
-        $this->orderSendTime = $orderSendTime;
-        $this->apiParas["orderSendTime"] = $orderSendTime;
+        $this->apiParas['orderSendTime'] = $orderSendTime;
+
+        return $this;
     }
 
     public function getWarehouseCode()
     {
-        return $this->warehouseCode;
+        return $this->apiParas['warehouseCode'];
     }
 
     public function setWarehouseCode($warehouseCode)
     {
-        $this->warehouseCode = $warehouseCode;
-        $this->apiParas["warehouseCode"] = $warehouseCode;
+        $this->apiParas['warehouseCode'] = $warehouseCode;
+
+        return $this;
     }
 
     public function getAreaProvId()
     {
-        return $this->areaProvId;
+        return $this->apiParas['areaProvId'];
     }
 
     public function setAreaProvId($areaProvId)
     {
-        $this->areaProvId = $areaProvId;
-        $this->apiParas["areaProvId"] = $areaProvId;
+        $this->apiParas['areaProvId'] = $areaProvId;
+
+        return $this;
     }
 
     public function getAreaCityId()
     {
-        return $this->areaCityId;
+        return $this->apiParas['areaCityId'];
     }
 
     public function setAreaCityId($areaCityId)
     {
-        $this->areaCityId = $areaCityId;
-        $this->apiParas["areaCityId"] = $areaCityId;
+        $this->apiParas['areaCityId'] = $areaCityId;
+
+        return $this;
     }
 
     public function getShipmentStartTime()
     {
-        return $this->shipmentStartTime;
+        return $this->apiParas['shipmentStartTime'];
     }
 
     public function setShipmentStartTime($shipmentStartTime)
     {
-        $this->shipmentStartTime = $shipmentStartTime;
-        $this->apiParas["shipmentStartTime"] = $shipmentStartTime;
+        $this->apiParas['shipmentStartTime'] = $shipmentStartTime;
+
+        return $this;
     }
 
     public function getShipmentEndTime()
     {
-        return $this->shipmentEndTime;
+        return $this->apiParas['shipmentEndTime'];
     }
 
     public function setShipmentEndTime($shipmentEndTime)
     {
-        $this->shipmentEndTime = $shipmentEndTime;
-        $this->apiParas["shipmentEndTime"] = $shipmentEndTime;
+        $this->apiParas['shipmentEndTime'] = $shipmentEndTime;
+
+        return $this;
     }
 
     public function getIdNumber()
     {
-        return $this->idNumber;
+        return $this->apiParas['idNumber'];
     }
 
     public function setIdNumber($idNumber)
     {
-        $this->idNumber = $idNumber;
-        $this->apiParas["idNumber"] = $idNumber;
+        $this->apiParas['idNumber'] = $idNumber;
+
+        return $this;
     }
 
     public function getAddedService()
     {
-        return $this->addedService;
+        return $this->apiParas['addedService'];
     }
 
     public function setAddedService($addedService)
     {
-        $this->addedService = $addedService;
-        $this->apiParas["addedService"] = $addedService;
+        $this->apiParas['addedService'] = $addedService;
+
+        return $this;
     }
 
     public function getExtendField1()
     {
-        return $this->extendField1;
+        return $this->apiParas['extendField1'];
     }
 
     public function setExtendField1($extendField1)
     {
-        $this->extendField1 = $extendField1;
-        $this->apiParas["extendField1"] = $extendField1;
+        $this->apiParas['extendField1'] = $extendField1;
+
+        return $this;
     }
 
     public function getExtendField2()
     {
-        return $this->extendField2;
+        return $this->apiParas['extendField2'];
     }
 
     public function setExtendField2($extendField2)
     {
-        $this->extendField2 = $extendField2;
-        $this->apiParas["extendField2"] = $extendField2;
+        $this->apiParas['extendField2'] = $extendField2;
+
+        return $this;
     }
 
     public function getExtendField3()
     {
-        return $this->extendField3;
+        return $this->apiParas['extendField3'];
     }
 
     public function setExtendField3($extendField3)
     {
-        $this->extendField3 = $extendField3;
-        $this->apiParas["extendField3"] = $extendField3;
+        $this->apiParas['extendField3'] = $extendField3;
+
+        return $this;
     }
 
     public function getExtendField4()
     {
-        return $this->extendField4;
+        return $this->apiParas['extendField4'];
     }
 
     public function setExtendField4($extendField4)
     {
-        $this->extendField4 = $extendField4;
-        $this->apiParas["extendField4"] = $extendField4;
+        $this->apiParas['extendField4'] = $extendField4;
+
+        return $this;
     }
 
     public function getExtendField5()
     {
-        return $this->extendField5;
+        return $this->apiParas['extendField5'];
     }
 
     public function setExtendField5($extendField5)
     {
-        $this->extendField5 = $extendField5;
-        $this->apiParas["extendField5"] = $extendField5;
+        $this->apiParas['extendField5'] = $extendField5;
+
+        return $this;
     }
 
     public function getSenderCompany()
     {
-        return $this->senderCompany;
+        return $this->apiParas['senderCompany'];
     }
 
     public function setSenderCompany($senderCompany)
     {
-        $this->senderCompany = $senderCompany;
-        $this->apiParas["senderCompany"] = $senderCompany;
+        $this->apiParas['senderCompany'] = $senderCompany;
+
+        return $this;
     }
 
     public function getReceiveCompany()
     {
-        return $this->receiveCompany;
+        return $this->apiParas['receiveCompany'];
     }
 
     public function setReceiveCompany($receiveCompany)
     {
-        $this->receiveCompany = $receiveCompany;
-        $this->apiParas["receiveCompany"] = $receiveCompany;
+        $this->apiParas['receiveCompany'] = $receiveCompany;
+
+        return $this;
     }
 
     public function getGoods()
     {
-        return $this->goods;
+        return $this->apiParas['goods'];
     }
 
     public function setGoods($goods)
     {
-        $this->goods = $goods;
-        $this->apiParas["goods"] = $goods;
+        $this->apiParas['goods'] = $goods;
+
+        return $this;
     }
 
     public function getGoodsCount()
     {
-        return $this->goodsCount;
+        return $this->apiParas['goodsCount'];
     }
 
     public function setGoodsCount($goodsCount)
     {
-        $this->goodsCount = $goodsCount;
-        $this->apiParas["goodsCount"] = $goodsCount;
+        $this->apiParas['goodsCount'] = $goodsCount;
+
+        return $this;
     }
 
     public function getPromiseTimeType()
     {
-        return $this->promiseTimeType;
+        return $this->apiParas['promiseTimeType'];
     }
 
     public function setPromiseTimeType($promiseTimeType)
     {
-        $this->promiseTimeType = $promiseTimeType;
-        $this->apiParas["promiseTimeType"] = $promiseTimeType;
+        $this->apiParas['promiseTimeType'] = $promiseTimeType;
+
+        return $this;
     }
 
     public function getFreight()
     {
-        return $this->freight;
+        return $this->apiParas['freight'];
     }
 
     public function setFreight($freight)
     {
-        $this->freight = $freight;
-        $this->apiParas["freight"] = $freight;
+        $this->apiParas['freight'] = $freight;
+
+        return $this;
     }
 
     public function getPickUpStartTime()
     {
-        return $this->pickUpStartTime;
+        return $this->apiParas['pickUpStartTime'];
     }
 
     public function setPickUpStartTime($pickUpStartTime)
     {
-        $this->pickUpStartTime = $pickUpStartTime;
-        $this->apiParas["pickUpStartTime"] = $pickUpStartTime;
+        $this->apiParas['pickUpStartTime'] = $pickUpStartTime;
+
+        return $this;
     }
 
     public function getPickUpEndTime()
     {
-        return $this->pickUpEndTime;
+        return $this->apiParas['pickUpEndTime'];
     }
 
     public function setPickUpEndTime($pickUpEndTime)
     {
-        $this->pickUpEndTime = $pickUpEndTime;
-        $this->apiParas["pickUpEndTime"] = $pickUpEndTime;
+        $this->apiParas['pickUpEndTime'] = $pickUpEndTime;
+
+        return $this;
     }
 
     public function getUnpackingInspection()
     {
-        return $this->unpackingInspection;
+        return $this->apiParas['unpackingInspection'];
     }
 
     public function setUnpackingInspection($unpackingInspection)
     {
-        $this->unpackingInspection = $unpackingInspection;
-        $this->apiParas["unpackingInspection"] = $unpackingInspection;
+        $this->apiParas['unpackingInspection'] = $unpackingInspection;
+
+        return $this;
     }
 
     public function getBoxCode()
     {
-        return $this->boxCode;
+        return $this->apiParas['boxCode'];
     }
 
     public function setBoxCode($boxCode)
     {
-        $this->boxCode = $boxCode;
-        $this->apiParas["boxCode"] = $boxCode;
+        $this->apiParas['boxCode'] = $boxCode;
+
+        return $this;
     }
 
     public function getFileUrl()
     {
-        return $this->fileUrl;
+        return $this->apiParas['fileUrl'];
     }
 
     public function setFileUrl($fileUrl)
     {
-        $this->fileUrl = $fileUrl;
-        $this->apiParas["fileUrl"] = $fileUrl;
+        $this->apiParas['fileUrl'] = $fileUrl;
+
+        return $this;
     }
 
     public function getPickMethod()
     {
-        return $this->pickMethod;
+        return $this->apiParas['pickMethod'];
     }
 
     public function setPickMethod($pickMethod)
     {
-        $this->pickMethod = $pickMethod;
-        $this->apiParas["pickMethod"] = $pickMethod;
+        $this->apiParas['pickMethod'] = $pickMethod;
+
+        return $this;
     }
 
     public function getCustomerBoxCode()
     {
-        return $this->customerBoxCode;
+        return $this->apiParas['customerBoxCode'];
     }
 
     public function setCustomerBoxCode($customerBoxCode)
     {
-        $this->customerBoxCode = $customerBoxCode;
-        $this->apiParas["customerBoxCode"] = $customerBoxCode;
+        $this->apiParas['customerBoxCode'] = $customerBoxCode;
+
+        return $this;
     }
 
     public function getCustomerBoxNumber()
     {
-        return $this->customerBoxNumber;
+        return $this->apiParas['customerBoxNumber'];
     }
 
     public function setCustomerBoxNumber($customerBoxNumber)
     {
-        $this->customerBoxNumber = $customerBoxNumber;
-        $this->apiParas["customerBoxNumber"] = $customerBoxNumber;
+        $this->apiParas['customerBoxNumber'] = $customerBoxNumber;
+
+        return $this;
     }
 
     public function getSalesChannel()
     {
-        return $this->salesChannel;
+        return $this->apiParas['salesChannel'];
     }
 
     public function setSalesChannel($salesChannel)
     {
-        $this->salesChannel = $salesChannel;
-        $this->apiParas["salesChannel"] = $salesChannel;
+        $this->apiParas['salesChannel'] = $salesChannel;
+
+        return $this;
     }
 }

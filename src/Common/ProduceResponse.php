@@ -17,7 +17,7 @@ class ProduceResponse extends JosBaseResponse
     }
 
     /**
-     * @param \ACES\Common\Domain\JosSecretApiReportGetResponse|null $response
+     * @param null|\ACES\Common\Domain\JosSecretApiReportGetResponse $response
      */
     public function setResponse($response)
     {
@@ -34,14 +34,14 @@ class Status
     {
         return $this->code;
     }
+
     public function getMsg()
     {
         return $this->msg;
     }
 
     /**
-     *
-     * @param int|null $code
+     * @param null|int $code
      */
     public function setCode($code)
     {
@@ -49,8 +49,7 @@ class Status
     }
 
     /**
-     *
-     * @param string|null $msg
+     * @param null|string $msg
      */
     public function setMsg($msg)
     {

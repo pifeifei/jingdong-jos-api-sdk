@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
-
-
-
 class Param1
 {
-    private $params = array();
+    private $params = [];
     private $pin;
     private $objectId;
     private $parameters;
@@ -15,9 +12,9 @@ class Param1
     private $cpCode;
     private $appKey;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.jcloud.wms.printing.dto.PullDataReqDTO";
+        $this->params['@type'] = 'com.jd.jcloud.wms.printing.dto.PullDataReqDTO';
     }
 
     public function getPin()
@@ -48,8 +45,8 @@ class Param1
     public function setWayBillInfos($wayBillInfos)
     {
         $size = count($wayBillInfos);
-        for ($i = 0; $i < $size; $i++) {
-            $wayBillInfos [$i] = $wayBillInfos [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $wayBillInfos[$i] = $wayBillInfos[$i]->getInstance();
         }
         $this->params['wayBillInfos'] = $wayBillInfos;
     }
@@ -74,7 +71,7 @@ class Param1
         $this->params['appKey'] = $appKey;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

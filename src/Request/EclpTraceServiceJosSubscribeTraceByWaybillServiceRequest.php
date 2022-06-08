@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class EclpTraceServiceJosSubscribeTraceByWaybillServiceRequest
+class EclpTraceServiceJosSubscribeTraceByWaybillServiceRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $source;
-    private $waybillId;
-    private $carrierCode;
-    private $sign;
-    private $t;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.trace.service.jos.SubscribeTraceByWaybillService";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.trace.service.jos.SubscribeTraceByWaybillService';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getWaybillId()
     {
-        return $this->waybillId;
+        return $this->apiParas['waybillId'];
     }
 
     public function setWaybillId($waybillId)
     {
-        $this->waybillId = $waybillId;
-        $this->apiParas["waybillId"] = $waybillId;
+        $this->apiParas['waybillId'] = $waybillId;
+
+        return $this;
     }
 
     public function getCarrierCode()
     {
-        return $this->carrierCode;
+        return $this->apiParas['carrierCode'];
     }
 
     public function setCarrierCode($carrierCode)
     {
-        $this->carrierCode = $carrierCode;
-        $this->apiParas["carrierCode"] = $carrierCode;
+        $this->apiParas['carrierCode'] = $carrierCode;
+
+        return $this;
     }
 
     public function getSign()
     {
-        return $this->sign;
+        return $this->apiParas['sign'];
     }
 
     public function setSign($sign)
     {
-        $this->sign = $sign;
-        $this->apiParas["sign"] = $sign;
+        $this->apiParas['sign'] = $sign;
+
+        return $this;
     }
 
     public function getT()
     {
-        return $this->t;
+        return $this->apiParas['t'];
     }
 
     public function setT($t)
     {
-        $this->t = $t;
-        $this->apiParas["t"] = $t;
+        $this->apiParas['t'] = $t;
+
+        return $this;
     }
 }

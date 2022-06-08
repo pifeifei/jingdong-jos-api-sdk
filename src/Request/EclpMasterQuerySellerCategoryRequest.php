@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterQuerySellerCategoryRequest
+class EclpMasterQuerySellerCategoryRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $categoryNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.querySellerCategory";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.querySellerCategory';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getCategoryNo()
     {
-        return $this->categoryNo;
+        return $this->apiParas['categoryNo'];
     }
 
     public function setCategoryNo($categoryNo)
     {
-        $this->categoryNo = $categoryNo;
-        $this->apiParas["categoryNo"] = $categoryNo;
+        $this->apiParas['categoryNo'] = $categoryNo;
+
+        return $this;
     }
 }

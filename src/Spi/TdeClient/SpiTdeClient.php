@@ -2,16 +2,18 @@
 
 namespace ACES\Spi\TdeClient;
 
-define("digestMethod", "sha1");
-define("cipherMethod", "AES-128-CBC");
-define("localIv", "0000000000000000");
+define('digestMethod', 'sha1');
+define('cipherMethod', 'AES-128-CBC');
+define('localIv', '0000000000000000');
 
 class SpiTdeClient
 {
     /**
-     * 加密
+     * 加密.
+     *
      * @param $string
      * @param $key
+     *
      * @return string
      */
     public function _encrypt($string, $key = '')
@@ -26,9 +28,11 @@ class SpiTdeClient
     }
 
     /**
-     * 解密
+     * 解密.
+     *
      * @param string $string 需要解密的字符串
-     * @param string $key 密钥
+     * @param string $key    密钥
+     *
      * @return string
      */
     public function _decrypt($string, $key = '')

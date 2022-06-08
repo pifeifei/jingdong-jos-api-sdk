@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class EclpGoodsQueryShopGoodsInfoRequest
+class EclpGoodsQueryShopGoodsInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $size;
-    private $current;
-    private $deptNo;
-    private $goodsNo;
-    private $shopNo;
-    private $spGoodsNo;
-    private $isvGoodsNo;
-    private $shopGoodsNoLT;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.goods.queryShopGoodsInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.goods.queryShopGoodsInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSize()
     {
-        return $this->size;
+        return $this->apiParas['size'];
     }
 
     public function setSize($size)
     {
-        $this->size = $size;
-        $this->apiParas["size"] = $size;
+        $this->apiParas['size'] = $size;
+
+        return $this;
     }
 
     public function getCurrent()
     {
-        return $this->current;
+        return $this->apiParas['current'];
     }
 
     public function setCurrent($current)
     {
-        $this->current = $current;
-        $this->apiParas["current"] = $current;
+        $this->apiParas['current'] = $current;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->apiParas['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
     {
-        $this->goodsNo = $goodsNo;
-        $this->apiParas["goodsNo"] = $goodsNo;
+        $this->apiParas['goodsNo'] = $goodsNo;
+
+        return $this;
     }
 
     public function getShopNo()
     {
-        return $this->shopNo;
+        return $this->apiParas['shopNo'];
     }
 
     public function setShopNo($shopNo)
     {
-        $this->shopNo = $shopNo;
-        $this->apiParas["shopNo"] = $shopNo;
+        $this->apiParas['shopNo'] = $shopNo;
+
+        return $this;
     }
 
     public function getSpGoodsNo()
     {
-        return $this->spGoodsNo;
+        return $this->apiParas['spGoodsNo'];
     }
 
     public function setSpGoodsNo($spGoodsNo)
     {
-        $this->spGoodsNo = $spGoodsNo;
-        $this->apiParas["spGoodsNo"] = $spGoodsNo;
+        $this->apiParas['spGoodsNo'] = $spGoodsNo;
+
+        return $this;
     }
 
     public function getIsvGoodsNo()
     {
-        return $this->isvGoodsNo;
+        return $this->apiParas['isvGoodsNo'];
     }
 
     public function setIsvGoodsNo($isvGoodsNo)
     {
-        $this->isvGoodsNo = $isvGoodsNo;
-        $this->apiParas["isvGoodsNo"] = $isvGoodsNo;
+        $this->apiParas['isvGoodsNo'] = $isvGoodsNo;
+
+        return $this;
     }
 
     public function getShopGoodsNoLT()
     {
-        return $this->shopGoodsNoLT;
+        return $this->apiParas['shopGoodsNoLT'];
     }
 
     public function setShopGoodsNoLT($shopGoodsNoLT)
     {
-        $this->shopGoodsNoLT = $shopGoodsNoLT;
-        $this->apiParas["shopGoodsNoLT"] = $shopGoodsNoLT;
+        $this->apiParas['shopGoodsNoLT'] = $shopGoodsNoLT;
+
+        return $this;
     }
 }

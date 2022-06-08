@@ -2,17 +2,13 @@
 
 namespace ACES\Request\Domain\ServiceOrderQueryList;
 
-
-
-
 class ServiceApiRequest
 {
     private $params = [];
 
-
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jdwl.toms.b2c.api.dto.ServiceOrderDTO";
+        $this->params['@type'] = 'com.jdwl.toms.b2c.api.dto.ServiceOrderDTO';
     }
 
     public function setDeptCode($deptCode)
@@ -24,7 +20,6 @@ class ServiceApiRequest
     {
         return $this->params['deptCode'];
     }
-
 
     public function setStartServiceTime($startServiceTime)
     {
@@ -46,7 +41,6 @@ class ServiceApiRequest
         return $this->params['endServiceTime'];
     }
 
-
     public function setPin($pin)
     {
         $this->params['pin'] = $pin;
@@ -56,7 +50,6 @@ class ServiceApiRequest
     {
         return $this->params['pin'];
     }
-
 
     public function setServiceType($serviceType)
     {
@@ -68,7 +61,7 @@ class ServiceApiRequest
         return $this->params['serviceType'];
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

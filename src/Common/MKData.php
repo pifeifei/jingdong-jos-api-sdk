@@ -38,7 +38,7 @@ class MKData
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getKey_exp()
     {
@@ -46,7 +46,7 @@ class MKData
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getKey_effective()
     {
@@ -54,7 +54,7 @@ class MKData
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getVersion()
     {
@@ -62,7 +62,7 @@ class MKData
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getKey_status()
     {
@@ -78,7 +78,6 @@ class MKData
     }
 
     /**
-     *
      * @param string $id
      */
     public function setId($id)
@@ -87,7 +86,6 @@ class MKData
     }
 
     /**
-     *
      * @param string $keyString
      */
     public function setKeyString($keyString)
@@ -96,7 +94,6 @@ class MKData
     }
 
     /**
-     *
      * @param string $keyType
      */
     public function setKeyType($keyType)
@@ -105,8 +102,7 @@ class MKData
     }
 
     /**
-     *
-     * @param integer $keyExp
+     * @param int $keyExp
      */
     public function setKeyExp($keyExp)
     {
@@ -114,8 +110,7 @@ class MKData
     }
 
     /**
-     *
-     * @param integer $keyEffective
+     * @param int $keyEffective
      */
     public function setKeyEffective($keyEffective)
     {
@@ -123,8 +118,7 @@ class MKData
     }
 
     /**
-     *
-     * @param integer $version
+     * @param int $version
      */
     public function setVersion($version)
     {
@@ -132,8 +126,7 @@ class MKData
     }
 
     /**
-     *
-     * @param integer $keyStatus
+     * @param int $keyStatus
      */
     public function setKeyStatus($keyStatus)
     {
@@ -141,7 +134,6 @@ class MKData
     }
 
     /**
-     *
      * @param string $keyDigest
      */
     public function setKeyDigest($keyDigest)

@@ -2,378 +2,350 @@
 
 namespace ACES\Request;
 
-
-class JcloudWmsSkuAcceptServiceHandlerUpdateRequest
+class JcloudWmsSkuAcceptServiceHandlerUpdateRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $code;
-    private $tenantId;
-    private $specification;
-    private $model;
-    private $ownerNo;
-    private $name;
-    private $foreignName;
-    private $categoryCode;
-    private $brand;
-    private $barcodeType;
-    private $barcodeArr;
-    private $sizeType;
-    private $weight;
-    private $length;
-    private $width;
-    private $height;
-    private $isShelfLife;
-    private $shelfLife;
-    private $isSerial;
-    private $isHighValue;
-    private $isLuxury;
-    private $isFragile;
-    private $memo;
-    private $operateUser;
-    private $operateTime;
-    private $dangerLevel;
-    private $manufactureSkuNo;
-    private $erpSkuNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.jcloud.wms.SkuAcceptServiceHandler.update";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.jcloud.wms.SkuAcceptServiceHandler.update';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCode()
     {
-        return $this->code;
+        return $this->apiParas['code'];
     }
 
     public function setCode($code)
     {
-        $this->code = $code;
-        $this->apiParas["code"] = $code;
+        $this->apiParas['code'] = $code;
+
+        return $this;
     }
 
     public function getTenantId()
     {
-        return $this->tenantId;
+        return $this->apiParas['tenantId'];
     }
 
     public function setTenantId($tenantId)
     {
-        $this->tenantId = $tenantId;
-        $this->apiParas["tenantId"] = $tenantId;
+        $this->apiParas['tenantId'] = $tenantId;
+
+        return $this;
     }
 
     public function getSpecification()
     {
-        return $this->specification;
+        return $this->apiParas['specification'];
     }
 
     public function setSpecification($specification)
     {
-        $this->specification = $specification;
-        $this->apiParas["specification"] = $specification;
+        $this->apiParas['specification'] = $specification;
+
+        return $this;
     }
 
     public function getModel()
     {
-        return $this->model;
+        return $this->apiParas['model'];
     }
 
     public function setModel($model)
     {
-        $this->model = $model;
-        $this->apiParas["model"] = $model;
+        $this->apiParas['model'] = $model;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getName()
     {
-        return $this->name;
+        return $this->apiParas['name'];
     }
 
     public function setName($name)
     {
-        $this->name = $name;
-        $this->apiParas["name"] = $name;
+        $this->apiParas['name'] = $name;
+
+        return $this;
     }
 
     public function getForeignName()
     {
-        return $this->foreignName;
+        return $this->apiParas['foreignName'];
     }
 
     public function setForeignName($foreignName)
     {
-        $this->foreignName = $foreignName;
-        $this->apiParas["foreignName"] = $foreignName;
+        $this->apiParas['foreignName'] = $foreignName;
+
+        return $this;
     }
 
     public function getCategoryCode()
     {
-        return $this->categoryCode;
+        return $this->apiParas['categoryCode'];
     }
 
     public function setCategoryCode($categoryCode)
     {
-        $this->categoryCode = $categoryCode;
-        $this->apiParas["categoryCode"] = $categoryCode;
+        $this->apiParas['categoryCode'] = $categoryCode;
+
+        return $this;
     }
 
     public function getBrand()
     {
-        return $this->brand;
+        return $this->apiParas['brand'];
     }
 
     public function setBrand($brand)
     {
-        $this->brand = $brand;
-        $this->apiParas["brand"] = $brand;
+        $this->apiParas['brand'] = $brand;
+
+        return $this;
     }
 
     public function getBarcodeType()
     {
-        return $this->barcodeType;
+        return $this->apiParas['barcodeType'];
     }
 
     public function setBarcodeType($barcodeType)
     {
-        $this->barcodeType = $barcodeType;
-        $this->apiParas["barcodeType"] = $barcodeType;
+        $this->apiParas['barcodeType'] = $barcodeType;
+
+        return $this;
     }
 
     public function getBarcodeArr()
     {
-        return $this->barcodeArr;
+        return $this->apiParas['barcodeArr'];
     }
 
     public function setBarcodeArr($barcodeArr)
     {
-        $this->barcodeArr = $barcodeArr;
-        $this->apiParas["barcodeArr"] = $barcodeArr;
+        $this->apiParas['barcodeArr'] = $barcodeArr;
+
+        return $this;
     }
 
     public function getSizeType()
     {
-        return $this->sizeType;
+        return $this->apiParas['sizeType'];
     }
 
     public function setSizeType($sizeType)
     {
-        $this->sizeType = $sizeType;
-        $this->apiParas["sizeType"] = $sizeType;
+        $this->apiParas['sizeType'] = $sizeType;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getLength()
     {
-        return $this->length;
+        return $this->apiParas['length'];
     }
 
     public function setLength($length)
     {
-        $this->length = $length;
-        $this->apiParas["length"] = $length;
+        $this->apiParas['length'] = $length;
+
+        return $this;
     }
 
     public function getWidth()
     {
-        return $this->width;
+        return $this->apiParas['width'];
     }
 
     public function setWidth($width)
     {
-        $this->width = $width;
-        $this->apiParas["width"] = $width;
+        $this->apiParas['width'] = $width;
+
+        return $this;
     }
 
     public function getHeight()
     {
-        return $this->height;
+        return $this->apiParas['height'];
     }
 
     public function setHeight($height)
     {
-        $this->height = $height;
-        $this->apiParas["height"] = $height;
+        $this->apiParas['height'] = $height;
+
+        return $this;
     }
 
     public function getIsShelfLife()
     {
-        return $this->isShelfLife;
+        return $this->apiParas['isShelfLife'];
     }
 
     public function setIsShelfLife($isShelfLife)
     {
-        $this->isShelfLife = $isShelfLife;
-        $this->apiParas["isShelfLife"] = $isShelfLife;
+        $this->apiParas['isShelfLife'] = $isShelfLife;
+
+        return $this;
     }
 
     public function getShelfLife()
     {
-        return $this->shelfLife;
+        return $this->apiParas['shelfLife'];
     }
 
     public function setShelfLife($shelfLife)
     {
-        $this->shelfLife = $shelfLife;
-        $this->apiParas["shelfLife"] = $shelfLife;
+        $this->apiParas['shelfLife'] = $shelfLife;
+
+        return $this;
     }
 
     public function getIsSerial()
     {
-        return $this->isSerial;
+        return $this->apiParas['isSerial'];
     }
 
     public function setIsSerial($isSerial)
     {
-        $this->isSerial = $isSerial;
-        $this->apiParas["isSerial"] = $isSerial;
+        $this->apiParas['isSerial'] = $isSerial;
+
+        return $this;
     }
 
     public function getIsHighValue()
     {
-        return $this->isHighValue;
+        return $this->apiParas['isHighValue'];
     }
 
     public function setIsHighValue($isHighValue)
     {
-        $this->isHighValue = $isHighValue;
-        $this->apiParas["isHighValue"] = $isHighValue;
+        $this->apiParas['isHighValue'] = $isHighValue;
+
+        return $this;
     }
 
     public function getIsLuxury()
     {
-        return $this->isLuxury;
+        return $this->apiParas['isLuxury'];
     }
 
     public function setIsLuxury($isLuxury)
     {
-        $this->isLuxury = $isLuxury;
-        $this->apiParas["isLuxury"] = $isLuxury;
+        $this->apiParas['isLuxury'] = $isLuxury;
+
+        return $this;
     }
 
     public function getIsFragile()
     {
-        return $this->isFragile;
+        return $this->apiParas['isFragile'];
     }
 
     public function setIsFragile($isFragile)
     {
-        $this->isFragile = $isFragile;
-        $this->apiParas["isFragile"] = $isFragile;
+        $this->apiParas['isFragile'] = $isFragile;
+
+        return $this;
     }
 
     public function getMemo()
     {
-        return $this->memo;
+        return $this->apiParas['memo'];
     }
 
     public function setMemo($memo)
     {
-        $this->memo = $memo;
-        $this->apiParas["memo"] = $memo;
+        $this->apiParas['memo'] = $memo;
+
+        return $this;
     }
 
     public function getOperateUser()
     {
-        return $this->operateUser;
+        return $this->apiParas['operateUser'];
     }
 
     public function setOperateUser($operateUser)
     {
-        $this->operateUser = $operateUser;
-        $this->apiParas["operateUser"] = $operateUser;
+        $this->apiParas['operateUser'] = $operateUser;
+
+        return $this;
     }
 
     public function getOperateTime()
     {
-        return $this->operateTime;
+        return $this->apiParas['operateTime'];
     }
 
     public function setOperateTime($operateTime)
     {
-        $this->operateTime = $operateTime;
-        $this->apiParas["operateTime"] = $operateTime;
+        $this->apiParas['operateTime'] = $operateTime;
+
+        return $this;
     }
 
     public function getDangerLevel()
     {
-        return $this->dangerLevel;
+        return $this->apiParas['dangerLevel'];
     }
 
     public function setDangerLevel($dangerLevel)
     {
-        $this->dangerLevel = $dangerLevel;
-        $this->apiParas["dangerLevel"] = $dangerLevel;
+        $this->apiParas['dangerLevel'] = $dangerLevel;
+
+        return $this;
     }
 
     public function getManufactureSkuNo()
     {
-        return $this->manufactureSkuNo;
+        return $this->apiParas['manufactureSkuNo'];
     }
 
     public function setManufactureSkuNo($manufactureSkuNo)
     {
-        $this->manufactureSkuNo = $manufactureSkuNo;
-        $this->apiParas["manufactureSkuNo"] = $manufactureSkuNo;
+        $this->apiParas['manufactureSkuNo'] = $manufactureSkuNo;
+
+        return $this;
     }
 
     public function getErpSkuNo()
     {
-        return $this->erpSkuNo;
+        return $this->apiParas['erpSkuNo'];
     }
 
     public function setErpSkuNo($erpSkuNo)
     {
-        $this->erpSkuNo = $erpSkuNo;
-        $this->apiParas["erpSkuNo"] = $erpSkuNo;
+        $this->apiParas['erpSkuNo'] = $erpSkuNo;
+
+        return $this;
     }
 }

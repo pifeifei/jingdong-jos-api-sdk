@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\OpenInsideJosTransportInsideOrder;
 
-
-
-
 class Request
 {
-    private $params = array();
+    private $params = [];
     private $ediRemark;
     private $isvTime;
     private $remark;
@@ -23,9 +20,9 @@ class Request
     private $warehouseNo;
     private $insideItemRequestList;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.open.sp.inside.request.jos.InsideJosRequest";
+        $this->params['@type'] = 'com.jd.open.sp.inside.request.jos.InsideJosRequest';
     }
 
     public function getEdiRemark()
@@ -161,14 +158,13 @@ class Request
     public function setInsideItemRequestList($insideItemRequestList)
     {
         $size = count($insideItemRequestList);
-        for ($i = 0; $i < $size; $i++) {
-            $insideItemRequestList [$i] = $insideItemRequestList [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $insideItemRequestList[$i] = $insideItemRequestList[$i]->getInstance();
         }
         $this->params['insideItemRequestList'] = $insideItemRequestList;
     }
 
-
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

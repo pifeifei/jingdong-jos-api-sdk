@@ -2,198 +2,170 @@
 
 namespace ACES\Request;
 
-
-class EclpB2cQueryEstimatedFreightsRequest
+class EclpB2cQueryEstimatedFreightsRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $senderProvinceName;
-    private $senderCityName;
-    private $senderCountryName;
-    private $senderCountrysideName;
-    private $senderAddress;
-    private $receiverProvinceName;
-    private $receiverCityName;
-    private $receiverCountryName;
-    private $receiverCountrysideName;
-    private $receiverAddress;
-    private $weight;
-    private $businessType;
-    private $orderTime;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.b2c.queryEstimatedFreights";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.b2c.queryEstimatedFreights';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSenderProvinceName()
     {
-        return $this->senderProvinceName;
+        return $this->apiParas['senderProvinceName'];
     }
 
     public function setSenderProvinceName($senderProvinceName)
     {
-        $this->senderProvinceName = $senderProvinceName;
-        $this->apiParas["senderProvinceName"] = $senderProvinceName;
+        $this->apiParas['senderProvinceName'] = $senderProvinceName;
+
+        return $this;
     }
 
     public function getSenderCityName()
     {
-        return $this->senderCityName;
+        return $this->apiParas['senderCityName'];
     }
 
     public function setSenderCityName($senderCityName)
     {
-        $this->senderCityName = $senderCityName;
-        $this->apiParas["senderCityName"] = $senderCityName;
+        $this->apiParas['senderCityName'] = $senderCityName;
+
+        return $this;
     }
 
     public function getSenderCountryName()
     {
-        return $this->senderCountryName;
+        return $this->apiParas['senderCountryName'];
     }
 
     public function setSenderCountryName($senderCountryName)
     {
-        $this->senderCountryName = $senderCountryName;
-        $this->apiParas["senderCountryName"] = $senderCountryName;
+        $this->apiParas['senderCountryName'] = $senderCountryName;
+
+        return $this;
     }
 
     public function getSenderCountrysideName()
     {
-        return $this->senderCountrysideName;
+        return $this->apiParas['senderCountrysideName'];
     }
 
     public function setSenderCountrysideName($senderCountrysideName)
     {
-        $this->senderCountrysideName = $senderCountrysideName;
-        $this->apiParas["senderCountrysideName"] = $senderCountrysideName;
+        $this->apiParas['senderCountrysideName'] = $senderCountrysideName;
+
+        return $this;
     }
 
     public function getSenderAddress()
     {
-        return $this->senderAddress;
+        return $this->apiParas['senderAddress'];
     }
 
     public function setSenderAddress($senderAddress)
     {
-        $this->senderAddress = $senderAddress;
-        $this->apiParas["senderAddress"] = $senderAddress;
+        $this->apiParas['senderAddress'] = $senderAddress;
+
+        return $this;
     }
 
     public function getReceiverProvinceName()
     {
-        return $this->receiverProvinceName;
+        return $this->apiParas['receiverProvinceName'];
     }
 
     public function setReceiverProvinceName($receiverProvinceName)
     {
-        $this->receiverProvinceName = $receiverProvinceName;
-        $this->apiParas["receiverProvinceName"] = $receiverProvinceName;
+        $this->apiParas['receiverProvinceName'] = $receiverProvinceName;
+
+        return $this;
     }
 
     public function getReceiverCityName()
     {
-        return $this->receiverCityName;
+        return $this->apiParas['receiverCityName'];
     }
 
     public function setReceiverCityName($receiverCityName)
     {
-        $this->receiverCityName = $receiverCityName;
-        $this->apiParas["receiverCityName"] = $receiverCityName;
+        $this->apiParas['receiverCityName'] = $receiverCityName;
+
+        return $this;
     }
 
     public function getReceiverCountryName()
     {
-        return $this->receiverCountryName;
+        return $this->apiParas['receiverCountryName'];
     }
 
     public function setReceiverCountryName($receiverCountryName)
     {
-        $this->receiverCountryName = $receiverCountryName;
-        $this->apiParas["receiverCountryName"] = $receiverCountryName;
+        $this->apiParas['receiverCountryName'] = $receiverCountryName;
+
+        return $this;
     }
 
     public function getReceiverCountrysideName()
     {
-        return $this->receiverCountrysideName;
+        return $this->apiParas['receiverCountrysideName'];
     }
 
     public function setReceiverCountrysideName($receiverCountrysideName)
     {
-        $this->receiverCountrysideName = $receiverCountrysideName;
-        $this->apiParas["receiverCountrysideName"] = $receiverCountrysideName;
+        $this->apiParas['receiverCountrysideName'] = $receiverCountrysideName;
+
+        return $this;
     }
 
     public function getReceiverAddress()
     {
-        return $this->receiverAddress;
+        return $this->apiParas['receiverAddress'];
     }
 
     public function setReceiverAddress($receiverAddress)
     {
-        $this->receiverAddress = $receiverAddress;
-        $this->apiParas["receiverAddress"] = $receiverAddress;
+        $this->apiParas['receiverAddress'] = $receiverAddress;
+
+        return $this;
     }
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->apiParas['weight'];
     }
 
     public function setWeight($weight)
     {
-        $this->weight = $weight;
-        $this->apiParas["weight"] = $weight;
+        $this->apiParas['weight'] = $weight;
+
+        return $this;
     }
 
     public function getBusinessType()
     {
-        return $this->businessType;
+        return $this->apiParas['businessType'];
     }
 
     public function setBusinessType($businessType)
     {
-        $this->businessType = $businessType;
-        $this->apiParas["businessType"] = $businessType;
+        $this->apiParas['businessType'] = $businessType;
+
+        return $this;
     }
 
     public function getOrderTime()
     {
-        return $this->orderTime;
+        return $this->apiParas['orderTime'];
     }
 
     public function setOrderTime($orderTime)
     {
-        $this->orderTime = $orderTime;
-        $this->apiParas["orderTime"] = $orderTime;
+        $this->apiParas['orderTime'] = $orderTime;
+
+        return $this;
     }
 }

@@ -3,10 +3,10 @@
 namespace ACES;
 
 use ACES\Common\cache\iCache;
-use ACES\Common\Domain\JosBaseInfo;
-use ACES\Common\Token;
 
-//deprecated, to use TDEClient
+/**
+ * @deprecated to use TDEClient
+ */
 class SecretJdClient
 {
     public static function getInstance($accessToken, $appKey, $appSecret, $serverUrl = 'https://api.jd.com/routerjson')

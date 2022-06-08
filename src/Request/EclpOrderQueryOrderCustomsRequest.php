@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderQueryOrderCustomsRequest
+class EclpOrderQueryOrderCustomsRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $isvUUID;
-    private $pageNo;
-    private $pageSize;
-    private $startDate;
-    private $endDate;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.queryOrderCustoms";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.queryOrderCustoms';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getIsvUUID()
     {
-        return $this->isvUUID;
+        return $this->apiParas['isvUUID'];
     }
 
     public function setIsvUUID($isvUUID)
     {
-        $this->isvUUID = $isvUUID;
-        $this->apiParas["isvUUID"] = $isvUUID;
+        $this->apiParas['isvUUID'] = $isvUUID;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getStartDate()
     {
-        return $this->startDate;
+        return $this->apiParas['startDate'];
     }
 
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
-        $this->apiParas["startDate"] = $startDate;
+        $this->apiParas['startDate'] = $startDate;
+
+        return $this;
     }
 
     public function getEndDate()
     {
-        return $this->endDate;
+        return $this->apiParas['endDate'];
     }
 
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-        $this->apiParas["endDate"] = $endDate;
+        $this->apiParas['endDate'] = $endDate;
+
+        return $this;
     }
 }

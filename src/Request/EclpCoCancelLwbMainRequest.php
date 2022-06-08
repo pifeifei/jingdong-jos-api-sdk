@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class EclpCoCancelLwbMainRequest
+class EclpCoCancelLwbMainRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $orderNo;
-    private $lwbNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.cancelLwbMain";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.cancelLwbMain';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getOrderNo()
     {
-        return $this->orderNo;
+        return $this->apiParas['orderNo'];
     }
 
     public function setOrderNo($orderNo)
     {
-        $this->orderNo = $orderNo;
-        $this->apiParas["orderNo"] = $orderNo;
+        $this->apiParas['orderNo'] = $orderNo;
+
+        return $this;
     }
 
     public function getLwbNo()
     {
-        return $this->lwbNo;
+        return $this->apiParas['lwbNo'];
     }
 
     public function setLwbNo($lwbNo)
     {
-        $this->lwbNo = $lwbNo;
-        $this->apiParas["lwbNo"] = $lwbNo;
+        $this->apiParas['lwbNo'] = $lwbNo;
+
+        return $this;
     }
 }

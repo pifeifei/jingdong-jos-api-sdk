@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class EclpPoQueryPoNoRequest
+class EclpPoQueryPoNoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $poStatus;
-    private $dateType;
-    private $startDate;
-    private $endDate;
-    private $poNo;
-    private $outPoNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.po.queryPoNo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.po.queryPoNo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getPoStatus()
     {
-        return $this->poStatus;
+        return $this->apiParas['poStatus'];
     }
 
     public function setPoStatus($poStatus)
     {
-        $this->poStatus = $poStatus;
-        $this->apiParas["poStatus"] = $poStatus;
+        $this->apiParas['poStatus'] = $poStatus;
+
+        return $this;
     }
 
     public function getDateType()
     {
-        return $this->dateType;
+        return $this->apiParas['dateType'];
     }
 
     public function setDateType($dateType)
     {
-        $this->dateType = $dateType;
-        $this->apiParas["dateType"] = $dateType;
+        $this->apiParas['dateType'] = $dateType;
+
+        return $this;
     }
 
     public function getStartDate()
     {
-        return $this->startDate;
+        return $this->apiParas['startDate'];
     }
 
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
-        $this->apiParas["startDate"] = $startDate;
+        $this->apiParas['startDate'] = $startDate;
+
+        return $this;
     }
 
     public function getEndDate()
     {
-        return $this->endDate;
+        return $this->apiParas['endDate'];
     }
 
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-        $this->apiParas["endDate"] = $endDate;
+        $this->apiParas['endDate'] = $endDate;
+
+        return $this;
     }
 
     public function getPoNo()
     {
-        return $this->poNo;
+        return $this->apiParas['poNo'];
     }
 
     public function setPoNo($poNo)
     {
-        $this->poNo = $poNo;
-        $this->apiParas["poNo"] = $poNo;
+        $this->apiParas['poNo'] = $poNo;
+
+        return $this;
     }
 
     public function getOutPoNo()
     {
-        return $this->outPoNo;
+        return $this->apiParas['outPoNo'];
     }
 
     public function setOutPoNo($outPoNo)
     {
-        $this->outPoNo = $outPoNo;
-        $this->apiParas["outPoNo"] = $outPoNo;
+        $this->apiParas['outPoNo'] = $outPoNo;
+
+        return $this;
     }
 }

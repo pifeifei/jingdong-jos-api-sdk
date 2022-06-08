@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class EclpStockQueryBatchChangeRequest
+class EclpStockQueryBatchChangeRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $allocativeCenterNo;
-    private $warehouseNo;
-    private $batchAttrChangeNo;
-    private $startTime;
-    private $endTime;
-    private $startPage;
-    private $onePageNum;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.stock.queryBatchChange";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.stock.queryBatchChange';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getAllocativeCenterNo()
     {
-        return $this->allocativeCenterNo;
+        return $this->apiParas['allocativeCenterNo'];
     }
 
     public function setAllocativeCenterNo($allocativeCenterNo)
     {
-        $this->allocativeCenterNo = $allocativeCenterNo;
-        $this->apiParas["allocativeCenterNo"] = $allocativeCenterNo;
+        $this->apiParas['allocativeCenterNo'] = $allocativeCenterNo;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getBatchAttrChangeNo()
     {
-        return $this->batchAttrChangeNo;
+        return $this->apiParas['batchAttrChangeNo'];
     }
 
     public function setBatchAttrChangeNo($batchAttrChangeNo)
     {
-        $this->batchAttrChangeNo = $batchAttrChangeNo;
-        $this->apiParas["batchAttrChangeNo"] = $batchAttrChangeNo;
+        $this->apiParas['batchAttrChangeNo'] = $batchAttrChangeNo;
+
+        return $this;
     }
 
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->apiParas['startTime'];
     }
 
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
-        $this->apiParas["startTime"] = $startTime;
+        $this->apiParas['startTime'] = $startTime;
+
+        return $this;
     }
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->apiParas['endTime'];
     }
 
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
-        $this->apiParas["endTime"] = $endTime;
+        $this->apiParas['endTime'] = $endTime;
+
+        return $this;
     }
 
     public function getStartPage()
     {
-        return $this->startPage;
+        return $this->apiParas['startPage'];
     }
 
     public function setStartPage($startPage)
     {
-        $this->startPage = $startPage;
-        $this->apiParas["startPage"] = $startPage;
+        $this->apiParas['startPage'] = $startPage;
+
+        return $this;
     }
 
     public function getOnePageNum()
     {
-        return $this->onePageNum;
+        return $this->apiParas['onePageNum'];
     }
 
     public function setOnePageNum($onePageNum)
     {
-        $this->onePageNum = $onePageNum;
-        $this->apiParas["onePageNum"] = $onePageNum;
+        $this->apiParas['onePageNum'] = $onePageNum;
+
+        return $this;
     }
 }

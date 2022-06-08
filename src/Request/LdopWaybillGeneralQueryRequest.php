@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class LdopWaybillGeneralQueryRequest
+class LdopWaybillGeneralQueryRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $customerCode;
-    private $deliveryId;
-    private $phone;
-    private $dynamicTimeFlag;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.waybill.generalQuery";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.waybill.generalQuery';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getDeliveryId()
     {
-        return $this->deliveryId;
+        return $this->apiParas['deliveryId'];
     }
 
     public function setDeliveryId($deliveryId)
     {
-        $this->deliveryId = $deliveryId;
-        $this->apiParas["deliveryId"] = $deliveryId;
+        $this->apiParas['deliveryId'] = $deliveryId;
+
+        return $this;
     }
 
     public function getPhone()
     {
-        return $this->phone;
+        return $this->apiParas['phone'];
     }
 
     public function setPhone($phone)
     {
-        $this->phone = $phone;
-        $this->apiParas["phone"] = $phone;
+        $this->apiParas['phone'] = $phone;
+
+        return $this;
     }
 
     public function getDynamicTimeFlag()
     {
-        return $this->dynamicTimeFlag;
+        return $this->apiParas['dynamicTimeFlag'];
     }
 
     public function setDynamicTimeFlag($dynamicTimeFlag)
     {
-        $this->dynamicTimeFlag = $dynamicTimeFlag;
-        $this->apiParas["dynamicTimeFlag"] = $dynamicTimeFlag;
+        $this->apiParas['dynamicTimeFlag'] = $dynamicTimeFlag;
+
+        return $this;
     }
 }

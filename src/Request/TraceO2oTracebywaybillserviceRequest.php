@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class TraceO2oTracebywaybillserviceRequest
+class TraceO2oTracebywaybillserviceRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $waybillCode;
-    private $source;
-
     public function getApiMethodName()
     {
-        return "jingdong.trace.o2o.tracebywaybillservice";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.trace.o2o.tracebywaybillservice';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getWaybillCode()
     {
-        return $this->waybillCode;
+        return $this->apiParas['waybillCode'];
     }
 
     public function setWaybillCode($waybillCode)
     {
-        $this->waybillCode = $waybillCode;
-        $this->apiParas["waybillCode"] = $waybillCode;
+        $this->apiParas['waybillCode'] = $waybillCode;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 }

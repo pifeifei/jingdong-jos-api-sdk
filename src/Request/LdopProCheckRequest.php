@@ -2,174 +2,146 @@
 
 namespace ACES\Request;
 
-
-class LdopProCheckRequest
+class LdopProCheckRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $checkType;
-    private $customerCode;
-    private $tid;
-    private $provinceName;
-    private $cityName;
-    private $countyName;
-    private $townName;
-    private $longitude;
-    private $latitude;
-    private $detailedAddress;
-    private $addressType;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.pro.check";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.pro.check';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCheckType()
     {
-        return $this->checkType;
+        return $this->apiParas['checkType'];
     }
 
     public function setCheckType($checkType)
     {
-        $this->checkType = $checkType;
-        $this->apiParas["checkType"] = $checkType;
+        $this->apiParas['checkType'] = $checkType;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getTid()
     {
-        return $this->tid;
+        return $this->apiParas['tid'];
     }
 
     public function setTid($tid)
     {
-        $this->tid = $tid;
-        $this->apiParas["tid"] = $tid;
+        $this->apiParas['tid'] = $tid;
+
+        return $this;
     }
 
     public function getProvinceName()
     {
-        return $this->provinceName;
+        return $this->apiParas['provinceName'];
     }
 
     public function setProvinceName($provinceName)
     {
-        $this->provinceName = $provinceName;
-        $this->apiParas["provinceName"] = $provinceName;
+        $this->apiParas['provinceName'] = $provinceName;
+
+        return $this;
     }
 
     public function getCityName()
     {
-        return $this->cityName;
+        return $this->apiParas['cityName'];
     }
 
     public function setCityName($cityName)
     {
-        $this->cityName = $cityName;
-        $this->apiParas["cityName"] = $cityName;
+        $this->apiParas['cityName'] = $cityName;
+
+        return $this;
     }
 
     public function getCountyName()
     {
-        return $this->countyName;
+        return $this->apiParas['countyName'];
     }
 
     public function setCountyName($countyName)
     {
-        $this->countyName = $countyName;
-        $this->apiParas["countyName"] = $countyName;
+        $this->apiParas['countyName'] = $countyName;
+
+        return $this;
     }
 
     public function getTownName()
     {
-        return $this->townName;
+        return $this->apiParas['townName'];
     }
 
     public function setTownName($townName)
     {
-        $this->townName = $townName;
-        $this->apiParas["townName"] = $townName;
+        $this->apiParas['townName'] = $townName;
+
+        return $this;
     }
 
     public function getLongitude()
     {
-        return $this->longitude;
+        return $this->apiParas['longitude'];
     }
 
     public function setLongitude($longitude)
     {
-        $this->longitude = $longitude;
-        $this->apiParas["longitude"] = $longitude;
+        $this->apiParas['longitude'] = $longitude;
+
+        return $this;
     }
 
     public function getLatitude()
     {
-        return $this->latitude;
+        return $this->apiParas['latitude'];
     }
 
     public function setLatitude($latitude)
     {
-        $this->latitude = $latitude;
-        $this->apiParas["latitude"] = $latitude;
+        $this->apiParas['latitude'] = $latitude;
+
+        return $this;
     }
 
     public function getDetailedAddress()
     {
-        return $this->detailedAddress;
+        return $this->apiParas['detailedAddress'];
     }
 
     public function setDetailedAddress($detailedAddress)
     {
-        $this->detailedAddress = $detailedAddress;
-        $this->apiParas["detailedAddress"] = $detailedAddress;
+        $this->apiParas['detailedAddress'] = $detailedAddress;
+
+        return $this;
     }
 
     public function getAddressType()
     {
-        return $this->addressType;
+        return $this->apiParas['addressType'];
     }
 
     public function setAddressType($addressType)
     {
-        $this->addressType = $addressType;
-        $this->apiParas["addressType"] = $addressType;
+        $this->apiParas['addressType'] = $addressType;
+
+        return $this;
     }
 }

@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpCollectorQueryMaintenanceResultRequest
+class EclpCollectorQueryMaintenanceResultRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $startTime;
-    private $deptNo;
-    private $endTime;
-    private $warehouseNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.collector.queryMaintenanceResult";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.collector.queryMaintenanceResult';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->apiParas['startTime'];
     }
 
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
-        $this->apiParas["startTime"] = $startTime;
+        $this->apiParas['startTime'] = $startTime;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->apiParas['endTime'];
     }
 
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
-        $this->apiParas["endTime"] = $endTime;
+        $this->apiParas['endTime'] = $endTime;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 }

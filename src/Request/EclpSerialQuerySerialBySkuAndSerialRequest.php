@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class EclpSerialQuerySerialBySkuAndSerialRequest
+class EclpSerialQuerySerialBySkuAndSerialRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $goodsNo;
-    private $goodsSID;
-    private $queryType;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.serial.querySerialBySkuAndSerial";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.serial.querySerialBySkuAndSerial';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->apiParas['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
     {
-        $this->goodsNo = $goodsNo;
-        $this->apiParas["goodsNo"] = $goodsNo;
+        $this->apiParas['goodsNo'] = $goodsNo;
+
+        return $this;
     }
 
     public function getGoodsSID()
     {
-        return $this->goodsSID;
+        return $this->apiParas['goodsSID'];
     }
 
     public function setGoodsSID($goodsSID)
     {
-        $this->goodsSID = $goodsSID;
-        $this->apiParas["goodsSID"] = $goodsSID;
+        $this->apiParas['goodsSID'] = $goodsSID;
+
+        return $this;
     }
 
     public function getQueryType()
     {
-        return $this->queryType;
+        return $this->apiParas['queryType'];
     }
 
     public function setQueryType($queryType)
     {
-        $this->queryType = $queryType;
-        $this->apiParas["queryType"] = $queryType;
+        $this->apiParas['queryType'] = $queryType;
+
+        return $this;
     }
 }

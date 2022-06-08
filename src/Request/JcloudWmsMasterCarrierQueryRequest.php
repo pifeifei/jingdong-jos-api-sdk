@@ -2,162 +2,134 @@
 
 namespace ACES\Request;
 
-
-class JcloudWmsMasterCarrierQueryRequest
+class JcloudWmsMasterCarrierQueryRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $tenantId;
-    private $carrierNo;
-    private $carrierName;
-    private $carrierType;
-    private $englishName;
-    private $address;
-    private $tel;
-    private $contact;
-    private $postCode;
-    private $useFlag;
-
     public function getApiMethodName()
     {
-        return "jingdong.jcloud.wms.master.carrier.query";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.jcloud.wms.master.carrier.query';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getTenantId()
     {
-        return $this->tenantId;
+        return $this->apiParas['tenantId'];
     }
 
     public function setTenantId($tenantId)
     {
-        $this->tenantId = $tenantId;
-        $this->apiParas["tenantId"] = $tenantId;
+        $this->apiParas['tenantId'] = $tenantId;
+
+        return $this;
     }
 
     public function getCarrierNo()
     {
-        return $this->carrierNo;
+        return $this->apiParas['carrierNo'];
     }
 
     public function setCarrierNo($carrierNo)
     {
-        $this->carrierNo = $carrierNo;
-        $this->apiParas["carrierNo"] = $carrierNo;
+        $this->apiParas['carrierNo'] = $carrierNo;
+
+        return $this;
     }
 
     public function getCarrierName()
     {
-        return $this->carrierName;
+        return $this->apiParas['carrierName'];
     }
 
     public function setCarrierName($carrierName)
     {
-        $this->carrierName = $carrierName;
-        $this->apiParas["carrierName"] = $carrierName;
+        $this->apiParas['carrierName'] = $carrierName;
+
+        return $this;
     }
 
     public function getCarrierType()
     {
-        return $this->carrierType;
+        return $this->apiParas['carrierType'];
     }
 
     public function setCarrierType($carrierType)
     {
-        $this->carrierType = $carrierType;
-        $this->apiParas["carrierType"] = $carrierType;
+        $this->apiParas['carrierType'] = $carrierType;
+
+        return $this;
     }
 
     public function getEnglishName()
     {
-        return $this->englishName;
+        return $this->apiParas['englishName'];
     }
 
     public function setEnglishName($englishName)
     {
-        $this->englishName = $englishName;
-        $this->apiParas["englishName"] = $englishName;
+        $this->apiParas['englishName'] = $englishName;
+
+        return $this;
     }
 
     public function getAddress()
     {
-        return $this->address;
+        return $this->apiParas['address'];
     }
 
     public function setAddress($address)
     {
-        $this->address = $address;
-        $this->apiParas["address"] = $address;
+        $this->apiParas['address'] = $address;
+
+        return $this;
     }
 
     public function getTel()
     {
-        return $this->tel;
+        return $this->apiParas['tel'];
     }
 
     public function setTel($tel)
     {
-        $this->tel = $tel;
-        $this->apiParas["tel"] = $tel;
+        $this->apiParas['tel'] = $tel;
+
+        return $this;
     }
 
     public function getContact()
     {
-        return $this->contact;
+        return $this->apiParas['contact'];
     }
 
     public function setContact($contact)
     {
-        $this->contact = $contact;
-        $this->apiParas["contact"] = $contact;
+        $this->apiParas['contact'] = $contact;
+
+        return $this;
     }
 
     public function getPostCode()
     {
-        return $this->postCode;
+        return $this->apiParas['postCode'];
     }
 
     public function setPostCode($postCode)
     {
-        $this->postCode = $postCode;
-        $this->apiParas["postCode"] = $postCode;
+        $this->apiParas['postCode'] = $postCode;
+
+        return $this;
     }
 
     public function getUseFlag()
     {
-        return $this->useFlag;
+        return $this->apiParas['useFlag'];
     }
 
     public function setUseFlag($useFlag)
     {
-        $this->useFlag = $useFlag;
-        $this->apiParas["useFlag"] = $useFlag;
+        $this->apiParas['useFlag'] = $useFlag;
+
+        return $this;
     }
 }

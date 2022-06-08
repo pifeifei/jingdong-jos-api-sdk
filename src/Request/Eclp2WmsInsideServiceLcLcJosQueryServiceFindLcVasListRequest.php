@@ -2,24 +2,11 @@
 
 namespace ACES\Request;
 
-
-class Eclp2WmsInsideServiceLcLcJosQueryServiceFindLcVasListRequest
+class Eclp2WmsInsideServiceLcLcJosQueryServiceFindLcVasListRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $lcNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp2.wms.inside.service.lc.LcJosQueryService.findLcVasList";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp2.wms.inside.service.lc.LcJosQueryService.findLcVasList';
     }
 
     public function check()
@@ -29,27 +16,15 @@ class Eclp2WmsInsideServiceLcLcJosQueryServiceFindLcVasListRequest
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
     }
 
     public function getLcNo()
     {
-        return $this->lcNo;
+        return $this->apiParas['lcNo'];
     }
 
     public function setLcNo($lcNo)
     {
-        $this->lcNo = $lcNo;
-        $this->apiParas["lcNo"] = $lcNo;
+        $this->apiParas['lcNo'] = $lcNo;
     }
 }

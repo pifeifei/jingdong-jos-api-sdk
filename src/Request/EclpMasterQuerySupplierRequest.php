@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterQuerySupplierRequest
+class EclpMasterQuerySupplierRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $supplierNos;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.querySupplier";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.querySupplier';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getSupplierNos()
     {
-        return $this->supplierNos;
+        return $this->apiParas['supplierNos'];
     }
 
     public function setSupplierNos($supplierNos)
     {
-        $this->supplierNos = $supplierNos;
-        $this->apiParas["supplierNos"] = $supplierNos;
+        $this->apiParas['supplierNos'] = $supplierNos;
+
+        return $this;
     }
 }

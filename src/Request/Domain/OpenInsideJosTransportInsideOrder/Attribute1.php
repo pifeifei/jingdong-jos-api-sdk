@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\OpenInsideJosTransportInsideOrder;
 
-
-
-
 class Attribute1
 {
-    private $params = array();
+    private $params = [];
     private $sourceLogicStock;
     private $targetLogicStock;
     private $sourceEclpGoodsNo;
@@ -21,9 +18,9 @@ class Attribute1
     private $targetIsvGoodsNo;
     private $targetGoodsLevel;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.open.sp.inside.request.InsideItemRequest";
+        $this->params['@type'] = 'com.jd.open.sp.inside.request.InsideItemRequest';
     }
 
     public function getSourceLogicStock()
@@ -136,7 +133,7 @@ class Attribute1
         $this->params['targetGoodsLevel'] = $targetGoodsLevel;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class EclpCoGetReceiptFlagPhotoRequest
+class EclpCoGetReceiptFlagPhotoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $lwbNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.getReceiptFlagPhoto";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.getReceiptFlagPhoto';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getLwbNo()
     {
-        return $this->lwbNo;
+        return $this->apiParas['lwbNo'];
     }
 
     public function setLwbNo($lwbNo)
     {
-        $this->lwbNo = $lwbNo;
-        $this->apiParas["lwbNo"] = $lwbNo;
+        $this->apiParas['lwbNo'] = $lwbNo;
+
+        return $this;
     }
 }

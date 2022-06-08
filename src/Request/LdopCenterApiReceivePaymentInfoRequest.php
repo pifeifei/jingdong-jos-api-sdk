@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class LdopCenterApiReceivePaymentInfoRequest
+class LdopCenterApiReceivePaymentInfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deliveryId;
-    private $customerCode;
-    private $recMoney;
-    private $receivedMoney;
-    private $paymentState;
-    private $paymentTime;
-    private $payer;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.center.api.receivePaymentInfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.center.api.receivePaymentInfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeliveryId()
     {
-        return $this->deliveryId;
+        return $this->apiParas['deliveryId'];
     }
 
     public function setDeliveryId($deliveryId)
     {
-        $this->deliveryId = $deliveryId;
-        $this->apiParas["deliveryId"] = $deliveryId;
+        $this->apiParas['deliveryId'] = $deliveryId;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getRecMoney()
     {
-        return $this->recMoney;
+        return $this->apiParas['recMoney'];
     }
 
     public function setRecMoney($recMoney)
     {
-        $this->recMoney = $recMoney;
-        $this->apiParas["recMoney"] = $recMoney;
+        $this->apiParas['recMoney'] = $recMoney;
+
+        return $this;
     }
 
     public function getReceivedMoney()
     {
-        return $this->receivedMoney;
+        return $this->apiParas['receivedMoney'];
     }
 
     public function setReceivedMoney($receivedMoney)
     {
-        $this->receivedMoney = $receivedMoney;
-        $this->apiParas["receivedMoney"] = $receivedMoney;
+        $this->apiParas['receivedMoney'] = $receivedMoney;
+
+        return $this;
     }
 
     public function getPaymentState()
     {
-        return $this->paymentState;
+        return $this->apiParas['paymentState'];
     }
 
     public function setPaymentState($paymentState)
     {
-        $this->paymentState = $paymentState;
-        $this->apiParas["paymentState"] = $paymentState;
+        $this->apiParas['paymentState'] = $paymentState;
+
+        return $this;
     }
 
     public function getPaymentTime()
     {
-        return $this->paymentTime;
+        return $this->apiParas['paymentTime'];
     }
 
     public function setPaymentTime($paymentTime)
     {
-        $this->paymentTime = $paymentTime;
-        $this->apiParas["paymentTime"] = $paymentTime;
+        $this->apiParas['paymentTime'] = $paymentTime;
+
+        return $this;
     }
 
     public function getPayer()
     {
-        return $this->payer;
+        return $this->apiParas['payer'];
     }
 
     public function setPayer($payer)
     {
-        $this->payer = $payer;
-        $this->apiParas["payer"] = $payer;
+        $this->apiParas['payer'] = $payer;
+
+        return $this;
     }
 }

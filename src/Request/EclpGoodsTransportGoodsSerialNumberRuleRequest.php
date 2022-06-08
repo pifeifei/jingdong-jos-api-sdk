@@ -2,210 +2,182 @@
 
 namespace ACES\Request;
 
-
-class EclpGoodsTransportGoodsSerialNumberRuleRequest
+class EclpGoodsTransportGoodsSerialNumberRuleRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $goodsNo;
-    private $serialNumberLength;
-    private $serialNumberLeftvalue;
-    private $serialNumberLeftLength;
-    private $serialNumberSuffixLength;
-    private $suffixValue;
-    private $type;
-    private $ruleIndex;
-    private $ruleIndexEnd;
-    private $ruleIndexValue;
-    private $manageType;
-    private $sellerSnRuleNo;
-    private $serialRuleType;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.goods.transportGoodsSerialNumberRule";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.goods.transportGoodsSerialNumberRule';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->apiParas['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
     {
-        $this->goodsNo = $goodsNo;
-        $this->apiParas["goodsNo"] = $goodsNo;
+        $this->apiParas['goodsNo'] = $goodsNo;
+
+        return $this;
     }
 
     public function getSerialNumberLength()
     {
-        return $this->serialNumberLength;
+        return $this->apiParas['serialNumberLength'];
     }
 
     public function setSerialNumberLength($serialNumberLength)
     {
-        $this->serialNumberLength = $serialNumberLength;
-        $this->apiParas["serialNumberLength"] = $serialNumberLength;
+        $this->apiParas['serialNumberLength'] = $serialNumberLength;
+
+        return $this;
     }
 
     public function getSerialNumberLeftvalue()
     {
-        return $this->serialNumberLeftvalue;
+        return $this->apiParas['serialNumberLeftvalue'];
     }
 
     public function setSerialNumberLeftvalue($serialNumberLeftvalue)
     {
-        $this->serialNumberLeftvalue = $serialNumberLeftvalue;
-        $this->apiParas["serialNumberLeftvalue"] = $serialNumberLeftvalue;
+        $this->apiParas['serialNumberLeftvalue'] = $serialNumberLeftvalue;
+
+        return $this;
     }
 
     public function getSerialNumberLeftLength()
     {
-        return $this->serialNumberLeftLength;
+        return $this->apiParas['serialNumberLeftLength'];
     }
 
     public function setSerialNumberLeftLength($serialNumberLeftLength)
     {
-        $this->serialNumberLeftLength = $serialNumberLeftLength;
-        $this->apiParas["serialNumberLeftLength"] = $serialNumberLeftLength;
+        $this->apiParas['serialNumberLeftLength'] = $serialNumberLeftLength;
+
+        return $this;
     }
 
     public function getSerialNumberSuffixLength()
     {
-        return $this->serialNumberSuffixLength;
+        return $this->apiParas['serialNumberSuffixLength'];
     }
 
     public function setSerialNumberSuffixLength($serialNumberSuffixLength)
     {
-        $this->serialNumberSuffixLength = $serialNumberSuffixLength;
-        $this->apiParas["serialNumberSuffixLength"] = $serialNumberSuffixLength;
+        $this->apiParas['serialNumberSuffixLength'] = $serialNumberSuffixLength;
+
+        return $this;
     }
 
     public function getSuffixValue()
     {
-        return $this->suffixValue;
+        return $this->apiParas['suffixValue'];
     }
 
     public function setSuffixValue($suffixValue)
     {
-        $this->suffixValue = $suffixValue;
-        $this->apiParas["suffixValue"] = $suffixValue;
+        $this->apiParas['suffixValue'] = $suffixValue;
+
+        return $this;
     }
 
     public function getType()
     {
-        return $this->type;
+        return $this->apiParas['type'];
     }
 
     public function setType($type)
     {
-        $this->type = $type;
-        $this->apiParas["type"] = $type;
+        $this->apiParas['type'] = $type;
+
+        return $this;
     }
 
     public function getRuleIndex()
     {
-        return $this->ruleIndex;
+        return $this->apiParas['ruleIndex'];
     }
 
     public function setRuleIndex($ruleIndex)
     {
-        $this->ruleIndex = $ruleIndex;
-        $this->apiParas["ruleIndex"] = $ruleIndex;
+        $this->apiParas['ruleIndex'] = $ruleIndex;
+
+        return $this;
     }
 
     public function getRuleIndexEnd()
     {
-        return $this->ruleIndexEnd;
+        return $this->apiParas['ruleIndexEnd'];
     }
 
     public function setRuleIndexEnd($ruleIndexEnd)
     {
-        $this->ruleIndexEnd = $ruleIndexEnd;
-        $this->apiParas["ruleIndexEnd"] = $ruleIndexEnd;
+        $this->apiParas['ruleIndexEnd'] = $ruleIndexEnd;
+
+        return $this;
     }
 
     public function getRuleIndexValue()
     {
-        return $this->ruleIndexValue;
+        return $this->apiParas['ruleIndexValue'];
     }
 
     public function setRuleIndexValue($ruleIndexValue)
     {
-        $this->ruleIndexValue = $ruleIndexValue;
-        $this->apiParas["ruleIndexValue"] = $ruleIndexValue;
+        $this->apiParas['ruleIndexValue'] = $ruleIndexValue;
+
+        return $this;
     }
 
     public function getManageType()
     {
-        return $this->manageType;
+        return $this->apiParas['manageType'];
     }
 
     public function setManageType($manageType)
     {
-        $this->manageType = $manageType;
-        $this->apiParas["manageType"] = $manageType;
+        $this->apiParas['manageType'] = $manageType;
+
+        return $this;
     }
 
     public function getSellerSnRuleNo()
     {
-        return $this->sellerSnRuleNo;
+        return $this->apiParas['sellerSnRuleNo'];
     }
 
     public function setSellerSnRuleNo($sellerSnRuleNo)
     {
-        $this->sellerSnRuleNo = $sellerSnRuleNo;
-        $this->apiParas["sellerSnRuleNo"] = $sellerSnRuleNo;
+        $this->apiParas['sellerSnRuleNo'] = $sellerSnRuleNo;
+
+        return $this;
     }
 
     public function getSerialRuleType()
     {
-        return $this->serialRuleType;
+        return $this->apiParas['serialRuleType'];
     }
 
     public function setSerialRuleType($serialRuleType)
     {
-        $this->serialRuleType = $serialRuleType;
-        $this->apiParas["serialRuleType"] = $serialRuleType;
+        $this->apiParas['serialRuleType'] = $serialRuleType;
+
+        return $this;
     }
 }

@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class JosSecretApiReportGetRequest
+class JosSecretApiReportGetRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $accessToken;
-    private $businessId;
-    private $text;
-    private $attribute;
-    private $customerUserId;
-    private $serverUrl;
-
     public function getApiMethodName()
     {
-        return "jingdong.jos.secret.api.report.get";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.jos.secret.api.report.get';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getAccessToken()
     {
-        return $this->accessToken;
+        return $this->apiParas['accessToken'];
     }
 
     public function setAccessToken($accessToken)
     {
-        $this->accessToken = $accessToken;
-        $this->apiParas["access_token"] = $accessToken;
+        $this->apiParas['accessToken'] = $accessToken;
+
+        return $this;
     }
 
     public function getBusinessId()
     {
-        return $this->businessId;
+        return $this->apiParas['businessId'];
     }
 
     public function setBusinessId($businessId)
     {
-        $this->businessId = $businessId;
-        $this->apiParas["businessId"] = $businessId;
+        $this->apiParas['businessId'] = $businessId;
+
+        return $this;
     }
 
     public function getText()
     {
-        return $this->text;
+        return $this->apiParas['text'];
     }
 
     public function setText($text)
     {
-        $this->text = $text;
-        $this->apiParas["text"] = $text;
+        $this->apiParas['text'] = $text;
+
+        return $this;
     }
 
     public function getAttribute()
     {
-        return $this->attribute;
+        return $this->apiParas['attribute'];
     }
 
     public function setAttribute($attribute)
     {
-        $this->attribute = $attribute;
-        $this->apiParas["attribute"] = $attribute;
+        $this->apiParas['attribute'] = $attribute;
+
+        return $this;
     }
 
     public function getCustomerUserId()
     {
-        return $this->customerUserId;
+        return $this->apiParas['customerUserId'];
     }
 
     public function setCustomerUserId($customerUserId)
     {
-        $this->customerUserId = $customerUserId;
-        $this->apiParas["customer_user_id"] = $customerUserId;
+        $this->apiParas['customerUserId'] = $customerUserId;
+
+        return $this;
     }
 
     public function getServerUrl()
     {
-        return $this->serverUrl;
+        return $this->apiParas['serverUrl'];
     }
 
     public function setServerUrl($serverUrl)
     {
-        $this->serverUrl = $serverUrl;
-        $this->apiParas["server_url"] = $serverUrl;
+        $this->apiParas['serverUrl'] = $serverUrl;
+
+        return $this;
     }
 }

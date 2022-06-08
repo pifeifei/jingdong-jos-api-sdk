@@ -3,31 +3,30 @@
 namespace ACES\Common;
 
 /**
- * RecoveryStruct
+ * RecoveryStruct.
  *
  * <P>
  *
  * @author JD Data Security Team (tenma.lin, wei.gao, mozhiyan, xuyina)
+ *
  * @version 1.0
  */
 class RecoveryStruct
 {
     private $backup;
+
     public function __construct()
     {
-        $this->backup = array();
+        $this->backup = [];
     }
 
-    /*
-     * @return array[RecoveryKey]
-     */
+    // @return array[RecoveryKey]
     public function getKeys()
     {
         return $this->backup;
     }
 
     /**
-     *
      * @param RecoveryKey $key
      */
     public function insertKey($key)
@@ -36,7 +35,6 @@ class RecoveryStruct
     }
 
     /**
-     *
      * @param array[RecoveryKey]|null $backup
      */
     public function setBackup($backup)

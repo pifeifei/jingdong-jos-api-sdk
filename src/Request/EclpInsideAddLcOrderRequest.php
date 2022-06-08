@@ -2,186 +2,158 @@
 
 namespace ACES\Request;
 
-
-class EclpInsideAddLcOrderRequest
+class EclpInsideAddLcOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $sellerLcNo;
-    private $sellerNo;
-    private $wareHouseNo;
-    private $deptNo;
-    private $outsideLogicStock;
-    private $insideLogicStock;
-    private $lack;
-    private $orderLine;
-    private $isvGoodsNo;
-    private $outGoodsLevel;
-    private $inGoodsLevel;
-    private $planQty;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.inside.addLcOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.inside.addLcOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getSellerLcNo()
     {
-        return $this->sellerLcNo;
+        return $this->apiParas['sellerLcNo'];
     }
 
     public function setSellerLcNo($sellerLcNo)
     {
-        $this->sellerLcNo = $sellerLcNo;
-        $this->apiParas["sellerLcNo"] = $sellerLcNo;
+        $this->apiParas['sellerLcNo'] = $sellerLcNo;
+
+        return $this;
     }
 
     public function getSellerNo()
     {
-        return $this->sellerNo;
+        return $this->apiParas['sellerNo'];
     }
 
     public function setSellerNo($sellerNo)
     {
-        $this->sellerNo = $sellerNo;
-        $this->apiParas["sellerNo"] = $sellerNo;
+        $this->apiParas['sellerNo'] = $sellerNo;
+
+        return $this;
     }
 
     public function getWareHouseNo()
     {
-        return $this->wareHouseNo;
+        return $this->apiParas['wareHouseNo'];
     }
 
     public function setWareHouseNo($wareHouseNo)
     {
-        $this->wareHouseNo = $wareHouseNo;
-        $this->apiParas["wareHouseNo"] = $wareHouseNo;
+        $this->apiParas['wareHouseNo'] = $wareHouseNo;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getOutsideLogicStock()
     {
-        return $this->outsideLogicStock;
+        return $this->apiParas['outsideLogicStock'];
     }
 
     public function setOutsideLogicStock($outsideLogicStock)
     {
-        $this->outsideLogicStock = $outsideLogicStock;
-        $this->apiParas["outsideLogicStock"] = $outsideLogicStock;
+        $this->apiParas['outsideLogicStock'] = $outsideLogicStock;
+
+        return $this;
     }
 
     public function getInsideLogicStock()
     {
-        return $this->insideLogicStock;
+        return $this->apiParas['insideLogicStock'];
     }
 
     public function setInsideLogicStock($insideLogicStock)
     {
-        $this->insideLogicStock = $insideLogicStock;
-        $this->apiParas["insideLogicStock"] = $insideLogicStock;
+        $this->apiParas['insideLogicStock'] = $insideLogicStock;
+
+        return $this;
     }
 
     public function getLack()
     {
-        return $this->lack;
+        return $this->apiParas['lack'];
     }
 
     public function setLack($lack)
     {
-        $this->lack = $lack;
-        $this->apiParas["lack"] = $lack;
+        $this->apiParas['lack'] = $lack;
+
+        return $this;
     }
 
     public function getOrderLine()
     {
-        return $this->orderLine;
+        return $this->apiParas['orderLine'];
     }
 
     public function setOrderLine($orderLine)
     {
-        $this->orderLine = $orderLine;
-        $this->apiParas["orderLine"] = $orderLine;
+        $this->apiParas['orderLine'] = $orderLine;
+
+        return $this;
     }
 
     public function getIsvGoodsNo()
     {
-        return $this->isvGoodsNo;
+        return $this->apiParas['isvGoodsNo'];
     }
 
     public function setIsvGoodsNo($isvGoodsNo)
     {
-        $this->isvGoodsNo = $isvGoodsNo;
-        $this->apiParas["isvGoodsNo"] = $isvGoodsNo;
+        $this->apiParas['isvGoodsNo'] = $isvGoodsNo;
+
+        return $this;
     }
 
     public function getOutGoodsLevel()
     {
-        return $this->outGoodsLevel;
+        return $this->apiParas['outGoodsLevel'];
     }
 
     public function setOutGoodsLevel($outGoodsLevel)
     {
-        $this->outGoodsLevel = $outGoodsLevel;
-        $this->apiParas["outGoodsLevel"] = $outGoodsLevel;
+        $this->apiParas['outGoodsLevel'] = $outGoodsLevel;
+
+        return $this;
     }
 
     public function getInGoodsLevel()
     {
-        return $this->inGoodsLevel;
+        return $this->apiParas['inGoodsLevel'];
     }
 
     public function setInGoodsLevel($inGoodsLevel)
     {
-        $this->inGoodsLevel = $inGoodsLevel;
-        $this->apiParas["inGoodsLevel"] = $inGoodsLevel;
+        $this->apiParas['inGoodsLevel'] = $inGoodsLevel;
+
+        return $this;
     }
 
     public function getPlanQty()
     {
-        return $this->planQty;
+        return $this->apiParas['planQty'];
     }
 
     public function setPlanQty($planQty)
     {
-        $this->planQty = $planQty;
-        $this->apiParas["planQty"] = $planQty;
+        $this->apiParas['planQty'] = $planQty;
+
+        return $this;
     }
 }

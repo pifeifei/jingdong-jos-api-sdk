@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpRtwRejectorderinfoRequest
+class EclpRtwRejectorderinfoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $startDate;
-    private $endDate;
-    private $pageStart;
-    private $pageSize;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.rtw.rejectorderinfo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.rtw.rejectorderinfo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getStartDate()
     {
-        return $this->startDate;
+        return $this->apiParas['startDate'];
     }
 
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
-        $this->apiParas["startDate"] = $startDate;
+        $this->apiParas['startDate'] = $startDate;
+
+        return $this;
     }
 
     public function getEndDate()
     {
-        return $this->endDate;
+        return $this->apiParas['endDate'];
     }
 
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-        $this->apiParas["endDate"] = $endDate;
+        $this->apiParas['endDate'] = $endDate;
+
+        return $this;
     }
 
     public function getPageStart()
     {
-        return $this->pageStart;
+        return $this->apiParas['pageStart'];
     }
 
     public function setPageStart($pageStart)
     {
-        $this->pageStart = $pageStart;
-        $this->apiParas["pageStart"] = $pageStart;
+        $this->apiParas['pageStart'] = $pageStart;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 }

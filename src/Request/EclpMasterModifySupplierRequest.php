@@ -2,258 +2,230 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterModifySupplierRequest
+class EclpMasterModifySupplierRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $eclpSupplierNo;
-    private $supplierName;
-    private $status;
-    private $contacts;
-    private $phone;
-    private $fax;
-    private $email;
-    private $province;
-    private $city;
-    private $county;
-    private $town;
-    private $address;
-    private $ext1;
-    private $ext2;
-    private $ext3;
-    private $ext4;
-    private $ext5;
-    private $pictureUrls;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.modifySupplier";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.modifySupplier';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getEclpSupplierNo()
     {
-        return $this->eclpSupplierNo;
+        return $this->apiParas['eclpSupplierNo'];
     }
 
     public function setEclpSupplierNo($eclpSupplierNo)
     {
-        $this->eclpSupplierNo = $eclpSupplierNo;
-        $this->apiParas["eclpSupplierNo"] = $eclpSupplierNo;
+        $this->apiParas['eclpSupplierNo'] = $eclpSupplierNo;
+
+        return $this;
     }
 
     public function getSupplierName()
     {
-        return $this->supplierName;
+        return $this->apiParas['supplierName'];
     }
 
     public function setSupplierName($supplierName)
     {
-        $this->supplierName = $supplierName;
-        $this->apiParas["supplierName"] = $supplierName;
+        $this->apiParas['supplierName'] = $supplierName;
+
+        return $this;
     }
 
     public function getStatus()
     {
-        return $this->status;
+        return $this->apiParas['status'];
     }
 
     public function setStatus($status)
     {
-        $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
+
+        return $this;
     }
 
     public function getContacts()
     {
-        return $this->contacts;
+        return $this->apiParas['contacts'];
     }
 
     public function setContacts($contacts)
     {
-        $this->contacts = $contacts;
-        $this->apiParas["contacts"] = $contacts;
+        $this->apiParas['contacts'] = $contacts;
+
+        return $this;
     }
 
     public function getPhone()
     {
-        return $this->phone;
+        return $this->apiParas['phone'];
     }
 
     public function setPhone($phone)
     {
-        $this->phone = $phone;
-        $this->apiParas["phone"] = $phone;
+        $this->apiParas['phone'] = $phone;
+
+        return $this;
     }
 
     public function getFax()
     {
-        return $this->fax;
+        return $this->apiParas['fax'];
     }
 
     public function setFax($fax)
     {
-        $this->fax = $fax;
-        $this->apiParas["fax"] = $fax;
+        $this->apiParas['fax'] = $fax;
+
+        return $this;
     }
 
     public function getEmail()
     {
-        return $this->email;
+        return $this->apiParas['email'];
     }
 
     public function setEmail($email)
     {
-        $this->email = $email;
-        $this->apiParas["email"] = $email;
+        $this->apiParas['email'] = $email;
+
+        return $this;
     }
 
     public function getProvince()
     {
-        return $this->province;
+        return $this->apiParas['province'];
     }
 
     public function setProvince($province)
     {
-        $this->province = $province;
-        $this->apiParas["province"] = $province;
+        $this->apiParas['province'] = $province;
+
+        return $this;
     }
 
     public function getCity()
     {
-        return $this->city;
+        return $this->apiParas['city'];
     }
 
     public function setCity($city)
     {
-        $this->city = $city;
-        $this->apiParas["city"] = $city;
+        $this->apiParas['city'] = $city;
+
+        return $this;
     }
 
     public function getCounty()
     {
-        return $this->county;
+        return $this->apiParas['county'];
     }
 
     public function setCounty($county)
     {
-        $this->county = $county;
-        $this->apiParas["county"] = $county;
+        $this->apiParas['county'] = $county;
+
+        return $this;
     }
 
     public function getTown()
     {
-        return $this->town;
+        return $this->apiParas['town'];
     }
 
     public function setTown($town)
     {
-        $this->town = $town;
-        $this->apiParas["town"] = $town;
+        $this->apiParas['town'] = $town;
+
+        return $this;
     }
 
     public function getAddress()
     {
-        return $this->address;
+        return $this->apiParas['address'];
     }
 
     public function setAddress($address)
     {
-        $this->address = $address;
-        $this->apiParas["address"] = $address;
+        $this->apiParas['address'] = $address;
+
+        return $this;
     }
 
     public function getExt1()
     {
-        return $this->ext1;
+        return $this->apiParas['ext1'];
     }
 
     public function setExt1($ext1)
     {
-        $this->ext1 = $ext1;
-        $this->apiParas["ext1"] = $ext1;
+        $this->apiParas['ext1'] = $ext1;
+
+        return $this;
     }
 
     public function getExt2()
     {
-        return $this->ext2;
+        return $this->apiParas['ext2'];
     }
 
     public function setExt2($ext2)
     {
-        $this->ext2 = $ext2;
-        $this->apiParas["ext2"] = $ext2;
+        $this->apiParas['ext2'] = $ext2;
+
+        return $this;
     }
 
     public function getExt3()
     {
-        return $this->ext3;
+        return $this->apiParas['ext3'];
     }
 
     public function setExt3($ext3)
     {
-        $this->ext3 = $ext3;
-        $this->apiParas["ext3"] = $ext3;
+        $this->apiParas['ext3'] = $ext3;
+
+        return $this;
     }
 
     public function getExt4()
     {
-        return $this->ext4;
+        return $this->apiParas['ext4'];
     }
 
     public function setExt4($ext4)
     {
-        $this->ext4 = $ext4;
-        $this->apiParas["ext4"] = $ext4;
+        $this->apiParas['ext4'] = $ext4;
+
+        return $this;
     }
 
     public function getExt5()
     {
-        return $this->ext5;
+        return $this->apiParas['ext5'];
     }
 
     public function setExt5($ext5)
     {
-        $this->ext5 = $ext5;
-        $this->apiParas["ext5"] = $ext5;
+        $this->apiParas['ext5'] = $ext5;
+
+        return $this;
     }
 
     public function getPictureUrls()
     {
-        return $this->pictureUrls;
+        return $this->apiParas['pictureUrls'];
     }
 
     public function setPictureUrls($pictureUrls)
     {
-        $this->pictureUrls = $pictureUrls;
-        $this->apiParas["pictureUrls"] = $pictureUrls;
+        $this->apiParas['pictureUrls'] = $pictureUrls;
+
+        return $this;
     }
 }

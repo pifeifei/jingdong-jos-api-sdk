@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class EclpSerialQueryPageSerialByOwnerNoAndConditionRequest
+class EclpSerialQueryPageSerialByOwnerNoAndConditionRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $billType;
-    private $ownerNo;
-    private $startTime;
-    private $endTime;
-    private $warehouseNo;
-    private $pageNo;
-    private $pageSize;
-    private $queryType;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.serial.queryPageSerialByOwnerNoAndCondition";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.serial.queryPageSerialByOwnerNoAndCondition';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getBillType()
     {
-        return $this->billType;
+        return $this->apiParas['billType'];
     }
 
     public function setBillType($billType)
     {
-        $this->billType = $billType;
-        $this->apiParas["billType"] = $billType;
+        $this->apiParas['billType'] = $billType;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->apiParas['startTime'];
     }
 
     public function setStartTime($startTime)
     {
-        $this->startTime = $startTime;
-        $this->apiParas["startTime"] = $startTime;
+        $this->apiParas['startTime'] = $startTime;
+
+        return $this;
     }
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->apiParas['endTime'];
     }
 
     public function setEndTime($endTime)
     {
-        $this->endTime = $endTime;
-        $this->apiParas["endTime"] = $endTime;
+        $this->apiParas['endTime'] = $endTime;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getQueryType()
     {
-        return $this->queryType;
+        return $this->apiParas['queryType'];
     }
 
     public function setQueryType($queryType)
     {
-        $this->queryType = $queryType;
-        $this->apiParas["queryType"] = $queryType;
+        $this->apiParas['queryType'] = $queryType;
+
+        return $this;
     }
 }

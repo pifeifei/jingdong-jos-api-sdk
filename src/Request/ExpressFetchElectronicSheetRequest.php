@@ -2,46 +2,15 @@
 
 namespace ACES\Request;
 
-
-class ExpressFetchElectronicSheetRequest
+class ExpressFetchElectronicSheetRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $printObject;
-    private $userEnv;
-    private $printTemplate;
-
     public function getApiMethodName()
     {
-        return "jingdong.express.fetch.electronic.sheet";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.express.fetch.electronic.sheet';
     }
 
     public function check()
     {
-    }
-
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
     }
 
     public function getPrintObject()
@@ -52,6 +21,8 @@ class ExpressFetchElectronicSheetRequest
     public function setPrintObject($printObject)
     {
         $this->apiParas['printObject'] = $printObject;
+
+        return $this;
     }
 
     public function getUserEnv()
@@ -62,6 +33,8 @@ class ExpressFetchElectronicSheetRequest
     public function setUserEnv($userEnv)
     {
         $this->apiParas['userEnv'] = $userEnv;
+
+        return $this;
     }
 
     public function getPrintTemplate()
@@ -72,5 +45,7 @@ class ExpressFetchElectronicSheetRequest
     public function setPrintTemplate($printTemplate)
     {
         $this->apiParas['printTemplate'] = $printTemplate;
+
+        return $this;
     }
 }

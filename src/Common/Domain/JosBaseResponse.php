@@ -10,7 +10,7 @@ abstract class JosBaseResponse
     private $zhDesc;
 
     /**
-     * @return integer
+     * @return int
      */
     public function getCode()
     {
@@ -18,7 +18,7 @@ abstract class JosBaseResponse
     }
 
     /**
-     * @param integer|null $code
+     * @param null|int $code
      */
     public function setCode($code)
     {
@@ -34,7 +34,7 @@ abstract class JosBaseResponse
     }
 
     /**
-     * @param string|null $msg
+     * @param null|string $msg
      */
     public function setMsg($msg)
     {
@@ -50,7 +50,7 @@ abstract class JosBaseResponse
     }
 
     /**
-     * @param string|null $enDesc
+     * @param null|string $enDesc
      */
     public function setEnDesc($enDesc)
     {
@@ -66,7 +66,7 @@ abstract class JosBaseResponse
     }
 
     /**
-     * @param string|null $zhDesc
+     * @param null|string $zhDesc
      */
     public function setZhDesc($zhDesc)
     {
@@ -75,22 +75,24 @@ abstract class JosBaseResponse
 
     /**
      * @param $josJsonResponse
-     * @param JosBaseResponse $targetResponse
-     * @return JosVoucherInfoGetResponse|JosMasterKeyGetResponse|JosSecretApiReportGetResponse
+     *
      * @throws \JsonMapper_Exception
+     *
+     * @return JosMasterKeyGetResponse|JosSecretApiReportGetResponse|JosVoucherInfoGetResponse
      */
     public static function parse($josJsonResponse, JosBaseResponse $targetResponse)
     {
         $josResponse = json_decode($josJsonResponse);
         foreach ($josResponse as $k => $response) {
-            //TODO thread safe？
+            // TODO thread safe？
             $jsonMapper = new \JsonMapper();
             $jsonMapper->map($response, $targetResponse);
+
             return $targetResponse;
         }
     }
 }
 
-//$json = '{"jingdong_jos_master_key_get_responce":{"code":"0","response":{"status_code":310,"key_cache_disabled":0,"key_backup_disabled":0,"ts":1566810198390,"errorMsg":"The voucher is null."}}}';
+// $json = '{"jingdong_jos_master_key_get_responce":{"code":"0","response":{"status_code":310,"key_cache_disabled":0,"key_backup_disabled":0,"ts":1566810198390,"errorMsg":"The voucher is null."}}}';
 //
-//JosBaseResponse::parse($json, new JosBaseResponse());
+// JosBaseResponse::parse($json, new JosBaseResponse());

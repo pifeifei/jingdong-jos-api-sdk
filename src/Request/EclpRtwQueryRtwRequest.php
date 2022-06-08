@@ -2,162 +2,134 @@
 
 namespace ACES\Request;
 
-
-class EclpRtwQueryRtwRequest
+class EclpRtwQueryRtwRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $eclpSoNo;
-    private $eclpRtwNo;
-    private $isvRtwNum;
-    private $warehouseNo;
-    private $reson;
-    private $orderInType;
-    private $queryBatAttrFlag;
-    private $startCreateTime;
-    private $endCreateTime;
-    private $outStoreNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.rtw.queryRtw";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.rtw.queryRtw';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getEclpSoNo()
     {
-        return $this->eclpSoNo;
+        return $this->apiParas['eclpSoNo'];
     }
 
     public function setEclpSoNo($eclpSoNo)
     {
-        $this->eclpSoNo = $eclpSoNo;
-        $this->apiParas["eclpSoNo"] = $eclpSoNo;
+        $this->apiParas['eclpSoNo'] = $eclpSoNo;
+
+        return $this;
     }
 
     public function getEclpRtwNo()
     {
-        return $this->eclpRtwNo;
+        return $this->apiParas['eclpRtwNo'];
     }
 
     public function setEclpRtwNo($eclpRtwNo)
     {
-        $this->eclpRtwNo = $eclpRtwNo;
-        $this->apiParas["eclpRtwNo"] = $eclpRtwNo;
+        $this->apiParas['eclpRtwNo'] = $eclpRtwNo;
+
+        return $this;
     }
 
     public function getIsvRtwNum()
     {
-        return $this->isvRtwNum;
+        return $this->apiParas['isvRtwNum'];
     }
 
     public function setIsvRtwNum($isvRtwNum)
     {
-        $this->isvRtwNum = $isvRtwNum;
-        $this->apiParas["isvRtwNum"] = $isvRtwNum;
+        $this->apiParas['isvRtwNum'] = $isvRtwNum;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getReson()
     {
-        return $this->reson;
+        return $this->apiParas['reson'];
     }
 
     public function setReson($reson)
     {
-        $this->reson = $reson;
-        $this->apiParas["reson"] = $reson;
+        $this->apiParas['reson'] = $reson;
+
+        return $this;
     }
 
     public function getOrderInType()
     {
-        return $this->orderInType;
+        return $this->apiParas['orderInType'];
     }
 
     public function setOrderInType($orderInType)
     {
-        $this->orderInType = $orderInType;
-        $this->apiParas["orderInType"] = $orderInType;
+        $this->apiParas['orderInType'] = $orderInType;
+
+        return $this;
     }
 
     public function getQueryBatAttrFlag()
     {
-        return $this->queryBatAttrFlag;
+        return $this->apiParas['queryBatAttrFlag'];
     }
 
     public function setQueryBatAttrFlag($queryBatAttrFlag)
     {
-        $this->queryBatAttrFlag = $queryBatAttrFlag;
-        $this->apiParas["queryBatAttrFlag"] = $queryBatAttrFlag;
+        $this->apiParas['queryBatAttrFlag'] = $queryBatAttrFlag;
+
+        return $this;
     }
 
     public function getStartCreateTime()
     {
-        return $this->startCreateTime;
+        return $this->apiParas['startCreateTime'];
     }
 
     public function setStartCreateTime($startCreateTime)
     {
-        $this->startCreateTime = $startCreateTime;
-        $this->apiParas["startCreateTime"] = $startCreateTime;
+        $this->apiParas['startCreateTime'] = $startCreateTime;
+
+        return $this;
     }
 
     public function getEndCreateTime()
     {
-        return $this->endCreateTime;
+        return $this->apiParas['endCreateTime'];
     }
 
     public function setEndCreateTime($endCreateTime)
     {
-        $this->endCreateTime = $endCreateTime;
-        $this->apiParas["endCreateTime"] = $endCreateTime;
+        $this->apiParas['endCreateTime'] = $endCreateTime;
+
+        return $this;
     }
 
     public function getOutStoreNo()
     {
-        return $this->outStoreNo;
+        return $this->apiParas['outStoreNo'];
     }
 
     public function setOutStoreNo($outStoreNo)
     {
-        $this->outStoreNo = $outStoreNo;
-        $this->apiParas["outStoreNo"] = $outStoreNo;
+        $this->apiParas['outStoreNo'] = $outStoreNo;
+
+        return $this;
     }
 }

@@ -11,6 +11,7 @@ abstract class iCache
 
     /**
      * @param $key
+     *
      * @return TDEClient
      */
     abstract public function get($key);

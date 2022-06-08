@@ -2,17 +2,14 @@
 
 namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 
-
-
-
 class PrintTemplate
 {
-    private $params = array();
+    private $params = [];
     private $paperSize;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.ldop.oms.dto.PrintTemplate";
+        $this->params['@type'] = 'com.jd.ldop.oms.dto.PrintTemplate';
     }
 
     public function getPaperSize()
@@ -25,7 +22,7 @@ class PrintTemplate
         $this->params['paperSize'] = $paperSize;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

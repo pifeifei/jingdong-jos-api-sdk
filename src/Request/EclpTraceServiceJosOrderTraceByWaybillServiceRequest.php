@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpTraceServiceJosOrderTraceByWaybillServiceRequest
+class EclpTraceServiceJosOrderTraceByWaybillServiceRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $waybillId;
-    private $carrierCode;
-    private $role;
-    private $userId;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.trace.service.jos.OrderTraceByWaybillService";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.trace.service.jos.OrderTraceByWaybillService';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getWaybillId()
     {
-        return $this->waybillId;
+        return $this->apiParas['waybillId'];
     }
 
     public function setWaybillId($waybillId)
     {
-        $this->waybillId = $waybillId;
-        $this->apiParas["waybillId"] = $waybillId;
+        $this->apiParas['waybillId'] = $waybillId;
+
+        return $this;
     }
 
     public function getCarrierCode()
     {
-        return $this->carrierCode;
+        return $this->apiParas['carrierCode'];
     }
 
     public function setCarrierCode($carrierCode)
     {
-        $this->carrierCode = $carrierCode;
-        $this->apiParas["carrierCode"] = $carrierCode;
+        $this->apiParas['carrierCode'] = $carrierCode;
+
+        return $this;
     }
 
     public function getRole()
     {
-        return $this->role;
+        return $this->apiParas['role'];
     }
 
     public function setRole($role)
     {
-        $this->role = $role;
-        $this->apiParas["role"] = $role;
+        $this->apiParas['role'] = $role;
+
+        return $this;
     }
 
     public function getUserId()
     {
-        return $this->userId;
+        return $this->apiParas['userId'];
     }
 
     public function setUserId($userId)
     {
-        $this->userId = $userId;
-        $this->apiParas["userId"] = $userId;
+        $this->apiParas['userId'] = $userId;
+
+        return $this;
     }
 }

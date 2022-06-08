@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderSignSuccessInfoGetRequest
+class LdopAlphaProviderSignSuccessInfoGetRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $venderCode;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.sign.success.info.get";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.sign.success.info.get';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getVenderCode()
     {
-        return $this->venderCode;
+        return $this->apiParas['venderCode'];
     }
 
     public function setVenderCode($venderCode)
     {
-        $this->venderCode = $venderCode;
-        $this->apiParas["venderCode"] = $venderCode;
+        $this->apiParas['venderCode'] = $venderCode;
+
+        return $this;
     }
 }

@@ -2,90 +2,62 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderExtQueryOrderRequest
+class EclpOrderExtQueryOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $isvUUID;
-    private $spSoNos;
-    private $isvSource;
-    private $departmentNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.ext.queryOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.ext.queryOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getIsvUUID()
     {
-        return $this->isvUUID;
+        return $this->apiParas['isvUUID'];
     }
 
     public function setIsvUUID($isvUUID)
     {
-        $this->isvUUID = $isvUUID;
-        $this->apiParas["isvUUID"] = $isvUUID;
+        $this->apiParas['isvUUID'] = $isvUUID;
+
+        return $this;
     }
 
     public function getSpSoNos()
     {
-        return $this->spSoNos;
+        return $this->apiParas['spSoNos'];
     }
 
     public function setSpSoNos($spSoNos)
     {
-        $this->spSoNos = $spSoNos;
-        $this->apiParas["spSoNos"] = $spSoNos;
+        $this->apiParas['spSoNos'] = $spSoNos;
+
+        return $this;
     }
 
     public function getIsvSource()
     {
-        return $this->isvSource;
+        return $this->apiParas['isvSource'];
     }
 
     public function setIsvSource($isvSource)
     {
-        $this->isvSource = $isvSource;
-        $this->apiParas["isvSource"] = $isvSource;
+        $this->apiParas['isvSource'] = $isvSource;
+
+        return $this;
     }
 
     public function getDepartmentNo()
     {
-        return $this->departmentNo;
+        return $this->apiParas['departmentNo'];
     }
 
     public function setDepartmentNo($departmentNo)
     {
-        $this->departmentNo = $departmentNo;
-        $this->apiParas["departmentNo"] = $departmentNo;
+        $this->apiParas['departmentNo'] = $departmentNo;
+
+        return $this;
     }
 }

@@ -2,47 +2,22 @@
 
 namespace ACES\Request;
 
-
-class JosMasterKeyGetRequest
+class JosMasterKeyGetRequest extends AbstractRequest
 {
-    private $apiParas = [];
-    private $version;
-
     public function getApiMethodName()
     {
-        return "jingdong.jos.master.key.get";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.jos.master.key.get';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function setSig($sig)
     {
-        $this->apiParas["sig"] = $sig;
+        $this->apiParas['sig'] = $sig;
+
+        return $this;
     }
 
     public function getSig()
@@ -52,17 +27,21 @@ class JosMasterKeyGetRequest
 
     public function setSdkVer($sdkVer)
     {
-        $this->apiParas["sdk_ver"] = $sdkVer;
+        $this->apiParas['sdkVer'] = $sdkVer;
+
+        return $this;
     }
 
     public function getSdkVer()
     {
-        return $this->apiParas["sdk_ver"];
+        return $this->apiParas['sdkVer'];
     }
 
     public function setTs($ts)
     {
-        $this->apiParas["ts"] = $ts;
+        $this->apiParas['ts'] = $ts;
+
+        return $this;
     }
 
     public function getTs()
@@ -72,7 +51,9 @@ class JosMasterKeyGetRequest
 
     public function setTid($tid)
     {
-        $this->apiParas["tid"] = $tid;
+        $this->apiParas['tid'] = $tid;
+
+        return $this;
     }
 
     public function getTid()

@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
-
-
-
 class Attribute1
 {
-    private $params = array();
+    private $params = [];
     private $productGoodsNo;
     private $materialRequestList;
     private $productIsvGoodsNo;
@@ -15,9 +12,9 @@ class Attribute1
     private $formulaId;
     private $productGoodsLevel;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.open.sp.process.domain.request.ProductJosRequest";
+        $this->params['@type'] = 'com.jd.open.sp.process.domain.request.ProductJosRequest';
     }
 
     public function getProductGoodsNo()
@@ -33,8 +30,8 @@ class Attribute1
     public function setMaterialRequestList($materialRequestList)
     {
         $size = count($materialRequestList);
-        for ($i = 0; $i < $size; $i++) {
-            $materialRequestList [$i] = $materialRequestList [$i]->getInstance();
+        for ($i = 0; $i < $size; ++$i) {
+            $materialRequestList[$i] = $materialRequestList[$i]->getInstance();
         }
         $this->params['materialRequestList'] = $materialRequestList;
     }
@@ -79,7 +76,7 @@ class Attribute1
         $this->params['productGoodsLevel'] = $productGoodsLevel;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

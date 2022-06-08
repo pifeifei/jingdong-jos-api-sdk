@@ -2,198 +2,170 @@
 
 namespace ACES\Request;
 
-
-class EclpRtwAcceptReturnOrderRequest
+class EclpRtwAcceptReturnOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deliveryNo;
-    private $receiptNo;
-    private $packageCodes;
-    private $sourceNo;
-    private $ownerNo;
-    private $billType;
-    private $warehouseNo;
-    private $tenantId;
-    private $skuNo;
-    private $skuName;
-    private $expectedQty;
-    private $isvLotattrs;
-    private $checkLotattrs;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.rtw.acceptReturnOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.rtw.acceptReturnOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeliveryNo()
     {
-        return $this->deliveryNo;
+        return $this->apiParas['deliveryNo'];
     }
 
     public function setDeliveryNo($deliveryNo)
     {
-        $this->deliveryNo = $deliveryNo;
-        $this->apiParas["deliveryNo"] = $deliveryNo;
+        $this->apiParas['deliveryNo'] = $deliveryNo;
+
+        return $this;
     }
 
     public function getReceiptNo()
     {
-        return $this->receiptNo;
+        return $this->apiParas['receiptNo'];
     }
 
     public function setReceiptNo($receiptNo)
     {
-        $this->receiptNo = $receiptNo;
-        $this->apiParas["receiptNo"] = $receiptNo;
+        $this->apiParas['receiptNo'] = $receiptNo;
+
+        return $this;
     }
 
     public function getPackageCodes()
     {
-        return $this->packageCodes;
+        return $this->apiParas['packageCodes'];
     }
 
     public function setPackageCodes($packageCodes)
     {
-        $this->packageCodes = $packageCodes;
-        $this->apiParas["packageCodes"] = $packageCodes;
+        $this->apiParas['packageCodes'] = $packageCodes;
+
+        return $this;
     }
 
     public function getSourceNo()
     {
-        return $this->sourceNo;
+        return $this->apiParas['sourceNo'];
     }
 
     public function setSourceNo($sourceNo)
     {
-        $this->sourceNo = $sourceNo;
-        $this->apiParas["sourceNo"] = $sourceNo;
+        $this->apiParas['sourceNo'] = $sourceNo;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getBillType()
     {
-        return $this->billType;
+        return $this->apiParas['billType'];
     }
 
     public function setBillType($billType)
     {
-        $this->billType = $billType;
-        $this->apiParas["billType"] = $billType;
+        $this->apiParas['billType'] = $billType;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getTenantId()
     {
-        return $this->tenantId;
+        return $this->apiParas['tenantId'];
     }
 
     public function setTenantId($tenantId)
     {
-        $this->tenantId = $tenantId;
-        $this->apiParas["tenantId"] = $tenantId;
+        $this->apiParas['tenantId'] = $tenantId;
+
+        return $this;
     }
 
     public function getSkuNo()
     {
-        return $this->skuNo;
+        return $this->apiParas['skuNo'];
     }
 
     public function setSkuNo($skuNo)
     {
-        $this->skuNo = $skuNo;
-        $this->apiParas["skuNo"] = $skuNo;
+        $this->apiParas['skuNo'] = $skuNo;
+
+        return $this;
     }
 
     public function getSkuName()
     {
-        return $this->skuName;
+        return $this->apiParas['skuName'];
     }
 
     public function setSkuName($skuName)
     {
-        $this->skuName = $skuName;
-        $this->apiParas["skuName"] = $skuName;
+        $this->apiParas['skuName'] = $skuName;
+
+        return $this;
     }
 
     public function getExpectedQty()
     {
-        return $this->expectedQty;
+        return $this->apiParas['expectedQty'];
     }
 
     public function setExpectedQty($expectedQty)
     {
-        $this->expectedQty = $expectedQty;
-        $this->apiParas["expectedQty"] = $expectedQty;
+        $this->apiParas['expectedQty'] = $expectedQty;
+
+        return $this;
     }
 
     public function getIsvLotattrs()
     {
-        return $this->isvLotattrs;
+        return $this->apiParas['isvLotattrs'];
     }
 
     public function setIsvLotattrs($isvLotattrs)
     {
-        $this->isvLotattrs = $isvLotattrs;
-        $this->apiParas["isvLotattrs"] = $isvLotattrs;
+        $this->apiParas['isvLotattrs'] = $isvLotattrs;
+
+        return $this;
     }
 
     public function getCheckLotattrs()
     {
-        return $this->checkLotattrs;
+        return $this->apiParas['checkLotattrs'];
     }
 
     public function setCheckLotattrs($checkLotattrs)
     {
-        $this->checkLotattrs = $checkLotattrs;
-        $this->apiParas["checkLotattrs"] = $checkLotattrs;
+        $this->apiParas['checkLotattrs'] = $checkLotattrs;
+
+        return $this;
     }
 }

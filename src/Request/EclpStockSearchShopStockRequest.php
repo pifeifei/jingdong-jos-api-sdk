@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class EclpStockSearchShopStockRequest
+class EclpStockSearchShopStockRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $requestId;
-    private $deptNo;
-    private $shopNo;
-    private $warehouseNo;
-    private $goodsNo;
-    private $pageSize;
-    private $pageNumber;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.stock.searchShopStock";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.stock.searchShopStock';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getRequestId()
     {
-        return $this->requestId;
+        return $this->apiParas['requestId'];
     }
 
     public function setRequestId($requestId)
     {
-        $this->requestId = $requestId;
-        $this->apiParas["requestId"] = $requestId;
+        $this->apiParas['requestId'] = $requestId;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getShopNo()
     {
-        return $this->shopNo;
+        return $this->apiParas['shopNo'];
     }
 
     public function setShopNo($shopNo)
     {
-        $this->shopNo = $shopNo;
-        $this->apiParas["shopNo"] = $shopNo;
+        $this->apiParas['shopNo'] = $shopNo;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->apiParas['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
     {
-        $this->goodsNo = $goodsNo;
-        $this->apiParas["goodsNo"] = $goodsNo;
+        $this->apiParas['goodsNo'] = $goodsNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getPageNumber()
     {
-        return $this->pageNumber;
+        return $this->apiParas['pageNumber'];
     }
 
     public function setPageNumber($pageNumber)
     {
-        $this->pageNumber = $pageNumber;
-        $this->apiParas["pageNumber"] = $pageNumber;
+        $this->apiParas['pageNumber'] = $pageNumber;
+
+        return $this;
     }
 }

@@ -2,150 +2,122 @@
 
 namespace ACES\Request;
 
-
-class HairQueryBookRequest
+class HairQueryBookRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $beginDate;
-    private $supNo;
-    private $poNo;
-    private $endDate;
-    private $whNo;
-    private $ownerNo;
-    private $pageSize;
-    private $page;
-    private $dcNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.hair.queryBook";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.hair.queryBook';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getBeginDate()
     {
-        return $this->beginDate;
+        return $this->apiParas['beginDate'];
     }
 
     public function setBeginDate($beginDate)
     {
-        $this->beginDate = $beginDate;
-        $this->apiParas["beginDate"] = $beginDate;
+        $this->apiParas['beginDate'] = $beginDate;
+
+        return $this;
     }
 
     public function getSupNo()
     {
-        return $this->supNo;
+        return $this->apiParas['supNo'];
     }
 
     public function setSupNo($supNo)
     {
-        $this->supNo = $supNo;
-        $this->apiParas["supNo"] = $supNo;
+        $this->apiParas['supNo'] = $supNo;
+
+        return $this;
     }
 
     public function getPoNo()
     {
-        return $this->poNo;
+        return $this->apiParas['poNo'];
     }
 
     public function setPoNo($poNo)
     {
-        $this->poNo = $poNo;
-        $this->apiParas["poNo"] = $poNo;
+        $this->apiParas['poNo'] = $poNo;
+
+        return $this;
     }
 
     public function getEndDate()
     {
-        return $this->endDate;
+        return $this->apiParas['endDate'];
     }
 
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-        $this->apiParas["endDate"] = $endDate;
+        $this->apiParas['endDate'] = $endDate;
+
+        return $this;
     }
 
     public function getWhNo()
     {
-        return $this->whNo;
+        return $this->apiParas['whNo'];
     }
 
     public function setWhNo($whNo)
     {
-        $this->whNo = $whNo;
-        $this->apiParas["whNo"] = $whNo;
+        $this->apiParas['whNo'] = $whNo;
+
+        return $this;
     }
 
     public function getOwnerNo()
     {
-        return $this->ownerNo;
+        return $this->apiParas['ownerNo'];
     }
 
     public function setOwnerNo($ownerNo)
     {
-        $this->ownerNo = $ownerNo;
-        $this->apiParas["ownerNo"] = $ownerNo;
+        $this->apiParas['ownerNo'] = $ownerNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getPage()
     {
-        return $this->page;
+        return $this->apiParas['page'];
     }
 
     public function setPage($page)
     {
-        $this->page = $page;
-        $this->apiParas["page"] = $page;
+        $this->apiParas['page'] = $page;
+
+        return $this;
     }
 
     public function getDcNo()
     {
-        return $this->dcNo;
+        return $this->apiParas['dcNo'];
     }
 
     public function setDcNo($dcNo)
     {
-        $this->dcNo = $dcNo;
-        $this->apiParas["dcNo"] = $dcNo;
+        $this->apiParas['dcNo'] = $dcNo;
+
+        return $this;
     }
 }

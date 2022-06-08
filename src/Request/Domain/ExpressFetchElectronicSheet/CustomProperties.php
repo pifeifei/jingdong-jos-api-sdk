@@ -2,18 +2,15 @@
 
 namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 
-
-
-
 class CustomProperties
 {
-    private $params = array();
+    private $params = [];
     private $key;
     private $value;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "java.util.Map";
+        $this->params['@type'] = 'java.util.Map';
     }
 
     public function getKey()
@@ -31,8 +28,7 @@ class CustomProperties
         $this->params['value'] = $value->getInstance();
     }
 
-
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

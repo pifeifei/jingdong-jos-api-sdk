@@ -2,18 +2,15 @@
 
 namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 
-
-
-
 class UserEnv
 {
-    private $params = array();
+    private $params = [];
     private $pin;
     private $tradeCode;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.ldop.oms.dto.UserEnv";
+        $this->params['@type'] = 'com.jd.ldop.oms.dto.UserEnv';
     }
 
     public function getPin()
@@ -36,7 +33,7 @@ class UserEnv
         $this->params['tradeCode'] = $tradeCode;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

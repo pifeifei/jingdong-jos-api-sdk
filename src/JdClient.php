@@ -2,7 +2,6 @@
 
 namespace ACES;
 
-
 use ACES\Contracts\RequestInterFace;
 use DateTimeZone;
 use Exception;
@@ -10,7 +9,7 @@ use stdClass;
 
 class JdClient
 {
-    public $serverUrl = "https://api.jd.com/routerjson";
+    public $serverUrl = 'https://api.jd.com/routerjson';
 
     public $accessToken;
 
@@ -22,34 +21,34 @@ class JdClient
 
     public $appSecret;
 
-    public $version = "2.0";
+    public $version = '2.0';
 
-    public $format = "json";
+    public $format = 'json';
 
-    private $charset_utf8 = "UTF-8";
+    private $charset_utf8 = 'UTF-8';
 
-    private $jsonParamKey = "360buy_param_json";
+    private $jsonParamKey = '360buy_param_json';
 
     /**
-     * @param  RequestInterFace  $request
-     * @param  string|null  $access_token
+     * @param null|string $access_token
+     *
      * @return false|\SimpleXMLElement|stdClass
      */
     public function execute(RequestInterFace $request, $access_token = null)
     {
-        $sysParams["app_key"] = $this->appKey;
-        $sysParams["v"] = $request->getVersion($this->version);
-        $sysParams["method"] = $request->getApiMethodName();
-        $sysParams["timestamp"] = $this->getCurrentTimeFormatted();
+        $sysParams['app_key'] = $this->appKey;
+        $sysParams['v'] = $request->getVersion($this->version);
+        $sysParams['method'] = $request->getApiMethodName();
+        $sysParams['timestamp'] = $this->getCurrentTimeFormatted();
         if (null != $access_token) {
-            $sysParams["access_token"] = $access_token;
+            $sysParams['access_token'] = $access_token;
         }
 
         $apiParams = $request->getApiParas();
         $sysParams[$this->jsonParamKey] = $apiParams;
-        $sysParams["sign"] = $this->generateSign($sysParams);
+        $sysParams['sign'] = $this->generateSign($sysParams);
 
-        $requestUrl = $this->serverUrl."?".http_build_query($sysParams);
+        $requestUrl = $this->serverUrl.'?'.http_build_query($sysParams);
 
 //        foreach ($sysParams as $sysParamKey => $sysParamValue) {
 //            $requestUrl .= "$sysParamKey=".urlencode($sysParamValue)."&";
@@ -61,10 +60,11 @@ class JdClient
             $result = new stdClass();
             $result->code = $e->getCode();
             $result->msg = $e->getMessage();
+
             return $result;
         }
 
-        if ("json" == $this->format) {
+        if ('json' == $this->format) {
             $respObject = json_decode($resp);
             if (null !== $respObject) {
                 return $respObject;
@@ -73,47 +73,9 @@ class JdClient
 
         $result = new stdClass();
         $result->code = 0;
-        $result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED";
+        $result->msg = 'HTTP_RESPONSE_NOT_WELL_FORMED';
+
         return $result;
-    }
-
-    private function getCurrentTimeFormatted()
-    {
-        return date("Y-m-d H:i:s").'.000'.$this->getStandardOffsetUTC(date_default_timezone_get());
-    }
-
-    private function getStandardOffsetUTC($timezone)
-    {
-        if ($timezone == 'UTC') {
-            return '+0000';
-        } else {
-            $timezone = new DateTimeZone($timezone);
-            $transitions = array_slice($timezone->getTransitions(), -3, null, true);
-
-            foreach (array_reverse($transitions, true) as $transition) {
-                if ($transition['isdst'] == 1) {
-                    continue;
-                }
-
-                return sprintf('%+03d%02u', $transition['offset'] / 3600, abs($transition['offset']) % 3600 / 60);
-            }
-
-            return false;
-        }
-    }
-
-    protected function generateSign($params)
-    {
-        ksort($params);
-        $stringToBeSigned = $this->appSecret;
-        foreach ($params as $k => $v) {
-            if ("@" != substr($v, 0, 1)) {
-                $stringToBeSigned .= "$k$v";
-            }
-        }
-        unset($k, $v);
-        $stringToBeSigned .= $this->appSecret;
-        return strtoupper(md5($stringToBeSigned));
     }
 
     public function curl($url, $postFields = null)
@@ -128,18 +90,18 @@ class JdClient
         if ($this->connectTimeout) {
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
         }
-        //https
-        if (strlen($url) > 5 && strtolower(substr($url, 0, 5)) == "https") {
+        // https
+        if (strlen($url) > 5 && 'https' == strtolower(substr($url, 0, 5))) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         }
 
         if (is_array($postFields) && 0 < count($postFields)) {
-            $postBodyString = "";
+            $postBodyString = '';
             $postMultipart = false;
             foreach ($postFields as $k => $v) {
-                if ("@" != substr($v, 0, 1)) {
-                    $postBodyString .= "$k=".urlencode($v)."&";
+                if ('@' != substr($v, 0, 1)) {
+                    $postBodyString .= "{$k}=".urlencode($v).'&';
                 } else { // multipart/form-data www-form-urlencoded
                     $postMultipart = true;
                 }
@@ -156,13 +118,53 @@ class JdClient
 
         if (curl_errno($ch)) {
             throw new Exception(curl_error($ch), 0);
-        } else {
-            $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if (200 !== $httpStatusCode) {
-                throw new Exception($reponse, $httpStatusCode);
+        }
+        $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if (200 !== $httpStatusCode) {
+            throw new Exception($reponse, $httpStatusCode);
+        }
+
+        curl_close($ch);
+
+        return $reponse;
+    }
+
+    protected function generateSign($params)
+    {
+        ksort($params);
+        $stringToBeSigned = $this->appSecret;
+        foreach ($params as $k => $v) {
+            if ('@' != substr($v, 0, 1)) {
+                $stringToBeSigned .= "{$k}{$v}";
             }
         }
-        curl_close($ch);
-        return $reponse;
+        unset($k, $v);
+        $stringToBeSigned .= $this->appSecret;
+
+        return strtoupper(md5($stringToBeSigned));
+    }
+
+    private function getCurrentTimeFormatted()
+    {
+        return date('Y-m-d H:i:s').'.000'.$this->getStandardOffsetUTC(date_default_timezone_get());
+    }
+
+    private function getStandardOffsetUTC($timezone)
+    {
+        if ('UTC' == $timezone) {
+            return '+0000';
+        }
+        $timezone = new DateTimeZone($timezone);
+        $transitions = array_slice($timezone->getTransitions(), -3, null, true);
+
+        foreach (array_reverse($transitions, true) as $transition) {
+            if (1 == $transition['isdst']) {
+                continue;
+            }
+
+            return sprintf('%+03d%02u', $transition['offset'] / 3600, abs($transition['offset']) % 3600 / 60);
+        }
+
+        return false;
     }
 }

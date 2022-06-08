@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class EclpTraceServiceJosOrderTraceByOrderServiceGetOrderTraceByISVOrderIdRequest
+class EclpTraceServiceJosOrderTraceByOrderServiceGetOrderTraceByISVOrderIdRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $role;
-    private $orderId;
-    private $carrierCode;
-    private $businessType;
-    private $userId;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.trace.service.jos.OrderTraceByOrderService.getOrderTraceByISVOrderId";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.trace.service.jos.OrderTraceByOrderService.getOrderTraceByISVOrderId';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getRole()
     {
-        return $this->role;
+        return $this->apiParas['role'];
     }
 
     public function setRole($role)
     {
-        $this->role = $role;
-        $this->apiParas["role"] = $role;
+        $this->apiParas['role'] = $role;
+
+        return $this;
     }
 
     public function getOrderId()
     {
-        return $this->orderId;
+        return $this->apiParas['orderId'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->orderId = $orderId;
-        $this->apiParas["orderId"] = $orderId;
+        $this->apiParas['orderId'] = $orderId;
+
+        return $this;
     }
 
     public function getCarrierCode()
     {
-        return $this->carrierCode;
+        return $this->apiParas['carrierCode'];
     }
 
     public function setCarrierCode($carrierCode)
     {
-        $this->carrierCode = $carrierCode;
-        $this->apiParas["carrierCode"] = $carrierCode;
+        $this->apiParas['carrierCode'] = $carrierCode;
+
+        return $this;
     }
 
     public function getBusinessType()
     {
-        return $this->businessType;
+        return $this->apiParas['businessType'];
     }
 
     public function setBusinessType($businessType)
     {
-        $this->businessType = $businessType;
-        $this->apiParas["businessType"] = $businessType;
+        $this->apiParas['businessType'] = $businessType;
+
+        return $this;
     }
 
     public function getUserId()
     {
-        return $this->userId;
+        return $this->apiParas['userId'];
     }
 
     public function setUserId($userId)
     {
-        $this->userId = $userId;
-        $this->apiParas["userId"] = $userId;
+        $this->apiParas['userId'] = $userId;
+
+        return $this;
     }
 }

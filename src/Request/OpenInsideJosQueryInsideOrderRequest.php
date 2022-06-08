@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class OpenInsideJosQueryInsideOrderRequest
+class OpenInsideJosQueryInsideOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $insideNo;
-    private $sourceDeptNo;
-    private $createTimeEnd;
-    private $createTimeStart;
-    private $isvNo;
-    private $status;
-    private $bizType;
-
     public function getApiMethodName()
     {
-        return "jingdong.open.inside.jos.queryInsideOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.open.inside.jos.queryInsideOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getInsideNo()
     {
-        return $this->insideNo;
+        return $this->apiParas['insideNo'];
     }
 
     public function setInsideNo($insideNo)
     {
-        $this->insideNo = $insideNo;
-        $this->apiParas["insideNo"] = $insideNo;
+        $this->apiParas['insideNo'] = $insideNo;
+
+        return $this;
     }
 
     public function getSourceDeptNo()
     {
-        return $this->sourceDeptNo;
+        return $this->apiParas['sourceDeptNo'];
     }
 
     public function setSourceDeptNo($sourceDeptNo)
     {
-        $this->sourceDeptNo = $sourceDeptNo;
-        $this->apiParas["sourceDeptNo"] = $sourceDeptNo;
+        $this->apiParas['sourceDeptNo'] = $sourceDeptNo;
+
+        return $this;
     }
 
     public function getCreateTimeEnd()
     {
-        return $this->createTimeEnd;
+        return $this->apiParas['createTimeEnd'];
     }
 
     public function setCreateTimeEnd($createTimeEnd)
     {
-        $this->createTimeEnd = $createTimeEnd;
-        $this->apiParas["createTimeEnd"] = $createTimeEnd;
+        $this->apiParas['createTimeEnd'] = $createTimeEnd;
+
+        return $this;
     }
 
     public function getCreateTimeStart()
     {
-        return $this->createTimeStart;
+        return $this->apiParas['createTimeStart'];
     }
 
     public function setCreateTimeStart($createTimeStart)
     {
-        $this->createTimeStart = $createTimeStart;
-        $this->apiParas["createTimeStart"] = $createTimeStart;
+        $this->apiParas['createTimeStart'] = $createTimeStart;
+
+        return $this;
     }
 
     public function getIsvNo()
     {
-        return $this->isvNo;
+        return $this->apiParas['isvNo'];
     }
 
     public function setIsvNo($isvNo)
     {
-        $this->isvNo = $isvNo;
-        $this->apiParas["isvNo"] = $isvNo;
+        $this->apiParas['isvNo'] = $isvNo;
+
+        return $this;
     }
 
     public function getStatus()
     {
-        return $this->status;
+        return $this->apiParas['status'];
     }
 
     public function setStatus($status)
     {
-        $this->status = $status;
-        $this->apiParas["status"] = $status;
+        $this->apiParas['status'] = $status;
+
+        return $this;
     }
 
     public function getBizType()
     {
-        return $this->bizType;
+        return $this->apiParas['bizType'];
     }
 
     public function setBizType($bizType)
     {
-        $this->bizType = $bizType;
-        $this->apiParas["bizType"] = $bizType;
+        $this->apiParas['bizType'] = $bizType;
+
+        return $this;
     }
 }

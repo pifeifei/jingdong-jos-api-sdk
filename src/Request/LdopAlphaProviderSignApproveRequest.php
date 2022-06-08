@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderSignApproveRequest
+class LdopAlphaProviderSignApproveRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $requestId;
-    private $approveResult;
-    private $approveMessage;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.sign.approve";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.sign.approve';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getRequestId()
     {
-        return $this->requestId;
+        return $this->apiParas['requestId'];
     }
 
     public function setRequestId($requestId)
     {
-        $this->requestId = $requestId;
-        $this->apiParas["requestId"] = $requestId;
+        $this->apiParas['requestId'] = $requestId;
+
+        return $this;
     }
 
     public function getApproveResult()
     {
-        return $this->approveResult;
+        return $this->apiParas['approveResult'];
     }
 
     public function setApproveResult($approveResult)
     {
-        $this->approveResult = $approveResult;
-        $this->apiParas["approveResult"] = $approveResult;
+        $this->apiParas['approveResult'] = $approveResult;
+
+        return $this;
     }
 
     public function getApproveMessage()
     {
-        return $this->approveMessage;
+        return $this->apiParas['approveMessage'];
     }
 
     public function setApproveMessage($approveMessage)
     {
-        $this->approveMessage = $approveMessage;
-        $this->apiParas["approveMessage"] = $approveMessage;
+        $this->apiParas['approveMessage'] = $approveMessage;
+
+        return $this;
     }
 }

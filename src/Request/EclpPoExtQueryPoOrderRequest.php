@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class EclpPoExtQueryPoOrderRequest
+class EclpPoExtQueryPoOrderRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $poOrderNo;
-    private $queryItemFlag;
-    private $queryBoxFlag;
-    private $queryQcFlag;
-    private $queryPoRejectFlag;
-    private $queryBatAttrFlag;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.po.ext.queryPoOrder";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.po.ext.queryPoOrder';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPoOrderNo()
     {
-        return $this->poOrderNo;
+        return $this->apiParas['poOrderNo'];
     }
 
     public function setPoOrderNo($poOrderNo)
     {
-        $this->poOrderNo = $poOrderNo;
-        $this->apiParas["poOrderNo"] = $poOrderNo;
+        $this->apiParas['poOrderNo'] = $poOrderNo;
+
+        return $this;
     }
 
     public function getQueryItemFlag()
     {
-        return $this->queryItemFlag;
+        return $this->apiParas['queryItemFlag'];
     }
 
     public function setQueryItemFlag($queryItemFlag)
     {
-        $this->queryItemFlag = $queryItemFlag;
-        $this->apiParas["queryItemFlag"] = $queryItemFlag;
+        $this->apiParas['queryItemFlag'] = $queryItemFlag;
+
+        return $this;
     }
 
     public function getQueryBoxFlag()
     {
-        return $this->queryBoxFlag;
+        return $this->apiParas['queryBoxFlag'];
     }
 
     public function setQueryBoxFlag($queryBoxFlag)
     {
-        $this->queryBoxFlag = $queryBoxFlag;
-        $this->apiParas["queryBoxFlag"] = $queryBoxFlag;
+        $this->apiParas['queryBoxFlag'] = $queryBoxFlag;
+
+        return $this;
     }
 
     public function getQueryQcFlag()
     {
-        return $this->queryQcFlag;
+        return $this->apiParas['queryQcFlag'];
     }
 
     public function setQueryQcFlag($queryQcFlag)
     {
-        $this->queryQcFlag = $queryQcFlag;
-        $this->apiParas["queryQcFlag"] = $queryQcFlag;
+        $this->apiParas['queryQcFlag'] = $queryQcFlag;
+
+        return $this;
     }
 
     public function getQueryPoRejectFlag()
     {
-        return $this->queryPoRejectFlag;
+        return $this->apiParas['queryPoRejectFlag'];
     }
 
     public function setQueryPoRejectFlag($queryPoRejectFlag)
     {
-        $this->queryPoRejectFlag = $queryPoRejectFlag;
-        $this->apiParas["queryPoRejectFlag"] = $queryPoRejectFlag;
+        $this->apiParas['queryPoRejectFlag'] = $queryPoRejectFlag;
+
+        return $this;
     }
 
     public function getQueryBatAttrFlag()
     {
-        return $this->queryBatAttrFlag;
+        return $this->apiParas['queryBatAttrFlag'];
     }
 
     public function setQueryBatAttrFlag($queryBatAttrFlag)
     {
-        $this->queryBatAttrFlag = $queryBatAttrFlag;
-        $this->apiParas["queryBatAttrFlag"] = $queryBatAttrFlag;
+        $this->apiParas['queryBatAttrFlag'] = $queryBatAttrFlag;
+
+        return $this;
     }
 }

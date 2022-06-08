@@ -2,12 +2,9 @@
 
 namespace ACES\Request\Domain\EclpIbdOrderDeclareOrder;
 
-
-
-
 class CustomsOrder
 {
-    private $params = array();
+    private $params = [];
     private $isvUUID;
     private $isvSource;
     private $platformId;
@@ -114,9 +111,9 @@ class CustomsOrder
     private $consigneeIdType;
     private $wrapType;
 
-    function __construct()
+    public function __construct()
     {
-        $this->params["@type"] = "com.jd.eclp.isv.Ddomain.so.OrderCustomsParam";
+        $this->params['@type'] = 'com.jd.eclp.isv.Ddomain.so.OrderCustomsParam';
     }
 
     public function getIsvUUID()
@@ -1169,7 +1166,7 @@ class CustomsOrder
         $this->params['wrapType'] = $wrapType;
     }
 
-    function getInstance()
+    public function getInstance()
     {
         return $this->params;
     }

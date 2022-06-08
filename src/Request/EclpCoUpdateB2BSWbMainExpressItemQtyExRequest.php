@@ -2,126 +2,98 @@
 
 namespace ACES\Request;
 
-
-class EclpCoUpdateB2BSWbMainExpressItemQtyExRequest
+class EclpCoUpdateB2BSWbMainExpressItemQtyExRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $newWBType;
-    private $no;
-    private $expressItemQty;
-    private $isvOrderAmount;
-    private $packageNo;
-    private $extendParam;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.co.updateB2BSWbMainExpressItemQtyEx";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.co.updateB2BSWbMainExpressItemQtyEx';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getNewWBType()
     {
-        return $this->newWBType;
+        return $this->apiParas['newWBType'];
     }
 
     public function setNewWBType($newWBType)
     {
-        $this->newWBType = $newWBType;
-        $this->apiParas["newWBType"] = $newWBType;
+        $this->apiParas['newWBType'] = $newWBType;
+
+        return $this;
     }
 
     public function getNo()
     {
-        return $this->no;
+        return $this->apiParas['no'];
     }
 
     public function setNo($no)
     {
-        $this->no = $no;
-        $this->apiParas["no"] = $no;
+        $this->apiParas['no'] = $no;
+
+        return $this;
     }
 
     public function getExpressItemQty()
     {
-        return $this->expressItemQty;
+        return $this->apiParas['expressItemQty'];
     }
 
     public function setExpressItemQty($expressItemQty)
     {
-        $this->expressItemQty = $expressItemQty;
-        $this->apiParas["expressItemQty"] = $expressItemQty;
+        $this->apiParas['expressItemQty'] = $expressItemQty;
+
+        return $this;
     }
 
     public function getIsvOrderAmount()
     {
-        return $this->isvOrderAmount;
+        return $this->apiParas['isvOrderAmount'];
     }
 
     public function setIsvOrderAmount($isvOrderAmount)
     {
-        $this->isvOrderAmount = $isvOrderAmount;
-        $this->apiParas["isvOrderAmount"] = $isvOrderAmount;
+        $this->apiParas['isvOrderAmount'] = $isvOrderAmount;
+
+        return $this;
     }
 
     public function getPackageNo()
     {
-        return $this->packageNo;
+        return $this->apiParas['packageNo'];
     }
 
     public function setPackageNo($packageNo)
     {
-        $this->packageNo = $packageNo;
-        $this->apiParas["packageNo"] = $packageNo;
+        $this->apiParas['packageNo'] = $packageNo;
+
+        return $this;
     }
 
     public function getExtendParam()
     {
-        return $this->extendParam;
+        return $this->apiParas['extendParam'];
     }
 
     public function setExtendParam($extendParam)
     {
-        $this->extendParam = $extendParam;
-        $this->apiParas["extendParam"] = $extendParam;
+        $this->apiParas['extendParam'] = $extendParam;
+
+        return $this;
     }
 }

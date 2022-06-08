@@ -2,78 +2,50 @@
 
 namespace ACES\Request;
 
-
-class MfaInnerValidateMsgCodeRequest
+class MfaInnerValidateMsgCodeRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $msgCode;
-    private $rKey;
-    private $validateType;
-
     public function getApiMethodName()
     {
-        return "jingdong.mfa.inner.validateMsgCode";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.mfa.inner.validateMsgCode';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getMsgCode()
     {
-        return $this->msgCode;
+        return $this->apiParas['msgCode'];
     }
 
     public function setMsgCode($msgCode)
     {
-        $this->msgCode = $msgCode;
-        $this->apiParas["msgCode"] = $msgCode;
+        $this->apiParas['msgCode'] = $msgCode;
+
+        return $this;
     }
 
     public function getRKey()
     {
-        return $this->rKey;
+        return $this->apiParas['rKey'];
     }
 
     public function setRKey($rKey)
     {
-        $this->rKey = $rKey;
-        $this->apiParas["rKey"] = $rKey;
+        $this->apiParas['rKey'] = $rKey;
+
+        return $this;
     }
 
     public function getValidateType()
     {
-        return $this->validateType;
+        return $this->apiParas['validateType'];
     }
 
     public function setValidateType($validateType)
     {
-        $this->validateType = $validateType;
-        $this->apiParas["validateType"] = $validateType;
+        $this->apiParas['validateType'] = $validateType;
+
+        return $this;
     }
 }

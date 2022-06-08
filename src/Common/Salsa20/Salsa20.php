@@ -3,45 +3,46 @@
 namespace ACES\Common\Salsa20;
 
 /**
- * Salsa20, HSalsa20 and XSalsa20
+ * Salsa20, HSalsa20 and XSalsa20.
  *
  * Assembled from:
  *  - http://tweetnacl.cr.yp.to/
  *
- *
- * @link   https://github.com/devi/Salt
- *
+ * @see   https://github.com/devi/Salt
  */
 class Salsa20
 {
-    /* Salsa20, HSalsa20, XSalsa20 */
-    const salsa20_KEY    = 32;
-    const salsa20_NONCE  =  8;
-    const salsa20_INPUT  = 16;
-    const salsa20_OUTPUT = 64;
-    const salsa20_CONST  = 16;
-    const hsalsa20_KEY    = 32;
-    const hsalsa20_INPUT  = 16;
-    const hsalsa20_OUTPUT = 32;
-    const hsalsa20_CONST  = 16;
-    const xsalsa20_KEY   = 32;
-    const xsalsa20_NONCE = 24;
+    // Salsa20, HSalsa20, XSalsa20
+    public const salsa20_KEY = 32;
+    public const salsa20_NONCE = 8;
+    public const salsa20_INPUT = 16;
+    public const salsa20_OUTPUT = 64;
+    public const salsa20_CONST = 16;
+    public const hsalsa20_KEY = 32;
+    public const hsalsa20_INPUT = 16;
+    public const hsalsa20_OUTPUT = 32;
+    public const hsalsa20_CONST = 16;
+    public const xsalsa20_KEY = 32;
+    public const xsalsa20_NONCE = 24;
 
-    /* Stream salsa20, salsa20_xor */
-    const stream_salsa20_KEY   = 32;
-    const stream_salsa20_NONCE = 24;
+    // Stream salsa20, salsa20_xor
+    public const stream_salsa20_KEY = 32;
+    public const stream_salsa20_NONCE = 24;
 
-    public static $sigma = array(101,120,112,97,110,100,32,51,50,45,98,121,116,101,32,107);
-    /* Lazy load */
+    public static $sigma = [101, 120, 112, 97, 110, 100, 32, 51, 50, 45, 98, 121, 116, 101, 32, 107];
+    // Lazy load
     private static $instance;
+
     public static function instance()
     {
         if (!isset(static::$instance)) {
             static::$instance = new Salsa20();
         }
+
         return static::$instance;
     }
-    function load($x, $offset = 0)
+
+    public function load($x, $offset = 0)
     {
         return
         $x[$offset] |
@@ -49,35 +50,38 @@ class Salsa20
         ($x[2 + $offset] << 16) |
         ($x[3 + $offset] << 24);
     }
-    function store($x, $offset = 0, $u)
+
+    public function store($x, $offset = 0, $u)
     {
-        $x[$offset]   = $u & 0xff;
+        $x[$offset] = $u & 0xFF;
         $u >>= 8;
-        $x[1 + $offset] = $u & 0xff;
+        $x[1 + $offset] = $u & 0xFF;
         $u >>= 8;
-        $x[2 + $offset] = $u & 0xff;
+        $x[2 + $offset] = $u & 0xFF;
         $u >>= 8;
-        $x[3 + $offset] = $u & 0xff;
+        $x[3 + $offset] = $u & 0xFF;
     }
-    function rotate(&$x, $y, $z, $c)
+
+    public function rotate(&$x, $y, $z, $c)
     {
         $u = $y + $z;
-        $u &= 0xffffffff;
+        $u &= 0xFFFFFFFF;
         $x ^= ($u << $c) | ($u >> (32 - $c));
-        $x &= 0xffffffff;
+        $x &= 0xFFFFFFFF;
     }
-    function core($out, $in, $k, $c, $salsa20 = true)
+
+    public function core($out, $in, $k, $c, $salsa20 = true)
     {
-        $x0  = $this->load($c, 0);
-        $x1  = $this->load($k, 0);
-        $x2  = $this->load($k, 4);
-        $x3  = $this->load($k, 8);
-        $x4  = $this->load($k, 12);
-        $x5  = $this->load($c, 4);
-        $x6  = $this->load($in, 0);
-        $x7  = $this->load($in, 4);
-        $x8  = $this->load($in, 8);
-        $x9  = $this->load($in, 12);
+        $x0 = $this->load($c, 0);
+        $x1 = $this->load($k, 0);
+        $x2 = $this->load($k, 4);
+        $x3 = $this->load($k, 8);
+        $x4 = $this->load($k, 12);
+        $x5 = $this->load($c, 4);
+        $x6 = $this->load($in, 0);
+        $x7 = $this->load($in, 4);
+        $x8 = $this->load($in, 8);
+        $x9 = $this->load($in, 12);
         $x10 = $this->load($c, 8);
         $x11 = $this->load($k, 16);
         $x12 = $this->load($k, 20);
@@ -180,7 +184,8 @@ class Salsa20
             $this->store($out, 28, $x9);
         }
     }
-    function stream($out, $m, $mlen, $n, $k)
+
+    public function stream($out, $m, $mlen, $n, $k)
     {
         if (!$mlen) {
             return false;
@@ -193,7 +198,7 @@ class Salsa20
         if ($m) {
             $l = count($m);
             if ($l < $mlen) {
-                for ($i = $l; $i <  $mlen; ++$i) {
+                for ($i = $l; $i < $mlen; ++$i) {
                     $m[$i] = 0;
                 }
             }
@@ -225,11 +230,11 @@ class Salsa20
         }
     }
 
-
     public function crypto_core_salsa20($in, $key, $const)
     {
         $out = new FieldElement(32);
         $this->core($out, $in, $key, $const);
+
         return $out;
     }
 
@@ -237,6 +242,7 @@ class Salsa20
     {
         $out = new FieldElement(32);
         $this->core($out, $in, $key, $const, false);
+
         return $out;
     }
 
@@ -244,6 +250,7 @@ class Salsa20
     {
         $out = new FieldElement($length);
         $this->stream($out, false, $length, $nonce, $key);
+
         return $out;
     }
 
@@ -251,18 +258,21 @@ class Salsa20
     {
         $out = new FieldElement($length);
         $this->stream($out, $in, $length, $nonce, $key);
+
         return $out;
     }
 
     public function crypto_stream_xsalsa20($length, $nonce, $key)
     {
         $subkey = $this->crypto_core_hsalsa20($nonce, $key, Salsa20::$sigma);
+
         return $this->crypto_stream_salsa20($length, $nonce->slice(16), $subkey);
     }
 
     public function crypto_stream_xsalsa20_xor($in, $length, $nonce, $key)
     {
         $subkey = $this->crypto_core_hsalsa20($nonce, $key, Salsa20::$sigma);
+
         return $this->crypto_stream_salsa20_xor($in, $length, $nonce->slice(16), $subkey);
     }
 

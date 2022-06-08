@@ -24,22 +24,22 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use RuntimeException;
 
-/**
+/*
  * KMClient Implementation
  *
  * @author JD Security (tenma.lin, wei.gao, mozhiyan, xuyina)
  * @version 1.0.0
  */
 
-define("KMSLOGFILE", getenv("HOME")."/aces-log/kmclient.log");
-if (!defined("LOGCONSOLE")) {
-    define("LOGCONSOLE", __DIR__."/../../../tde.log");
+define('KMSLOGFILE', getenv('HOME').'/aces-log/kmclient.log');
+if (!defined('LOGCONSOLE')) {
+    define('LOGCONSOLE', __DIR__.'/../../../tde.log');
 }
-if (!defined("LOGLEVEL")) {
-    define("LOGLEVEL", Logger::DEBUG);
+if (!defined('LOGLEVEL')) {
+    define('LOGLEVEL', Logger::DEBUG);
 }
-if (!defined("EMPTYSTR")) {
-    define("EMPTYSTR", "");
+if (!defined('EMPTYSTR')) {
+    define('EMPTYSTR', '');
 }
 
 final class KMClient
@@ -49,6 +49,7 @@ final class KMClient
 //    const INDEX_SERVER_ENDPOINT = Constants::INDEX_SERVER_ENDPOINT;
     private $tde;
     private $jsonMapper;
+
     /**
      * @var HttpReportClient
      */
@@ -66,15 +67,17 @@ final class KMClient
 //    private $keyCacheFile;              // key cache file location
 //    private $keyBackupFolder;           // key Backup file folder
 //    private $keyBackupFile;             // key backup file location
-    private $majorKeyVer;               //newest version holder for major service
+    private $majorKeyVer;               // newest version holder for major service
 //     private $epoch = 28800;
-    private $epoch = 5;//todo: remove, just for test
+    private $epoch = 5; // todo: remove, just for test
 
     // local variables for kms and index server endpoints, default settings are IDC
 //    private $kmsURL = self::KMS_SERVER_ENDPOINT;
 //    private $idxURL = self::INDEX_SERVER_ENDPOINT;
     /**
      * @var TDEClient
+     *
+     * @param mixed $version
      */
 //    private $josBaseInfo;
     /* KMClient constructor
@@ -96,10 +99,10 @@ final class KMClient
         $this->reporter = $reporter;
         $this->cacheKeyStore = $keyStore;
         $this->userToken = $token;
-        $this->majorSdkVer = (int)substr($version, 0, 1);
+        $this->majorSdkVer = (int) substr($version, 0, 1);
 
-        $this->corruptKeyList = array();
-        $this->availableKeyList = array();
+        $this->corruptKeyList = [];
+        $this->availableKeyList = [];
 
         // confige log
         $this->log = new Logger('kmclient');
@@ -113,7 +116,7 @@ final class KMClient
 
     public function run()
     {
-        $this->log->info("Key Management Thread Performs Key Updating...");
+        $this->log->info('Key Management Thread Performs Key Updating...');
 
         // catch all exceptions
         try {
@@ -122,7 +125,7 @@ final class KMClient
             $this->log->critical($e->getMessage());
 
             $this->reporter->insertErrReport(
-                TDEStatus::$SDK_THROW_JDK_EXCEPTION["code"],
+                TDEStatus::$SDK_THROW_JDK_EXCEPTION['code'],
                 $e->getMessage(),
                 UtilTools::extractStackTrace($e),
                 MSG_LEVEL::ERROR
@@ -131,7 +134,7 @@ final class KMClient
             $this->log->critical($t->getMessage());
 
             $this->reporter->insertErrReport(
-                TDEStatus::$SDK_THROW_JDK_EXCEPTION["code"],
+                TDEStatus::$SDK_THROW_JDK_EXCEPTION['code'],
                 $t->getMessage(),
                 UtilTools::extractStackTrace($t),
                 MSG_LEVEL::ERROR
@@ -149,8 +152,8 @@ final class KMClient
     {
         try {
             $this->log->info(
-                "Fetch keys from ".$this->tde->getJosBaseInfo()->getServerUrl(
-                ).Constants::KMS_ENDPOINT_REQUEST_MK.". With delay = ".$delay." ms."
+                'Fetch keys from '.$this->tde->getJosBaseInfo()->getServerUrl(
+                ).Constants::KMS_ENDPOINT_REQUEST_MK.'. With delay = '.$delay.' ms.'
             );
             if ($delay > 0) {
                 // sleep for millis
@@ -159,29 +162,29 @@ final class KMClient
 
             // todo: consider thread safe lock
             $josResponse = $this->josKeyRequest();
-            if (!$josResponse || $josResponse->getCode() !== 0) {
+            if (!$josResponse || 0 !== $josResponse->getCode()) {
 //                $this->log->error("jos response error code: " . $josResponse->getCode() . ". error message: " . $josResponse->getEnDesc());
                 throw new Exception('code='.$josResponse->getCode().', message='.$josResponse->getEnDesc());
             }
             $keyResponse = $josResponse->getResponse();
 
             // prepare corrupt key list
-            $this->corruptKeyList = array();
+            $this->corruptKeyList = [];
 
-            if ($keyResponse->getStatus_code() === 0) {
+            if (0 === $keyResponse->getStatus_code()) {
                 $this->importMKeys($keyResponse);
             } else {
                 $this->log->info(
-                    "KMS reponse error code: ".$keyResponse->getStatus_code(
-                    ).". error message: ".$keyResponse->getErrorMsg()
+                    'KMS reponse error code: '.$keyResponse->getStatus_code(
+                    ).'. error message: '.$keyResponse->getErrorMsg()
                 );
                 if (
-                    $keyResponse->getStatus_code() == TDEStatus::$TMS_REQUEST_VERIFY_FAILED["code"]
-                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_EXPIRE["code"]
-                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_NO_AVAILABLE_GRANTS_FOR_SERVICE["code"]
-                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_IS_FROZEN["code"]
-                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_IS_REVOKE["code"]
-                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_DB_DATA_NOTFOUND_ERROR["code"]
+                    $keyResponse->getStatus_code() == TDEStatus::$TMS_REQUEST_VERIFY_FAILED['code']
+                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_EXPIRE['code']
+                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_NO_AVAILABLE_GRANTS_FOR_SERVICE['code']
+                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_IS_FROZEN['code']
+                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_TOKEN_IS_REVOKE['code']
+                    || $keyResponse->getStatus_code() == TDEStatus::$TMS_DB_DATA_NOTFOUND_ERROR['code']
                 ) {
                     // Errors from TMS
                     $this->reporter->insertErrReport(
@@ -204,197 +207,26 @@ final class KMClient
                         MSG_LEVEL::ERROR
                     );
                 }
+
                 throw new ServiceErrorException($keyResponse->getErrorMsg());
             }
         } catch (RuntimeException $e) {
             $this->log->critical($e->getMessage());
 
             $this->reporter->insertErrReport(
-                TDEStatus::$SDK_CANNOT_REACH_KMS["code"],
-                TDEStatus::$SDK_CANNOT_REACH_KMS["message"].$e->getMessage(),
+                TDEStatus::$SDK_CANNOT_REACH_KMS['code'],
+                TDEStatus::$SDK_CANNOT_REACH_KMS['message'].$e->getMessage(),
                 UtilTools::extractStackTrace($e),
                 MSG_LEVEL::SEVER
             );
 
-            throw new \RuntimeException(TDEStatus::$SDK_CANNOT_REACH_KMS["message"]);
+            throw new \RuntimeException(TDEStatus::$SDK_CANNOT_REACH_KMS['message']);
         } // todo: interruptedException
         catch (Exception $e) {
             $this->log->critical($e);
+
             throw $e;
         }
-    }
-
-    private function josKeyRequest()
-    {
-        //TODO 只有在voucher被冻结时才应该重新获取voucher
-//        if ($this->josBaseInfo->getAccessToken() != null && $this->isKeyChainReady()) {
-//            //request voucher
-//            $userToken = Token::requestJosVoucher($this->josBaseInfo);
-//            $this->userToken->transferToken($userToken);
-//        }
-
-        //request mk
-        $requestUrl = $this->tde->getJosBaseInfo()->getServerUrl();
-        $keyRequest = new KeyRequest($this->userToken, $this->majorSdkVer);
-        $payload = $keyRequest->toFormParams($this->tde->getJosBaseInfo());
-        $this->log->info('master key request url -> '.$requestUrl.', payload -> '.json_encode($payload));
-        $josResponse = HttpsClient::postForm($requestUrl, $payload);
-        $response = JosBaseResponse::parse($josResponse, new JosMasterKeyGetResponse());
-        return $response;
-    }
-
-    private function importMKeys($keyResponse)
-    {
-        if (strcmp($keyResponse->getEnc_service(), $this->userToken->get_service_name()) != 0) {
-            $this->log->critical(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['message']);
-
-            $this->reporter->insertErrReport(
-                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1["code"],
-                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1["message"],
-                EMPTYSTR,
-                MSG_LEVEL::ERROR
-            );
-
-            throw new ServiceErrorException(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['message']);
-        }
-
-        if (strcmp($keyResponse->getTid(), $this->userToken->get_id()) != 0) {
-            $this->log->critical(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['message']);
-
-            $this->reporter->insertErrReport(
-                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2["code"],
-                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2["message"],
-                EMPTYSTR,
-                MSG_LEVEL::ERROR
-            );
-
-            throw new ServiceErrorException(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['message']);
-        }
-
-        // get two lists of key IDs to make sure old keys could be removed from cache_ks
-        $enc_rmv_list = $this->cacheKeyStore->getKeyIDList(KStoreType::ENC_STORE);
-        $dec_rmv_list = $this->cacheKeyStore->getKeyIDList(KStoreType::DEC_STORE);
-
-        $this->cacheKeyStore->resetFutureKeyIDs();
-
-        foreach ($keyResponse->getService_key_list() as $service) {
-            $mkeys = $service->getKeys();
-
-            $this->availableKeyList[$service->getService()] = sizeof($mkeys) - 1;
-
-            foreach ($mkeys as $key) {
-                $k = new MKey(
-                    $service->getService(),
-                    base64_decode($key->getId()),
-                    base64_decode($key->getKey_string()),
-                    $key->getKey_digest(),
-                    $key->getVersion(),
-                    $key->getKey_effective(),
-                    $key->getKey_exp(),
-                    $key->getKey_type(),
-                    $service->getGrant_usage(),
-                    $key->getKey_status()
-                );
-                if ($k->isValid()) {
-                    if (strcmp($service->getService(), $this->userToken->get_service_name()) === 0) {
-                        $this->majorKeyVer = $service->getCurrent_key_version();
-                        // update to enc/dec key cache if neccessary
-                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::ENC_STORE);
-                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::DEC_STORE);
-                        unset($enc_rmv_list[array_search($key->getId(), $enc_rmv_list)]);
-                        unset($dec_rmv_list[array_search($key->getId(), $dec_rmv_list)]);
-                    } else {
-                        // update to decryption key cache only
-                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::DEC_STORE);
-                        unset($dec_rmv_list[array_search($key->getId(), $dec_rmv_list)]);
-                    }
-                } else {
-                    // The key is corrupted
-                    $this->corruptKeyList[] = base64_encode($k->getID());
-                }
-            }
-            $this->cacheKeyStore->updateFutureKeyIDs($service->getService(), $service->getCurrent_key_version());
-        }
-
-        // todo: generate key update report with assigned key list information
-        $this->reporter->insertKeyUpdateEventReport(
-            TDEStatus::$SDK_REPORT_CUR_KEYVER['code'],
-            TDEStatus::$SDK_REPORT_CUR_KEYVER['message'].$this->majorSdkVer,
-            $this->majorSdkVer,
-            $this->availableKeyList
-        );
-        $this->availableKeyList = array();
-
-        // adjust key store cache
-        if (sizeof($enc_rmv_list) > 0) {
-            $this->log->info(sizeof($enc_rmv_list));
-            $this->cacheKeyStore->removeKeysViaList($enc_rmv_list, KStoreType::ENC_STORE);
-        }
-        if (sizeof($dec_rmv_list) > 0) {
-            $this->cacheKeyStore->removeKeysViaList($dec_rmv_list, KStoreType::DEC_STORE);
-        }
-
-        // verify key store by compare their digest
-        $this->sendCorruptReport();
-        // check valid key chain
-        $this->checkValidKeyChain();
-        TDEClient::getClientCache()->set($this->tde->getJosBaseInfo()->getAccessToken(), $this->tde);
-    }
-
-    private function sendCorruptReport()
-    {
-        if (!empty($this->corruptKeyList)) {
-            $this->log->critical(TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"]);
-            // prepare string
-            $keyids = "keyids:";
-            foreach ($this->corruptKeyList as $corruptkey) {
-                $keyids .= $corruptkey.",";
-            }
-            $keyids = substr($keyids, 0, strlen($keyids) - 1);
-
-            $this->reporter->insertErrReport(
-                TDEStatus::$SDK_HAS_CORRUPTED_KEYS["code"],
-                TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"],
-                $keyids,
-                MSG_LEVEL::ERROR
-            );
-
-            throw new CorruptKeyException(TDEStatus::$SDK_HAS_CORRUPTED_KEYS["message"]);
-        }
-    }
-
-    private function checkValidKeyChain()
-    {
-        $this->keyChainIsReady = false;
-
-        $total_keys = $this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE) + $this->cacheKeyStore->numOfKeys(
-                KStoreType::ENC_STORE
-            );
-
-        // fail-fast
-        if ($total_keys === 0) {
-            $this->log->critical(TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS["message"]);
-
-            // should not happen, probably due to some internal error or other issues
-            $this->reporter->insertErrReport(
-                TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS["code"],
-                TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS["message"],
-                EMPTYSTR,
-                MSG_LEVEL::SEVER
-            );
-
-            throw new NoValidKeyException(TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS["message"]);
-        }
-
-        $this->log->info(
-            "# of enc keys: ".$this->cacheKeyStore->numOfKeys(
-                KStoreType::ENC_STORE
-            )." and # of dec keys:".$this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE)
-        );
-        $this->log->info("Max key version for major service: ".$this->majorKeyVer);
-
-        // at least the memory has functional keychain already
-        $this->keyChainIsReady = true;
     }
 
     /* Set KMS server url where SDK fetches keys
@@ -445,5 +277,177 @@ final class KMClient
     public function setEpoch($epoch)
     {
         $this->epoch = $epoch;
+    }
+
+    private function josKeyRequest()
+    {
+        // TODO 只有在voucher被冻结时才应该重新获取voucher
+//        if ($this->josBaseInfo->getAccessToken() != null && $this->isKeyChainReady()) {
+//            //request voucher
+//            $userToken = Token::requestJosVoucher($this->josBaseInfo);
+//            $this->userToken->transferToken($userToken);
+//        }
+
+        // request mk
+        $requestUrl = $this->tde->getJosBaseInfo()->getServerUrl();
+        $keyRequest = new KeyRequest($this->userToken, $this->majorSdkVer);
+        $payload = $keyRequest->toFormParams($this->tde->getJosBaseInfo());
+        $this->log->info('master key request url -> '.$requestUrl.', payload -> '.json_encode($payload));
+        $josResponse = HttpsClient::postForm($requestUrl, $payload);
+
+        return JosBaseResponse::parse($josResponse, new JosMasterKeyGetResponse());
+    }
+
+    private function importMKeys($keyResponse)
+    {
+        if (0 != strcmp($keyResponse->getEnc_service(), $this->userToken->get_service_name())) {
+            $this->log->critical(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['message']);
+
+            $this->reporter->insertErrReport(
+                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['code'],
+                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['message'],
+                EMPTYSTR,
+                MSG_LEVEL::ERROR
+            );
+
+            throw new ServiceErrorException(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE1['message']);
+        }
+
+        if (0 != strcmp($keyResponse->getTid(), $this->userToken->get_id())) {
+            $this->log->critical(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['message']);
+
+            $this->reporter->insertErrReport(
+                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['code'],
+                TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['message'],
+                EMPTYSTR,
+                MSG_LEVEL::ERROR
+            );
+
+            throw new ServiceErrorException(TDEStatus::$SDK_RECEIVED_WRONG_KEYRESPONSE2['message']);
+        }
+
+        // get two lists of key IDs to make sure old keys could be removed from cache_ks
+        $enc_rmv_list = $this->cacheKeyStore->getKeyIDList(KStoreType::ENC_STORE);
+        $dec_rmv_list = $this->cacheKeyStore->getKeyIDList(KStoreType::DEC_STORE);
+
+        $this->cacheKeyStore->resetFutureKeyIDs();
+
+        foreach ($keyResponse->getService_key_list() as $service) {
+            $mkeys = $service->getKeys();
+
+            $this->availableKeyList[$service->getService()] = sizeof($mkeys) - 1;
+
+            foreach ($mkeys as $key) {
+                $k = new MKey(
+                    $service->getService(),
+                    base64_decode($key->getId()),
+                    base64_decode($key->getKey_string()),
+                    $key->getKey_digest(),
+                    $key->getVersion(),
+                    $key->getKey_effective(),
+                    $key->getKey_exp(),
+                    $key->getKey_type(),
+                    $service->getGrant_usage(),
+                    $key->getKey_status()
+                );
+                if ($k->isValid()) {
+                    if (0 === strcmp($service->getService(), $this->userToken->get_service_name())) {
+                        $this->majorKeyVer = $service->getCurrent_key_version();
+                        // update to enc/dec key cache if neccessary
+                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::ENC_STORE);
+                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::DEC_STORE);
+                        unset($enc_rmv_list[array_search($key->getId(), $enc_rmv_list)], $dec_rmv_list[array_search($key->getId(), $dec_rmv_list)]);
+                    } else {
+                        // update to decryption key cache only
+                        $this->cacheKeyStore->updateKey($key->getId(), $k, KStoreType::DEC_STORE);
+                        unset($dec_rmv_list[array_search($key->getId(), $dec_rmv_list)]);
+                    }
+                } else {
+                    // The key is corrupted
+                    $this->corruptKeyList[] = base64_encode($k->getID());
+                }
+            }
+            $this->cacheKeyStore->updateFutureKeyIDs($service->getService(), $service->getCurrent_key_version());
+        }
+
+        // todo: generate key update report with assigned key list information
+        $this->reporter->insertKeyUpdateEventReport(
+            TDEStatus::$SDK_REPORT_CUR_KEYVER['code'],
+            TDEStatus::$SDK_REPORT_CUR_KEYVER['message'].$this->majorSdkVer,
+            $this->majorSdkVer,
+            $this->availableKeyList
+        );
+        $this->availableKeyList = [];
+
+        // adjust key store cache
+        if (sizeof($enc_rmv_list) > 0) {
+            $this->log->info(sizeof($enc_rmv_list));
+            $this->cacheKeyStore->removeKeysViaList($enc_rmv_list, KStoreType::ENC_STORE);
+        }
+        if (sizeof($dec_rmv_list) > 0) {
+            $this->cacheKeyStore->removeKeysViaList($dec_rmv_list, KStoreType::DEC_STORE);
+        }
+
+        // verify key store by compare their digest
+        $this->sendCorruptReport();
+        // check valid key chain
+        $this->checkValidKeyChain();
+        TDEClient::getClientCache()->set($this->tde->getJosBaseInfo()->getAccessToken(), $this->tde);
+    }
+
+    private function sendCorruptReport()
+    {
+        if (!empty($this->corruptKeyList)) {
+            $this->log->critical(TDEStatus::$SDK_HAS_CORRUPTED_KEYS['message']);
+            // prepare string
+            $keyids = 'keyids:';
+            foreach ($this->corruptKeyList as $corruptkey) {
+                $keyids .= $corruptkey.',';
+            }
+            $keyids = substr($keyids, 0, strlen($keyids) - 1);
+
+            $this->reporter->insertErrReport(
+                TDEStatus::$SDK_HAS_CORRUPTED_KEYS['code'],
+                TDEStatus::$SDK_HAS_CORRUPTED_KEYS['message'],
+                $keyids,
+                MSG_LEVEL::ERROR
+            );
+
+            throw new CorruptKeyException(TDEStatus::$SDK_HAS_CORRUPTED_KEYS['message']);
+        }
+    }
+
+    private function checkValidKeyChain()
+    {
+        $this->keyChainIsReady = false;
+
+        $total_keys = $this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE) + $this->cacheKeyStore->numOfKeys(
+            KStoreType::ENC_STORE
+        );
+
+        // fail-fast
+        if (0 === $total_keys) {
+            $this->log->critical(TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS['message']);
+
+            // should not happen, probably due to some internal error or other issues
+            $this->reporter->insertErrReport(
+                TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS['code'],
+                TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS['message'],
+                EMPTYSTR,
+                MSG_LEVEL::SEVER
+            );
+
+            throw new NoValidKeyException(TDEStatus::$SDK_HAS_NO_AVAILABLE_KEYS['message']);
+        }
+
+        $this->log->info(
+            '# of enc keys: '.$this->cacheKeyStore->numOfKeys(
+                KStoreType::ENC_STORE
+            ).' and # of dec keys:'.$this->cacheKeyStore->numOfKeys(KStoreType::DEC_STORE)
+        );
+        $this->log->info('Max key version for major service: '.$this->majorKeyVer);
+
+        // at least the memory has functional keychain already
+        $this->keyChainIsReady = true;
     }
 }

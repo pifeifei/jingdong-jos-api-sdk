@@ -17,7 +17,7 @@ class GetVoucherInfoRes
     }
 
     /**
-     * @param string|null $errorCode
+     * @param null|string $errorCode
      */
     public function setErrorCode($errorCode)
     {
@@ -33,7 +33,7 @@ class GetVoucherInfoRes
     }
 
     /**
-     * @param string|null $errorMsg
+     * @param null|string $errorMsg
      */
     public function setErrorMsg($errorMsg)
     {
@@ -49,7 +49,7 @@ class GetVoucherInfoRes
     }
 
     /**
-     * @param GetVoucherInfoResVo|null $data
+     * @param null|GetVoucherInfoResVo $data
      */
     public function setData($data)
     {

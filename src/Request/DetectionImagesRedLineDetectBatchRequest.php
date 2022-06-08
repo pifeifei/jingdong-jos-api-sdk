@@ -2,102 +2,64 @@
 
 namespace ACES\Request;
 
-
-class DetectionImagesRedLineDetectBatchRequest
+class DetectionImagesRedLineDetectBatchRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $timeZone;
-    private $key;
-    private $value;
-    private $detectItem;
-    private $imageUrl;
-
     public function getApiMethodName()
     {
-        return "jingdong.detection.imagesRedLineDetectBatch";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.detection.imagesRedLineDetectBatch';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getTimeZone()
     {
-        return $this->timeZone;
+        return $this->apiParas['timeZone'];
     }
 
     public function setTimeZone($timeZone)
     {
-        $this->timeZone = $timeZone;
-        $this->apiParas["timeZone"] = $timeZone;
+        $this->apiParas['timeZone'] = $timeZone;
     }
 
     public function getKey()
     {
-        return $this->key;
+        return $this->apiParas['key'];
     }
 
     public function setKey($key)
     {
-        $this->key = $key;
-        $this->apiParas["key"] = $key;
+        $this->apiParas['key'] = $key;
     }
 
     public function getValue()
     {
-        return $this->value;
+        return $this->apiParas['value'];
     }
 
     public function setValue($value)
     {
-        $this->value = $value;
-        $this->apiParas["value"] = $value;
+        $this->apiParas['value'] = $value;
     }
 
     public function getDetectItem()
     {
-        return $this->detectItem;
+        return $this->apiParas['detectItem'];
     }
 
     public function setDetectItem($detectItem)
     {
-        $this->detectItem = $detectItem;
-        $this->apiParas["detectItem"] = $detectItem;
+        $this->apiParas['detectItem'] = $detectItem;
     }
 
     public function getImageUrl()
     {
-        return $this->imageUrl;
+        return $this->apiParas['imageUrl'];
     }
 
     public function setImageUrl($imageUrl)
     {
-        $this->imageUrl = $imageUrl;
-        $this->apiParas["imageUrl"] = $imageUrl;
+        $this->apiParas['imageUrl'] = $imageUrl;
     }
 }

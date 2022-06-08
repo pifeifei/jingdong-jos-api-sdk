@@ -2,102 +2,74 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderPickFailApproveRequest
+class LdopAlphaProviderPickFailApproveRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $pickupCode;
-    private $providerCode;
-    private $failCode;
-    private $failReason;
-    private $operateTime;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.pick.fail.approve";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.pick.fail.approve';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPickupCode()
     {
-        return $this->pickupCode;
+        return $this->apiParas['pickupCode'];
     }
 
     public function setPickupCode($pickupCode)
     {
-        $this->pickupCode = $pickupCode;
-        $this->apiParas["pickupCode"] = $pickupCode;
+        $this->apiParas['pickupCode'] = $pickupCode;
+
+        return $this;
     }
 
     public function getProviderCode()
     {
-        return $this->providerCode;
+        return $this->apiParas['providerCode'];
     }
 
     public function setProviderCode($providerCode)
     {
-        $this->providerCode = $providerCode;
-        $this->apiParas["providerCode"] = $providerCode;
+        $this->apiParas['providerCode'] = $providerCode;
+
+        return $this;
     }
 
     public function getFailCode()
     {
-        return $this->failCode;
+        return $this->apiParas['failCode'];
     }
 
     public function setFailCode($failCode)
     {
-        $this->failCode = $failCode;
-        $this->apiParas["failCode"] = $failCode;
+        $this->apiParas['failCode'] = $failCode;
+
+        return $this;
     }
 
     public function getFailReason()
     {
-        return $this->failReason;
+        return $this->apiParas['failReason'];
     }
 
     public function setFailReason($failReason)
     {
-        $this->failReason = $failReason;
-        $this->apiParas["failReason"] = $failReason;
+        $this->apiParas['failReason'] = $failReason;
+
+        return $this;
     }
 
     public function getOperateTime()
     {
-        return $this->operateTime;
+        return $this->apiParas['operateTime'];
     }
 
     public function setOperateTime($operateTime)
     {
-        $this->operateTime = $operateTime;
-        $this->apiParas["operateTime"] = $operateTime;
+        $this->apiParas['operateTime'] = $operateTime;
+
+        return $this;
     }
 }

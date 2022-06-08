@@ -2,150 +2,122 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderQueryOrderListRequest
+class EclpOrderQueryOrderListRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $startDate;
-    private $endDate;
-    private $shopNo;
-    private $warehouseNo;
-    private $pageNo;
-    private $pageSize;
-    private $salePlatformOrderNo;
-    private $orderStatus;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.queryOrderList";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.queryOrderList';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getStartDate()
     {
-        return $this->startDate;
+        return $this->apiParas['startDate'];
     }
 
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
-        $this->apiParas["startDate"] = $startDate;
+        $this->apiParas['startDate'] = $startDate;
+
+        return $this;
     }
 
     public function getEndDate()
     {
-        return $this->endDate;
+        return $this->apiParas['endDate'];
     }
 
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-        $this->apiParas["endDate"] = $endDate;
+        $this->apiParas['endDate'] = $endDate;
+
+        return $this;
     }
 
     public function getShopNo()
     {
-        return $this->shopNo;
+        return $this->apiParas['shopNo'];
     }
 
     public function setShopNo($shopNo)
     {
-        $this->shopNo = $shopNo;
-        $this->apiParas["shopNo"] = $shopNo;
+        $this->apiParas['shopNo'] = $shopNo;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 
     public function getSalePlatformOrderNo()
     {
-        return $this->salePlatformOrderNo;
+        return $this->apiParas['salePlatformOrderNo'];
     }
 
     public function setSalePlatformOrderNo($salePlatformOrderNo)
     {
-        $this->salePlatformOrderNo = $salePlatformOrderNo;
-        $this->apiParas["salePlatformOrderNo"] = $salePlatformOrderNo;
+        $this->apiParas['salePlatformOrderNo'] = $salePlatformOrderNo;
+
+        return $this;
     }
 
     public function getOrderStatus()
     {
-        return $this->orderStatus;
+        return $this->apiParas['orderStatus'];
     }
 
     public function setOrderStatus($orderStatus)
     {
-        $this->orderStatus = $orderStatus;
-        $this->apiParas["orderStatus"] = $orderStatus;
+        $this->apiParas['orderStatus'] = $orderStatus;
+
+        return $this;
     }
 }

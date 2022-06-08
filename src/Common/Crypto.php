@@ -6,10 +6,10 @@ use ACES\Common\Exception as Ex;
 
 final class Crypto
 {
-    const CIPHER_METHOD_AES_128_CBC = 'aes-128-cbc';
-    const CIPHER_BLOCK_SIZE = 16;
-    const CIPHER_IV_SIZE = 16;
-    const CIPHER_KEY_SIZE = 16;
+    public const CIPHER_METHOD_AES_128_CBC = 'aes-128-cbc';
+    public const CIPHER_BLOCK_SIZE = 16;
+    public const CIPHER_IV_SIZE = 16;
+    public const CIPHER_KEY_SIZE = 16;
 
     /**
      * Returns a random byte string of the specified length.

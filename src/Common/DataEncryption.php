@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2019 JD.COM
+ * Copyright 2019 JD.COM.
  *
  * Data Encryption Utility Class
  *
@@ -17,18 +17,18 @@ class DataEncryption
     private $iv;
     private $key;
 
-    function __construct($key = null)
+    public function __construct($key = null)
     {
         $this->iv = Crypto::secureRandom(Crypto::CIPHER_IV_SIZE);
 
-        if ($key == null) {
+        if (null == $key) {
             $this->key = Crypto::secureRandom(Crypto::CIPHER_KEY_SIZE);
         } else {
             $this->key = $key;
         }
     }
 
-    function __destruct()
+    public function __destruct()
     {
     }
 
@@ -45,9 +45,8 @@ class DataEncryption
     public function encrypt($pt)
     {
         $ct_data = openssl_encrypt($pt, Crypto::CIPHER_METHOD_AES_128_CBC, $this->key, OPENSSL_RAW_DATA, $this->iv);
-        $ct = $this->iv . $ct_data;
 
-        return $ct;
+        return $this->iv.$ct_data;
     }
 
     public function decrypt($ct)
@@ -55,9 +54,10 @@ class DataEncryption
         $this->iv = substr($ct, 0, Crypto::CIPHER_IV_SIZE);
         $ct_data = substr($ct, Crypto::CIPHER_IV_SIZE, strlen($ct) - Crypto::CIPHER_IV_SIZE);
         $pt = openssl_decrypt($ct_data, Crypto::CIPHER_METHOD_AES_128_CBC, $this->key, OPENSSL_RAW_DATA, $this->iv);
-        if ($pt === false) {
+        if (false === $pt) {
             echo "\ndecrypt fail.";
         }
+
         return $pt;
     }
 }

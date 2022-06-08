@@ -2,42 +2,14 @@
 
 namespace ACES\Request;
 
-
-class EclpMasterQuerySpSourceRequest
+class EclpMasterQuerySpSourceRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.master.querySpSource";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.master.querySpSource';
     }
 
     public function check()
     {
-    }
-
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
     }
 }

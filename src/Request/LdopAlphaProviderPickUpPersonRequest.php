@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class LdopAlphaProviderPickUpPersonRequest
+class LdopAlphaProviderPickUpPersonRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $pickupCode;
-    private $providerCode;
-    private $siteName;
-    private $pickPerson;
-    private $phone;
-    private $operateTime;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.alpha.provider.pick.up.person";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.alpha.provider.pick.up.person';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getPickupCode()
     {
-        return $this->pickupCode;
+        return $this->apiParas['pickupCode'];
     }
 
     public function setPickupCode($pickupCode)
     {
-        $this->pickupCode = $pickupCode;
-        $this->apiParas["pickupCode"] = $pickupCode;
+        $this->apiParas['pickupCode'] = $pickupCode;
+
+        return $this;
     }
 
     public function getProviderCode()
     {
-        return $this->providerCode;
+        return $this->apiParas['providerCode'];
     }
 
     public function setProviderCode($providerCode)
     {
-        $this->providerCode = $providerCode;
-        $this->apiParas["providerCode"] = $providerCode;
+        $this->apiParas['providerCode'] = $providerCode;
+
+        return $this;
     }
 
     public function getSiteName()
     {
-        return $this->siteName;
+        return $this->apiParas['siteName'];
     }
 
     public function setSiteName($siteName)
     {
-        $this->siteName = $siteName;
-        $this->apiParas["siteName"] = $siteName;
+        $this->apiParas['siteName'] = $siteName;
+
+        return $this;
     }
 
     public function getPickPerson()
     {
-        return $this->pickPerson;
+        return $this->apiParas['pickPerson'];
     }
 
     public function setPickPerson($pickPerson)
     {
-        $this->pickPerson = $pickPerson;
-        $this->apiParas["pickPerson"] = $pickPerson;
+        $this->apiParas['pickPerson'] = $pickPerson;
+
+        return $this;
     }
 
     public function getPhone()
     {
-        return $this->phone;
+        return $this->apiParas['phone'];
     }
 
     public function setPhone($phone)
     {
-        $this->phone = $phone;
-        $this->apiParas["phone"] = $phone;
+        $this->apiParas['phone'] = $phone;
+
+        return $this;
     }
 
     public function getOperateTime()
     {
-        return $this->operateTime;
+        return $this->apiParas['operateTime'];
     }
 
     public function setOperateTime($operateTime)
     {
-        $this->operateTime = $operateTime;
-        $this->apiParas["operateTime"] = $operateTime;
+        $this->apiParas['operateTime'] = $operateTime;
+
+        return $this;
     }
 }

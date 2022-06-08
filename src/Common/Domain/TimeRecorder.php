@@ -9,6 +9,7 @@ class TimeRecorder
 
     /**
      * TimeRecorder constructor.
+     *
      * @param int $timeout
      */
     public function __construct($timeout)
@@ -20,8 +21,9 @@ class TimeRecorder
     }
 
     /**
-     * @return bool
      * @throws \Exception
+     *
+     * @return bool
      */
     public function timeout()
     {
@@ -30,8 +32,10 @@ class TimeRecorder
         $now = $now_->getTimestamp();
         if ($now - $this->latest >= $this->timeout) {
             $this->latest = $now;
+
             return true;
         }
+
         return false;
     }
 }

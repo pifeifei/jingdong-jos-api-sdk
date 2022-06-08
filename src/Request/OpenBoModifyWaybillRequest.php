@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class OpenBoModifyWaybillRequest
+class OpenBoModifyWaybillRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $orderNo;
-    private $wayBillCode;
-    private $deptNo;
-    private $grossWeight;
-    private $grossVolume;
-    private $expressItemQty;
-
     public function getApiMethodName()
     {
-        return "jingdong.open.bo.modifyWaybill";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.open.bo.modifyWaybill';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getOrderNo()
     {
-        return $this->orderNo;
+        return $this->apiParas['orderNo'];
     }
 
     public function setOrderNo($orderNo)
     {
-        $this->orderNo = $orderNo;
-        $this->apiParas["orderNo"] = $orderNo;
+        $this->apiParas['orderNo'] = $orderNo;
+
+        return $this;
     }
 
     public function getWayBillCode()
     {
-        return $this->wayBillCode;
+        return $this->apiParas['wayBillCode'];
     }
 
     public function setWayBillCode($wayBillCode)
     {
-        $this->wayBillCode = $wayBillCode;
-        $this->apiParas["wayBillCode"] = $wayBillCode;
+        $this->apiParas['wayBillCode'] = $wayBillCode;
+
+        return $this;
     }
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getGrossWeight()
     {
-        return $this->grossWeight;
+        return $this->apiParas['grossWeight'];
     }
 
     public function setGrossWeight($grossWeight)
     {
-        $this->grossWeight = $grossWeight;
-        $this->apiParas["grossWeight"] = $grossWeight;
+        $this->apiParas['grossWeight'] = $grossWeight;
+
+        return $this;
     }
 
     public function getGrossVolume()
     {
-        return $this->grossVolume;
+        return $this->apiParas['grossVolume'];
     }
 
     public function setGrossVolume($grossVolume)
     {
-        $this->grossVolume = $grossVolume;
-        $this->apiParas["grossVolume"] = $grossVolume;
+        $this->apiParas['grossVolume'] = $grossVolume;
+
+        return $this;
     }
 
     public function getExpressItemQty()
     {
-        return $this->expressItemQty;
+        return $this->apiParas['expressItemQty'];
     }
 
     public function setExpressItemQty($expressItemQty)
     {
-        $this->expressItemQty = $expressItemQty;
-        $this->apiParas["expressItemQty"] = $expressItemQty;
+        $this->apiParas['expressItemQty'] = $expressItemQty;
+
+        return $this;
     }
 }

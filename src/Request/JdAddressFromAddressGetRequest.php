@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class JdAddressFromAddressGetRequest
+class JdAddressFromAddressGetRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $userid;
-    private $key;
-    private $provinceId;
-    private $cityId;
-    private $countryId;
-    private $townId;
-    private $address;
-    private $shipping;
-
     public function getApiMethodName()
     {
-        return "jingdong.JdAddressFromAddress.get";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.JdAddressFromAddress.get';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getUserid()
     {
-        return $this->userid;
+        return $this->apiParas['userid'];
     }
 
     public function setUserid($userid)
     {
-        $this->userid = $userid;
-        $this->apiParas["userid"] = $userid;
+        $this->apiParas['userid'] = $userid;
+
+        return $this;
     }
 
     public function getKey()
     {
-        return $this->key;
+        return $this->apiParas['key'];
     }
 
     public function setKey($key)
     {
-        $this->key = $key;
-        $this->apiParas["key"] = $key;
+        $this->apiParas['key'] = $key;
+
+        return $this;
     }
 
     public function getProvinceId()
     {
-        return $this->provinceId;
+        return $this->apiParas['provinceId'];
     }
 
     public function setProvinceId($provinceId)
     {
-        $this->provinceId = $provinceId;
-        $this->apiParas["provinceId"] = $provinceId;
+        $this->apiParas['provinceId'] = $provinceId;
+
+        return $this;
     }
 
     public function getCityId()
     {
-        return $this->cityId;
+        return $this->apiParas['cityId'];
     }
 
     public function setCityId($cityId)
     {
-        $this->cityId = $cityId;
-        $this->apiParas["cityId"] = $cityId;
+        $this->apiParas['cityId'] = $cityId;
+
+        return $this;
     }
 
     public function getCountryId()
     {
-        return $this->countryId;
+        return $this->apiParas['countryId'];
     }
 
     public function setCountryId($countryId)
     {
-        $this->countryId = $countryId;
-        $this->apiParas["countryId"] = $countryId;
+        $this->apiParas['countryId'] = $countryId;
+
+        return $this;
     }
 
     public function getTownId()
     {
-        return $this->townId;
+        return $this->apiParas['townId'];
     }
 
     public function setTownId($townId)
     {
-        $this->townId = $townId;
-        $this->apiParas["townId"] = $townId;
+        $this->apiParas['townId'] = $townId;
+
+        return $this;
     }
 
     public function getAddress()
     {
-        return $this->address;
+        return $this->apiParas['address'];
     }
 
     public function setAddress($address)
     {
-        $this->address = $address;
-        $this->apiParas["address"] = $address;
+        $this->apiParas['address'] = $address;
+
+        return $this;
     }
 
     public function getShipping()
     {
-        return $this->shipping;
+        return $this->apiParas['shipping'];
     }
 
     public function setShipping($shipping)
     {
-        $this->shipping = $shipping;
-        $this->apiParas["shipping"] = $shipping;
+        $this->apiParas['shipping'] = $shipping;
+
+        return $this;
     }
 }

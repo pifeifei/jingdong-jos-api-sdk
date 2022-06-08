@@ -3,11 +3,12 @@
 namespace ACES\Common;
 
 /**
- * RecoveryKey
+ * RecoveryKey.
  *
  * <P>
  *
  * @author JD Data Security Team (tenma.lin, wei.gao, mozhiyan, xuyina)
+ *
  * @version 1.0
  */
 class RecoveryKey
@@ -20,7 +21,6 @@ class RecoveryKey
     private $mkey_type;
     private $mkey_digest;
     private $exp_ts;
-
 
     /**
      * @return multitype:integer null
@@ -87,7 +87,7 @@ class RecoveryKey
     }
 
     /**
-     * @param integer|null $ver
+     * @param null|int $ver
      */
     public function setVer($ver)
     {
@@ -95,7 +95,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $service
+     * @param null|string $service
      */
     public function setService($service)
     {
@@ -103,7 +103,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $usage
+     * @param null|string $usage
      */
     public function setUsage($usage)
     {
@@ -111,7 +111,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $mkey
+     * @param null|string $mkey
      */
     public function setMkey($mkey)
     {
@@ -119,7 +119,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $mkey_id
+     * @param null|string $mkey_id
      */
     public function setMkeyId($mkey_id)
     {
@@ -127,7 +127,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $mkey_type
+     * @param null|string $mkey_type
      */
     public function setMkeyType($mkey_type)
     {
@@ -135,7 +135,7 @@ class RecoveryKey
     }
 
     /**
-     * @param string|null $mkey_digest
+     * @param null|string $mkey_digest
      */
     public function setMkeyDigest($mkey_digest)
     {
@@ -143,7 +143,7 @@ class RecoveryKey
     }
 
     /**
-     * @param integer|null $exp_ts
+     * @param null|int $exp_ts
      */
     public function setExpTs($exp_ts)
     {

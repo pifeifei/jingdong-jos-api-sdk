@@ -2,498 +2,470 @@
 
 namespace ACES\Request;
 
-
-class ServiceOrderCreateRequest
+class ServiceOrderCreateRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $model;
-    private $wineCount;
-    private $presortType;
-    private $orderCode;
-    private $remark;
-    private $saleRegion;
-    private $productUnit;
-    private $banquetDeskNum;
-    private $serviceName;
-    private $saleName;
-    private $serviceTime;
-    private $serviceCityName;
-    private $longitude;
-    private $serviceProvinceName;
-    private $balcony;
-    private $banquetType;
-    private $servicePersonMobile;
-    private $imei;
-    private $serviceCountryName;
-    private $serviceDetailAddress;
-    private $orderTime;
-    private $businessCategory;
-    private $serviceType;
-    private $shopRegion;
-    private $shopCode;
-    private $serviceTownName;
-    private $color;
-    private $banquetBelong;
-    private $brand;
-    private $servicePersonName;
-    private $latitude;
-    private $deptCode;
-    private $productName;
-    private $saleMobile;
-    private $reportCode;
-    private $orderSubmitTime;
-    private $withAddedService;
-    private $salesTerritory;
-
     public function getApiMethodName()
     {
-        return "jingdong.service.order.create";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.service.order.create';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getModel()
     {
-        return $this->model;
+        return $this->apiParas['model'];
     }
 
     public function setModel($model)
     {
-        $this->model = $model;
-        $this->apiParas["model"] = $model;
+        $this->apiParas['model'] = $model;
+
+        return $this;
     }
 
     public function getWineCount()
     {
-        return $this->wineCount;
+        return $this->apiParas['wineCount'];
     }
 
     public function setWineCount($wineCount)
     {
-        $this->wineCount = $wineCount;
-        $this->apiParas["wineCount"] = $wineCount;
+        $this->apiParas['wineCount'] = $wineCount;
+
+        return $this;
     }
 
     public function getPresortType()
     {
-        return $this->presortType;
+        return $this->apiParas['presortType'];
     }
 
     public function setPresortType($presortType)
     {
-        $this->presortType = $presortType;
-        $this->apiParas["presortType"] = $presortType;
+        $this->apiParas['presortType'] = $presortType;
+
+        return $this;
     }
 
     public function getOrderCode()
     {
-        return $this->orderCode;
+        return $this->apiParas['orderCode'];
     }
 
     public function setOrderCode($orderCode)
     {
-        $this->orderCode = $orderCode;
-        $this->apiParas["orderCode"] = $orderCode;
+        $this->apiParas['orderCode'] = $orderCode;
+
+        return $this;
     }
 
     public function getRemark()
     {
-        return $this->remark;
+        return $this->apiParas['remark'];
     }
 
     public function setRemark($remark)
     {
-        $this->remark = $remark;
-        $this->apiParas["remark"] = $remark;
+        $this->apiParas['remark'] = $remark;
+
+        return $this;
     }
 
     public function getSaleRegion()
     {
-        return $this->saleRegion;
+        return $this->apiParas['saleRegion'];
     }
 
     public function setSaleRegion($saleRegion)
     {
-        $this->saleRegion = $saleRegion;
-        $this->apiParas["saleRegion"] = $saleRegion;
+        $this->apiParas['saleRegion'] = $saleRegion;
+
+        return $this;
     }
 
     public function getProductUnit()
     {
-        return $this->productUnit;
+        return $this->apiParas['productUnit'];
     }
 
     public function setProductUnit($productUnit)
     {
-        $this->productUnit = $productUnit;
-        $this->apiParas["productUnit"] = $productUnit;
+        $this->apiParas['productUnit'] = $productUnit;
+
+        return $this;
     }
 
     public function getBanquetDeskNum()
     {
-        return $this->banquetDeskNum;
+        return $this->apiParas['banquetDeskNum'];
     }
 
     public function setBanquetDeskNum($banquetDeskNum)
     {
-        $this->banquetDeskNum = $banquetDeskNum;
-        $this->apiParas["banquetDeskNum"] = $banquetDeskNum;
+        $this->apiParas['banquetDeskNum'] = $banquetDeskNum;
+
+        return $this;
     }
 
     public function getServiceName()
     {
-        return $this->serviceName;
+        return $this->apiParas['serviceName'];
     }
 
     public function setServiceName($serviceName)
     {
-        $this->serviceName = $serviceName;
-        $this->apiParas["serviceName"] = $serviceName;
+        $this->apiParas['serviceName'] = $serviceName;
+
+        return $this;
     }
 
     public function getSaleName()
     {
-        return $this->saleName;
+        return $this->apiParas['saleName'];
     }
 
     public function setSaleName($saleName)
     {
-        $this->saleName = $saleName;
-        $this->apiParas["saleName"] = $saleName;
+        $this->apiParas['saleName'] = $saleName;
+
+        return $this;
     }
 
     public function getServiceTime()
     {
-        return $this->serviceTime;
+        return $this->apiParas['serviceTime'];
     }
 
     public function setServiceTime($serviceTime)
     {
-        $this->serviceTime = $serviceTime;
-        $this->apiParas["serviceTime"] = $serviceTime;
+        $this->apiParas['serviceTime'] = $serviceTime;
+
+        return $this;
     }
 
     public function getServiceCityName()
     {
-        return $this->serviceCityName;
+        return $this->apiParas['serviceCityName'];
     }
 
     public function setServiceCityName($serviceCityName)
     {
-        $this->serviceCityName = $serviceCityName;
-        $this->apiParas["serviceCityName"] = $serviceCityName;
+        $this->apiParas['serviceCityName'] = $serviceCityName;
+
+        return $this;
     }
 
     public function getLongitude()
     {
-        return $this->longitude;
+        return $this->apiParas['longitude'];
     }
 
     public function setLongitude($longitude)
     {
-        $this->longitude = $longitude;
-        $this->apiParas["longitude"] = $longitude;
+        $this->apiParas['longitude'] = $longitude;
+
+        return $this;
     }
 
     public function getServiceProvinceName()
     {
-        return $this->serviceProvinceName;
+        return $this->apiParas['serviceProvinceName'];
     }
 
     public function setServiceProvinceName($serviceProvinceName)
     {
-        $this->serviceProvinceName = $serviceProvinceName;
-        $this->apiParas["serviceProvinceName"] = $serviceProvinceName;
+        $this->apiParas['serviceProvinceName'] = $serviceProvinceName;
+
+        return $this;
     }
 
     public function getBalcony()
     {
-        return $this->balcony;
+        return $this->apiParas['balcony'];
     }
 
     public function setBalcony($balcony)
     {
-        $this->balcony = $balcony;
-        $this->apiParas["balcony"] = $balcony;
+        $this->apiParas['balcony'] = $balcony;
+
+        return $this;
     }
 
     public function getBanquetType()
     {
-        return $this->banquetType;
+        return $this->apiParas['banquetType'];
     }
 
     public function setBanquetType($banquetType)
     {
-        $this->banquetType = $banquetType;
-        $this->apiParas["banquetType"] = $banquetType;
+        $this->apiParas['banquetType'] = $banquetType;
+
+        return $this;
     }
 
     public function getServicePersonMobile()
     {
-        return $this->servicePersonMobile;
+        return $this->apiParas['servicePersonMobile'];
     }
 
     public function setServicePersonMobile($servicePersonMobile)
     {
-        $this->servicePersonMobile = $servicePersonMobile;
-        $this->apiParas["servicePersonMobile"] = $servicePersonMobile;
+        $this->apiParas['servicePersonMobile'] = $servicePersonMobile;
+
+        return $this;
     }
 
     public function getImei()
     {
-        return $this->imei;
+        return $this->apiParas['imei'];
     }
 
     public function setImei($imei)
     {
-        $this->imei = $imei;
-        $this->apiParas["imei"] = $imei;
+        $this->apiParas['imei'] = $imei;
+
+        return $this;
     }
 
     public function getServiceCountryName()
     {
-        return $this->serviceCountryName;
+        return $this->apiParas['serviceCountryName'];
     }
 
     public function setServiceCountryName($serviceCountryName)
     {
-        $this->serviceCountryName = $serviceCountryName;
-        $this->apiParas["serviceCountryName"] = $serviceCountryName;
+        $this->apiParas['serviceCountryName'] = $serviceCountryName;
+
+        return $this;
     }
 
     public function getServiceDetailAddress()
     {
-        return $this->serviceDetailAddress;
+        return $this->apiParas['serviceDetailAddress'];
     }
 
     public function setServiceDetailAddress($serviceDetailAddress)
     {
-        $this->serviceDetailAddress = $serviceDetailAddress;
-        $this->apiParas["serviceDetailAddress"] = $serviceDetailAddress;
+        $this->apiParas['serviceDetailAddress'] = $serviceDetailAddress;
+
+        return $this;
     }
 
     public function getOrderTime()
     {
-        return $this->orderTime;
+        return $this->apiParas['orderTime'];
     }
 
     public function setOrderTime($orderTime)
     {
-        $this->orderTime = $orderTime;
-        $this->apiParas["orderTime"] = $orderTime;
+        $this->apiParas['orderTime'] = $orderTime;
+
+        return $this;
     }
 
     public function getBusinessCategory()
     {
-        return $this->businessCategory;
+        return $this->apiParas['businessCategory'];
     }
 
     public function setBusinessCategory($businessCategory)
     {
-        $this->businessCategory = $businessCategory;
-        $this->apiParas["businessCategory"] = $businessCategory;
+        $this->apiParas['businessCategory'] = $businessCategory;
+
+        return $this;
     }
 
     public function getServiceType()
     {
-        return $this->serviceType;
+        return $this->apiParas['serviceType'];
     }
 
     public function setServiceType($serviceType)
     {
-        $this->serviceType = $serviceType;
-        $this->apiParas["serviceType"] = $serviceType;
+        $this->apiParas['serviceType'] = $serviceType;
+
+        return $this;
     }
 
     public function getShopRegion()
     {
-        return $this->shopRegion;
+        return $this->apiParas['shopRegion'];
     }
 
     public function setShopRegion($shopRegion)
     {
-        $this->shopRegion = $shopRegion;
-        $this->apiParas["shopRegion"] = $shopRegion;
+        $this->apiParas['shopRegion'] = $shopRegion;
+
+        return $this;
     }
 
     public function getShopCode()
     {
-        return $this->shopCode;
+        return $this->apiParas['shopCode'];
     }
 
     public function setShopCode($shopCode)
     {
-        $this->shopCode = $shopCode;
-        $this->apiParas["shopCode"] = $shopCode;
+        $this->apiParas['shopCode'] = $shopCode;
+
+        return $this;
     }
 
     public function getServiceTownName()
     {
-        return $this->serviceTownName;
+        return $this->apiParas['serviceTownName'];
     }
 
     public function setServiceTownName($serviceTownName)
     {
-        $this->serviceTownName = $serviceTownName;
-        $this->apiParas["serviceTownName"] = $serviceTownName;
+        $this->apiParas['serviceTownName'] = $serviceTownName;
+
+        return $this;
     }
 
     public function getColor()
     {
-        return $this->color;
+        return $this->apiParas['color'];
     }
 
     public function setColor($color)
     {
-        $this->color = $color;
-        $this->apiParas["color"] = $color;
+        $this->apiParas['color'] = $color;
+
+        return $this;
     }
 
     public function getBanquetBelong()
     {
-        return $this->banquetBelong;
+        return $this->apiParas['banquetBelong'];
     }
 
     public function setBanquetBelong($banquetBelong)
     {
-        $this->banquetBelong = $banquetBelong;
-        $this->apiParas["banquetBelong"] = $banquetBelong;
+        $this->apiParas['banquetBelong'] = $banquetBelong;
+
+        return $this;
     }
 
     public function getBrand()
     {
-        return $this->brand;
+        return $this->apiParas['brand'];
     }
 
     public function setBrand($brand)
     {
-        $this->brand = $brand;
-        $this->apiParas["brand"] = $brand;
+        $this->apiParas['brand'] = $brand;
+
+        return $this;
     }
 
     public function getServicePersonName()
     {
-        return $this->servicePersonName;
+        return $this->apiParas['servicePersonName'];
     }
 
     public function setServicePersonName($servicePersonName)
     {
-        $this->servicePersonName = $servicePersonName;
-        $this->apiParas["servicePersonName"] = $servicePersonName;
+        $this->apiParas['servicePersonName'] = $servicePersonName;
+
+        return $this;
     }
 
     public function getLatitude()
     {
-        return $this->latitude;
+        return $this->apiParas['latitude'];
     }
 
     public function setLatitude($latitude)
     {
-        $this->latitude = $latitude;
-        $this->apiParas["latitude"] = $latitude;
+        $this->apiParas['latitude'] = $latitude;
+
+        return $this;
     }
 
     public function getDeptCode()
     {
-        return $this->deptCode;
+        return $this->apiParas['deptCode'];
     }
 
     public function setDeptCode($deptCode)
     {
-        $this->deptCode = $deptCode;
-        $this->apiParas["deptCode"] = $deptCode;
+        $this->apiParas['deptCode'] = $deptCode;
+
+        return $this;
     }
 
     public function getProductName()
     {
-        return $this->productName;
+        return $this->apiParas['productName'];
     }
 
     public function setProductName($productName)
     {
-        $this->productName = $productName;
-        $this->apiParas["productName"] = $productName;
+        $this->apiParas['productName'] = $productName;
+
+        return $this;
     }
 
     public function getSaleMobile()
     {
-        return $this->saleMobile;
+        return $this->apiParas['saleMobile'];
     }
 
     public function setSaleMobile($saleMobile)
     {
-        $this->saleMobile = $saleMobile;
-        $this->apiParas["saleMobile"] = $saleMobile;
+        $this->apiParas['saleMobile'] = $saleMobile;
+
+        return $this;
     }
 
     public function getReportCode()
     {
-        return $this->reportCode;
+        return $this->apiParas['reportCode'];
     }
 
     public function setReportCode($reportCode)
     {
-        $this->reportCode = $reportCode;
-        $this->apiParas["reportCode"] = $reportCode;
+        $this->apiParas['reportCode'] = $reportCode;
+
+        return $this;
     }
 
     public function getOrderSubmitTime()
     {
-        return $this->orderSubmitTime;
+        return $this->apiParas['orderSubmitTime'];
     }
 
     public function setOrderSubmitTime($orderSubmitTime)
     {
-        $this->orderSubmitTime = $orderSubmitTime;
-        $this->apiParas["orderSubmitTime"] = $orderSubmitTime;
+        $this->apiParas['orderSubmitTime'] = $orderSubmitTime;
+
+        return $this;
     }
 
     public function getWithAddedService()
     {
-        return $this->withAddedService;
+        return $this->apiParas['withAddedService'];
     }
 
     public function setWithAddedService($withAddedService)
     {
-        $this->withAddedService = $withAddedService;
-        $this->apiParas["withAddedService"] = $withAddedService;
+        $this->apiParas['withAddedService'] = $withAddedService;
+
+        return $this;
     }
 
     public function getSalesTerritory()
     {
-        return $this->salesTerritory;
+        return $this->apiParas['salesTerritory'];
     }
 
     public function setSalesTerritory($salesTerritory)
     {
-        $this->salesTerritory = $salesTerritory;
-        $this->apiParas["salesTerritory"] = $salesTerritory;
+        $this->apiParas['salesTerritory'] = $salesTerritory;
+
+        return $this;
     }
 }

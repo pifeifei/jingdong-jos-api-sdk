@@ -2,54 +2,26 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderQueryOrderPacksRequest
+class EclpOrderQueryOrderPacksRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $eclpSoNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.queryOrderPacks";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.queryOrderPacks';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getEclpSoNo()
     {
-        return $this->eclpSoNo;
+        return $this->apiParas['eclpSoNo'];
     }
 
     public function setEclpSoNo($eclpSoNo)
     {
-        $this->eclpSoNo = $eclpSoNo;
-        $this->apiParas["eclpSoNo"] = $eclpSoNo;
+        $this->apiParas['eclpSoNo'] = $eclpSoNo;
+
+        return $this;
     }
 }

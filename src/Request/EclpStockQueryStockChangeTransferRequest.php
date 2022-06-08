@@ -2,114 +2,86 @@
 
 namespace ACES\Request;
 
-
-class EclpStockQueryStockChangeTransferRequest
+class EclpStockQueryStockChangeTransferRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $changeNo;
-    private $changeType;
-    private $timeStart;
-    private $timeEnd;
-    private $warehouseNo;
-    private $tenantId;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.stock.queryStockChangeTransfer";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.stock.queryStockChangeTransfer';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getChangeNo()
     {
-        return $this->changeNo;
+        return $this->apiParas['changeNo'];
     }
 
     public function setChangeNo($changeNo)
     {
-        $this->changeNo = $changeNo;
-        $this->apiParas["changeNo"] = $changeNo;
+        $this->apiParas['changeNo'] = $changeNo;
+
+        return $this;
     }
 
     public function getChangeType()
     {
-        return $this->changeType;
+        return $this->apiParas['changeType'];
     }
 
     public function setChangeType($changeType)
     {
-        $this->changeType = $changeType;
-        $this->apiParas["changeType"] = $changeType;
+        $this->apiParas['changeType'] = $changeType;
+
+        return $this;
     }
 
     public function getTimeStart()
     {
-        return $this->timeStart;
+        return $this->apiParas['timeStart'];
     }
 
     public function setTimeStart($timeStart)
     {
-        $this->timeStart = $timeStart;
-        $this->apiParas["timeStart"] = $timeStart;
+        $this->apiParas['timeStart'] = $timeStart;
+
+        return $this;
     }
 
     public function getTimeEnd()
     {
-        return $this->timeEnd;
+        return $this->apiParas['timeEnd'];
     }
 
     public function setTimeEnd($timeEnd)
     {
-        $this->timeEnd = $timeEnd;
-        $this->apiParas["timeEnd"] = $timeEnd;
+        $this->apiParas['timeEnd'] = $timeEnd;
+
+        return $this;
     }
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->apiParas['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
     {
-        $this->warehouseNo = $warehouseNo;
-        $this->apiParas["warehouseNo"] = $warehouseNo;
+        $this->apiParas['warehouseNo'] = $warehouseNo;
+
+        return $this;
     }
 
     public function getTenantId()
     {
-        return $this->tenantId;
+        return $this->apiParas['tenantId'];
     }
 
     public function setTenantId($tenantId)
     {
-        $this->tenantId = $tenantId;
-        $this->apiParas["tenantId"] = $tenantId;
+        $this->apiParas['tenantId'] = $tenantId;
+
+        return $this;
     }
 }

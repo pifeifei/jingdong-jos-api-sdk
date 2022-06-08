@@ -2,66 +2,38 @@
 
 namespace ACES\Request;
 
-
-class EclpOrderQueryOrderCartonSerialNoRequest
+class EclpOrderQueryOrderCartonSerialNoRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $cartonNo;
-    private $soNo;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.order.queryOrderCartonSerialNo";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.order.queryOrderCartonSerialNo';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getCartonNo()
     {
-        return $this->cartonNo;
+        return $this->apiParas['cartonNo'];
     }
 
     public function setCartonNo($cartonNo)
     {
-        $this->cartonNo = $cartonNo;
-        $this->apiParas["cartonNo"] = $cartonNo;
+        $this->apiParas['cartonNo'] = $cartonNo;
+
+        return $this;
     }
 
     public function getSoNo()
     {
-        return $this->soNo;
+        return $this->apiParas['soNo'];
     }
 
     public function setSoNo($soNo)
     {
-        $this->soNo = $soNo;
-        $this->apiParas["soNo"] = $soNo;
+        $this->apiParas['soNo'] = $soNo;
+
+        return $this;
     }
 }

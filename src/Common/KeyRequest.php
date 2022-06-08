@@ -20,11 +20,13 @@ class KeyRequest
     public static function createNewKeyRequest($token, $major_sdk_ver)
     {
         $keyRequest = new KeyRequest($token, $major_sdk_ver);
+
         return json_encode($keyRequest);
     }
 
     /**
      * @param JosBaseInfo $josBaseInfo
+     *
      * @return array
      */
     public function toFormParams($josBaseInfo)
@@ -41,11 +43,12 @@ class KeyRequest
 
     public function to360buyParamJson()
     {
-        $josKeyRequest = array();
+        $josKeyRequest = [];
         $josKeyRequest['sig'] = $this->sig;
         $josKeyRequest['tid'] = $this->data->getTid();
         $josKeyRequest['ts'] = $this->data->getTs();
         $josKeyRequest['sdk_ver'] = $this->data->getSdkVer();
+
         return json_encode($josKeyRequest);
     }
 

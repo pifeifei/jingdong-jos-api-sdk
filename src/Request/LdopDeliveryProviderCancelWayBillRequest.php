@@ -2,138 +2,110 @@
 
 namespace ACES\Request;
 
-
-class LdopDeliveryProviderCancelWayBillRequest
+class LdopDeliveryProviderCancelWayBillRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $userPin;
-    private $waybillCode;
-    private $customerCode;
-    private $source;
-    private $cancelReason;
-    private $operatorName;
-    private $openIdBuyer;
-    private $xidBuyer;
-
     public function getApiMethodName()
     {
-        return "jingdong.ldop.delivery.provider.cancelWayBill";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.ldop.delivery.provider.cancelWayBill';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getUserPin()
     {
-        return $this->userPin;
+        return $this->apiParas['userPin'];
     }
 
     public function setUserPin($userPin)
     {
-        $this->userPin = $userPin;
-        $this->apiParas["userPin"] = $userPin;
+        $this->apiParas['userPin'] = $userPin;
+
+        return $this;
     }
 
     public function getWaybillCode()
     {
-        return $this->waybillCode;
+        return $this->apiParas['waybillCode'];
     }
 
     public function setWaybillCode($waybillCode)
     {
-        $this->waybillCode = $waybillCode;
-        $this->apiParas["waybillCode"] = $waybillCode;
+        $this->apiParas['waybillCode'] = $waybillCode;
+
+        return $this;
     }
 
     public function getCustomerCode()
     {
-        return $this->customerCode;
+        return $this->apiParas['customerCode'];
     }
 
     public function setCustomerCode($customerCode)
     {
-        $this->customerCode = $customerCode;
-        $this->apiParas["customerCode"] = $customerCode;
+        $this->apiParas['customerCode'] = $customerCode;
+
+        return $this;
     }
 
     public function getSource()
     {
-        return $this->source;
+        return $this->apiParas['source'];
     }
 
     public function setSource($source)
     {
-        $this->source = $source;
-        $this->apiParas["source"] = $source;
+        $this->apiParas['source'] = $source;
+
+        return $this;
     }
 
     public function getCancelReason()
     {
-        return $this->cancelReason;
+        return $this->apiParas['cancelReason'];
     }
 
     public function setCancelReason($cancelReason)
     {
-        $this->cancelReason = $cancelReason;
-        $this->apiParas["cancelReason"] = $cancelReason;
+        $this->apiParas['cancelReason'] = $cancelReason;
+
+        return $this;
     }
 
     public function getOperatorName()
     {
-        return $this->operatorName;
+        return $this->apiParas['operatorName'];
     }
 
     public function setOperatorName($operatorName)
     {
-        $this->operatorName = $operatorName;
-        $this->apiParas["operatorName"] = $operatorName;
+        $this->apiParas['operatorName'] = $operatorName;
+
+        return $this;
     }
 
     public function getOpenIdBuyer()
     {
-        return $this->openIdBuyer;
+        return $this->apiParas['openIdBuyer'];
     }
 
     public function setOpenIdBuyer($openIdBuyer)
     {
-        $this->openIdBuyer = $openIdBuyer;
-        $this->apiParas["open_id_buyer"] = $openIdBuyer;
+        $this->apiParas['openIdBuyer'] = $openIdBuyer;
+
+        return $this;
     }
 
     public function getXidBuyer()
     {
-        return $this->xidBuyer;
+        return $this->apiParas['xidBuyer'];
     }
 
     public function setXidBuyer($xidBuyer)
     {
-        $this->xidBuyer = $xidBuyer;
-        $this->apiParas["xid_buyer"] = $xidBuyer;
+        $this->apiParas['xidBuyer'] = $xidBuyer;
+
+        return $this;
     }
 }

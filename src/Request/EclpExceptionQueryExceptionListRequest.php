@@ -2,150 +2,122 @@
 
 namespace ACES\Request;
 
-
-class EclpExceptionQueryExceptionListRequest
+class EclpExceptionQueryExceptionListRequest extends AbstractRequest
 {
-    private $apiParas = array();
-    private $version;
-    private $deptNo;
-    private $orderNos;
-    private $isvOrderNos;
-    private $orderType;
-    private $bizType;
-    private $createTimeStart;
-    private $createTimeEnd;
-    private $pageNo;
-    private $pageSize;
-
     public function getApiMethodName()
     {
-        return "jingdong.eclp.exception.queryExceptionList";
-    }
-
-    public function getApiParas()
-    {
-        if (empty($this->apiParas)) {
-            return "{}";
-        }
-        return json_encode($this->apiParas);
+        return 'jingdong.eclp.exception.queryExceptionList';
     }
 
     public function check()
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->$key = $value;
-    }
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->apiParas['deptNo'];
     }
 
     public function setDeptNo($deptNo)
     {
-        $this->deptNo = $deptNo;
-        $this->apiParas["deptNo"] = $deptNo;
+        $this->apiParas['deptNo'] = $deptNo;
+
+        return $this;
     }
 
     public function getOrderNos()
     {
-        return $this->orderNos;
+        return $this->apiParas['orderNos'];
     }
 
     public function setOrderNos($orderNos)
     {
-        $this->orderNos = $orderNos;
-        $this->apiParas["orderNos"] = $orderNos;
+        $this->apiParas['orderNos'] = $orderNos;
+
+        return $this;
     }
 
     public function getIsvOrderNos()
     {
-        return $this->isvOrderNos;
+        return $this->apiParas['isvOrderNos'];
     }
 
     public function setIsvOrderNos($isvOrderNos)
     {
-        $this->isvOrderNos = $isvOrderNos;
-        $this->apiParas["isvOrderNos"] = $isvOrderNos;
+        $this->apiParas['isvOrderNos'] = $isvOrderNos;
+
+        return $this;
     }
 
     public function getOrderType()
     {
-        return $this->orderType;
+        return $this->apiParas['orderType'];
     }
 
     public function setOrderType($orderType)
     {
-        $this->orderType = $orderType;
-        $this->apiParas["orderType"] = $orderType;
+        $this->apiParas['orderType'] = $orderType;
+
+        return $this;
     }
 
     public function getBizType()
     {
-        return $this->bizType;
+        return $this->apiParas['bizType'];
     }
 
     public function setBizType($bizType)
     {
-        $this->bizType = $bizType;
-        $this->apiParas["bizType"] = $bizType;
+        $this->apiParas['bizType'] = $bizType;
+
+        return $this;
     }
 
     public function getCreateTimeStart()
     {
-        return $this->createTimeStart;
+        return $this->apiParas['createTimeStart'];
     }
 
     public function setCreateTimeStart($createTimeStart)
     {
-        $this->createTimeStart = $createTimeStart;
-        $this->apiParas["createTimeStart"] = $createTimeStart;
+        $this->apiParas['createTimeStart'] = $createTimeStart;
+
+        return $this;
     }
 
     public function getCreateTimeEnd()
     {
-        return $this->createTimeEnd;
+        return $this->apiParas['createTimeEnd'];
     }
 
     public function setCreateTimeEnd($createTimeEnd)
     {
-        $this->createTimeEnd = $createTimeEnd;
-        $this->apiParas["createTimeEnd"] = $createTimeEnd;
+        $this->apiParas['createTimeEnd'] = $createTimeEnd;
+
+        return $this;
     }
 
     public function getPageNo()
     {
-        return $this->pageNo;
+        return $this->apiParas['pageNo'];
     }
 
     public function setPageNo($pageNo)
     {
-        $this->pageNo = $pageNo;
-        $this->apiParas["pageNo"] = $pageNo;
+        $this->apiParas['pageNo'] = $pageNo;
+
+        return $this;
     }
 
     public function getPageSize()
     {
-        return $this->pageSize;
+        return $this->apiParas['pageSize'];
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->apiParas["pageSize"] = $pageSize;
+        $this->apiParas['pageSize'] = $pageSize;
+
+        return $this;
     }
 }
