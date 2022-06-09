@@ -20,7 +20,7 @@
         "ext-openssl": "*",
         "ext-simplexml": "*",
         "monolog/monolog": "^1.24.0|^2.5",
-        "netresearch/jsonmapper": "^1.6.0|^2.0|^3.0|"
+        "netresearch/jsonmapper": "^1.6.0|^2.0|^3.0|^4.0"
     },
     "require-dev": {
         "symfony/finder": "^5.4|^6.0",
