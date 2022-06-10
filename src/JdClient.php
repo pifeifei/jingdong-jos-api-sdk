@@ -9,39 +9,133 @@ use stdClass;
 
 class JdClient
 {
-    public $serverUrl = 'https://api.jd.com/routerjson';
-
-    public $accessToken;
-
-    public $connectTimeout = 0;
-
-    public $readTimeout = 0;
-
-    public $appKey;
-
-    public $appSecret;
-
-    public $version = '2.0';
-
-    public $format = 'json';
-
-    private $charset_utf8 = 'UTF-8';
-
-    private $jsonParamKey = '360buy_param_json';
+    protected string $serverUrl = 'https://api.jd.com/routerjson';
 
     /**
-     * @param null|string $access_token
+     * @var JDToken
+     */
+    protected $accessToken;
+
+    protected int $connectTimeout = 0;
+
+    protected int $readTimeout = 0;
+
+    protected string $appKey;
+
+    protected string $appSecret;
+
+    protected string $version = '2.0';
+
+    /**
+     * 格式化类型
+     * @var string 目前仅支持 json 格式
+     */
+    protected string $format = 'json';
+
+//    private $charset = 'UTF-8';
+
+    protected $jsonParamKey = '360buy_param_json';
+
+    public function __construct($appKey, $appSecret)
+    {
+        $this->appKey = $appKey;
+        $this->appSecret = $appSecret;
+        $this->accessToken = new JDToken($appKey, $appSecret);
+    }
+
+    /**
+     * @return string
+     */
+    public function getServerUrl(): string
+    {
+        return $this->serverUrl;
+    }
+
+    /**
+     * @param  string  $serverUrl
+     */
+    public function setServerUrl(string $serverUrl): void
+    {
+        $this->serverUrl = $serverUrl;
+    }
+
+    /**
+     * @return int
+     */
+    public function getConnectTimeout(): int
+    {
+        return $this->connectTimeout;
+    }
+
+    /**
+     * @param  int  $connectTimeout
+     */
+    public function setConnectTimeout(int $connectTimeout): void
+    {
+        $this->connectTimeout = $connectTimeout;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReadTimeout(): int
+    {
+        return $this->readTimeout;
+    }
+
+    /**
+     * @param  int  $readTimeout
+     */
+    public function setReadTimeout(int $readTimeout): void
+    {
+        $this->readTimeout = $readTimeout;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion(): string
+    {
+        return $this->version;
+    }
+
+    /**
+     * @return string
+     */
+    public function accessToken()
+    {
+        return $this->accessToken->accessToken();
+    }
+
+    /**
+     * @return JDToken
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param  string  $version
+     */
+    public function setVersion(string $version): void
+    {
+        $this->version = $version;
+    }
+
+    /**
+     * @param  string|null  $accessToken
      *
      * @return false|\SimpleXMLElement|stdClass
      */
-    public function execute(RequestInterFace $request, $access_token = null)
+    public function execute(RequestInterFace $request, string $accessToken = null)
     {
         $sysParams['app_key'] = $this->appKey;
         $sysParams['v'] = $request->getVersion($this->version);
         $sysParams['method'] = $request->getApiMethodName();
         $sysParams['timestamp'] = $this->getCurrentTimeFormatted();
-        if (null != $access_token) {
-            $sysParams['access_token'] = $access_token;
+        if (null != $accessToken) {
+            $sysParams['access_token'] = $accessToken;
         }
 
         $apiParams = $request->getApiParas();

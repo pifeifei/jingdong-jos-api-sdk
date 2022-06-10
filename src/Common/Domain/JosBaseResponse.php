@@ -83,6 +83,7 @@ abstract class JosBaseResponse
     public static function parse($josJsonResponse, JosBaseResponse $targetResponse)
     {
         $josResponse = json_decode($josJsonResponse);
+//        dump($josResponse);
         foreach ($josResponse as $k => $response) {
             // TODO thread safe？
             $jsonMapper = new \JsonMapper();

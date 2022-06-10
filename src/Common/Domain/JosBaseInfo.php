@@ -16,14 +16,14 @@ class JosBaseInfo
      *
      * @param $appKey
      * @param $appSecret
-     * @param $access_token
+     * @param $accessToken
      * @param $serverUrl
      */
-    public function __construct($appKey, $appSecret, $access_token, $serverUrl)
+    public function __construct($appKey, $appSecret, $accessToken, $serverUrl)
     {
         $this->appKey = $appKey;
         $this->appSecret = $appSecret;
-        $this->accessToken = $access_token;
+        $this->accessToken = $accessToken;
         $this->serverUrl = $serverUrl;
     }
 
