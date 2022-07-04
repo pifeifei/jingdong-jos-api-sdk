@@ -2,27 +2,28 @@
 
 namespace ACES;
 
-use ACES\Contracts\RequestInterFace;
+use ACES\Contracts\RequestInterface;
+use ACES\Exceptions\JingdongException;
+use ACES\Utils\HttpOptionsTrait;
+use Composer\CaBundle\CaBundle;
 use DateTimeZone;
-use Exception;
-use stdClass;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\RequestOptions;
 
 class JdClient
 {
+    use HttpOptionsTrait;
+
     protected string $serverUrl = 'https://api.jd.com/routerjson';
 
-    /**
-     * @var JDToken
-     */
-    protected $accessToken;
-
-    protected int $connectTimeout = 0;
-
-    protected int $readTimeout = 0;
+    protected JDToken $accessToken;
 
     protected string $appKey;
 
     protected string $appSecret;
+
+    protected string $redirectUrl;
 
     protected string $version = '2.0';
 
@@ -34,13 +35,56 @@ class JdClient
 
 //    private $charset = 'UTF-8';
 
-    protected $jsonParamKey = '360buy_param_json';
+    protected string $jsonParamKey = '360buy_param_json';
 
-    public function __construct($appKey, $appSecret)
+    protected Client $client;
+
+    public function __construct($appKey, $appSecret, $redirectUrl)
     {
         $this->appKey = $appKey;
         $this->appSecret = $appSecret;
-        $this->accessToken = new JDToken($appKey, $appSecret);
+        $this->redirectUrl = $redirectUrl;
+        $this->accessToken = new JDToken($this);
+
+        $options = [
+            'base_uri'        => $this->serverUrl,
+            RequestOptions::ALLOW_REDIRECTS => false,
+            RequestOptions::SSL_KEY => CaBundle::getSystemCaRootBundlePath(),
+            RequestOptions::HTTP_ERRORS => false,
+        ];
+
+        if ($this->getOption(RequestOptions::TIMEOUT)) {
+            $options[RequestOptions::TIMEOUT] = $this->getOption(RequestOptions::TIMEOUT);
+        }
+        if ($this->getOption(RequestOptions::CONNECT_TIMEOUT)) {
+            $options[RequestOptions::CONNECT_TIMEOUT] = $this->getOption(RequestOptions::CONNECT_TIMEOUT);
+        }
+
+        $this->client = new Client($options);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppKey(): string
+    {
+        return $this->appKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppSecret(): string
+    {
+        return $this->appSecret;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRedirectUrl(): string
+    {
+        return $this->redirectUrl;
     }
 
     /**
@@ -60,38 +104,6 @@ class JdClient
     }
 
     /**
-     * @return int
-     */
-    public function getConnectTimeout(): int
-    {
-        return $this->connectTimeout;
-    }
-
-    /**
-     * @param  int  $connectTimeout
-     */
-    public function setConnectTimeout(int $connectTimeout): void
-    {
-        $this->connectTimeout = $connectTimeout;
-    }
-
-    /**
-     * @return int
-     */
-    public function getReadTimeout(): int
-    {
-        return $this->readTimeout;
-    }
-
-    /**
-     * @param  int  $readTimeout
-     */
-    public function setReadTimeout(int $readTimeout): void
-    {
-        $this->readTimeout = $readTimeout;
-    }
-
-    /**
      * @return string
      */
     public function getVersion(): string
@@ -100,9 +112,12 @@ class JdClient
     }
 
     /**
+     * 获取 access_token
+     *
      * @return string
+     * @throws JingdongException
      */
-    public function accessToken()
+    public function accessToken(): string
     {
         return $this->accessToken->accessToken();
     }
@@ -110,7 +125,7 @@ class JdClient
     /**
      * @return JDToken
      */
-    public function getAccessToken()
+    public function getAccessToken(): JDToken
     {
         return $this->accessToken;
     }
@@ -124,112 +139,108 @@ class JdClient
     }
 
     /**
-     * @param  string|null  $accessToken
      *
-     * @return false|\SimpleXMLElement|stdClass
+     * @param RequestInterface $request
+     * @return array
+     * @throws JingdongException
      */
-    public function execute(RequestInterFace $request, string $accessToken = null)
+    public function execute(RequestInterface $request): array
     {
         $sysParams['app_key'] = $this->appKey;
         $sysParams['v'] = $request->getVersion($this->version);
         $sysParams['method'] = $request->getApiMethodName();
         $sysParams['timestamp'] = $this->getCurrentTimeFormatted();
-        if (null != $accessToken) {
-            $sysParams['access_token'] = $accessToken;
+        if ($request->isRequireAccessToken()) {
+            $sysParams['access_token'] = $this->accessToken();
         }
-
-        $apiParams = $request->getApiParas();
-        $sysParams[$this->jsonParamKey] = $apiParams;
+        if ($request->toArray()) {
+            $sysParams[$this->jsonParamKey] = $request->toJson();
+        }
         $sysParams['sign'] = $this->generateSign($sysParams);
 
-        $requestUrl = $this->serverUrl.'?'.http_build_query($sysParams);
-
-//        foreach ($sysParams as $sysParamKey => $sysParamValue) {
-//            $requestUrl .= "$sysParamKey=".urlencode($sysParamValue)."&";
-//        }
-
-        try {
-            $resp = $this->curl($requestUrl, $apiParams);
-        } catch (Exception $e) {
-            $result = new stdClass();
-            $result->code = $e->getCode();
-            $result->msg = $e->getMessage();
-
-            return $result;
-        }
+        $resp = $this->curl($this->serverUrl, $sysParams);
 
         if ('json' == $this->format) {
-            $respObject = json_decode($resp);
+            $respObject = json_decode($resp, true);
+            if (json_last_error()) {
+                $context = [
+                    'url' => $this->serverUrl,
+                    'request' => $sysParams,
+                    'response' => $resp,
+                ];
+                throw new JingdongException('jingdong error:京东返回数据解析失败:' . json_last_error_msg(), $context);
+            }
+
+            if (isset($respObject['error_response'])) {
+                $context = [
+                    'url' => $this->serverUrl,
+                    'request' => $sysParams,
+                    'response' => $respObject,
+                ];
+
+                if (function_exists('logger')) {
+                    logger()->debug('jingdong error: ', $context);
+                }
+
+                throw new JingdongException(
+                    'jingdong error:' . $respObject['error_response']['zh_desc'] ?? $respObject['error_response']['en_desc'],
+                    $context,
+                );
+            }
+
             if (null !== $respObject) {
                 return $respObject;
             }
         }
 
-        $result = new stdClass();
-        $result->code = 0;
-        $result->msg = 'HTTP_RESPONSE_NOT_WELL_FORMED';
-
-        return $result;
+        throw new JingdongException(
+            'jingdong error: 未知异常,请截图这个界面给技术，' . $resp,
+            ['url' => $this->serverUrl, 'request' => $sysParams, 'response' => $resp]
+        );
     }
 
-    public function curl($url, $postFields = null)
+    /**
+     * 请求数据
+     *
+     * @param string $url 请求链接
+     * @param array|null $postFields
+     * @return string
+     * @throws JingdongException
+     */
+    public function curl(string $url, array $postFields = null): string
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_FAILONERROR, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        if ($this->readTimeout) {
-            curl_setopt($ch, CURLOPT_TIMEOUT, $this->readTimeout);
-        }
-        if ($this->connectTimeout) {
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
-        }
-        // https
-        if (strlen($url) > 5 && 'https' == strtolower(substr($url, 0, 5))) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $options = $this->options();
+        if ($postFields) {
+            $options[RequestOptions::FORM_PARAMS] = $postFields;
+            // $options[RequestOptions::BODY] = http_build_query($postFields, '', '&');
         }
 
-        if (is_array($postFields) && 0 < count($postFields)) {
-            $postBodyString = '';
-            $postMultipart = false;
-            foreach ($postFields as $k => $v) {
-                if ('@' != substr($v, 0, 1)) {
-                    $postBodyString .= "{$k}=".urlencode($v).'&';
-                } else { // multipart/form-data www-form-urlencoded
-                    $postMultipart = true;
-                }
+        try {
+            $debugStr = [
+                'url' => $url,
+                'data' => $options,
+                'response' => null
+            ];
+            $response = $this->client->post($url, $options);
+            $response->getBody()->rewind();
+
+            return $response->getBody()->getContents(); // 可能是对象
+        } catch (GuzzleException $e) {
+            if (isset($response)) {
+                $response->getBody()->rewind();
+                $debugStr['response'] = $response->getBody()->getContents();
             }
-            unset($k, $v);
-            curl_setopt($ch, CURLOPT_POST, true);
-            if ($postMultipart) {
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-            } else {
-                curl_setopt($ch, CURLOPT_POSTFIELDS, substr($postBodyString, 0, -1));
-            }
+            throw new JingdongException($e->getMessage(), $debugStr, $e);
         }
-        $reponse = curl_exec($ch);
-
-        if (curl_errno($ch)) {
-            throw new Exception(curl_error($ch), 0);
-        }
-        $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        if (200 !== $httpStatusCode) {
-            throw new Exception($reponse, $httpStatusCode);
-        }
-
-        curl_close($ch);
-
-        return $reponse;
     }
 
-    protected function generateSign($params)
+    protected function generateSign($params): string
     {
         ksort($params);
         $stringToBeSigned = $this->appSecret;
         foreach ($params as $k => $v) {
             if ('@' != substr($v, 0, 1)) {
-                $stringToBeSigned .= "{$k}{$v}";
+                $stringToBeSigned .= $k . $v;
             }
         }
         unset($k, $v);
@@ -238,7 +249,7 @@ class JdClient
         return strtoupper(md5($stringToBeSigned));
     }
 
-    private function getCurrentTimeFormatted()
+    private function getCurrentTimeFormatted(): string
     {
         return date('Y-m-d H:i:s').'.000'.$this->getStandardOffsetUTC(date_default_timezone_get());
     }

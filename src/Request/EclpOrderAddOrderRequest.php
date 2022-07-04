@@ -13,23 +13,44 @@ class EclpOrderAddOrderRequest extends AbstractRequest
     {
     }
 
-    public function getIsvUUID()
+    /**
+     * isv出库单号（商家出库单号）
+     *
+     * @return string
+     */
+    public function getIsvUUID(): string
     {
         return $this->apiParas['isvUUID'];
     }
 
-    public function setIsvUUID($isvUUID)
+    /**
+     * isv出库单号（商家出库单号）
+     *
+     * @param string $isvUUID
+     * @return $this
+     */
+    public function setIsvUUID(string $isvUUID)
     {
         $this->apiParas['isvUUID'] = $isvUUID;
 
         return $this;
     }
 
+    /**
+     * ISV来源编号，ECLP参数，联系京东业务人员提供
+     *
+     * @return int|string
+     */
     public function getIsvSource()
     {
         return $this->apiParas['isvSource'];
     }
 
+    /**
+     * ISV来源编号，ECLP参数，联系京东业务人员提供
+     *
+     * @param int|string $isvSource
+     */
     public function setIsvSource($isvSource)
     {
         $this->apiParas['isvSource'] = $isvSource;

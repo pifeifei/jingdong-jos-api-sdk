@@ -4,8 +4,6 @@ namespace ACES\Request;
 
 class AreasCityGetRequest extends AbstractRequest
 {
-    private $version;
-    private $parentId;
 
     public function getApiMethodName()
     {

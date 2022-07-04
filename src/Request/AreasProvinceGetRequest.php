@@ -17,4 +17,12 @@ class AreasProvinceGetRequest extends AbstractRequest
     {
         $this->apiParas[$key] = $value;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequireAccessToken(): bool
+    {
+        return false;
+    }
 }

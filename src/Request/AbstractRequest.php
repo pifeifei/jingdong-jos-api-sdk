@@ -2,11 +2,13 @@
 
 namespace ACES\Request;
 
-use ACES\Contracts\RequestInterFace;
+use ACES\Contracts\RequestInterface;
 
-abstract class AbstractRequest implements RequestInterFace
+abstract class AbstractRequest implements RequestInterface
 {
-    protected $apiParas = [];
+    protected array $apiParas = [];
+
+    protected string $version = '2.0';
 
     /**
      * {@inheritDoc}
@@ -17,6 +19,14 @@ abstract class AbstractRequest implements RequestInterFace
      * {@inheritDoc}
      */
     public function all()
+    {
+        return $this->apiParas;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
     {
         return $this->apiParas;
     }
@@ -58,8 +68,8 @@ abstract class AbstractRequest implements RequestInterFace
      */
     public function getVersion($default = null)
     {
-        if (isset($this->apiParas['version'])) {
-            return $this->apiParas['version'];
+        if (isset($this->version)) {
+            return $this->version;
         }
 
         return $default;
@@ -67,7 +77,7 @@ abstract class AbstractRequest implements RequestInterFace
 
     public function setVersion($version)
     {
-        $this->apiParas['version'] = $version;
+        $this->version = $version;
     }
 
     /**
@@ -77,5 +87,39 @@ abstract class AbstractRequest implements RequestInterFace
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequireAccessToken(): bool
+    {
+        return true;
+    }
+
+    /**
+     * 获取参数
+     * @param string $name
+     * @param scalar|null $value
+     */
+    public function __set($name, $value)
+    {
+        $this->apiParas[lcfirst($name)] = $value;
+    }
+
+    /**
+     * 设置参数
+     *
+     * @param string $name
+     * @return scalar|null
+     */
+    public function __get($name)
+    {
+        return $this->apiParas[lcfirst($name)] ?? null;
+    }
+
+    public function __toString()
+    {
+        return $this->toJson();
     }
 }
