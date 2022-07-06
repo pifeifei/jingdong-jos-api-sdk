@@ -2,6 +2,14 @@
 
 namespace ACES\Request;
 
+/**
+ * 店铺库存查询。
+ *
+ * 接口描述：店铺库存查询；根据事业部、店铺、库房、商品查询店铺库存（包含VMI店铺）
+ * 建议使用：jingdong.eclp.stock.searchShopStock
+ *
+ * @link https://jos.jd.com/apilist?apiGroupId=138&apiId=13527&apiName=null
+ */
 class EclpStockQueryVmiShopStockRequest extends AbstractRequest
 {
     public function getApiMethodName()

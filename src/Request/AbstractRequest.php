@@ -4,8 +4,14 @@ namespace ACES\Request;
 
 use ACES\Contracts\RequestInterface;
 
+/**
+ * @property string $version 接口版本
+ */
 abstract class AbstractRequest implements RequestInterface
 {
+    /**
+     * @var array<string|int|float|string[]>
+     */
     protected array $apiParas = [];
 
     protected string $version = '2.0';
@@ -62,6 +68,8 @@ abstract class AbstractRequest implements RequestInterface
     }
 
     /**
+     * @deprecated $this->version
+     *
      * @param null|mixed $default
      *
      * @return null|string
@@ -75,12 +83,18 @@ abstract class AbstractRequest implements RequestInterface
         return $default;
     }
 
+    /**
+     * @deprecated $this->version
+     * @param $version
+     */
     public function setVersion($version)
     {
         $this->version = $version;
     }
 
     /**
+     * @deprecated
+     *
      * @param string $key
      * @param scalar $value
      */
@@ -100,11 +114,21 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * 获取参数
      * @param string $name
-     * @param scalar|null $value
+     * @param scalar $value
      */
     public function __set($name, $value)
     {
-        $this->apiParas[lcfirst($name)] = $value;
+        $name = lcfirst($name);
+        if (is_array($value)) {
+            $value = implode(',', $value);
+        }
+
+        if (property_exists($this, $name)) {
+            $this->$name = $value;
+            return;
+        }
+
+        $this->apiParas[$name] = $value;
     }
 
     /**
@@ -115,6 +139,12 @@ abstract class AbstractRequest implements RequestInterface
      */
     public function __get($name)
     {
+        $name = lcfirst($name);
+
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+
         return $this->apiParas[lcfirst($name)] ?? null;
     }
 

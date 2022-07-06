@@ -7,17 +7,16 @@
 use ACES\JdClient;
 
 //测试demo
-$c = new JdClient("appKey",  "secret");
+$client = new JdClient("appKey",  "secret", 'https://localhost/?redirect url');
+// 设置缓存
+// $client->getAccessToken()->setCache(\Illuminate\Support\Facades\Cache::store()); // laravel
 
-dump($c->getAccessToken()->getCache()->set('xxx', 123, 10));
-dump($c->getAccessToken()->getCache()->get('xxx'));
-dd(1);
+// 获取 access token 字符串
+dump($client->accessToken());
 
-//$c->accessToken = "1f1d3048-220a-484d-ad93-f3808d9aacc1";
-//$c->serverUrl = "http://gw.api.360buy.net/routerjson";
 $req = new \ACES\Request\EclpFeeQueryFeeDetailWithPageRequest();
 $req->setBillDay('2022-06-10');
-$resp = $c->execute($req, $c->accessToken());
+$resp = $client->execute($req, $client->accessToken());
 dd($resp);
 
 
@@ -30,7 +29,7 @@ dd($resp);
 //$req = new \ACES\Request\AreaTownGetRequest();
 //$req->setParentId(55690); // 北京 朝阳区 小红门地区 // false
 $req = new \ACES\Request\AreasProvinceGetRequest();
-$resp = $c->execute($req, $c->accessToken());
+$resp = $client->execute($req, $client->accessToken());
 dump($resp);
 
 ```

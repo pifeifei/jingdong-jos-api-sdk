@@ -2,6 +2,16 @@
 
 namespace ACES\Request;
 
+/**
+ * 分页查询计费明细。
+ *
+ * @link https://jos.jd.com/apilist?apiGroupId=138&apiId=14018&apiName=null
+ *
+ * @property string $deptNo  必填,事业部编号
+ * @property string $billDay  必填,计费日期
+ * @property int $currentPage  必填,页码
+ * @property int<1,100> $pageSize  必填,每页记录数,最大100
+ */
 class EclpFeeQueryFeeDetailWithPageRequest extends AbstractRequest
 {
     public function getApiMethodName()
