@@ -4,13 +4,7 @@ namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
 class Param1
 {
-    private $params = [];
-    private $pin;
-    private $objectId;
-    private $parameters;
-    private $wayBillInfos;
-    private $cpCode;
-    private $appKey;
+    private array $params = [];
 
     public function __construct()
     {
@@ -19,7 +13,7 @@ class Param1
 
     public function getPin()
     {
-        return $this->pin;
+        return $this->params['pin'];
     }
 
     public function setPin($pin)
@@ -29,7 +23,7 @@ class Param1
 
     public function getObjectId()
     {
-        return $this->objectId;
+        return $this->params['objectId'];
     }
 
     public function setObjectId($objectId)
@@ -53,7 +47,7 @@ class Param1
 
     public function getCpCode()
     {
-        return $this->cpCode;
+        return $this->params['cpCode'];
     }
 
     public function setCpCode($cpCode)
@@ -63,7 +57,7 @@ class Param1
 
     public function getAppKey()
     {
-        return $this->appKey;
+        return $this->params['appKey'];
     }
 
     public function setAppKey($appKey)

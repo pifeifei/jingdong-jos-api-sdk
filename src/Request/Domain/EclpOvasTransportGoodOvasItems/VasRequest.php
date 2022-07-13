@@ -4,10 +4,8 @@ namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
 class VasRequest
 {
-    private $params = [];
-    private $serviceCode;
-    private $goodsDemand;
-    private $status;
+    private array $params = [];
+
 
     public function __construct()
     {
@@ -16,7 +14,7 @@ class VasRequest
 
     public function getServiceCode()
     {
-        return $this->serviceCode;
+        return $this->params['serviceCode'];
     }
 
     public function setServiceCode($serviceCode)
@@ -26,7 +24,7 @@ class VasRequest
 
     public function getGoodsDemand()
     {
-        return $this->goodsDemand;
+        return $this->params['goodsDemand'];
     }
 
     public function setGoodsDemand($goodsDemand)
@@ -36,7 +34,7 @@ class VasRequest
 
     public function getStatus()
     {
-        return $this->status;
+        return $this->params['status'];
     }
 
     public function setStatus($status)

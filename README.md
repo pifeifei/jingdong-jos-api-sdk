@@ -7,7 +7,16 @@
 use ACES\JdClient;
 
 //测试demo
-$client = new JdClient("appKey",  "secret", 'https://localhost/?redirect url');
+$config = [
+    'appKey' => 'appKey',
+    'appSecret' => 'secret',
+    'redirectUrl' => 'https://localhost/?redirect url',
+//    'isvSource' => null,
+//    'shopNo' => null, 
+//    'departmentNo' => null, 
+//    'monthlyAccount' => null
+];
+$client = new JdClient($config);
 // 设置缓存
 // $client->getAccessToken()->setCache(\Illuminate\Support\Facades\Cache::store()); // laravel
 

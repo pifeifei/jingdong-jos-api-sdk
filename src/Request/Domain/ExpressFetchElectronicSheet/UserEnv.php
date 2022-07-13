@@ -15,7 +15,7 @@ class UserEnv
 
     public function getPin()
     {
-        return $this->pin;
+        return $this->params['pin'];
     }
 
     public function setPin($pin)
@@ -25,7 +25,7 @@ class UserEnv
 
     public function getTradeCode()
     {
-        return $this->tradeCode;
+        return $this->params['tradeCode'];
     }
 
     public function setTradeCode($tradeCode)

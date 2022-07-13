@@ -4,12 +4,8 @@ namespace ACES\Request\Domain\PrintingPrintDataSensitivePullData;
 
 class Param1
 {
-    private $params = [];
-    private $pin;
-    private $objectId;
-    private $parameters;
-    private $cpCode;
-    private $ewPrintDataInfos;
+    private array $params = [];
+
 
     public function __construct()
     {
@@ -18,7 +14,7 @@ class Param1
 
     public function getPin()
     {
-        return $this->pin;
+        return $this->params['pin'];
     }
 
     public function setPin($pin)
@@ -28,7 +24,7 @@ class Param1
 
     public function getObjectId()
     {
-        return $this->objectId;
+        return $this->params['objectId'];
     }
 
     public function setObjectId($objectId)
@@ -43,7 +39,7 @@ class Param1
 
     public function getCpCode()
     {
-        return $this->cpCode;
+        return $this->params['cpCode'];
     }
 
     public function setCpCode($cpCode)

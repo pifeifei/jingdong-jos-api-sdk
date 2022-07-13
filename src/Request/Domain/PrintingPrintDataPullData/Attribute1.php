@@ -4,11 +4,7 @@ namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
 class Attribute1
 {
-    private $params = [];
-    private $orderNo;
-    private $popFlag;
-    private $wayBillCode;
-    private $jdWayBillCode;
+    private array $params = [];
 
     public function __construct()
     {
@@ -17,7 +13,7 @@ class Attribute1
 
     public function getOrderNo()
     {
-        return $this->orderNo;
+        return $this->params['orderNo'];
     }
 
     public function setOrderNo($orderNo)
@@ -27,7 +23,7 @@ class Attribute1
 
     public function getPopFlag()
     {
-        return $this->popFlag;
+        return $this->params['popFlag'];
     }
 
     public function setPopFlag($popFlag)
@@ -37,7 +33,7 @@ class Attribute1
 
     public function getWayBillCode()
     {
-        return $this->wayBillCode;
+        return $this->params['wayBillCode'];
     }
 
     public function setWayBillCode($wayBillCode)
@@ -47,7 +43,7 @@ class Attribute1
 
     public function getJdWayBillCode()
     {
-        return $this->jdWayBillCode;
+        return $this->params['jdWayBillCode'];
     }
 
     public function setJdWayBillCode($jdWayBillCode)

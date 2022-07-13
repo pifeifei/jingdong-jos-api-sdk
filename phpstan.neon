@@ -1,0 +1,20 @@
+# docs: https://phpstan.org/config-reference
+# phpdoc types: https://phpstan.org/writing-php-code/phpdoc-types
+parameters:
+    phpVersion: 70200
+    level: 5
+    bootstrapFiles:
+        - vendor/autoload.php
+    paths:
+        - src
+#    excludePaths:
+#        - tests/*/stubs/*
+#    scanFiles:
+#        - _ide_helper.php
+    inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: true
+    treatPhpDocTypesAsCertain: true
+#    ignoreErrors:
+#        - "#Access to undefined constant Illuminate#"
+#        - "#Call to an undefined (static )?method Illuminate#"
+#        - "#Cannot call method environment\\(\\) on mixed#"

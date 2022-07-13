@@ -4,18 +4,8 @@ namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
 class Request
 {
-    private $params = [];
-    private $deptNo;
-    private $mixMode;
-    private $sellerProcessedNo;
-    private $salesPlatformId;
-    private $urgentFlag;
-    private $orderMark;
-    private $sellerRemark;
-    private $processedType;
-    private $productRequestList;
-    private $warehouseNo;
-    private $allowLack;
+    private array $params = [];
+
 
     public function __construct()
     {
@@ -24,7 +14,7 @@ class Request
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->params['deptNo'];
     }
 
     public function setDeptNo($deptNo)
@@ -34,7 +24,7 @@ class Request
 
     public function getMixMode()
     {
-        return $this->mixMode;
+        return $this->params['mixMode'];
     }
 
     public function setMixMode($mixMode)
@@ -44,7 +34,7 @@ class Request
 
     public function getSellerProcessedNo()
     {
-        return $this->sellerProcessedNo;
+        return $this->params['sellerProcessedNo'];
     }
 
     public function setSellerProcessedNo($sellerProcessedNo)
@@ -54,7 +44,7 @@ class Request
 
     public function getSalesPlatformId()
     {
-        return $this->salesPlatformId;
+        return $this->params['salesPlatformId'];
     }
 
     public function setSalesPlatformId($salesPlatformId)
@@ -64,7 +54,7 @@ class Request
 
     public function getUrgentFlag()
     {
-        return $this->urgentFlag;
+        return $this->params['urgentFlag'];
     }
 
     public function setUrgentFlag($urgentFlag)
@@ -74,7 +64,7 @@ class Request
 
     public function getOrderMark()
     {
-        return $this->orderMark;
+        return $this->params['orderMark'];
     }
 
     public function setOrderMark($orderMark)
@@ -84,7 +74,7 @@ class Request
 
     public function getSellerRemark()
     {
-        return $this->sellerRemark;
+        return $this->params['sellerRemark'];
     }
 
     public function setSellerRemark($sellerRemark)
@@ -94,7 +84,7 @@ class Request
 
     public function getProcessedType()
     {
-        return $this->processedType;
+        return $this->params['processedType'];
     }
 
     public function setProcessedType($processedType)
@@ -113,7 +103,7 @@ class Request
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->params['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)
@@ -123,7 +113,7 @@ class Request
 
     public function getAllowLack()
     {
-        return $this->allowLack;
+        return $this->params['allowLack'];
     }
 
     public function setAllowLack($allowLack)

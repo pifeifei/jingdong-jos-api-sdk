@@ -4,9 +4,7 @@ namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
 class GoodsNoVasRequest
 {
-    private $params = [];
-    private $goodsNo;
-    private $vasRequestList;
+    private array $params = [];
 
     public function __construct()
     {
@@ -15,7 +13,7 @@ class GoodsNoVasRequest
 
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->params['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)

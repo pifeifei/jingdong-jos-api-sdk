@@ -4,13 +4,7 @@ namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
 class Request
 {
-    private $params = [];
-    private $deptName;
-    private $goodsNoVasRequestList;
-    private $sellerName;
-    private $deptId;
-    private $sellerNo;
-    private $deptNo;
+    private array $params = [];
 
     public function __construct()
     {
@@ -19,7 +13,7 @@ class Request
 
     public function getDeptName()
     {
-        return $this->deptName;
+        return $this->params['deptName'];
     }
 
     public function setDeptName($deptName)
@@ -38,7 +32,7 @@ class Request
 
     public function getSellerName()
     {
-        return $this->sellerName;
+        return $this->params['sellerName'];
     }
 
     public function setSellerName($sellerName)
@@ -48,7 +42,7 @@ class Request
 
     public function getDeptId()
     {
-        return $this->deptId;
+        return $this->params['deptId'];
     }
 
     public function setDeptId($deptId)
@@ -58,7 +52,7 @@ class Request
 
     public function getSellerNo()
     {
-        return $this->sellerNo;
+        return $this->params['sellerNo'];
     }
 
     public function setSellerNo($sellerNo)
@@ -68,7 +62,7 @@ class Request
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->params['deptNo'];
     }
 
     public function setDeptNo($deptNo)

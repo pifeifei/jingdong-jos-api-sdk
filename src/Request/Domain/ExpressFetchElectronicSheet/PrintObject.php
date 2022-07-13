@@ -5,13 +5,6 @@ namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 class PrintObject
 {
     private $params = [];
-    private $waybillCodes;
-    private $electronicSheetType;
-    private $packageCodes;
-    private $boxCodes;
-    private $orderIds;
-    private $customProperties;
-    private $codeType;
 
     public function __construct()
     {
@@ -25,7 +18,7 @@ class PrintObject
 
     public function getElectronicSheetType()
     {
-        return $this->electronicSheetType;
+        return $this->params['electronicSheetType'];
     }
 
     public function setElectronicSheetType($electronicSheetType)
@@ -55,7 +48,7 @@ class PrintObject
 
     public function getCodeType()
     {
-        return $this->codeType;
+        return $this->params['codeType'];
     }
 
     public function setCodeType($codeType)

@@ -4,10 +4,7 @@ namespace ACES\Request\Domain\EclpGoodsAddGoodsFormula;
 
 class GoodsFormulaDetail
 {
-    private $params = [];
-    private $detailIsvSku;
-    private $goodsProcessedUnit;
-    private $processedRatio;
+    private array $params = [];
 
     public function __construct()
     {
@@ -16,7 +13,7 @@ class GoodsFormulaDetail
 
     public function getDetailIsvSku()
     {
-        return $this->detailIsvSku;
+        return $this->params['detailIsvSku'];
     }
 
     public function setDetailIsvSku($detailIsvSku)
@@ -26,7 +23,7 @@ class GoodsFormulaDetail
 
     public function getGoodsProcessedUnit()
     {
-        return $this->goodsProcessedUnit;
+        return $this->params['goodsProcessedUnit'];
     }
 
     public function setGoodsProcessedUnit($goodsProcessedUnit)
@@ -36,7 +33,7 @@ class GoodsFormulaDetail
 
     public function getProcessedRatio()
     {
-        return $this->processedRatio;
+        return $this->params['processedRatio'];
     }
 
     public function setProcessedRatio($processedRatio)

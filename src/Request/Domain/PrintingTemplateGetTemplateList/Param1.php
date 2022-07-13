@@ -4,7 +4,7 @@ namespace ACES\Request\Domain\PrintingTemplateGetTemplateList;
 
 class Param1
 {
-    private $params = [];
+    private array $params = [];
 
     public function __construct()
     {

@@ -41,9 +41,6 @@ class UtilTools
 
     public static function getCurrentMilis()
     {
-        $mill_time = microtime();
-        $timeInfo = explode(' ', $mill_time);
-
-        return sprintf('%d%03d', $timeInfo[1], $timeInfo[0] * 1000);
+        return sprintf('%d', microtime(true) * 1000);
     }
 }

@@ -4,10 +4,7 @@ namespace ACES\Request\Domain\PrintingPrintDataSensitivePullData;
 
 class Attribute1
 {
-    private $params = [];
-    private $orderNo;
-    private $ewPrintData;
-    private $wayBillNo;
+    private array $params = [];
 
     public function __construct()
     {
@@ -16,7 +13,7 @@ class Attribute1
 
     public function getOrderNo()
     {
-        return $this->orderNo;
+        return $this->params['orderNo'];
     }
 
     public function setOrderNo($orderNo)
@@ -26,7 +23,7 @@ class Attribute1
 
     public function getEwPrintData()
     {
-        return $this->ewPrintData;
+        return $this->params['ewPrintData'];
     }
 
     public function setEwPrintData($ewPrintData)
@@ -36,7 +33,7 @@ class Attribute1
 
     public function getWayBillNo()
     {
-        return $this->wayBillNo;
+        return $this->params['wayBillNo'];
     }
 
     public function setWayBillNo($wayBillNo)

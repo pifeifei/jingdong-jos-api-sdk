@@ -4,11 +4,7 @@ namespace ACES\Request\Domain\EclpGoodsAddGoodsFormula;
 
 class GoodsFormulaMain
 {
-    private $params = [];
-    private $isvSku;
-    private $deptNo;
-    private $formulaName;
-    private $formulaDetailList;
+    private array $params = [];
 
     public function __construct()
     {
@@ -17,7 +13,7 @@ class GoodsFormulaMain
 
     public function getIsvSku()
     {
-        return $this->isvSku;
+        return $this->params['isvSku'];
     }
 
     public function setIsvSku($isvSku)
@@ -27,7 +23,7 @@ class GoodsFormulaMain
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->params['deptNo'];
     }
 
     public function setDeptNo($deptNo)
@@ -37,7 +33,7 @@ class GoodsFormulaMain
 
     public function getFormulaName()
     {
-        return $this->formulaName;
+        return $this->params['formulaName'];
     }
 
     public function setFormulaName($formulaName)

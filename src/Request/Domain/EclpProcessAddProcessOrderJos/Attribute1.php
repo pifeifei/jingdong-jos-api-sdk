@@ -4,13 +4,7 @@ namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
 class Attribute1
 {
-    private $params = [];
-    private $productGoodsNo;
-    private $materialRequestList;
-    private $productIsvGoodsNo;
-    private $productPlanQty;
-    private $formulaId;
-    private $productGoodsLevel;
+    private array $params = [];
 
     public function __construct()
     {
@@ -19,7 +13,7 @@ class Attribute1
 
     public function getProductGoodsNo()
     {
-        return $this->productGoodsNo;
+        return $this->params['productGoodsNo'];
     }
 
     public function setProductGoodsNo($productGoodsNo)
@@ -38,7 +32,7 @@ class Attribute1
 
     public function getProductIsvGoodsNo()
     {
-        return $this->productIsvGoodsNo;
+        return $this->params['productIsvGoodsNo'];
     }
 
     public function setProductIsvGoodsNo($productIsvGoodsNo)
@@ -48,7 +42,7 @@ class Attribute1
 
     public function getProductPlanQty()
     {
-        return $this->productPlanQty;
+        return $this->params['productPlanQty'];
     }
 
     public function setProductPlanQty($productPlanQty)
@@ -58,7 +52,7 @@ class Attribute1
 
     public function getFormulaId()
     {
-        return $this->formulaId;
+        return $this->params['formulaId'];
     }
 
     public function setFormulaId($formulaId)
@@ -68,7 +62,7 @@ class Attribute1
 
     public function getProductGoodsLevel()
     {
-        return $this->productGoodsLevel;
+        return $this->params['productGoodsLevel'];
     }
 
     public function setProductGoodsLevel($productGoodsLevel)

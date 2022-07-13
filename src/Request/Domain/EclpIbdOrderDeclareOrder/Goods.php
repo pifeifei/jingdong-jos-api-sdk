@@ -4,14 +4,7 @@ namespace ACES\Request\Domain\EclpIbdOrderDeclareOrder;
 
 class Goods
 {
-    private $params = [];
-    private $gnum;
-    private $isvGoodsNo;
-    private $spGoodsNo;
-    private $quantity;
-    private $price;
-    private $goodsRemark;
-    private $itemLink;
+    private array $params = [];
 
     public function __construct()
     {
@@ -20,7 +13,7 @@ class Goods
 
     public function getGnum()
     {
-        return $this->gnum;
+        return $this->params['gnum'];
     }
 
     public function setGnum($gnum)
@@ -30,7 +23,7 @@ class Goods
 
     public function getIsvGoodsNo()
     {
-        return $this->isvGoodsNo;
+        return $this->params['isvGoodsNo'];
     }
 
     public function setIsvGoodsNo($isvGoodsNo)
@@ -40,7 +33,7 @@ class Goods
 
     public function getSpGoodsNo()
     {
-        return $this->spGoodsNo;
+        return $this->params['spGoodsNo'];
     }
 
     public function setSpGoodsNo($spGoodsNo)
@@ -50,7 +43,7 @@ class Goods
 
     public function getQuantity()
     {
-        return $this->quantity;
+        return $this->params['quantity'];
     }
 
     public function setQuantity($quantity)
@@ -60,7 +53,7 @@ class Goods
 
     public function getPrice()
     {
-        return $this->price;
+        return $this->params['price'];
     }
 
     public function setPrice($price)
@@ -70,7 +63,7 @@ class Goods
 
     public function getGoodsRemark()
     {
-        return $this->goodsRemark;
+        return $this->params['goodsRemark'];
     }
 
     public function setGoodsRemark($goodsRemark)
@@ -80,7 +73,7 @@ class Goods
 
     public function getItemLink()
     {
-        return $this->itemLink;
+        return $this->params['itemLink'];
     }
 
     public function setItemLink($itemLink)

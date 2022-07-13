@@ -4,12 +4,8 @@ namespace ACES\Request\Domain\EclpSnowQualificationCreate;
 
 class Attr
 {
-    private $params = [];
-    private $licenseNo;
-    private $startTime;
-    private $endTime;
-    private $type;
-    private $businessScope;
+    private array $params = [];
+
 
     public function __construct()
     {
@@ -18,7 +14,7 @@ class Attr
 
     public function getLicenseNo()
     {
-        return $this->licenseNo;
+        return $this->params['licenseNo'];
     }
 
     public function setLicenseNo($licenseNo)
@@ -28,7 +24,7 @@ class Attr
 
     public function getStartTime()
     {
-        return $this->startTime;
+        return $this->params['startTime'];
     }
 
     public function setStartTime($startTime)
@@ -38,7 +34,7 @@ class Attr
 
     public function getEndTime()
     {
-        return $this->endTime;
+        return $this->params['endTime'];
     }
 
     public function setEndTime($endTime)
@@ -48,7 +44,7 @@ class Attr
 
     public function getType()
     {
-        return $this->type;
+        return $this->params['type'];
     }
 
     public function setType($type)
@@ -58,7 +54,7 @@ class Attr
 
     public function getBusinessScope()
     {
-        return $this->businessScope;
+        return $this->params['businessScope'];
     }
 
     public function setBusinessScope($businessScope)

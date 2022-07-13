@@ -5,7 +5,7 @@ namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 class Value
 {
     private $params = [];
-    private $customProperty;
+
 
     public function __construct()
     {
@@ -14,7 +14,7 @@ class Value
 
     public function getCustomProperty()
     {
-        return $this->customProperty;
+        return $this->params['customProperty'];
     }
 
     public function setCustomProperty($customProperty)

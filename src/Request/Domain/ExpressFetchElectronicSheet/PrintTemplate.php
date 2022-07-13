@@ -5,7 +5,6 @@ namespace ACES\Request\Domain\ExpressFetchElectronicSheet;
 class PrintTemplate
 {
     private $params = [];
-    private $paperSize;
 
     public function __construct()
     {
@@ -14,7 +13,7 @@ class PrintTemplate
 
     public function getPaperSize()
     {
-        return $this->paperSize;
+        return $this->params['paperSize'];
     }
 
     public function setPaperSize($paperSize)

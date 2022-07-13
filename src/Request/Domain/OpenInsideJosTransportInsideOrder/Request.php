@@ -4,21 +4,7 @@ namespace ACES\Request\Domain\OpenInsideJosTransportInsideOrder;
 
 class Request
 {
-    private $params = [];
-    private $ediRemark;
-    private $isvTime;
-    private $remark;
-    private $sourceDeptNo;
-    private $sellerBizType;
-    private $isvNo;
-    private $lackType;
-    private $targetDeptNo;
-    private $bizType;
-    private $tid;
-    private $sellerNo;
-    private $user;
-    private $warehouseNo;
-    private $insideItemRequestList;
+    private array $params = [];
 
     public function __construct()
     {
@@ -27,7 +13,7 @@ class Request
 
     public function getEdiRemark()
     {
-        return $this->ediRemark;
+        return $this->params['ediRemark'];
     }
 
     public function setEdiRemark($ediRemark)
@@ -37,7 +23,7 @@ class Request
 
     public function getIsvTime()
     {
-        return $this->isvTime;
+        return $this->params['isvTime'];
     }
 
     public function setIsvTime($isvTime)
@@ -47,7 +33,7 @@ class Request
 
     public function getRemark()
     {
-        return $this->remark;
+        return $this->params['remark'];
     }
 
     public function setRemark($remark)
@@ -57,7 +43,7 @@ class Request
 
     public function getSourceDeptNo()
     {
-        return $this->sourceDeptNo;
+        return $this->params['sourceDeptNo'];
     }
 
     public function setSourceDeptNo($sourceDeptNo)
@@ -67,7 +53,7 @@ class Request
 
     public function getSellerBizType()
     {
-        return $this->sellerBizType;
+        return $this->params['sellerBizType'];
     }
 
     public function setSellerBizType($sellerBizType)
@@ -77,7 +63,7 @@ class Request
 
     public function getIsvNo()
     {
-        return $this->isvNo;
+        return $this->params['isvNo'];
     }
 
     public function setIsvNo($isvNo)
@@ -87,7 +73,7 @@ class Request
 
     public function getLackType()
     {
-        return $this->lackType;
+        return $this->params['lackType'];
     }
 
     public function setLackType($lackType)
@@ -97,7 +83,7 @@ class Request
 
     public function getTargetDeptNo()
     {
-        return $this->targetDeptNo;
+        return $this->params['targetDeptNo'];
     }
 
     public function setTargetDeptNo($targetDeptNo)
@@ -107,7 +93,7 @@ class Request
 
     public function getBizType()
     {
-        return $this->bizType;
+        return $this->params['bizType'];
     }
 
     public function setBizType($bizType)
@@ -117,7 +103,7 @@ class Request
 
     public function getTid()
     {
-        return $this->tid;
+        return $this->params['tid'];
     }
 
     public function setTid($tid)
@@ -127,7 +113,7 @@ class Request
 
     public function getSellerNo()
     {
-        return $this->sellerNo;
+        return $this->params['sellerNo'];
     }
 
     public function setSellerNo($sellerNo)
@@ -137,7 +123,7 @@ class Request
 
     public function getUser()
     {
-        return $this->user;
+        return $this->params['user'];
     }
 
     public function setUser($user)
@@ -147,7 +133,7 @@ class Request
 
     public function getWarehouseNo()
     {
-        return $this->warehouseNo;
+        return $this->params['warehouseNo'];
     }
 
     public function setWarehouseNo($warehouseNo)

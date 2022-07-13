@@ -4,19 +4,7 @@ namespace ACES\Request\Domain\OpenInsideJosTransportInsideOrder;
 
 class Attribute1
 {
-    private $params = [];
-    private $sourceLogicStock;
-    private $targetLogicStock;
-    private $sourceEclpGoodsNo;
-    private $planNum;
-    private $sourceGoodsLevel;
-    private $targetEclpGoodsNo;
-    private $sourceBatchMap;
-    private $orderLine;
-    private $targetBatchMap;
-    private $isvGoodsNo;
-    private $targetIsvGoodsNo;
-    private $targetGoodsLevel;
+    private array $params = [];
 
     public function __construct()
     {
@@ -25,7 +13,7 @@ class Attribute1
 
     public function getSourceLogicStock()
     {
-        return $this->sourceLogicStock;
+        return $this->params['sourceLogicStock'];
     }
 
     public function setSourceLogicStock($sourceLogicStock)
@@ -35,7 +23,7 @@ class Attribute1
 
     public function getTargetLogicStock()
     {
-        return $this->targetLogicStock;
+        return $this->params['targetLogicStock'];
     }
 
     public function setTargetLogicStock($targetLogicStock)
@@ -45,7 +33,7 @@ class Attribute1
 
     public function getSourceEclpGoodsNo()
     {
-        return $this->sourceEclpGoodsNo;
+        return $this->params['sourceEclpGoodsNo'];
     }
 
     public function setSourceEclpGoodsNo($sourceEclpGoodsNo)
@@ -55,7 +43,7 @@ class Attribute1
 
     public function getPlanNum()
     {
-        return $this->planNum;
+        return $this->params['planNum'];
     }
 
     public function setPlanNum($planNum)
@@ -65,7 +53,7 @@ class Attribute1
 
     public function getSourceGoodsLevel()
     {
-        return $this->sourceGoodsLevel;
+        return $this->params['sourceGoodsLevel'];
     }
 
     public function setSourceGoodsLevel($sourceGoodsLevel)
@@ -75,7 +63,7 @@ class Attribute1
 
     public function getTargetEclpGoodsNo()
     {
-        return $this->targetEclpGoodsNo;
+        return $this->params['targetEclpGoodsNo'];
     }
 
     public function setTargetEclpGoodsNo($targetEclpGoodsNo)
@@ -90,7 +78,7 @@ class Attribute1
 
     public function getOrderLine()
     {
-        return $this->orderLine;
+        return $this->params['orderLine'];
     }
 
     public function setOrderLine($orderLine)
@@ -105,7 +93,7 @@ class Attribute1
 
     public function getIsvGoodsNo()
     {
-        return $this->isvGoodsNo;
+        return $this->params['isvGoodsNo'];
     }
 
     public function setIsvGoodsNo($isvGoodsNo)
@@ -115,7 +103,7 @@ class Attribute1
 
     public function getTargetIsvGoodsNo()
     {
-        return $this->targetIsvGoodsNo;
+        return $this->params['targetIsvGoodsNo'];
     }
 
     public function setTargetIsvGoodsNo($targetIsvGoodsNo)
@@ -125,7 +113,7 @@ class Attribute1
 
     public function getTargetGoodsLevel()
     {
-        return $this->targetGoodsLevel;
+        return $this->params['targetGoodsLevel'];
     }
 
     public function setTargetGoodsLevel($targetGoodsLevel)

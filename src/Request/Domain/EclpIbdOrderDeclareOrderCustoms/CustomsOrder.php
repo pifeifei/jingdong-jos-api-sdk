@@ -5,97 +5,6 @@ namespace ACES\Request\Domain\EclpIbdOrderDeclareOrderCustoms;
 class CustomsOrder
 {
     private $params = [];
-    private $isvUUID;
-    private $isvSource;
-    private $platformId;
-    private $platformName;
-    private $platformType;
-    private $spSoNo;
-    private $deptNo;
-    private $inJdwms;
-    private $salesPlatformCreateTime;
-    private $consigneeName;
-    private $consigneeMobile;
-    private $consigneePhone;
-    private $consigneeEmail;
-    private $consigneeAddress;
-    private $consigneePostcode;
-    private $consigneeCountry;
-    private $addressProvince;
-    private $addressCity;
-    private $addressCounty;
-    private $addressTown;
-    private $declareOrder;
-    private $ccProvider;
-    private $ccProviderName;
-    private $postType;
-    private $pattern;
-    private $customs;
-    private $ebpCode;
-    private $ebpName;
-    private $ebcCode;
-    private $ebcName;
-    private $delivery;
-    private $discount;
-    private $discountNote;
-    private $istax;
-    private $taxTotal;
-    private $freight;
-    private $otherPrice;
-    private $goodsValue;
-    private $weight;
-    private $netWeight;
-    private $batchNumbers;
-    private $buyerRegNo;
-    private $buyerPhone;
-    private $buyerName;
-    private $buyerIdType;
-    private $buyerIdNumber;
-    private $senderName;
-    private $senderCompanyName;
-    private $senderCountry;
-    private $senderZip;
-    private $senderCity;
-    private $senderProvince;
-    private $senderTel;
-    private $senderAddr;
-    private $customsRemark;
-    private $declarePaymentList;
-    private $paymentType;
-    private $payCode;
-    private $payName;
-    private $payTransactionId;
-    private $currency;
-    private $paymentConfirmTime;
-    private $shouldPay;
-    private $receiveNo;
-    private $payRemark;
-    private $declareWaybill;
-    private $logisticsCode;
-    private $logisticsName;
-    private $bdOwnerNo;
-    private $logisticsNo;
-    private $packNo;
-    private $logisticsRemark;
-    private $isDelivery;
-    private $receivable;
-    private $consigneeRemark;
-    private $insuredPriceFlag;
-    private $insuredValue;
-    private $insuredFee;
-    private $shopNo;
-    private $isSupervise;
-    private $initalRequest;
-    private $initalResponse;
-    private $payTransactionIdYh;
-    private $isvParentId;
-    private $isvOrderIdList;
-    private $totalAmount;
-    private $verDept;
-    private $payType;
-    private $recpAccount;
-    private $recpCode;
-    private $recpName;
 
     public function __construct()
     {
@@ -104,7 +13,7 @@ class CustomsOrder
 
     public function getIsvUUID()
     {
-        return $this->isvUUID;
+        return $this->params['isvUUID'];
     }
 
     public function setIsvUUID($isvUUID)
@@ -114,7 +23,7 @@ class CustomsOrder
 
     public function getIsvSource()
     {
-        return $this->isvSource;
+        return $this->params['isvSource'];
     }
 
     public function setIsvSource($isvSource)
@@ -124,7 +33,7 @@ class CustomsOrder
 
     public function getPlatformId()
     {
-        return $this->platformId;
+        return $this->params['platformId'];
     }
 
     public function setPlatformId($platformId)
@@ -134,7 +43,7 @@ class CustomsOrder
 
     public function getPlatformName()
     {
-        return $this->platformName;
+        return $this->params['platformName'];
     }
 
     public function setPlatformName($platformName)
@@ -144,7 +53,7 @@ class CustomsOrder
 
     public function getPlatformType()
     {
-        return $this->platformType;
+        return $this->params['platformType'];
     }
 
     public function setPlatformType($platformType)
@@ -154,7 +63,7 @@ class CustomsOrder
 
     public function getSpSoNo()
     {
-        return $this->spSoNo;
+        return $this->params['spSoNo'];
     }
 
     public function setSpSoNo($spSoNo)
@@ -164,7 +73,7 @@ class CustomsOrder
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->params['deptNo'];
     }
 
     public function setDeptNo($deptNo)
@@ -174,7 +83,7 @@ class CustomsOrder
 
     public function getInJdwms()
     {
-        return $this->inJdwms;
+        return $this->params['inJdwms'];
     }
 
     public function setInJdwms($inJdwms)
@@ -184,7 +93,7 @@ class CustomsOrder
 
     public function getSalesPlatformCreateTime()
     {
-        return $this->salesPlatformCreateTime;
+        return $this->params['salesPlatformCreateTime'];
     }
 
     public function setSalesPlatformCreateTime($salesPlatformCreateTime)
@@ -194,7 +103,7 @@ class CustomsOrder
 
     public function getConsigneeName()
     {
-        return $this->consigneeName;
+        return $this->params['consigneeName'];
     }
 
     public function setConsigneeName($consigneeName)
@@ -204,7 +113,7 @@ class CustomsOrder
 
     public function getConsigneeMobile()
     {
-        return $this->consigneeMobile;
+        return $this->params['consigneeMobile'];
     }
 
     public function setConsigneeMobile($consigneeMobile)
@@ -214,7 +123,7 @@ class CustomsOrder
 
     public function getConsigneePhone()
     {
-        return $this->consigneePhone;
+        return $this->params['consigneePhone'];
     }
 
     public function setConsigneePhone($consigneePhone)
@@ -224,7 +133,7 @@ class CustomsOrder
 
     public function getConsigneeEmail()
     {
-        return $this->consigneeEmail;
+        return $this->params['consigneeEmail'];
     }
 
     public function setConsigneeEmail($consigneeEmail)
@@ -234,7 +143,7 @@ class CustomsOrder
 
     public function getConsigneeAddress()
     {
-        return $this->consigneeAddress;
+        return $this->params['consigneeAddress'];
     }
 
     public function setConsigneeAddress($consigneeAddress)
@@ -244,7 +153,7 @@ class CustomsOrder
 
     public function getConsigneePostcode()
     {
-        return $this->consigneePostcode;
+        return $this->params['consigneePostcode'];
     }
 
     public function setConsigneePostcode($consigneePostcode)
@@ -254,7 +163,7 @@ class CustomsOrder
 
     public function getConsigneeCountry()
     {
-        return $this->consigneeCountry;
+        return $this->params['consigneeCountry'];
     }
 
     public function setConsigneeCountry($consigneeCountry)
@@ -264,7 +173,7 @@ class CustomsOrder
 
     public function getAddressProvince()
     {
-        return $this->addressProvince;
+        return $this->params['addressProvince'];
     }
 
     public function setAddressProvince($addressProvince)
@@ -274,7 +183,7 @@ class CustomsOrder
 
     public function getAddressCity()
     {
-        return $this->addressCity;
+        return $this->params['addressCity'];
     }
 
     public function setAddressCity($addressCity)
@@ -284,7 +193,7 @@ class CustomsOrder
 
     public function getAddressCounty()
     {
-        return $this->addressCounty;
+        return $this->params['addressCounty'];
     }
 
     public function setAddressCounty($addressCounty)
@@ -294,7 +203,7 @@ class CustomsOrder
 
     public function getAddressTown()
     {
-        return $this->addressTown;
+        return $this->params['addressTown'];
     }
 
     public function setAddressTown($addressTown)
@@ -304,7 +213,7 @@ class CustomsOrder
 
     public function getDeclareOrder()
     {
-        return $this->declareOrder;
+        return $this->params['declareOrder'];
     }
 
     public function setDeclareOrder($declareOrder)
@@ -314,7 +223,7 @@ class CustomsOrder
 
     public function getCcProvider()
     {
-        return $this->ccProvider;
+        return $this->params['ccProvider'];
     }
 
     public function setCcProvider($ccProvider)
@@ -324,7 +233,7 @@ class CustomsOrder
 
     public function getCcProviderName()
     {
-        return $this->ccProviderName;
+        return $this->params['ccProviderName'];
     }
 
     public function setCcProviderName($ccProviderName)
@@ -334,7 +243,7 @@ class CustomsOrder
 
     public function getPostType()
     {
-        return $this->postType;
+        return $this->params['postType'];
     }
 
     public function setPostType($postType)
@@ -344,7 +253,7 @@ class CustomsOrder
 
     public function getPattern()
     {
-        return $this->pattern;
+        return $this->params['pattern'];
     }
 
     public function setPattern($pattern)
@@ -354,7 +263,7 @@ class CustomsOrder
 
     public function getCustoms()
     {
-        return $this->customs;
+        return $this->params['customs'];
     }
 
     public function setCustoms($customs)
@@ -364,7 +273,7 @@ class CustomsOrder
 
     public function getEbpCode()
     {
-        return $this->ebpCode;
+        return $this->params['ebpCode'];
     }
 
     public function setEbpCode($ebpCode)
@@ -374,7 +283,7 @@ class CustomsOrder
 
     public function getEbpName()
     {
-        return $this->ebpName;
+        return $this->params['ebpName'];
     }
 
     public function setEbpName($ebpName)
@@ -384,7 +293,7 @@ class CustomsOrder
 
     public function getEbcCode()
     {
-        return $this->ebcCode;
+        return $this->params['ebcCode'];
     }
 
     public function setEbcCode($ebcCode)
@@ -394,7 +303,7 @@ class CustomsOrder
 
     public function getEbcName()
     {
-        return $this->ebcName;
+        return $this->params['ebcName'];
     }
 
     public function setEbcName($ebcName)
@@ -404,7 +313,7 @@ class CustomsOrder
 
     public function getDelivery()
     {
-        return $this->delivery;
+        return $this->params['delivery'];
     }
 
     public function setDelivery($delivery)
@@ -414,7 +323,7 @@ class CustomsOrder
 
     public function getDiscount()
     {
-        return $this->discount;
+        return $this->params['discount'];
     }
 
     public function setDiscount($discount)
@@ -424,7 +333,7 @@ class CustomsOrder
 
     public function getDiscountNote()
     {
-        return $this->discountNote;
+        return $this->params['discountNote'];
     }
 
     public function setDiscountNote($discountNote)
@@ -434,7 +343,7 @@ class CustomsOrder
 
     public function getIstax()
     {
-        return $this->istax;
+        return $this->params['istax'];
     }
 
     public function setIstax($istax)
@@ -444,7 +353,7 @@ class CustomsOrder
 
     public function getTaxTotal()
     {
-        return $this->taxTotal;
+        return $this->params['taxTotal'];
     }
 
     public function setTaxTotal($taxTotal)
@@ -454,7 +363,7 @@ class CustomsOrder
 
     public function getFreight()
     {
-        return $this->freight;
+        return $this->params['freight'];
     }
 
     public function setFreight($freight)
@@ -464,7 +373,7 @@ class CustomsOrder
 
     public function getOtherPrice()
     {
-        return $this->otherPrice;
+        return $this->params['otherPrice'];
     }
 
     public function setOtherPrice($otherPrice)
@@ -474,7 +383,7 @@ class CustomsOrder
 
     public function getGoodsValue()
     {
-        return $this->goodsValue;
+        return $this->params['goodsValue'];
     }
 
     public function setGoodsValue($goodsValue)
@@ -484,7 +393,7 @@ class CustomsOrder
 
     public function getWeight()
     {
-        return $this->weight;
+        return $this->params['weight'];
     }
 
     public function setWeight($weight)
@@ -494,7 +403,7 @@ class CustomsOrder
 
     public function getNetWeight()
     {
-        return $this->netWeight;
+        return $this->params['netWeight'];
     }
 
     public function setNetWeight($netWeight)
@@ -504,7 +413,7 @@ class CustomsOrder
 
     public function getBatchNumbers()
     {
-        return $this->batchNumbers;
+        return $this->params['batchNumbers'];
     }
 
     public function setBatchNumbers($batchNumbers)
@@ -514,7 +423,7 @@ class CustomsOrder
 
     public function getBuyerRegNo()
     {
-        return $this->buyerRegNo;
+        return $this->params['buyerRegNo'];
     }
 
     public function setBuyerRegNo($buyerRegNo)
@@ -524,7 +433,7 @@ class CustomsOrder
 
     public function getBuyerPhone()
     {
-        return $this->buyerPhone;
+        return $this->params['buyerPhone'];
     }
 
     public function setBuyerPhone($buyerPhone)
@@ -534,7 +443,7 @@ class CustomsOrder
 
     public function getBuyerName()
     {
-        return $this->buyerName;
+        return $this->params['buyerName'];
     }
 
     public function setBuyerName($buyerName)
@@ -544,7 +453,7 @@ class CustomsOrder
 
     public function getBuyerIdType()
     {
-        return $this->buyerIdType;
+        return $this->params['buyerIdType'];
     }
 
     public function setBuyerIdType($buyerIdType)
@@ -554,7 +463,7 @@ class CustomsOrder
 
     public function getBuyerIdNumber()
     {
-        return $this->buyerIdNumber;
+        return $this->params['buyerIdNumber'];
     }
 
     public function setBuyerIdNumber($buyerIdNumber)
@@ -564,7 +473,7 @@ class CustomsOrder
 
     public function getSenderName()
     {
-        return $this->senderName;
+        return $this->params['senderName'];
     }
 
     public function setSenderName($senderName)
@@ -574,7 +483,7 @@ class CustomsOrder
 
     public function getSenderCompanyName()
     {
-        return $this->senderCompanyName;
+        return $this->params['senderCompanyName'];
     }
 
     public function setSenderCompanyName($senderCompanyName)
@@ -584,7 +493,7 @@ class CustomsOrder
 
     public function getSenderCountry()
     {
-        return $this->senderCountry;
+        return $this->params['senderCountry'];
     }
 
     public function setSenderCountry($senderCountry)
@@ -594,7 +503,7 @@ class CustomsOrder
 
     public function getSenderZip()
     {
-        return $this->senderZip;
+        return $this->params['senderZip'];
     }
 
     public function setSenderZip($senderZip)
@@ -604,7 +513,7 @@ class CustomsOrder
 
     public function getSenderCity()
     {
-        return $this->senderCity;
+        return $this->params['senderCity'];
     }
 
     public function setSenderCity($senderCity)
@@ -614,7 +523,7 @@ class CustomsOrder
 
     public function getSenderProvince()
     {
-        return $this->senderProvince;
+        return $this->params['senderProvince'];
     }
 
     public function setSenderProvince($senderProvince)
@@ -624,7 +533,7 @@ class CustomsOrder
 
     public function getSenderTel()
     {
-        return $this->senderTel;
+        return $this->params['senderTel'];
     }
 
     public function setSenderTel($senderTel)
@@ -634,7 +543,7 @@ class CustomsOrder
 
     public function getSenderAddr()
     {
-        return $this->senderAddr;
+        return $this->params['senderAddr'];
     }
 
     public function setSenderAddr($senderAddr)
@@ -644,7 +553,7 @@ class CustomsOrder
 
     public function getCustomsRemark()
     {
-        return $this->customsRemark;
+        return $this->params['customsRemark'];
     }
 
     public function setCustomsRemark($customsRemark)
@@ -654,7 +563,7 @@ class CustomsOrder
 
     public function getDeclarePaymentList()
     {
-        return $this->declarePaymentList;
+        return $this->params['declarePaymentList'];
     }
 
     public function setDeclarePaymentList($declarePaymentList)
@@ -664,7 +573,7 @@ class CustomsOrder
 
     public function getPaymentType()
     {
-        return $this->paymentType;
+        return $this->params['paymentType'];
     }
 
     public function setPaymentType($paymentType)
@@ -674,7 +583,7 @@ class CustomsOrder
 
     public function getPayCode()
     {
-        return $this->payCode;
+        return $this->params['payCode'];
     }
 
     public function setPayCode($payCode)
@@ -684,7 +593,7 @@ class CustomsOrder
 
     public function getPayName()
     {
-        return $this->payName;
+        return $this->params['payName'];
     }
 
     public function setPayName($payName)
@@ -694,7 +603,7 @@ class CustomsOrder
 
     public function getPayTransactionId()
     {
-        return $this->payTransactionId;
+        return $this->params['payTransactionId'];
     }
 
     public function setPayTransactionId($payTransactionId)
@@ -704,7 +613,7 @@ class CustomsOrder
 
     public function getCurrency()
     {
-        return $this->currency;
+        return $this->params['currency'];
     }
 
     public function setCurrency($currency)
@@ -714,7 +623,7 @@ class CustomsOrder
 
     public function getPaymentConfirmTime()
     {
-        return $this->paymentConfirmTime;
+        return $this->params['paymentConfirmTime'];
     }
 
     public function setPaymentConfirmTime($paymentConfirmTime)
@@ -724,7 +633,7 @@ class CustomsOrder
 
     public function getShouldPay()
     {
-        return $this->shouldPay;
+        return $this->params['shouldPay'];
     }
 
     public function setShouldPay($shouldPay)
@@ -734,7 +643,7 @@ class CustomsOrder
 
     public function getReceiveNo()
     {
-        return $this->receiveNo;
+        return $this->params['receiveNo'];
     }
 
     public function setReceiveNo($receiveNo)
@@ -744,7 +653,7 @@ class CustomsOrder
 
     public function getPayRemark()
     {
-        return $this->payRemark;
+        return $this->params['payRemark'];
     }
 
     public function setPayRemark($payRemark)
@@ -754,7 +663,7 @@ class CustomsOrder
 
     public function getDeclareWaybill()
     {
-        return $this->declareWaybill;
+        return $this->params['declareWaybill'];
     }
 
     public function setDeclareWaybill($declareWaybill)
@@ -764,7 +673,7 @@ class CustomsOrder
 
     public function getLogisticsCode()
     {
-        return $this->logisticsCode;
+        return $this->params['logisticsCode'];
     }
 
     public function setLogisticsCode($logisticsCode)
@@ -774,7 +683,7 @@ class CustomsOrder
 
     public function getLogisticsName()
     {
-        return $this->logisticsName;
+        return $this->params['logisticsName'];
     }
 
     public function setLogisticsName($logisticsName)
@@ -784,7 +693,7 @@ class CustomsOrder
 
     public function getBdOwnerNo()
     {
-        return $this->bdOwnerNo;
+        return $this->params['bdOwnerNo'];
     }
 
     public function setBdOwnerNo($bdOwnerNo)
@@ -794,7 +703,7 @@ class CustomsOrder
 
     public function getLogisticsNo()
     {
-        return $this->logisticsNo;
+        return $this->params['logisticsNo'];
     }
 
     public function setLogisticsNo($logisticsNo)
@@ -804,7 +713,7 @@ class CustomsOrder
 
     public function getPackNo()
     {
-        return $this->packNo;
+        return $this->params['packNo'];
     }
 
     public function setPackNo($packNo)
@@ -814,7 +723,7 @@ class CustomsOrder
 
     public function getLogisticsRemark()
     {
-        return $this->logisticsRemark;
+        return $this->params['logisticsRemark'];
     }
 
     public function setLogisticsRemark($logisticsRemark)
@@ -824,7 +733,7 @@ class CustomsOrder
 
     public function getIsDelivery()
     {
-        return $this->isDelivery;
+        return $this->params['isDelivery'];
     }
 
     public function setIsDelivery($isDelivery)
@@ -834,7 +743,7 @@ class CustomsOrder
 
     public function getReceivable()
     {
-        return $this->receivable;
+        return $this->params['receivable'];
     }
 
     public function setReceivable($receivable)
@@ -844,7 +753,7 @@ class CustomsOrder
 
     public function getConsigneeRemark()
     {
-        return $this->consigneeRemark;
+        return $this->params['consigneeRemark'];
     }
 
     public function setConsigneeRemark($consigneeRemark)
@@ -854,7 +763,7 @@ class CustomsOrder
 
     public function getInsuredPriceFlag()
     {
-        return $this->insuredPriceFlag;
+        return $this->params['insuredPriceFlag'];
     }
 
     public function setInsuredPriceFlag($insuredPriceFlag)
@@ -864,7 +773,7 @@ class CustomsOrder
 
     public function getInsuredValue()
     {
-        return $this->insuredValue;
+        return $this->params['insuredValue'];
     }
 
     public function setInsuredValue($insuredValue)
@@ -874,7 +783,7 @@ class CustomsOrder
 
     public function getInsuredFee()
     {
-        return $this->insuredFee;
+        return $this->params['insuredFee'];
     }
 
     public function setInsuredFee($insuredFee)
@@ -884,7 +793,7 @@ class CustomsOrder
 
     public function getShopNo()
     {
-        return $this->shopNo;
+        return $this->params['shopNo'];
     }
 
     public function setShopNo($shopNo)
@@ -894,7 +803,7 @@ class CustomsOrder
 
     public function getIsSupervise()
     {
-        return $this->isSupervise;
+        return $this->params['isSupervise'];
     }
 
     public function setIsSupervise($isSupervise)
@@ -904,7 +813,7 @@ class CustomsOrder
 
     public function getInitalRequest()
     {
-        return $this->initalRequest;
+        return $this->params['initalRequest'];
     }
 
     public function setInitalRequest($initalRequest)
@@ -914,7 +823,7 @@ class CustomsOrder
 
     public function getInitalResponse()
     {
-        return $this->initalResponse;
+        return $this->params['initalResponse'];
     }
 
     public function setInitalResponse($initalResponse)
@@ -924,7 +833,7 @@ class CustomsOrder
 
     public function getPayTransactionIdYh()
     {
-        return $this->payTransactionIdYh;
+        return $this->params['payTransactionIdYh'];
     }
 
     public function setPayTransactionIdYh($payTransactionIdYh)
@@ -934,7 +843,7 @@ class CustomsOrder
 
     public function getIsvParentId()
     {
-        return $this->isvParentId;
+        return $this->params['isvParentId'];
     }
 
     public function setIsvParentId($isvParentId)
@@ -944,7 +853,7 @@ class CustomsOrder
 
     public function getIsvOrderIdList()
     {
-        return $this->isvOrderIdList;
+        return $this->params['isvOrderIdList'];
     }
 
     public function setIsvOrderIdList($isvOrderIdList)
@@ -954,7 +863,7 @@ class CustomsOrder
 
     public function getTotalAmount()
     {
-        return $this->totalAmount;
+        return $this->params['totalAmount'];
     }
 
     public function setTotalAmount($totalAmount)
@@ -964,7 +873,7 @@ class CustomsOrder
 
     public function getVerDept()
     {
-        return $this->verDept;
+        return $this->params['verDept'];
     }
 
     public function setVerDept($verDept)
@@ -974,7 +883,7 @@ class CustomsOrder
 
     public function getPayType()
     {
-        return $this->payType;
+        return $this->params['payType'];
     }
 
     public function setPayType($payType)
@@ -984,7 +893,7 @@ class CustomsOrder
 
     public function getRecpAccount()
     {
-        return $this->recpAccount;
+        return $this->params['recpAccount'];
     }
 
     public function setRecpAccount($recpAccount)
@@ -994,7 +903,7 @@ class CustomsOrder
 
     public function getRecpCode()
     {
-        return $this->recpCode;
+        return $this->params['recpCode'];
     }
 
     public function setRecpCode($recpCode)
@@ -1004,7 +913,7 @@ class CustomsOrder
 
     public function getRecpName()
     {
-        return $this->recpName;
+        return $this->params['recpName'];
     }
 
     public function setRecpName($recpName)

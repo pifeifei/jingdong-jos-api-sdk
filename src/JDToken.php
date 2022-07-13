@@ -5,7 +5,6 @@ namespace ACES;
 use ACES\Exceptions\JingdongException;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
-use stdClass;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Psr16Cache;
 
@@ -64,7 +63,7 @@ class JDToken
 
     public function getKey(): string
     {
-        return $this->key ?? $this->key = \sprintf('access_token.%s.%s', $this->getAppKey(), $this->getAppSecret());
+        return $this->key ?? $this->key = \sprintf('jd_jos_aces_access_token.%s.%s', $this->getAppKey(), $this->getAppSecret());
     }
 
     /**
@@ -131,13 +130,14 @@ class JDToken
      */
     protected function getQueryCode(): string
     {
-        return http_build_query([
+        $query = [
             'app_key' => $this->getAppKey(),
             'response_type' => 'code',
             'redirect_uri' => $this->getRedirectUrl(),
             'state' => date('Ymd'), //$this->getAppKey(),
             'scope' => 'snsapi_base'
-        ]);
+        ];
+        return http_build_query($query);
     }
 
     protected function getAccessTokenCodeUrl(): string
@@ -241,6 +241,7 @@ class JDToken
      */
     public function getCache()
     {
+        /** @phpstan-ignore-next-line */
         if ($this->cache) {
             return $this->cache;
         }

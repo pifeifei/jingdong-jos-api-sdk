@@ -1,20 +1,25 @@
 {
     "name" : "pifeifei/jingdong-jos-api-sdk",
-    "description": "aces php sdk",
+    "description": "jingdong aces php sdk",
+    "keywords": [
+        "jingdong",
+        "api",
+        "jos",
+        "sdk"
+    ],
     "type" : "library",
-    "version": "1.0.0",
-    "config" : {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
     "autoload" : {
         "psr-4" : {
             "ACES\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ACESTest": "tests"
+        }
+    },
     "require" : {
-        "php": "^7.2|^8.0",
+        "php": "^7.4|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-openssl": "*",
@@ -27,11 +32,23 @@
         "symfony/cache": "^5.4|^6.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpstan/phpstan": "^1.8",
         "symfony/finder": "^5.4|^6.0",
         "symfony/var-dumper": "^5.4|^6.0"
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse --memory-limit=-1",
+        "check-style": "php-cs-fixer fix --using-cache=no --diff --dry-run --allow-risky=yes --ansi",
+        "fix-style": "php-cs-fixer fix --using-cache=no --allow-risky=yes --ansi"
     },
     "suggests": {
         "ext-mysqli": "连 MySQL",
         "ext-sqlite": "sqlite3"
+    },
+    "config" : {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }

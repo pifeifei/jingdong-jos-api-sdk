@@ -19,6 +19,11 @@ class JdClient
 
     protected JDToken $accessToken;
 
+    /**
+     * @var array{appKey: string, appSecret: string, redirectUrl: string, isvSource: string|null, shopNo: string|null, departmentNo: string|null, monthlyAccount: string|null}
+     */
+    protected array $config;
+
     protected string $appKey;
 
     protected string $appSecret;
@@ -39,11 +44,24 @@ class JdClient
 
     protected Client $client;
 
-    public function __construct($appKey, $appSecret, $redirectUrl)
+    /**
+     * @param array|string $appKey
+     * @param ?string $appSecret
+     * @param ?string $redirectUrl
+     */
+    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null)
     {
-        $this->appKey = $appKey;
-        $this->appSecret = $appSecret;
-        $this->redirectUrl = $redirectUrl;
+        if (is_array($appKey)) {
+            $this->config = $appKey;
+        } else {
+            $this->config = [
+                'appKey' => '', 'appSecret' => '', 'redirectUrl' => '',
+                'isvSource' => null, 'shopNo' => null, 'departmentNo' => null, 'monthlyAccount' => null
+            ];
+            $this->config['appKey'] = $appKey;
+            $this->config['appSecret'] = $appSecret;
+            $this->config['redirectUrl'] = $redirectUrl;
+        }
         $this->accessToken = new JDToken($this);
 
         $options = [
@@ -68,7 +86,7 @@ class JdClient
      */
     public function getAppKey(): string
     {
-        return $this->appKey;
+        return $this->config['appKey'];
     }
 
     /**
@@ -76,7 +94,7 @@ class JdClient
      */
     public function getAppSecret(): string
     {
-        return $this->appSecret;
+        return $this->config['appSecret'];
     }
 
     /**
@@ -84,8 +102,41 @@ class JdClient
      */
     public function getRedirectUrl(): string
     {
-        return $this->redirectUrl;
+        return $this->config['redirectUrl'];
     }
+
+    /**
+     * @return string|null
+     */
+    public function getIsvSource(): ?string
+    {
+        return $this->config['isvSource'];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShopNo(): ?string
+    {
+        return $this->config['shopNo'];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDepartmentNo(): ?string
+    {
+        return $this->config['departmentNo'];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMonthlyAccount(): ?string
+    {
+        return $this->config['monthlyAccount'];
+    }
+
 
     /**
      * @return string

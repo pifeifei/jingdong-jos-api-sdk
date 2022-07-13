@@ -4,7 +4,7 @@ namespace ACES\Request\Domain\ServiceOrderQueryList;
 
 class ServiceApiRequest
 {
-    private $params = [];
+    private array $params = [];
 
     public function __construct()
     {

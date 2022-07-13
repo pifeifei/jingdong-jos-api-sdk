@@ -4,14 +4,7 @@ namespace ACES\Request\Domain\EclpSnowQualificationCreate;
 
 class Request
 {
-    private $params = [];
-    private $deptNo;
-    private $supplierNo;
-    private $classification;
-    private $customerNo;
-    private $licenses;
-    private $goodsNo;
-    private $type;
+    private array $params = [];
 
     public function __construct()
     {
@@ -20,7 +13,7 @@ class Request
 
     public function getDeptNo()
     {
-        return $this->deptNo;
+        return $this->params['deptNo'];
     }
 
     public function setDeptNo($deptNo)
@@ -30,7 +23,7 @@ class Request
 
     public function getSupplierNo()
     {
-        return $this->supplierNo;
+        return $this->params['supplierNo'];
     }
 
     public function setSupplierNo($supplierNo)
@@ -40,7 +33,7 @@ class Request
 
     public function getClassification()
     {
-        return $this->classification;
+        return $this->params['classification'];
     }
 
     public function setClassification($classification)
@@ -50,7 +43,7 @@ class Request
 
     public function getCustomerNo()
     {
-        return $this->customerNo;
+        return $this->params['customerNo'];
     }
 
     public function setCustomerNo($customerNo)
@@ -69,7 +62,7 @@ class Request
 
     public function getGoodsNo()
     {
-        return $this->goodsNo;
+        return $this->params['goodsNo'];
     }
 
     public function setGoodsNo($goodsNo)
@@ -79,7 +72,7 @@ class Request
 
     public function getType()
     {
-        return $this->type;
+        return $this->params['type'];
     }
 
     public function setType($type)

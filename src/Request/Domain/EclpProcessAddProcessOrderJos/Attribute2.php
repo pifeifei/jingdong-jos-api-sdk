@@ -4,11 +4,7 @@ namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
 class Attribute2
 {
-    private $params = [];
-    private $materialGoodsNo;
-    private $materialGoodsLevel;
-    private $materialIsvGoodsNo;
-    private $materialPlanQty;
+    private array $params = [];
 
     public function __construct()
     {
@@ -17,7 +13,7 @@ class Attribute2
 
     public function getMaterialGoodsNo()
     {
-        return $this->materialGoodsNo;
+        return $this->params['materialGoodsNo'];
     }
 
     public function setMaterialGoodsNo($materialGoodsNo)
@@ -27,7 +23,7 @@ class Attribute2
 
     public function getMaterialGoodsLevel()
     {
-        return $this->materialGoodsLevel;
+        return $this->params['materialGoodsLevel'];
     }
 
     public function setMaterialGoodsLevel($materialGoodsLevel)
@@ -37,7 +33,7 @@ class Attribute2
 
     public function getMaterialIsvGoodsNo()
     {
-        return $this->materialIsvGoodsNo;
+        return $this->params['materialIsvGoodsNo'];
     }
 
     public function setMaterialIsvGoodsNo($materialIsvGoodsNo)
@@ -47,7 +43,7 @@ class Attribute2
 
     public function getMaterialPlanQty()
     {
-        return $this->materialPlanQty;
+        return $this->params['materialPlanQty'];
     }
 
     public function setMaterialPlanQty($materialPlanQty)

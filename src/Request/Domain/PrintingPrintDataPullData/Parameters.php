@@ -4,9 +4,8 @@ namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
 class Parameters
 {
-    private $params = [];
-    private $key1;
-    private $value1;
+    private array $params = [];
+
 
     public function __construct()
     {
@@ -15,7 +14,7 @@ class Parameters
 
     public function getKey1()
     {
-        return $this->key1;
+        return $this->params['key1'];
     }
 
     public function setKey1($key1)
@@ -25,7 +24,7 @@ class Parameters
 
     public function getValue1()
     {
-        return $this->value1;
+        return $this->params['value1'];
     }
 
     public function setValue1($value1)
