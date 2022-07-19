@@ -7,7 +7,6 @@
         "jos",
         "sdk"
     ],
-    "type" : "library",
     "autoload" : {
         "psr-4" : {
             "ACES\\": "src"
@@ -15,7 +14,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ACESTest": "tests"
+            "ACESTest\\": "tests"
         }
     },
     "require" : {
@@ -34,13 +33,15 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5",
         "symfony/finder": "^5.4|^6.0",
         "symfony/var-dumper": "^5.4|^6.0"
     },
     "scripts": {
         "phpstan": "phpstan analyse --memory-limit=-1",
         "check-style": "php-cs-fixer fix --using-cache=no --diff --dry-run --allow-risky=yes --ansi",
-        "fix-style": "php-cs-fixer fix --using-cache=no --allow-risky=yes --ansi"
+        "fix-style": "php-cs-fixer fix --using-cache=no --allow-risky=yes --ansi",
+        "test": "phpunit"
     },
     "suggests": {
         "ext-mysqli": "连 MySQL",
