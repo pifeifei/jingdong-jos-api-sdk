@@ -13,12 +13,6 @@ class AreasCountyGetRequest extends AbstractRequest
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-        $this->{$key} = $value;
-    }
-
     public function getParentId()
     {
         return $this->apiParas['parent_id'];

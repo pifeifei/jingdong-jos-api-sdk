@@ -24,12 +24,6 @@ class JdClient
      */
     protected array $config;
 
-    protected string $appKey;
-
-    protected string $appSecret;
-
-    protected string $redirectUrl;
-
     protected string $version = '2.0';
 
     /**
@@ -190,14 +184,15 @@ class JdClient
     }
 
     /**
+     * 获取请求参数
      *
      * @param RequestInterface $request
      * @return array
      * @throws JingdongException
      */
-    public function execute(RequestInterface $request): array
+    public function formatRequest(RequestInterface $request): array
     {
-        $sysParams['app_key'] = $this->appKey;
+        $sysParams['app_key'] = $this->getAppKey();
         $sysParams['v'] = $request->getVersion($this->version);
         $sysParams['method'] = $request->getApiMethodName();
         $sysParams['timestamp'] = $this->getCurrentTimeFormatted();
@@ -209,7 +204,18 @@ class JdClient
         }
         $sysParams['sign'] = $this->generateSign($sysParams);
 
-        $resp = $this->curl($this->serverUrl, $sysParams);
+        return $sysParams;
+    }
+
+    /**
+     *
+     * @param RequestInterface $request
+     * @return array
+     * @throws JingdongException
+     */
+    public function execute(RequestInterface $request): array
+    {
+        $resp = $this->curl($this->serverUrl, $sysParams = $this->formatRequest($request));
 
         if ('json' == $this->format) {
             $respObject = json_decode($resp, true);
@@ -234,7 +240,7 @@ class JdClient
                 }
 
                 throw new JingdongException(
-                    'jingdong error:' . $respObject['error_response']['zh_desc'] ?? $respObject['error_response']['en_desc'],
+                    'jingdong error:' . ($respObject['error_response']['zh_desc'] ?? $respObject['error_response']['en_desc']),
                     $context,
                 );
             }
@@ -288,14 +294,14 @@ class JdClient
     protected function generateSign($params): string
     {
         ksort($params);
-        $stringToBeSigned = $this->appSecret;
+        $stringToBeSigned = $this->getAppSecret();
         foreach ($params as $k => $v) {
             if ('@' != substr($v, 0, 1)) {
                 $stringToBeSigned .= $k . $v;
             }
         }
         unset($k, $v);
-        $stringToBeSigned .= $this->appSecret;
+        $stringToBeSigned .= $this->getAppSecret();
 
         return strtoupper(md5($stringToBeSigned));
     }

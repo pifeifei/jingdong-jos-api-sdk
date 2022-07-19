@@ -10,7 +10,7 @@ use ACES\Contracts\RequestInterface;
 abstract class AbstractRequest implements RequestInterface
 {
     /**
-     * @var array<string|int|float|string[]>
+     * @var array<bool|string|int|float|string[]>
      */
     protected array $apiParas = [];
 
@@ -24,7 +24,7 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * {@inheritDoc}
      */
-    public function all()
+    public function all(): array
     {
         return $this->apiParas;
     }
@@ -32,7 +32,7 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * {@inheritDoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->apiParas;
     }
@@ -40,21 +40,21 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * {@inheritDoc}
      */
-    public function toJson()
+    public function toJson(): string
     {
+        if (empty($this->apiParas)) {
+            return '{}';
+        }
+
         return json_encode((array) ($this->apiParas));
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getApiParas()
+    public function getApiParas(): string
     {
-        if (empty($this->apiParas)) {
-            return '{}';
-        }
-
-        return json_encode($this->apiParas);
+        return $this->toJson();
     }
 
     /**
@@ -62,19 +62,17 @@ abstract class AbstractRequest implements RequestInterface
      *
      * @return array
      */
-    public function getInstance()
+    public function getInstance(): array
     {
         return $this->apiParas;
     }
 
     /**
+     * @param string|null $default
+     * @return string
      * @deprecated $this->version
-     *
-     * @param null|mixed $default
-     *
-     * @return null|string
      */
-    public function getVersion($default = null)
+    public function getVersion(string $default = null): string
     {
         if (isset($this->version)) {
             return $this->version;
@@ -84,7 +82,7 @@ abstract class AbstractRequest implements RequestInterface
     }
 
     /**
-     * @deprecated $this->version
+     * @deprecated 0.1.4 $this->version
      * @param $version
      */
     public function setVersion($version)
@@ -96,9 +94,9 @@ abstract class AbstractRequest implements RequestInterface
      * @deprecated
      *
      * @param string $key
-     * @param scalar $value
+     * @param array|scalar $value
      */
-    public function putOtherTextParam($key, $value)
+    public function putOtherTextParam(string $key, $value)
     {
         $this->apiParas[$key] = $value;
     }
@@ -114,9 +112,9 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * 获取参数
      * @param string $name
-     * @param scalar $value
+     * @param array|float|bool|int|string  $value
      */
-    public function __set($name, $value)
+    public function __set(string $name, $value)
     {
         $name = lcfirst($name);
         if (is_array($value)) {
@@ -137,7 +135,7 @@ abstract class AbstractRequest implements RequestInterface
      * @param string $name
      * @return scalar|null
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         $name = lcfirst($name);
 
@@ -148,7 +146,7 @@ abstract class AbstractRequest implements RequestInterface
         return $this->apiParas[lcfirst($name)] ?? null;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toJson();
     }

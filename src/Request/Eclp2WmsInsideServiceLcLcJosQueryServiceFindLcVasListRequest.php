@@ -13,11 +13,6 @@ class Eclp2WmsInsideServiceLcLcJosQueryServiceFindLcVasListRequest extends Abstr
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
-
     public function getLcNo()
     {
         return $this->apiParas['lcNo'];

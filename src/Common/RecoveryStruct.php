@@ -9,7 +9,8 @@ namespace ACES\Common;
  *
  * @author JD Data Security Team (tenma.lin, wei.gao, mozhiyan, xuyina)
  *
- * @version 1.0
+ * @removed 1.0
+ * @deprecated 0.1
  */
 class RecoveryStruct
 {

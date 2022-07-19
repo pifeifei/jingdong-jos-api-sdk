@@ -2,6 +2,10 @@
 
 namespace ACES\Common;
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class ServiceKeyInfo
 {
     private $service;

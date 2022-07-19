@@ -23,6 +23,10 @@ if (!defined('LOGLEVEL')) {
     define('LOGLEVEL', Logger::DEBUG);
 }
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class VoucherClient
 {
     private $log;

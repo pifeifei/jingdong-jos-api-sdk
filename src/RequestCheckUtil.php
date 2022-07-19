@@ -3,36 +3,39 @@
 namespace ACES;
 
 
-use Exception;
+use ACES\Exceptions\JingdongException;
 
 /**
  * API入参静态检查类
  * 可以对API的参数类型、长度、最大值等进行校验
- **/
+ */
 class RequestCheckUtil
 {
     /**
      * 校验字段 fieldName 的值$value非空
      *
-     * @throws Exception
+     * @param array|int|bool|string|float|null $value
+     * @throws JingdongException
      */
-    public static function checkNotNull($value, $fieldName)
+    public static function checkNotNull($value, string $fieldName): void
     {
         if (is_null($value)) {
-            throw new Exception("client-check-error:Missing Required Arguments: ".$fieldName, 40);
+            throw new JingdongException("client-check-error:Missing Required Arguments: " . $fieldName, [], null, 40);
         }
     }
 
     /**
      * 检验字段fieldName的值value 的长度
      *
-     * @throws Exception
+     * @throws JingdongException
      */
-    public static function checkMaxLength($value, $maxLength, $fieldName)
+    public static function checkMaxLength(?string $value, int $maxLength, string $fieldName): void
     {
         if (!self::checkEmpty($value) && mb_strlen($value, "UTF-8") > $maxLength) {
-            throw new Exception(
+            throw new JingdongException(
                 "client-check-error:Invalid Arguments:the length of ".$fieldName." can not be larger than ".$maxLength.".",
+                [],
+                null,
                 41
             );
         }
@@ -43,9 +46,10 @@ class RequestCheckUtil
      *  if not set ,return true;
      *    if is null , return true;
      *
+     * @param mixed $value
      * @return bool
      */
-    public static function checkEmpty($value)
+    public static function checkEmpty($value): bool
     {
         if (!isset($value)) {
             return true;
@@ -61,9 +65,10 @@ class RequestCheckUtil
     /**
      * 检验字段fieldName的值value的最大列表长度
      *
-     * @throws Exception
+     * @param mixed $value
+     * @throws JingdongException
      */
-    public static function checkMaxListSize($value, $maxSize, $fieldName)
+    public static function checkMaxListSize($value, $maxSize, string $fieldName)
     {
         if (self::checkEmpty($value)) {
             return;
@@ -71,8 +76,10 @@ class RequestCheckUtil
 
         $list = preg_split("/,/", $value);
         if (count($list) > $maxSize) {
-            throw new Exception(
+            throw new JingdongException(
                 "client-check-error:Invalid Arguments:the listsize(the string split by \",\") of ".$fieldName." must be less than ".$maxSize." .",
+                [],
+                null,
                 41
             );
         }
@@ -81,9 +88,10 @@ class RequestCheckUtil
     /**
      * 检验字段fieldName的值value 的最大值
      *
-     * @throws Exception
+     * @param mixed $value
+     * @throws JingdongException
      */
-    public static function checkMaxValue($value, $maxValue, $fieldName)
+    public static function checkMaxValue($value, int $maxValue, string $fieldName)
     {
         if (self::checkEmpty($value)) {
             return;
@@ -92,8 +100,10 @@ class RequestCheckUtil
         self::checkNumeric($value, $fieldName);
 
         if ($value > $maxValue) {
-            throw new Exception(
+            throw new JingdongException(
                 "client-check-error:Invalid Arguments:the value of ".$fieldName." can not be larger than ".$maxValue." .",
+                [],
+                null,
                 41
             );
         }
@@ -102,13 +112,14 @@ class RequestCheckUtil
     /**
      * 检验字段fieldName的值value是否是number
      *
-     * @throws Exception
+     * @param mixed $value
+     * @throws JingdongException
      */
-    protected static function checkNumeric($value, $fieldName)
+    protected static function checkNumeric($value, string $fieldName)
     {
         if (!is_numeric($value)) {
-            throw new Exception(
-                "client-check-error:Invalid Arguments:the value of ".$fieldName." is not number : ".$value." .", 41
+            throw new JingdongException(
+                "client-check-error:Invalid Arguments:the value of ".$fieldName." is not number : ".$value." .", [], null, 41
             );
         }
     }
@@ -116,9 +127,10 @@ class RequestCheckUtil
     /**
      * 检验字段fieldName的值value 的最小值
      *
-     * @throws Exception
+     * @param mixed $value
+     * @throws JingdongException
      */
-    public static function checkMinValue($value, $minValue, $fieldName)
+    public static function checkMinValue($value, int $minValue, string $fieldName)
     {
         if (self::checkEmpty($value)) {
             return;
@@ -127,8 +139,10 @@ class RequestCheckUtil
         self::checkNumeric($value, $fieldName);
 
         if ($value < $minValue) {
-            throw new Exception(
+            throw new JingdongException(
                 "client-check-error:Invalid Arguments:the value of ".$fieldName." can not be less than ".$minValue." .",
+                [],
+                null,
                 41
             );
         }

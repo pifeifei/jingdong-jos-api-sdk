@@ -13,11 +13,6 @@ class ComJdExpressDispatcherApiServiceFetchGoodsCalendarApiFetchGoodsBackwardCal
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
-
     public function getDistrictName()
     {
         return $this->apiParas['districtName'];

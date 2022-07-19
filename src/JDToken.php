@@ -15,7 +15,7 @@ class JDToken
     /**
      * @var CacheInterface
      */
-    protected $cache;
+    protected CacheInterface $cache;
 
     /**
      * @var string

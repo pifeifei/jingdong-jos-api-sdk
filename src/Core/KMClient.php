@@ -18,7 +18,7 @@ use ACES\Common\Token;
 use ACES\TDEClient;
 use ACES\Utils\UtilTools;
 use Exception;
-use JsonMapper;
+//use JsonMapper;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -42,13 +42,17 @@ if (!defined('EMPTYSTR')) {
     define('EMPTYSTR', '');
 }
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 final class KMClient
 {
 //    const TVALUE =  3;    // Threshold value, 3 should be good
 //    const KMS_SERVER_ENDPOINT = Constants::KMS_SERVER_ENDPOINT;
 //    const INDEX_SERVER_ENDPOINT = Constants::INDEX_SERVER_ENDPOINT;
     private $tde;
-    private $jsonMapper;
+    // private $jsonMapper;
 
     /**
      * @var HttpReportClient
@@ -111,7 +115,7 @@ final class KMClient
         $handle->setFormatter($formatter);
         $this->log->pushHandler($handle);
 
-        $this->jsonMapper = new JsonMapper();
+        // $this->jsonMapper = new JsonMapper();
     }
 
     public function run()

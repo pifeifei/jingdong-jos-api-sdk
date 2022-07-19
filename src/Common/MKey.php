@@ -4,8 +4,12 @@ namespace ACES\Common;
 
 use ACES\Common\Exception as Ex;
 use ACES\Common\Exception\MalformedException;
-use Common\Exception\SignException;
+use ACES\Common\Exception\SignException;
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class MKey
 {
     public const IV_SIZE = 16;

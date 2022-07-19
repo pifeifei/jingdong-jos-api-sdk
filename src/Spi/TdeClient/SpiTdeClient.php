@@ -6,6 +6,10 @@ define('digestMethod', 'sha1');
 define('cipherMethod', 'AES-128-CBC');
 define('localIv', '0000000000000000');
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class SpiTdeClient
 {
     /**

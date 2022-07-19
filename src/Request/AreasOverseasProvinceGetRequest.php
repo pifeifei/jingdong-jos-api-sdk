@@ -12,9 +12,4 @@ class AreasOverseasProvinceGetRequest extends AbstractRequest
     public function check()
     {
     }
-
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
 }

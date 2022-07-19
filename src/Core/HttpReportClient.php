@@ -10,7 +10,6 @@ use ACES\Common\ProduceRequest;
 use ACES\Common\ProduceResponse;
 use ACES\TDEClient;
 use Exception;
-use JsonMapper;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -22,6 +21,10 @@ if (!defined('LOGLEVEL')) {
     define('LOGLEVEL', Logger::ERROR);
 }
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class HttpReportClient
 {
     private static $DEFAULT_EPOCH = 600;

@@ -4,22 +4,22 @@ namespace ACES\Common\Domain;
 
 class JosBaseInfo
 {
-    private $appKey;
-    private $appSecret;
-    private $accessToken;
-    private $timestamp;
-    private $v = '2.0';
-    private $serverUrl;
+    private string $appKey;
+    private string $appSecret;
+    private string $accessToken;
+    private string $timestamp;
+    private string $version = '2.0';
+    private string $serverUrl;
 
     /**
      * JosBaseInfo constructor.
      *
-     * @param $appKey
-     * @param $appSecret
-     * @param $accessToken
-     * @param $serverUrl
+     * @param string $appKey
+     * @param string $appSecret
+     * @param string $accessToken
+     * @param string $serverUrl
      */
-    public function __construct($appKey, $appSecret, $accessToken, $serverUrl)
+    public function __construct(string $appKey, string $appSecret, string $accessToken, string $serverUrl)
     {
         $this->appKey = $appKey;
         $this->appSecret = $appSecret;
@@ -30,15 +30,15 @@ class JosBaseInfo
     /**
      * @return string
      */
-    public function getAppKey()
+    public function getAppKey(): string
     {
         return $this->appKey;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getAppSecret()
+    public function getAppSecret(): string
     {
         return $this->appSecret;
     }
@@ -46,7 +46,7 @@ class JosBaseInfo
     /**
      * @return string
      */
-    public function getAccessToken()
+    public function getAccessToken(): string
     {
         return $this->accessToken;
     }
@@ -54,15 +54,15 @@ class JosBaseInfo
     /**
      * @return string
      */
-    public function getV()
+    public function getVersion(): string
     {
-        return $this->v;
+        return $this->version;
     }
 
     /**
      * @return string
      */
-    public function getServerUrl()
+    public function getServerUrl(): string
     {
         return $this->serverUrl;
     }
@@ -72,7 +72,7 @@ class JosBaseInfo
      *
      * @return string
      */
-    public function getTimestamp($init = true)
+    public function getTimestamp(bool $init = true): string
     {
         if ($init || !isset($this->timestamp)) {
             // TODO delete date_default_timezone_set
@@ -88,21 +88,21 @@ class JosBaseInfo
      *
      * @return array
      */
-    public function getFormParams($josReuqest)
+    public function getFormParams($josReuqest): array
     {
         $request = [];
         $request['360buy_param_json'] = $josReuqest->to360buyParamJson();
         $request['app_key'] = $this->getAppKey();
         $request['access_token'] = $this->getAccessToken();
         $request['timestamp'] = $this->getTimestamp();
-        $request['v'] = $this->getV();
+        $request['v'] = $this->getVersion();
         $request['method'] = $josReuqest->getJosMethod();
         $request['sign'] = $this->generateSign($request);
 
         return $request;
     }
 
-    private function generateSign($params)
+    private function generateSign($params): string
     {
         ksort($params);
         $stringToBeSigned = $this->appSecret;

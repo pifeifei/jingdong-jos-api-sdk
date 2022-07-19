@@ -56,6 +56,10 @@ if (!defined('LOGLEVEL')) {
     define('LOGLEVEL', Logger::DEBUG);
 }
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 final class TDEClient
 {
     public const version = 'php 1.0.7';
@@ -729,7 +733,8 @@ final class TDEClient
         return null == $this->token ? 'Unknown Service' : $this->token->get_service_name();
     }
 
-    /* Get current stat results
+    /**
+     * Get current stat results
      *
      * @return array
      */
@@ -745,6 +750,8 @@ final class TDEClient
 
             return $stat;
         }
+
+        return [];
     }
 
     public function stat($statType)

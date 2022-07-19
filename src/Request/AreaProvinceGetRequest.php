@@ -13,11 +13,6 @@ class AreaProvinceGetRequest extends AbstractRequest
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
-
     /**
      * {@inheritDoc}
      */

@@ -12,6 +12,10 @@ use ACES\Common\Exception\MalformedException;
 use ACES\Common\Exception\VoucherInfoGetException;
 use Exception;
 
+/**
+ * @removed 1.0
+ * @deprecated 0.1 不明作用
+ */
 class Token
 {
     private string $label;           // label, could be create, update, and other types

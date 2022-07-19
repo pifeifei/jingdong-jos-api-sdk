@@ -16,11 +16,6 @@ class ServiceOrderQueryListAbstractRequest extends AbstractRequest
     {
     }
 
-    public function putOtherTextParam($key, $value)
-    {
-        $this->apiParas[$key] = $value;
-    }
-
     public function getServiceApiRequest()
     {
         return $this->apiParas['serviceApiRequest'];

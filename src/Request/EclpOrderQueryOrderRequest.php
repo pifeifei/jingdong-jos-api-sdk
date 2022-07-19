@@ -23,6 +23,7 @@ class EclpOrderQueryOrderRequest extends AbstractRequest
     }
 
     /**
+     * @removed 1.0
      * @deprecated 0.1.4
      */
     public function getEclpSoNo(): string
@@ -31,6 +32,7 @@ class EclpOrderQueryOrderRequest extends AbstractRequest
     }
 
     /**
+     * @removed 1.0
      * @deprecated 0.1.4
      */
     public function setEclpSoNo(string $eclpSoNo)
