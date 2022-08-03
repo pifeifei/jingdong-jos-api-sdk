@@ -7,6 +7,7 @@
         "jos",
         "sdk"
     ],
+    "license": "GPL-2.0-only",
     "autoload" : {
         "psr-4" : {
             "ACES\\": "src"
@@ -43,7 +44,7 @@
         "fix-style": "php-cs-fixer fix --using-cache=no --allow-risky=yes --ansi",
         "test": "phpunit"
     },
-    "suggests": {
+    "suggest": {
         "ext-mysqli": "连 MySQL",
         "ext-sqlite": "sqlite3"
     },
