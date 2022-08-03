@@ -13,9 +13,9 @@ class JDToken
     protected JdClient $jdClient;
 
     /**
-     * @var CacheInterface
+     * @var ?CacheInterface
      */
-    protected CacheInterface $cache;
+    protected ?CacheInterface $cache = null;
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class JDToken
     /**
      * @return string
      */
-    protected function getAppKey()
+    protected function getAppKey(): string
     {
         return $this->jdClient->getAppKey();
     }
@@ -40,7 +40,7 @@ class JDToken
     /**
      * @return string
      */
-    protected function getAppSecret()
+    protected function getAppSecret(): string
     {
         return $this->jdClient->getAppSecret();
     }
@@ -48,7 +48,7 @@ class JDToken
     /**
      * @return string
      */
-    protected function getRedirectUrl()
+    protected function getRedirectUrl(): string
     {
         return $this->jdClient->getRedirectUrl();
     }
@@ -241,8 +241,7 @@ class JDToken
      */
     public function getCache()
     {
-        /** @phpstan-ignore-next-line */
-        if ($this->cache) {
+        if (! is_null($this->cache)) {
             return $this->cache;
         }
 
