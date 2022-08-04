@@ -43,7 +43,7 @@ class JdClient
      * @param ?string $appSecret
      * @param ?string $redirectUrl
      */
-    public function __construct($appKey, ?string $appSecret, ?string $redirectUrl)
+    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null)
     {
         if (is_array($appKey)) {
             $this->config = $appKey;
