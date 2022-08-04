@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopMiddleWaybillWaybill2CTraceApiRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.middle.waybill.Waybill2CTraceApi';
     }

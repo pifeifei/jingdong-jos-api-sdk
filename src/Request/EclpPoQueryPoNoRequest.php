@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpPoQueryPoNoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.po.queryPoNo';
     }

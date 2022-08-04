@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopAbnormalGetRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.abnormal.get';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpGoodsTransportGoodsSerialNumberRuleRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.goods.transportGoodsSerialNumberRule';
     }

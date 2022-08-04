@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class MfaUserUnifiedAuthenticationRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.mfa.userUnifiedAuthentication';
     }

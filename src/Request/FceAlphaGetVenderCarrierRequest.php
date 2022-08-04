@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class FceAlphaGetVenderCarrierRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.fce.alpha.getVenderCarrier';
     }

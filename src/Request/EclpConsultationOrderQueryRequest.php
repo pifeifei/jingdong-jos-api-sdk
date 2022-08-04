@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpConsultationOrderQueryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.consultationOrder.query';
     }

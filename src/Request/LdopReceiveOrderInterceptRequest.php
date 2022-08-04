@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopReceiveOrderInterceptRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.receive.order.intercept';
     }

@@ -15,14 +15,14 @@ interface RequestInterface
      * @deprecated self::toArray
      * 获取全部数据
      *
-     * @return array
+     * @return array<int|string, mixed>
      */
     public function all(): array;
 
     /**
      * 获取全部数据
      *
-     * @return array
+     * @return array<int|string, mixed>
      */
     public function toArray(): array;
 

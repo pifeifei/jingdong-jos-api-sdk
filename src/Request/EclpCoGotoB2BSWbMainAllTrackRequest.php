@@ -4,12 +4,12 @@ namespace ACES\Request;
 
 class EclpCoGotoB2BSWbMainAllTrackRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.co.gotoB2BSWbMainAllTrack';
     }
 
-    public function check()
+    public function check(): void
     {
     }
 

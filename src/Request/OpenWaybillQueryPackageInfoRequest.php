@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenWaybillQueryPackageInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.waybill.query.packageInfo';
     }

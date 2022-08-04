@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopReceiveTraceGetRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.receive.trace.get';
     }

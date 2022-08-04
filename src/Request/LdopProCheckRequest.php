@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopProCheckRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.pro.check';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCoUpdateB2BSWbMainExpressItemQtyRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.co.updateB2BSWbMainExpressItemQty';
     }

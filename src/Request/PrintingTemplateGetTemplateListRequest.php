@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class PrintingTemplateGetTemplateListRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.printing.template.getTemplateList';
     }

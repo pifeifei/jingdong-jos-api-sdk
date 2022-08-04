@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class JcloudWmsStockQuerySumRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.jcloud.wms.stock.query.sum';
     }

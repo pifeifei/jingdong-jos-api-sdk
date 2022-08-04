@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenTraceTraceDynamicQueryServiceQueryB2CTraceInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.trace.TraceDynamicQueryService.queryB2CTraceInfo';
     }

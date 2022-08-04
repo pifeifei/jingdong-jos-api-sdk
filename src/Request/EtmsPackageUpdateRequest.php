@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EtmsPackageUpdateRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.etms.package.update';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class TraceO2oTracebywaybillserviceRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.trace.o2o.tracebywaybillservice';
     }

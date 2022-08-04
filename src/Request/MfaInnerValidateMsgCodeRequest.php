@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class MfaInnerValidateMsgCodeRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.mfa.inner.validateMsgCode';
     }

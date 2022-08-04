@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCoEvaluateB2BLwbFreightMainRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.co.evaluateB2BLwbFreightMain';
     }

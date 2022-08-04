@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OrblsIkeaWaybillCancelInterceptRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.orbls.ikea.waybill.cancel.intercept';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpTraceServiceJosOrderTraceByOrderServiceGetOrderTraceByISVOrderIdRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.trace.service.jos.OrderTraceByOrderService.getOrderTraceByISVOrderId';
     }

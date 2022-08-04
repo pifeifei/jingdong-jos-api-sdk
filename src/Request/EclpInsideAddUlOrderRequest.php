@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpInsideAddUlOrderRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.inside.addUlOrder';
     }

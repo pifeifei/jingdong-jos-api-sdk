@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopAlphaProviderPickFailApproveRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.alpha.provider.pick.fail.approve';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopSelfPickupSmsSendRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.self.pickup.sms.send';
     }

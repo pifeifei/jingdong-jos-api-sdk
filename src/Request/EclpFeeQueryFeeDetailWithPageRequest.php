@@ -14,7 +14,7 @@ namespace ACES\Request;
  */
 class EclpFeeQueryFeeDetailWithPageRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.fee.queryFeeDetailWithPage';
     }

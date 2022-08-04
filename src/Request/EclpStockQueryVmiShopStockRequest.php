@@ -12,7 +12,7 @@ namespace ACES\Request;
  */
 class EclpStockQueryVmiShopStockRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.stock.queryVmiShopStock';
     }

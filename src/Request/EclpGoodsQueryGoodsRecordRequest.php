@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpGoodsQueryGoodsRecordRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.goods.queryGoodsRecord';
     }

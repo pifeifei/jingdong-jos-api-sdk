@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpMasterQueryStoreInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.master.queryStoreInfo';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCollectorGoodsRecallLockRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.collector.goodsRecallLock';
     }

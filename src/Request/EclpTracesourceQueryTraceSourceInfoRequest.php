@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpTracesourceQueryTraceSourceInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.tracesource.queryTraceSourceInfo';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCoQueryB2BSWbMainRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.co.queryB2BSWbMain';
     }

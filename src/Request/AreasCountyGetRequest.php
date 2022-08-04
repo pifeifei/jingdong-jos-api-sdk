@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class AreasCountyGetRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.areas.county.get';
     }

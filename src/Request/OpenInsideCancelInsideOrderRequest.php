@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenInsideCancelInsideOrderRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.inside.cancelInsideOrder';
     }

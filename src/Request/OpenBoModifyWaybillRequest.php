@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenBoModifyWaybillRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.bo.modifyWaybill';
     }

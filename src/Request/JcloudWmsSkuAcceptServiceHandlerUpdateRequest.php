@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class JcloudWmsSkuAcceptServiceHandlerUpdateRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.jcloud.wms.SkuAcceptServiceHandler.update';
     }

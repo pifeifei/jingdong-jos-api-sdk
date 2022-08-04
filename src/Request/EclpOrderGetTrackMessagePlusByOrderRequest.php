@@ -13,7 +13,7 @@ namespace ACES\Request;
  */
 class EclpOrderGetTrackMessagePlusByOrderRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.order.getTrackMessagePlusByOrder';
     }

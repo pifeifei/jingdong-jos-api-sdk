@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class ServiceOrderSubmitCommandRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.service.order.submitCommand';
     }

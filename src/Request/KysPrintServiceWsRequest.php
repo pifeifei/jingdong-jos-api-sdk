@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class KysPrintServiceWsRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.kys.PrintServiceWs';
     }

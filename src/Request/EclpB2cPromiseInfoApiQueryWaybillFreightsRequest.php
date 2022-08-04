@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpB2cPromiseInfoApiQueryWaybillFreightsRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.b2c.PromiseInfoApi.queryWaybillFreights';
     }

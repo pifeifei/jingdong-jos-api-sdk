@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenBoJdExpressReachRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.bo.jdExpressReach';
     }

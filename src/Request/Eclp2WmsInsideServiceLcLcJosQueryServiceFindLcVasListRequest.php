@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class Eclp2WmsInsideServiceLcLcJosQueryServiceFindLcVasListRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp2.wms.inside.service.lc.LcJosQueryService.findLcVasList';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCoGenerateBdWayBillFileRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.co.generateBdWayBillFile';
     }

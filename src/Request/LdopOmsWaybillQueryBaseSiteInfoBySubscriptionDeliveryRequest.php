@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopOmsWaybillQueryBaseSiteInfoBySubscriptionDeliveryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.oms.waybill.queryBaseSiteInfoBySubscriptionDelivery';
     }

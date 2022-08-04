@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class WlLbsEbsAddRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.wl.lbs.ebs.add';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCategoryGetFirstLevelCategoriesRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.category.getFirstLevelCategories';
     }

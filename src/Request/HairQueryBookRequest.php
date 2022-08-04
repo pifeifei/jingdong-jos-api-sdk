@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class HairQueryBookRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.hair.queryBook';
     }

@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class TraceDynamicQueryServiceQueryDynamicTraceInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.trace.dynamicQueryService.queryDynamicTraceInfo';
     }

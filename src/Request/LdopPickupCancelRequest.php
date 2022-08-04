@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopPickupCancelRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.pickup.cancel';
     }

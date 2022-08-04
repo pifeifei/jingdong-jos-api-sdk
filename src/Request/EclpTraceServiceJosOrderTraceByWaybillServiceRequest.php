@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpTraceServiceJosOrderTraceByWaybillServiceRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.trace.service.jos.OrderTraceByWaybillService';
     }

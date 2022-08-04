@@ -7,7 +7,7 @@ class ServiceOrderQueryListAbstractRequest extends AbstractRequest
     /**
      * {@inheritDoc}
      */
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.service.order.query.list';
     }

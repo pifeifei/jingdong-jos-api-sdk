@@ -56,7 +56,7 @@ class JDToken
     /**
      * @param string $key
      */
-    public function setKey(string $key)
+    public function setKey(string $key): void
     {
         $this->key = $key;
     }
@@ -69,11 +69,11 @@ class JDToken
     /**
      * 获取 access_token
      *
-     * @param null|int|string $code
+     * @param null|string $code
      * @return string
      * @throws JingdongException
      */
-    public function accessToken($code = null): string
+    public function accessToken(string $code = null): string
     {
         try {
             /* @var array{access_token:string, expires_in:int, refresh_token:string, time:int} $json*/
@@ -178,7 +178,7 @@ class JDToken
         }
 
         $result = $this->jdClient->curl($this->getAccessTokenUrl($code));
-        $json = json_decode($result);
+        $json = json_decode($result, true);
         if (json_last_error()) {
             throw new JingdongException('jingdong error: json 格式化异常，' . json_last_error_msg(), ['response' => $result]);
         }
@@ -231,7 +231,7 @@ class JDToken
     /**
      * @param  CacheInterface  $cache
      */
-    public function setCache(CacheInterface $cache)
+    public function setCache(CacheInterface $cache): void
     {
         $this->cache = $cache;
     }

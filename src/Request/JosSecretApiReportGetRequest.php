@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class JosSecretApiReportGetRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.jos.secret.api.report.get';
     }

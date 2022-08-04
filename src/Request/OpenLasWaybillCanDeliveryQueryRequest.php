@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class OpenLasWaybillCanDeliveryQueryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.open.lasWaybillCanDelivery.query';
     }

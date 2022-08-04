@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class JcloudWmsMasterCarrierQueryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.jcloud.wms.master.carrier.query';
     }

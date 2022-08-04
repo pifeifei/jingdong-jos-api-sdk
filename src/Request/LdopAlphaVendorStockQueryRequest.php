@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopAlphaVendorStockQueryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.alpha.vendor.stock.query';
     }

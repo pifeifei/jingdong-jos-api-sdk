@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopMiddleWaybillWeightQueryRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.middle.waybill.weight.query';
     }

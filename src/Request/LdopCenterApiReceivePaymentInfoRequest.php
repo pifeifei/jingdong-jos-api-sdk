@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LdopCenterApiReceivePaymentInfoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.ldop.center.api.receivePaymentInfo';
     }

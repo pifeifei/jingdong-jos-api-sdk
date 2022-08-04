@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class ComJdExpressDispatcherApiServiceFetchGoodsCalendarApiFetchGoodsBackwardCalendarRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.com.jd.express.dispatcher.api.service.FetchGoodsCalendarApi.fetchGoodsBackwardCalendar';
     }

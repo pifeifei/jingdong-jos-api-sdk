@@ -13,7 +13,7 @@ namespace ACES\Request;
  */
 class EclpOrderQueryOrderRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.order.queryOrder';
     }

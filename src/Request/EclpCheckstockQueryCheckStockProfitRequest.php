@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpCheckstockQueryCheckStockProfitRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.checkstock.queryCheckStockProfit';
     }

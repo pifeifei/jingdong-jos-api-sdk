@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class JcloudWmsMasterCategoryInfoInsertRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.jcloud.wms.master.categoryInfo.insert';
     }

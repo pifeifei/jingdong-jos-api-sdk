@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpOrderQueryOrderPacksBySoNoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.order.queryOrderPacksBySoNo';
     }

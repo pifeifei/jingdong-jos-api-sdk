@@ -2,13 +2,16 @@
 # phpdoc types: https://phpstan.org/writing-php-code/phpdoc-types
 parameters:
     phpVersion: 70200
-    level: 5
+    level: 8
     bootstrapFiles:
         - vendor/autoload.php
     paths:
         - src
-#    excludePaths:
-#        - tests/*/stubs/*
+    excludePaths:
+        - src/Common
+        - src/Core
+        - src/Spi
+        - src/Utils
 #    scanFiles:
 #        - _ide_helper.php
     inferPrivatePropertyTypeFromConstructor: true

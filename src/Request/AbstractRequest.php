@@ -46,7 +46,7 @@ abstract class AbstractRequest implements RequestInterface
             return '{}';
         }
 
-        return json_encode((array) ($this->apiParas));
+        return (string)json_encode($this->apiParas);
     }
 
     /**
@@ -60,7 +60,7 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * @deprecated toJson()
      *
-     * @return array
+     * @return array<int|string, mixed>
      */
     public function getInstance(): array
     {
@@ -70,7 +70,6 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * @param string|null $default
      * @return string
-     * @deprecated $this->version
      */
     public function getVersion(string $default = null): string
     {
@@ -78,14 +77,13 @@ abstract class AbstractRequest implements RequestInterface
             return $this->version;
         }
 
-        return $default;
+        return $default ?? '2.0';
     }
 
     /**
-     * @deprecated 0.1.4 $this->version
-     * @param $version
+     * @param string $version 版本号，如 1.0 2.0
      */
-    public function setVersion($version)
+    public function setVersion(string $version): void
     {
         $this->version = $version;
     }
@@ -94,9 +92,9 @@ abstract class AbstractRequest implements RequestInterface
      * @deprecated
      *
      * @param string $key
-     * @param array|scalar $value
+     * @param array<string>|float|bool|int|string $value
      */
-    public function putOtherTextParam(string $key, $value)
+    public function putOtherTextParam(string $key, $value): void
     {
         $this->apiParas[$key] = $value;
     }
@@ -112,9 +110,9 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * 获取参数
      * @param string $name
-     * @param array|float|bool|int|string  $value
+     * @param array<string>|float|bool|int|string  $value
      */
-    public function __set(string $name, $value)
+    public function __set(string $name, $value): void
     {
         $name = lcfirst($name);
         if (is_array($value)) {
@@ -133,7 +131,7 @@ abstract class AbstractRequest implements RequestInterface
      * 设置参数
      *
      * @param string $name
-     * @return scalar|null
+     * @return array<string>|bool|float|int|string|null
      */
     public function __get(string $name)
     {

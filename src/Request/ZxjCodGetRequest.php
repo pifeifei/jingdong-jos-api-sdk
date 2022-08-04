@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class ZxjCodGetRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.zxj.cod.get';
     }

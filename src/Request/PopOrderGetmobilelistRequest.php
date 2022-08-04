@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class PopOrderGetmobilelistRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.pop.order.getmobilelist';
     }

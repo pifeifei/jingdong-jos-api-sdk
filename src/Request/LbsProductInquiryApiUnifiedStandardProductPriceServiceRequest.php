@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class LbsProductInquiryApiUnifiedStandardProductPriceServiceRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.lbs.product.inquiry.api.UnifiedStandardProductPriceService';
     }

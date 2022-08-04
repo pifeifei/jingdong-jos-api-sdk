@@ -4,7 +4,7 @@ namespace ACES\Request;
 
 class EclpAfsQueryServiceItemInfoByServiceNoRequest extends AbstractRequest
 {
-    public function getApiMethodName()
+    public function getApiMethodName(): string
     {
         return 'jingdong.eclp.afs.queryServiceItemInfoByServiceNo';
     }

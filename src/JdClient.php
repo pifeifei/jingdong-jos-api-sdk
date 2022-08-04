@@ -39,11 +39,11 @@ class JdClient
     protected Client $client;
 
     /**
-     * @param array|string $appKey
+     * @param array{appKey: string, appSecret: string, redirectUrl: string, isvSource: string|null, shopNo: string|null, departmentNo: string|null, monthlyAccount: string|null}|string $appKey
      * @param ?string $appSecret
      * @param ?string $redirectUrl
      */
-    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null)
+    public function __construct($appKey, ?string $appSecret, ?string $redirectUrl)
     {
         if (is_array($appKey)) {
             $this->config = $appKey;
@@ -53,8 +53,8 @@ class JdClient
                 'isvSource' => null, 'shopNo' => null, 'departmentNo' => null, 'monthlyAccount' => null
             ];
             $this->config['appKey'] = $appKey;
-            $this->config['appSecret'] = $appSecret;
-            $this->config['redirectUrl'] = $redirectUrl;
+            $this->config['appSecret'] = (string) $appSecret;
+            $this->config['redirectUrl'] = (string) $redirectUrl;
         }
         $this->accessToken = new JDToken($this);
 
@@ -187,7 +187,7 @@ class JdClient
      * 获取请求参数
      *
      * @param RequestInterface $request
-     * @return array
+     * @return array<string, mixed>
      * @throws JingdongException
      */
     public function formatRequest(RequestInterface $request): array
@@ -210,7 +210,7 @@ class JdClient
     /**
      *
      * @param RequestInterface $request
-     * @return array
+     * @return array<string, mixed>
      * @throws JingdongException
      */
     public function execute(RequestInterface $request): array
@@ -260,7 +260,7 @@ class JdClient
      * 请求数据
      *
      * @param string $url 请求链接
-     * @param array|null $postFields
+     * @param array<bool|string|int|float>|null $postFields
      * @return string
      * @throws JingdongException
      */
@@ -291,12 +291,16 @@ class JdClient
         }
     }
 
-    protected function generateSign($params): string
+    /**
+     * @param array<bool|string|int|float> $params
+     * @return string
+     */
+    protected function generateSign(array $params): string
     {
         ksort($params);
         $stringToBeSigned = $this->getAppSecret();
         foreach ($params as $k => $v) {
-            if ('@' != substr($v, 0, 1)) {
+            if (is_string($v) && '@' != substr($v, 0, 1)) {
                 $stringToBeSigned .= $k . $v;
             }
         }
@@ -311,7 +315,11 @@ class JdClient
         return date('Y-m-d H:i:s').'.000'.$this->getStandardOffsetUTC(date_default_timezone_get());
     }
 
-    private function getStandardOffsetUTC($timezone)
+    /**
+     * @param string $timezone
+     * @return string
+     */
+    private function getStandardOffsetUTC(string $timezone): string
     {
         if ('UTC' == $timezone) {
             return '+0000';
@@ -327,6 +335,6 @@ class JdClient
             return sprintf('%+03d%02u', $transition['offset'] / 3600, abs($transition['offset']) % 3600 / 60);
         }
 
-        return false;
+        return '';
     }
 }
