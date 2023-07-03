@@ -6,7 +6,6 @@ class VasRequest
 {
     private array $params = [];
 
-
     public function __construct()
     {
         $this->params['@type'] = 'com.jd.eclp.ovas.request.goods.admin.VasRequest';

@@ -2,10 +2,11 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataSensitivePullData;
 
+use function count;
+
 class Param1
 {
     private array $params = [];
-
 
     public function __construct()
     {

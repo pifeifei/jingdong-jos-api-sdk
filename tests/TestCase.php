@@ -7,7 +7,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-class TestCase extends BaseTestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class TestCase extends BaseTestCase
 {
     protected function config(): array
     {
@@ -18,7 +23,7 @@ class TestCase extends BaseTestCase
             'isvSource' => ' string',
             'shopNo' => 'shopNo string',
             'departmentNo' => 'departmentNo string',
-            'monthlyAccount' => 'monthlyAccount string'
+            'monthlyAccount' => 'monthlyAccount string',
         ];
     }
 
@@ -28,12 +33,7 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * 封装测试请求数据
-     *
-     * @param array|null $queue
-     * @param callable|null $onFulfilled
-     * @param callable|null $onRejected
-     * @return HandlerStack
+     * 封装测试请求数据.
      */
     protected function mockHandler(array $queue = null, callable $onFulfilled = null, callable $onRejected = null): HandlerStack
     {

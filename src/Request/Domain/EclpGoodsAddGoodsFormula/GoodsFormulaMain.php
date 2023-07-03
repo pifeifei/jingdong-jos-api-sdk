@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\EclpGoodsAddGoodsFormula;
 
+use function count;
+
 class GoodsFormulaMain
 {
     private array $params = [];

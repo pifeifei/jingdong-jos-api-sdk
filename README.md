@@ -45,12 +45,3 @@ $resp = $client->execute($req, $client->accessToken());
 dump($resp);
 
 ```
-
-## 废弃的类和方法
-
-* src/Common/*
-* src/Core/*
-* src/Spi/*
-* src/TDEClient.php
-
-> 这些文件的用途不明，日后很可能删除。

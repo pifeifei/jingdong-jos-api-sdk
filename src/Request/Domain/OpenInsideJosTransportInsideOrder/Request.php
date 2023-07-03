@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\OpenInsideJosTransportInsideOrder;
 
+use function count;
+
 class Request
 {
     private array $params = [];

@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\EclpOvasTransportGoodOvasItems;
 
+use function count;
+
 class GoodsNoVasRequest
 {
     private array $params = [];

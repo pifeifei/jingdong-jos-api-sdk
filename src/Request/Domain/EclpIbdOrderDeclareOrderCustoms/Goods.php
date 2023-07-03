@@ -6,7 +6,6 @@ class Goods
 {
     private array $params = [];
 
-
     public function __construct()
     {
         $this->params['@type'] = 'com.jd.eclp.isv.domain.so.OrderCustomsItemParam';

@@ -18,9 +18,6 @@ class AreaCountyGetRequest extends AbstractRequest
         $this->apiParas['parent_id'] = $parentId;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function isRequireAccessToken(): bool
     {
         return false;

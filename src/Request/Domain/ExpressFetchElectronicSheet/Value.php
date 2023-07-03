@@ -6,7 +6,6 @@ class Value
 {
     private $params = [];
 
-
     public function __construct()
     {
         $this->params['@type'] = 'com.jd.ldop.oms.dto.CustomerPropertyRequest';

@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\EclpSnowQualificationCreate;
 
+use function count;
+
 class Request
 {
     private array $params = [];

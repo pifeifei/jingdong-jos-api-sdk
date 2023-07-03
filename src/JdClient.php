@@ -11,6 +11,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 
+use function array_slice;
+use function function_exists;
+use function is_array;
+use function is_string;
+
 class JdClient
 {
     use HttpOptionsTrait;
@@ -20,26 +25,27 @@ class JdClient
     protected JDToken $accessToken;
 
     /**
-     * @var array{appKey: string, appSecret: string, redirectUrl: string, isvSource: string|null, shopNo: string|null, departmentNo: string|null, monthlyAccount: string|null}
+     * @var array{appKey: string, appSecret: string, redirectUrl: string, isvSource: null|string, shopNo: null|string, departmentNo: null|string, monthlyAccount: null|string}
      */
     protected array $config;
 
     protected string $version = '2.0';
 
     /**
-     * 格式化类型
+     * 格式化类型.
+     *
      * @var string 目前仅支持 json 格式
      */
     protected string $format = 'json';
 
-//    private $charset = 'UTF-8';
+    //    private $charset = 'UTF-8';
 
     protected string $jsonParamKey = '360buy_param_json';
 
     protected Client $client;
 
     /**
-     * @param array{appKey: string, appSecret: string, redirectUrl: string, isvSource: string|null, shopNo: string|null, departmentNo: string|null, monthlyAccount: string|null}|string $appKey
+     * @param array{appKey: string, appSecret: string, redirectUrl: string, isvSource: null|string, shopNo: null|string, departmentNo: null|string, monthlyAccount: null|string}|string $appKey
      * @param ?string $appSecret
      * @param ?string $redirectUrl
      */
@@ -50,7 +56,7 @@ class JdClient
         } else {
             $this->config = [
                 'appKey' => '', 'appSecret' => '', 'redirectUrl' => '',
-                'isvSource' => null, 'shopNo' => null, 'departmentNo' => null, 'monthlyAccount' => null
+                'isvSource' => null, 'shopNo' => null, 'departmentNo' => null, 'monthlyAccount' => null,
             ];
             $this->config['appKey'] = $appKey;
             $this->config['appSecret'] = (string) $appSecret;
@@ -59,7 +65,7 @@ class JdClient
         $this->accessToken = new JDToken($this);
 
         $options = [
-            'base_uri'        => $this->serverUrl,
+            'base_uri' => $this->serverUrl,
             RequestOptions::ALLOW_REDIRECTS => false,
             RequestOptions::SSL_KEY => CaBundle::getSystemCaRootBundlePath(),
             RequestOptions::HTTP_ERRORS => false,
@@ -75,91 +81,59 @@ class JdClient
         $this->client = new Client($options);
     }
 
-    /**
-     * @return string
-     */
     public function getAppKey(): string
     {
         return $this->config['appKey'];
     }
 
-    /**
-     * @return string
-     */
     public function getAppSecret(): string
     {
         return $this->config['appSecret'];
     }
 
-    /**
-     * @return string
-     */
     public function getRedirectUrl(): string
     {
         return $this->config['redirectUrl'];
     }
 
-    /**
-     * @return string|null
-     */
     public function getIsvSource(): ?string
     {
         return $this->config['isvSource'];
     }
 
-    /**
-     * @return string|null
-     */
     public function getShopNo(): ?string
     {
         return $this->config['shopNo'];
     }
 
-    /**
-     * @return string|null
-     */
     public function getDepartmentNo(): ?string
     {
         return $this->config['departmentNo'];
     }
 
-    /**
-     * @return string|null
-     */
     public function getMonthlyAccount(): ?string
     {
         return $this->config['monthlyAccount'];
     }
 
-
-    /**
-     * @return string
-     */
     public function getServerUrl(): string
     {
         return $this->serverUrl;
     }
 
-    /**
-     * @param  string  $serverUrl
-     */
     public function setServerUrl(string $serverUrl): void
     {
         $this->serverUrl = $serverUrl;
     }
 
-    /**
-     * @return string
-     */
     public function getVersion(): string
     {
         return $this->version;
     }
 
     /**
-     * 获取 access_token
+     * 获取 access_token.
      *
-     * @return string
      * @throws JingdongException
      */
     public function accessToken(): string
@@ -167,28 +141,22 @@ class JdClient
         return $this->accessToken->accessToken();
     }
 
-    /**
-     * @return JDToken
-     */
     public function getAccessToken(): JDToken
     {
         return $this->accessToken;
     }
 
-    /**
-     * @param  string  $version
-     */
     public function setVersion(string $version): void
     {
         $this->version = $version;
     }
 
     /**
-     * 获取请求参数
+     * 获取请求参数.
      *
-     * @param RequestInterface $request
-     * @return array<string, mixed>
      * @throws JingdongException
+     *
+     * @return array<string, mixed>
      */
     public function formatRequest(RequestInterface $request): array
     {
@@ -208,16 +176,15 @@ class JdClient
     }
 
     /**
-     *
-     * @param RequestInterface $request
-     * @return array<string, mixed>
      * @throws JingdongException
+     *
+     * @return array<string, mixed>
      */
     public function execute(RequestInterface $request): array
     {
         $resp = $this->curl($this->serverUrl, $sysParams = $this->formatRequest($request));
 
-        if ('json' == $this->format) {
+        if ('json' === $this->format) {
             $respObject = json_decode($resp, true);
             if (json_last_error()) {
                 $context = [
@@ -225,6 +192,7 @@ class JdClient
                     'request' => $sysParams,
                     'response' => $resp,
                 ];
+
                 throw new JingdongException('jingdong error:京东返回数据解析失败:' . json_last_error_msg(), $context);
             }
 
@@ -257,11 +225,11 @@ class JdClient
     }
 
     /**
-     * 请求数据
+     * 请求数据.
      *
      * @param string $url 请求链接
-     * @param array<bool|string|int|float>|null $postFields
-     * @return string
+     * @param null|array<bool|float|int|string> $postFields
+     *
      * @throws JingdongException
      */
     public function curl(string $url, array $postFields = null): string
@@ -276,7 +244,7 @@ class JdClient
             $debugStr = [
                 'url' => $url,
                 'data' => $options,
-                'response' => null
+                'response' => null,
             ];
             $response = $this->client->post($url, $options);
             $response->getBody()->rewind();
@@ -287,20 +255,20 @@ class JdClient
                 $response->getBody()->rewind();
                 $debugStr['response'] = $response->getBody()->getContents();
             }
+
             throw new JingdongException($e->getMessage(), $debugStr, $e);
         }
     }
 
     /**
-     * @param array<bool|string|int|float> $params
-     * @return string
+     * @param array<bool|float|int|string> $params
      */
     protected function generateSign(array $params): string
     {
         ksort($params);
         $stringToBeSigned = $this->getAppSecret();
         foreach ($params as $k => $v) {
-            if (is_string($v) && '@' != substr($v, 0, 1)) {
+            if (is_string($v) && '@' !== substr($v, 0, 1)) {
                 $stringToBeSigned .= $k . $v;
             }
         }
@@ -312,23 +280,19 @@ class JdClient
 
     private function getCurrentTimeFormatted(): string
     {
-        return date('Y-m-d H:i:s').'.000'.$this->getStandardOffsetUTC(date_default_timezone_get());
+        return date('Y-m-d H:i:s') . '.000' . $this->getStandardOffsetUTC(date_default_timezone_get());
     }
 
-    /**
-     * @param string $timezone
-     * @return string
-     */
     private function getStandardOffsetUTC(string $timezone): string
     {
-        if ('UTC' == $timezone) {
+        if ('UTC' === $timezone) {
             return '+0000';
         }
         $timezone = new DateTimeZone($timezone);
         $transitions = array_slice($timezone->getTransitions(), -3, null, true);
 
         foreach (array_reverse($transitions, true) as $transition) {
-            if (1 == $transition['isdst']) {
+            if (1 === $transition['isdst']) {
                 continue;
             }
 

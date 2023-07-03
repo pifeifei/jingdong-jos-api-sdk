@@ -13,9 +13,6 @@ class AreaProvinceGetRequest extends AbstractRequest
     {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function isRequireAccessToken(): bool
     {
         return false;

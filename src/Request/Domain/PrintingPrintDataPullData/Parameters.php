@@ -6,7 +6,6 @@ class Parameters
 {
     private array $params = [];
 
-
     public function __construct()
     {
         $this->params['@type'] = 'java.util.Map';

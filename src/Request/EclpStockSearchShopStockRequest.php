@@ -3,9 +3,9 @@
 namespace ACES\Request;
 
 /**
- * 店铺库存查询(新)
+ * 店铺库存查询(新).
  *
- * @link https://jos.jd.com/apilist?apiGroupId=138&apiId=15032&apiName=null
+ * @see https://jos.jd.com/apilist?apiGroupId=138&apiId=15032&apiName=null
  *
  * @property string $requestId 必填，请求编号；长度50；备注：唯一标识;
  * @property string $deptNo 必须，事业部编码；长度50
@@ -36,6 +36,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $requestId
      */
     public function setRequestId($requestId)
     {
@@ -54,6 +56,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $deptNo
      */
     public function setDeptNo($deptNo)
     {
@@ -72,6 +76,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $shopNo
      */
     public function setShopNo($shopNo)
     {
@@ -90,6 +96,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $warehouseNo
      */
     public function setWarehouseNo($warehouseNo)
     {
@@ -108,6 +116,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $goodsNo
      */
     public function setGoodsNo($goodsNo)
     {
@@ -126,6 +136,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $pageSize
      */
     public function setPageSize($pageSize)
     {
@@ -144,6 +156,8 @@ class EclpStockSearchShopStockRequest extends AbstractRequest
 
     /**
      * @deprecated
+     *
+     * @param mixed $pageNumber
      */
     public function setPageNumber($pageNumber)
     {

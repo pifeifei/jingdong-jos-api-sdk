@@ -15,17 +15,11 @@ class JingdongException extends Exception
         $this->setContext($context);
     }
 
-    /**
-     * @return array
-     */
     public function context(): array
     {
         return $this->context;
     }
 
-    /**
-     * @param array $context
-     */
     public function setContext(array $context)
     {
         $this->context = $context;

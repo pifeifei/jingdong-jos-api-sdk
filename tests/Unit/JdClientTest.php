@@ -7,20 +7,25 @@ use ACESTest\TestCase;
 use ACESTest\Unit\Request\stub\AbstractRequestStub;
 use GuzzleHttp\Psr7\Response;
 
-class JdClientTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class JdClientTest extends TestCase
 {
     public function testConfig()
     {
         $config = $this->config();
         $jdClient = new JdClient($config);
 
-        $this->assertSame($config['appKey'], $jdClient->getAppKey());
-        $this->assertSame($config['appSecret'], $jdClient->getAppSecret());
-        $this->assertSame($config['redirectUrl'], $jdClient->getRedirectUrl());
-        $this->assertSame($config['isvSource'], $jdClient->getIsvSource());
-        $this->assertSame($config['shopNo'], $jdClient->getShopNo());
-        $this->assertSame($config['departmentNo'], $jdClient->getDepartmentNo());
-        $this->assertSame($config['monthlyAccount'], $jdClient->getMonthlyAccount());
+        self::assertSame($config['appKey'], $jdClient->getAppKey());
+        self::assertSame($config['appSecret'], $jdClient->getAppSecret());
+        self::assertSame($config['redirectUrl'], $jdClient->getRedirectUrl());
+        self::assertSame($config['isvSource'], $jdClient->getIsvSource());
+        self::assertSame($config['shopNo'], $jdClient->getShopNo());
+        self::assertSame($config['departmentNo'], $jdClient->getDepartmentNo());
+        self::assertSame($config['monthlyAccount'], $jdClient->getMonthlyAccount());
     }
 
     public function testDeprecatedConfig()
@@ -31,13 +36,13 @@ class JdClientTest extends TestCase
 
         $jdClient = new JdClient($appKey, $appSecret, $redirectUrl);
 
-        $this->assertSame($appKey, $jdClient->getAppKey());
-        $this->assertSame($appSecret, $jdClient->getAppSecret());
-        $this->assertSame($redirectUrl, $jdClient->getRedirectUrl());
-        $this->assertNull($jdClient->getIsvSource());
-        $this->assertNull($jdClient->getShopNo());
-        $this->assertNull($jdClient->getDepartmentNo());
-        $this->assertNull($jdClient->getMonthlyAccount());
+        self::assertSame($appKey, $jdClient->getAppKey());
+        self::assertSame($appSecret, $jdClient->getAppSecret());
+        self::assertSame($redirectUrl, $jdClient->getRedirectUrl());
+        self::assertNull($jdClient->getIsvSource());
+        self::assertNull($jdClient->getShopNo());
+        self::assertNull($jdClient->getDepartmentNo());
+        self::assertNull($jdClient->getMonthlyAccount());
     }
 
     /**
@@ -51,23 +56,22 @@ class JdClientTest extends TestCase
         $jdRequest->name = 'name string';
         $jdRequest->age = 30;
 
-        $this->assertSame($config['appKey'], $jdClient->formatRequest($jdRequest)['app_key']);
-        $this->assertSame('2.0', $jdClient->formatRequest($jdRequest)['v']);
-        $this->assertSame($jdRequest->getApiMethodName(), $jdClient->formatRequest($jdRequest)['method']);
-        $this->assertSame('{"name":"name string","age":30}', $jdClient->formatRequest($jdRequest)['360buy_param_json']);
-        $this->assertArrayHasKey('timestamp', $jdClient->formatRequest($jdRequest));
-        $this->assertArrayHasKey('sign', $jdClient->formatRequest($jdRequest));
+        self::assertSame($config['appKey'], $jdClient->formatRequest($jdRequest)['app_key']);
+        self::assertSame('2.0', $jdClient->formatRequest($jdRequest)['v']);
+        self::assertSame($jdRequest->getApiMethodName(), $jdClient->formatRequest($jdRequest)['method']);
+        self::assertSame('{"name":"name string","age":30}', $jdClient->formatRequest($jdRequest)['360buy_param_json']);
+        self::assertArrayHasKey('timestamp', $jdClient->formatRequest($jdRequest));
+        self::assertArrayHasKey('sign', $jdClient->formatRequest($jdRequest));
 
         $result = ['foo' => 'foo', 'bar' => 'bar'];
         $handler = $this->mockHandler([new Response(200, [], json_encode($result))]);
         $jdClient->option('handler', $handler);
         $response = $jdClient->execute($jdRequest);
-        $this->assertSame($result, $response);
+        self::assertSame($result, $response);
     }
-
 
     public function testClientException()
     {
-        $this->assertNotEmpty('TODO: 测试异常请求');
+        self::assertNotEmpty('TODO: 测试异常请求');
     }
 }

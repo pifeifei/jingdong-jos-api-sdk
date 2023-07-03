@@ -2,10 +2,11 @@
 
 namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
+use function count;
+
 class Request
 {
     private array $params = [];
-
 
     public function __construct()
     {

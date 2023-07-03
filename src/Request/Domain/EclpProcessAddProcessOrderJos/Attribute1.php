@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\EclpProcessAddProcessOrderJos;
 
+use function count;
+
 class Attribute1
 {
     private array $params = [];

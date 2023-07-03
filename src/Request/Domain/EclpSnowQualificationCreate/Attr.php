@@ -6,7 +6,6 @@ class Attr
 {
     private array $params = [];
 
-
     public function __construct()
     {
         $this->params['@type'] = 'com.jd.coldchian.snow.dto.portal.LicenseRequest';

@@ -3,7 +3,7 @@
 namespace ACES\Request;
 
 /**
- * 仓库实物库存查询
+ * 仓库实物库存查询.
  *
  * 根据事业部、库房、商品编码、库存类型、库存状态，分页查询仓库实物库存
  *
@@ -20,7 +20,7 @@ namespace ACES\Request;
  * @property string $isvSku 商家商品编码；最大50字符；最多支持100个商品编码，用英文逗号隔开
  * @property string $sellerGoodsSign 商家商品标识，支持多个商家商品标识查询，用英文“,”分隔，最多支持100个商品标识
  *
- * @link https://jos.jd.com/apilist?apiGroupId=138&apiId=13161&apiName=null
+ * @see https://jos.jd.com/apilist?apiGroupId=138&apiId=13161&apiName=null
  */
 class EclpStockQueryStockRequest extends AbstractRequest
 {

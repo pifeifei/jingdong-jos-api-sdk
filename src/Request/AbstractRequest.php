@@ -4,54 +4,83 @@ namespace ACES\Request;
 
 use ACES\Contracts\RequestInterface;
 
+use function is_array;
+
 /**
  * @property string $version 接口版本
  */
 abstract class AbstractRequest implements RequestInterface
 {
     /**
-     * @var array<bool|string|int|float|string[]>
+     * @var array<bool|float|int|string|string[]>
      */
     protected array $apiParas = [];
 
     protected string $version = '2.0';
 
     /**
-     * {@inheritDoc}
+     * 获取参数.
+     *
+     * @param array<string>|bool|float|int|string $value
      */
-    abstract public function getApiMethodName();
+    public function __set(string $name, $value): void
+    {
+        $name = lcfirst($name);
+        if (is_array($value)) {
+            $value = implode(',', $value);
+        }
+
+        if (property_exists($this, $name)) {
+            $this->{$name} = $value;
+
+            return;
+        }
+
+        $this->apiParas[$name] = $value;
+    }
 
     /**
-     * {@inheritDoc}
+     * 设置参数.
+     *
+     * @return null|array<string>|bool|float|int|string
      */
+    public function __get(string $name)
+    {
+        $name = lcfirst($name);
+
+        if (property_exists($this, $name)) {
+            return $this->{$name};
+        }
+
+        return $this->apiParas[lcfirst($name)] ?? null;
+    }
+
+    public function __toString(): string
+    {
+        return $this->toJson();
+    }
+
+    abstract public function getApiMethodName();
+
     public function all(): array
     {
         return $this->apiParas;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function toArray(): array
     {
         return $this->apiParas;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function toJson(): string
     {
         if (empty($this->apiParas)) {
             return '{}';
         }
 
-        return (string)json_encode($this->apiParas);
+        return (string) json_encode($this->apiParas);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getApiParas(): string
     {
         return $this->toJson();
@@ -67,10 +96,6 @@ abstract class AbstractRequest implements RequestInterface
         return $this->apiParas;
     }
 
-    /**
-     * @param string|null $default
-     * @return string
-     */
     public function getVersion(string $default = null): string
     {
         if (isset($this->version)) {
@@ -91,61 +116,15 @@ abstract class AbstractRequest implements RequestInterface
     /**
      * @deprecated
      *
-     * @param string $key
-     * @param array<string>|float|bool|int|string $value
+     * @param array<string>|bool|float|int|string $value
      */
     public function putOtherTextParam(string $key, $value): void
     {
         $this->apiParas[$key] = $value;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function isRequireAccessToken(): bool
     {
         return true;
-    }
-
-    /**
-     * 获取参数
-     * @param string $name
-     * @param array<string>|float|bool|int|string  $value
-     */
-    public function __set(string $name, $value): void
-    {
-        $name = lcfirst($name);
-        if (is_array($value)) {
-            $value = implode(',', $value);
-        }
-
-        if (property_exists($this, $name)) {
-            $this->$name = $value;
-            return;
-        }
-
-        $this->apiParas[$name] = $value;
-    }
-
-    /**
-     * 设置参数
-     *
-     * @param string $name
-     * @return array<string>|bool|float|int|string|null
-     */
-    public function __get(string $name)
-    {
-        $name = lcfirst($name);
-
-        if (property_exists($this, $name)) {
-            return $this->$name;
-        }
-
-        return $this->apiParas[lcfirst($name)] ?? null;
-    }
-
-    public function __toString(): string
-    {
-        return $this->toJson();
     }
 }

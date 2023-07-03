@@ -2,6 +2,8 @@
 
 namespace ACES\Request\Domain\PrintingPrintDataPullData;
 
+use function count;
+
 class Param1
 {
     private array $params = [];
