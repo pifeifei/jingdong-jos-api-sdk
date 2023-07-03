@@ -52,5 +52,10 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-feature": "0.2-dev"
+        }
     }
 }
