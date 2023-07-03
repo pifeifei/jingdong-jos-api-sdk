@@ -38,11 +38,9 @@ class JdClient
      */
     protected string $format = 'json';
 
-    //    private $charset = 'UTF-8';
-
     protected string $jsonParamKey = '360buy_param_json';
 
-    protected Client $client;
+    protected array $options = [];
 
     /**
      * @param array{appKey: string, appSecret: string, redirectUrl: string, isvSource: null|string, shopNo: null|string, departmentNo: null|string, monthlyAccount: null|string}|string $appKey
@@ -78,7 +76,7 @@ class JdClient
             $options[RequestOptions::CONNECT_TIMEOUT] = $this->getOption(RequestOptions::CONNECT_TIMEOUT);
         }
 
-        $this->client = new Client($options);
+        $this->options = $options;
     }
 
     public function getAppKey(): string
@@ -246,7 +244,7 @@ class JdClient
                 'data' => $options,
                 'response' => null,
             ];
-            $response = $this->client->post($url, $options);
+            $response = (new Client($this->options))->post($url, $options);
             $response->getBody()->rewind();
 
             return $response->getBody()->getContents(); // 可能是对象
