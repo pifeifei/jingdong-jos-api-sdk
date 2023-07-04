@@ -10,15 +10,10 @@ use Symfony\Component\Cache\Psr16Cache;
 
 class JDToken
 {
-    protected JdClient $jdClient;
-    protected ?CacheInterface $cache;
-
     protected string $key;
 
-    public function __construct(JdClient $jdClient, ?CacheInterface $cache = null)
+    public function __construct(protected JdClient $jdClient, protected ?CacheInterface $cache = null)
     {
-        $this->jdClient = $jdClient;
-        $this->cache = $cache;
     }
 
     public function setKey(string $key): void

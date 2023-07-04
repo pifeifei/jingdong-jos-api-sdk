@@ -10,10 +10,10 @@ use DateTimeZone;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
+use Psr\Log\LoggerInterface;
 use Psr\SimpleCache\CacheInterface;
 
 use function array_slice;
-use function function_exists;
 use function is_array;
 use function is_string;
 
@@ -42,6 +42,8 @@ class JdClient
     protected string $jsonParamKey = '360buy_param_json';
 
     protected array $options = [];
+
+    protected ?LoggerInterface $logger = null;
 
     /**
      * @param array{appKey: string, appSecret: string, redirectUrl: string, isvSource: null|string, shopNo: null|string, departmentNo: null|string, monthlyAccount: null|string}|string $appKey
@@ -150,6 +152,11 @@ class JdClient
         $this->version = $version;
     }
 
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * 获取请求参数.
      *
@@ -202,9 +209,7 @@ class JdClient
                     'response' => $respObject,
                 ];
 
-                if (function_exists('logger')) {
-                    logger()->debug('jingdong error: ', $context);
-                }
+                $this->logger?->error('jingdong error: ' . json_encode($context, JSON_UNESCAPED_UNICODE));
 
                 throw new JingdongException(
                     'jingdong error:' . ($respObject['error_response']['zh_desc'] ?? $respObject['error_response']['en_desc']),
