@@ -10,6 +10,7 @@ use DateTimeZone;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
+use Psr\SimpleCache\CacheInterface;
 
 use function array_slice;
 use function function_exists;
@@ -47,7 +48,7 @@ class JdClient
      * @param ?string $appSecret
      * @param ?string $redirectUrl
      */
-    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null)
+    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null, ?CacheInterface $cache = null)
     {
         if (is_array($appKey)) {
             $this->config = $appKey;
@@ -60,7 +61,7 @@ class JdClient
             $this->config['appSecret'] = (string) $appSecret;
             $this->config['redirectUrl'] = (string) $redirectUrl;
         }
-        $this->accessToken = new JDToken($this);
+        $this->accessToken = new JDToken($this, $cache);
 
         $options = [
             'base_uri' => $this->serverUrl,

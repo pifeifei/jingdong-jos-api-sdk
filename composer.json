@@ -28,8 +28,7 @@
         "guzzlehttp/guzzle": "^6.5|^7.0",
         "monolog/monolog": "^1.24.0|^2.0|^3.0",
         "netresearch/jsonmapper": "^1.6.0|^2.0|^3.0|^4.0",
-        "psr/simple-cache": "^1.0|^2.0|^3.0",
-        "symfony/cache": "^5.4|^6.0"
+        "psr/simple-cache": "^1.0|^2.0|^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
@@ -46,7 +45,8 @@
     },
     "suggest": {
         "ext-mysqli": "连 MySQL",
-        "ext-sqlite": "sqlite3"
+        "ext-sqlite": "sqlite3",
+        "symfony/cache": "默认缓存引擎"
     },
     "config" : {
         "optimize-autoloader": true,
