@@ -5,7 +5,7 @@ namespace ACES\Request;
 class UnionOpenPromotionCommonGetRequest extends AbstractRequest
 {
     protected string $version = '1.0';
-    
+
     public function getApiMethodName()
     {
         return 'jd.union.open.promotion.common.get';
