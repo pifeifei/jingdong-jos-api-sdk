@@ -2,6 +2,8 @@
 
 namespace ACES\Request;
 
+use ACES\Request\Domain\UnionOpenPromotionBysubunionidGet\PromotionCodeReq;
+
 class UnionOpenPromotionBysubunionidGetRequest extends AbstractRequest
 {
     protected string $version = '1.0';
@@ -14,5 +16,15 @@ class UnionOpenPromotionBysubunionidGetRequest extends AbstractRequest
     public function isRequireAccessToken(): bool
     {
         return false;
+    }
+
+    public function setPromotionCodeReq(PromotionCodeReq $promotionCodeReq)
+    {
+        $this->apiParas['promotionCodeReq'] = $promotionCodeReq;
+    }
+
+    public function getPromotionCodeReq()
+    {
+        return $this->apiParas['promotionCodeReq'];
     }
 }
