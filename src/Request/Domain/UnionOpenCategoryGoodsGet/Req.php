@@ -2,9 +2,11 @@
 
 namespace ACES\Request\Domain\UnionOpenCategoryGoodsGet;
 
-class Req
+use ACES\Request\Domain\AbstractParams;
+
+class Req extends AbstractParams
 {
-    private $params = [
+    protected $params = [
         'parentId' => 0,
         'grade' => 0,
     ];
