@@ -9,7 +9,7 @@ class JingdongException extends Exception
 {
     protected array $context = [];
 
-    public function __construct(string $message = '', array $context = [], Throwable $previous = null, ?int $code = 0)
+    public function __construct(string $message = '', array $context = [], ?Throwable $previous = null, ?int $code = 0)
     {
         parent::__construct($message, $code, $previous);
         $this->setContext($context);
