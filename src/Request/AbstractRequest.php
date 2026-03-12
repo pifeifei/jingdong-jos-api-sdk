@@ -96,7 +96,7 @@ abstract class AbstractRequest implements RequestInterface
         return $this->apiParas;
     }
 
-    public function getVersion(string $default = null): string
+    public function getVersion(?string $default = null): string
     {
         if (isset($this->version)) {
             return $this->version;

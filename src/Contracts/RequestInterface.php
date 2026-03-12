@@ -41,7 +41,7 @@ interface RequestInterface
     /**
      * 默认版本.
      */
-    public function getVersion(string $default = null): string;
+    public function getVersion(?string $default = null): string;
 
     /**
      * 是否需要 access_token 授权.
