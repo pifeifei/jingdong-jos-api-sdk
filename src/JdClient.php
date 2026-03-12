@@ -50,7 +50,7 @@ class JdClient
      * @param ?string $appSecret
      * @param ?string $redirectUrl
      */
-    public function __construct($appKey, string $appSecret = null, string $redirectUrl = null, ?CacheInterface $cache = null)
+    public function __construct($appKey, ?string $appSecret = null, ?string $redirectUrl = null, ?CacheInterface $cache = null)
     {
         if (is_array($appKey)) {
             $this->config = $appKey;
@@ -236,7 +236,7 @@ class JdClient
      *
      * @throws JingdongException
      */
-    public function curl(string $url, array $postFields = null): string
+    public function curl(string $url, ?array $postFields = null): string
     {
         $options = $this->options();
         if ($postFields) {
