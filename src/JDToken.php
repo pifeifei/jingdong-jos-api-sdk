@@ -31,7 +31,7 @@ class JDToken
      *
      * @throws JingdongException
      */
-    public function accessToken(string $code = null): string
+    public function accessToken(?string $code = null): string
     {
         try {
             /** @var array{access_token:string, expires_in:int, refresh_token:string, time:int} $json */
@@ -94,7 +94,7 @@ class JDToken
      *
      * @see https://jos.jd.com/faqdetail?listId=124&itemId=1778
      */
-    public function getAccessToken(string $code = null): array
+    public function getAccessToken(?string $code = null): array
     {
         if (null === $code) {
             throw new JingdongException(sprintf('Please use your browser to open the %s link and enter your account password to get access_ token, automatically update after.', $this->getAccessTokenCodeUrl()));
@@ -169,7 +169,7 @@ class JDToken
         return sprintf('%s?%s', $url, $this->getQueryCode());
     }
 
-    protected function getAccessTokenUrl(string $code = null): string
+    protected function getAccessTokenUrl(?string $code = null): string
     {
         $url = 'https://open-oauth.jd.com/oauth2/access_token';
         $query = [
